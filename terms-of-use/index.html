@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use – NutriLens: Food AI Scanner – Moocsoft</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1a1a26;
+            --accent: #7c5cfc;
+            --accent2: #fc5c7d;
+            --accent3: #5cf8c8;
+            --text: #f0f0f8;
+            --muted: #7878a0;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20vh;
+            left: -20vw;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(124, 92, 252, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        .content h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content .subtitle {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .content h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: var(--accent3);
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .content ul li {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+
+        .content ul li::before {
+            content: '·';
+            position: absolute;
+            left: 4px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 48px 24px 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">moocsoft</a>
+        <div class="nav-badge">Terms of Use</div>
+    </nav>
+
+    <main class="content">
+        <h1>Terms of Use</h1>
+        <p class="subtitle">Application: NutriLens: Food AI Scanner · Developer: Moocsoft · Last Updated: December 8,
+            2024</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using NutriLens: Food AI Scanner (the "App"), developed by Moocsoft, you agree to be bound by
+            these Terms of Use. If you do not agree to these terms, please do not use the App.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Moocsoft provides a food analysis service that allows users to:</p>
+        <ul>
+            <li>Upload food photos from camera or gallery</li>
+            <li>Receive AI-powered nutritional analysis and information</li>
+            <li>Access analysis results within the App</li>
+        </ul>
+
+        <h2>3. User Account and Credits</h2>
+
+        <h3>3.1 Anonymous Authentication</h3>
+        <ul>
+            <li>The App uses Firebase Anonymous Authentication to create user accounts</li>
+            <li>This authentication is solely for managing your credit balance</li>
+            <li>No personal information is required or collected during registration</li>
+        </ul>
+
+        <h3>3.2 Credit System</h3>
+        <ul>
+            <li>Each user receives a credit balance for using the analysis service</li>
+            <li>Each food photo analysis request deducts credits from your balance</li>
+            <li>Credit deductions are processed automatically through Firebase Firestore</li>
+            <li>You are responsible for managing your credit usage</li>
+        </ul>
+
+        <h2>4. User Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+            <li>Provide genuine food photos for analysis</li>
+            <li>Use the App only for its intended purpose</li>
+            <li>Not attempt to manipulate, hack, or interfere with the App's functionality</li>
+            <li>Not upload inappropriate, offensive, or illegal content</li>
+            <li>Not attempt to reverse engineer or copy the App's technology</li>
+        </ul>
+
+        <h2>5. Photo Upload and Processing</h2>
+
+        <h3>5.1 Photo Requirements</h3>
+        <ul>
+            <li>Photos must be taken from your device's camera or selected from your gallery</li>
+            <li>Photos should clearly show food items for accurate analysis</li>
+        </ul>
+
+        <h3>5.2 Processing</h3>
+        <ul>
+            <li>Uploaded photos are sent to Google Gemini API for analysis</li>
+            <li>Photos are processed solely for providing nutritional information</li>
+            <li>We do not store your photos permanently on our servers</li>
+            <li>Photos are not shared with any third parties except the Gemini API for processing purposes</li>
+        </ul>
+
+        <h2>6. Intellectual Property</h2>
+
+        <h3>6.1 Ownership</h3>
+        <ul>
+            <li>The App, including all content, features, and functionality, is owned by Moocsoft and Hüseyin Şahinli
+            </li>
+            <li>All rights, title, and interest in the App remain with Moocsoft</li>
+        </ul>
+
+        <h3>6.2 License</h3>
+        <ul>
+            <li>We grant you a limited, non-exclusive, non-transferable license to use the App for personal,
+                non-commercial purposes</li>
+            <li>You may not reproduce, distribute, modify, or create derivative works of the App</li>
+        </ul>
+
+        <h2>7. Disclaimer of Warranties</h2>
+
+        <h3>7.1 Service Availability</h3>
+        <ul>
+            <li>The App is provided "as is" and "as available"</li>
+            <li>We do not guarantee uninterrupted or error-free service</li>
+            <li>We may suspend or terminate the service at any time without notice</li>
+        </ul>
+
+        <h3>7.2 Analysis Accuracy</h3>
+        <ul>
+            <li>The nutritional analysis provided is for informational purposes only</li>
+            <li>We do not guarantee the accuracy, completeness, or reliability of the analysis results</li>
+            <li>Results should not be considered as medical, dietary, or professional nutritional advice</li>
+            <li>Always consult with qualified professionals for dietary decisions</li>
+        </ul>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law:</p>
+        <ul>
+            <li>Moocsoft and Hüseyin Şahinli shall not be liable for any indirect, incidental, special, or consequential
+                damages</li>
+            <li>Our total liability shall not exceed the amount you paid for using the App (if applicable)</li>
+            <li>We are not responsible for any health consequences resulting from relying on our analysis</li>
+        </ul>
+
+        <h2>9. Third-Party Services</h2>
+
+        <h3>9.1 Firebase</h3>
+        <ul>
+            <li>The App uses Firebase Authentication and Firestore services</li>
+            <li>Your use of Firebase services is subject to Google's terms and policies</li>
+        </ul>
+
+        <h3>9.2 Google Gemini API</h3>
+        <ul>
+            <li>Photo analysis is performed using Google Gemini API</li>
+            <li>Your photos are subject to Google's data processing practices during analysis</li>
+        </ul>
+
+        <h2>10. Modifications to Terms</h2>
+        <ul>
+            <li>We reserve the right to modify these Terms of Use at any time</li>
+            <li>Changes will be effective immediately upon posting in the App</li>
+            <li>Continued use of the App after changes constitutes acceptance of modified terms</li>
+            <li>We will update the "Last Updated" date when changes are made</li>
+        </ul>
+
+        <h2>11. Termination</h2>
+        <p>We may terminate or suspend your access to the App:</p>
+        <ul>
+            <li>For violation of these Terms of Use</li>
+            <li>For any reason, with or without notice</li>
+            <li>Upon termination, your right to use the App will immediately cease</li>
+        </ul>
+
+        <h2>12. Governing Law</h2>
+        <p>These Terms of Use shall be governed by and construed in accordance with the laws of the Republic of Turkey,
+            without regard to its conflict of law provisions.</p>
+
+        <h2>13. Contact Information</h2>
+        <p>For questions about these Terms of Use, please contact:</p>
+        <p><strong>Moocsoft</strong><br>Owner: Hüseyin Şahinli<br>Email: moocsoft@gmail.com</p>
+
+        <h2>14. Severability</h2>
+        <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or
+            eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and
+            effect.</p>
+
+        <h2>15. Entire Agreement</h2>
+        <p>These Terms of Use constitute the entire agreement between you and Moocsoft regarding the use of the App and
+            supersede all prior agreements and understandings.</p>
+
+        <p>By using the Moocsoft App, you acknowledge that you have read, understood, and agree to be bound by these
+            Terms of Use.</p>
+    </main>
+
+    <footer>
+        <div class="footer-logo">moocsoft</div>
+        <div class="footer-copy">&copy; 2026 Huseyin Sahinli &middot; All rights reserved</div>
+    </footer>
+
+</body>
+
+</html>

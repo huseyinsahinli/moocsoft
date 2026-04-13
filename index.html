@@ -1,489 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moocsoft – Apps by Huseyin Sahinli</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1a1a26;
-    --accent: #7c5cfc;
-    --accent2: #fc5c7d;
-    --accent3: #5cf8c8;
-    --text: #f0f0f8;
-    --muted: #7878a0;
-    --border: rgba(255,255,255,0.06);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moocsoft – Apps by Huseyin Sahinli</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --accent: #7c5cfc;
+      --accent2: #fc5c7d;
+      --accent3: #5cf8c8;
+      --text: #f0f0f8;
+      --muted: #7878a0;
+      --border: rgba(255, 255, 255, 0.06);
+    }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-  /* Background orbs */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -20vh;
-    left: -20vw;
-    width: 70vw;
-    height: 70vw;
-    background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: -20vh;
-    right: -20vw;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(252,92,125,0.1) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+    /* Background orbs */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20vh;
+      left: -20vw;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(10,10,15,0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20vh;
+      right: -20vw;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(252, 92, 125, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
 
-  .nav-badge {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  /* HERO */
-  .hero {
-    position: relative;
-    z-index: 1;
-    padding: 140px 24px 80px;
-    text-align: center;
-  }
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
 
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent3);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.1s forwards;
-  }
+    /* HERO */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 140px 24px 80px;
+      text-align: center;
+    }
 
-  .hero-eyebrow::before, .hero-eyebrow::after {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--accent3);
-    opacity: 0.5;
-  }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent3);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.1s forwards;
+    }
 
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.4rem, 8vw, 4rem);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent3);
+      opacity: 0.5;
+    }
 
-  h1 span {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
 
-  .hero-sub {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--muted);
-    max-width: 340px;
-    margin: 0 auto 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.3s forwards;
-  }
+    h1 span {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    text-decoration: none;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    padding: 14px 28px;
-    border-radius: 50px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 32px rgba(124,92,252,0.35);
-  }
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 380px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
 
-  .hero-cta:active { transform: scale(0.97); }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
 
-  /* APPS SECTION */
-  .section {
-    position: relative;
-    z-index: 1;
-    padding: 20px 20px 80px;
-  }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      padding: 12px 22px;
+      border-radius: 50px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(124, 92, 252, 0.35);
+    }
 
-  .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 28px;
-    padding-left: 4px;
-  }
+    .hero-cta.secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
 
-  .apps-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+    .hero-cta:active {
+      transform: scale(0.97);
+    }
 
-  .app-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-    position: relative;
-    overflow: hidden;
-  }
+    /* STATS */
+    .stats {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 0 20px 60px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
 
-  .app-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-    background: linear-gradient(135deg, rgba(124,92,252,0.06), rgba(252,92,125,0.06));
-  }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 12px;
+      text-align: center;
+    }
 
-  .app-card:active {
-    transform: scale(0.98);
-    border-color: rgba(124,92,252,0.3);
-  }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
 
-  .app-card:active::before { opacity: 1; }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-  .app-card:nth-child(1) { animation-delay: 0.1s; }
-  .app-card:nth-child(2) { animation-delay: 0.2s; }
-  .app-card:nth-child(3) { animation-delay: 0.3s; }
-  .app-card:nth-child(4) { animation-delay: 0.4s; }
-  .app-card:nth-child(5) { animation-delay: 0.5s; }
+    /* APPS SECTION */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 20px 20px 80px;
+    }
 
-  .app-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    position: relative;
-    overflow: hidden;
-  }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+      padding-left: 4px;
+    }
 
-  .app-info { flex: 1; min-width: 0; }
+    .apps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-  .app-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .app-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
+    .app-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      background: linear-gradient(135deg, rgba(124, 92, 252, 0.06), rgba(252, 92, 125, 0.06));
+    }
 
-  .app-arrow {
-    color: var(--muted);
-    font-size: 1.1rem;
-    flex-shrink: 0;
-    transition: transform 0.2s, color 0.2s;
-  }
+    .app-card:active {
+      transform: scale(0.98);
+      border-color: rgba(124, 92, 252, 0.3);
+    }
 
-  .app-card:active .app-arrow {
-    transform: translateX(3px);
-    color: var(--accent);
-  }
+    .app-card:active::before {
+      opacity: 1;
+    }
 
-  /* App icon gradients */
-  .icon-nutrilens { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-  .icon-quitbit { background: linear-gradient(135deg, #f77062, #fe5196); }
-  .icon-habit { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-  .icon-savings { background: linear-gradient(135deg, #f6d365, #fda085); }
-  .icon-math { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+    .app-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-  /* ABOUT */
-  .about-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 24px;
-    position: relative;
-    z-index: 1;
-    margin: 0 20px;
-    overflow: hidden;
-  }
+    .app-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-  .about-card::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 140px;
-    height: 140px;
-    background: radial-gradient(circle, rgba(124,92,252,0.15), transparent 70%);
-  }
+    .app-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-  .about-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.4rem;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
+    .app-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
 
-  .about-title {
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
+    .app-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
 
-  .about-text {
-    font-size: 0.9rem;
-    line-height: 1.75;
-    color: var(--muted);
-  }
+    .app-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-  /* FOOTER */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 48px 24px 40px;
-  }
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
+    .app-info {
+      flex: 1;
+      min-width: 0;
+    }
 
-  .footer-copy {
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
+    .app-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    .app-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 20px 60px;
-    position: relative;
-    z-index: 1;
-  }
+    .app-platforms {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
 
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-  }
+    .platform-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      position: relative;
+      z-index: 2;
+    }
 
-  .section-sub {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
+    .platform-link:hover {
+      border-color: rgba(124, 92, 252, 0.4);
+      color: var(--text);
+    }
 
-  .tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-right: 6px;
-    margin-bottom: 6px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-</style>
+    .platform-link svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .app-rating {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      color: var(--accent3);
+      font-weight: 500;
+    }
+
+    /* App icon gradients */
+    .icon-nutrilens {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+
+    .icon-quitbit {
+      background: linear-gradient(135deg, #f77062, #fe5196);
+    }
+
+    .icon-habit {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .icon-savings {
+      background: linear-gradient(135deg, #f6d365, #fda085);
+    }
+
+    .icon-math {
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    }
+
+    /* ABOUT */
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      position: relative;
+      z-index: 1;
+      margin: 0 20px;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.15), transparent 70%);
+    }
+
+    .about-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .about-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* LEGAL LINKS */
+    .legal-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 20px 60px;
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .legal-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 400;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .legal-link:hover {
+      border-color: rgba(124, 92, 252, 0.3);
+      color: var(--text);
+    }
+
+    .legal-link svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 24px 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-email {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-email:hover {
+      text-decoration: underline;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 20px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="logo">moocsoft</div>
-  <div class="nav-badge">iOS Apps</div>
-</nav>
+  <nav>
+    <div class="logo">moocsoft</div>
+    <div class="nav-badge">iOS &amp; Android</div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Independent Developer</div>
-  <h1>Apps that<br><span>improve your life</span></h1>
-  <p class="hero-sub">Simple, powerful iOS apps designed to help you build better habits, track goals, and live smarter.</p>
-  <a href="https://apps.apple.com/us/developer/huseyin-sahinli/id1690196717" class="hero-cta" target="_blank">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    View All Apps
-  </a>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Independent Developer</div>
+    <h1>Apps that<br><span>improve your life</span></h1>
+    <p class="hero-sub">Simple, powerful mobile apps for iOS &amp; Android — designed to help you build better habits,
+      track goals, and live smarter.</p>
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/us/developer/huseyin-sahinli/id1690196717" class="hero-cta" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+        </svg>
+        App Store
+      </a>
+      <a href="https://play.google.com/store/apps/dev?id=6360936621716247418" class="hero-cta secondary"
+        target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33a1 1 0 0 1 0 1.724l-2.302 1.33-2.535-2.535 2.535-2.849zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+        </svg>
+        Google Play
+      </a>
+    </div>
+  </section>
 
-<!-- APPS -->
-<section class="section">
-  <div class="section-label">My Apps</div>
-
-  <div class="apps-grid">
-
-    <a class="app-card" href="https://apps.apple.com/us/app/nutrilens-food-ai-scanner/id6755138291" target="_blank">
-      <div class="app-icon icon-nutrilens">🥗</div>
-      <div class="app-info">
-        <div class="app-name">NutriLens</div>
-        <div class="app-desc">Food AI Scanner · Smart Scan, Healthy Eating</div>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-
-    <a class="app-card" href="https://apps.apple.com/us/app/quitbit-break-bad-habits/id6747658536" target="_blank">
-      <div class="app-icon icon-quitbit">🚫</div>
-      <div class="app-info">
-        <div class="app-name">QuitBit</div>
-        <div class="app-desc">Break Bad Habits · Habit Tracker & Goal Setter</div>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-
-    <a class="app-card" href="https://apps.apple.com/us/app/habit-tracker-daily/id6572323963" target="_blank">
-      <div class="app-icon icon-habit">✅</div>
-      <div class="app-info">
-        <div class="app-name">Habit Tracker</div>
-        <div class="app-desc">Daily Routine Manager & Goal Planner</div>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-
-    <a class="app-card" href="https://apps.apple.com/us/app/savings-goal-tracker/id6450431254" target="_blank">
-      <div class="app-icon icon-savings">💰</div>
-      <div class="app-info">
-        <div class="app-name">Savings Goal</div>
-        <div class="app-desc">Transform Your Savings Goals</div>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-
-    <a class="app-card" href="https://apps.apple.com/us/app/math-riddles-brain-games/id6449851642" target="_blank">
-      <div class="app-icon icon-math">🧠</div>
-      <div class="app-info">
-        <div class="app-name">Math Riddles</div>
-        <div class="app-desc">Brain Games · Train Your Brain Daily</div>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Apps</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100K+</div>
+      <div class="stat-label">Downloads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4.8+</div>
+      <div class="stat-label">Rating</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Platforms</div>
+    </div>
   </div>
-</section>
 
-<div class="divider"></div>
+  <!-- APPS -->
+  <section class="section">
+    <div class="section-label">My Apps</div>
 
-<!-- ABOUT -->
-<div class="about-card">
-  <div class="about-name">Huseyin Sahinli</div>
-  <div class="about-title">iOS Developer</div>
-  <p class="about-text">Independent app developer focused on building clean, useful tools that make everyday life a little better. Every app is crafted with care — no bloat, no noise.</p>
-  <br>
-  <span class="tag">Swift</span>
-  <span class="tag">SwiftUI</span>
-  <span class="tag">iOS</span>
-  <span class="tag">AI</span>
-  <span class="tag">Productivity</span>
-</div>
+    <div class="apps-grid">
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">moocsoft</div>
-  <div class="footer-copy">© 2026 Huseyin Sahinli · All rights reserved</div>
-</footer>
+      <div class="app-card">
+        <div class="app-top">
+          <div class="app-icon icon-nutrilens">🥗</div>
+          <div class="app-info">
+            <div class="app-name">NutriLens</div>
+            <div class="app-desc">Food AI Scanner · Smart Scan, Healthy Eating</div>
+          </div>
+        </div>
+        <div class="app-platforms">
+          <a class="platform-link" href="https://apps.apple.com/us/app/nutrilens-food-ai-scanner/id6755138291"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store
+          </a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-top">
+          <div class="app-icon icon-quitbit">🚫</div>
+          <div class="app-info">
+            <div class="app-name">QuitBit</div>
+            <div class="app-desc">Break Bad Habits · Habit Tracker &amp; Goal Setter</div>
+          </div>
+        </div>
+        <div class="app-platforms">
+          <a class="platform-link" href="https://apps.apple.com/us/app/quitbit-break-bad-habits/id6747658536"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store
+          </a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-top">
+          <div class="app-icon icon-habit">✅</div>
+          <div class="app-info">
+            <div class="app-name">Habit Tracker</div>
+            <div class="app-desc">Daily Routine Manager &amp; Goal Planner</div>
+          </div>
+        </div>
+        <div class="app-platforms">
+          <a class="platform-link" href="https://apps.apple.com/us/app/habit-tracker-daily/id6572323963"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store
+          </a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-top">
+          <div class="app-icon icon-savings">💰</div>
+          <div class="app-info">
+            <div class="app-name">Savings Goal Tracker</div>
+            <div class="app-desc">Transform Your Savings Goals into Reality</div>
+          </div>
+        </div>
+        <div class="app-platforms">
+          <a class="platform-link" href="https://apps.apple.com/us/app/savings-goal-tracker/id6450431254"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store
+          </a>
+          <a class="platform-link" href="https://play.google.com/store/apps/details?id=com.moocsoft.goal_tracker"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33a1 1 0 0 1 0 1.724l-2.302 1.33-2.535-2.535 2.535-2.849zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+            </svg>
+            Google Play
+          </a>
+          <span class="app-rating">&#9733; 5.0</span>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-top">
+          <div class="app-icon icon-math">🧠</div>
+          <div class="app-info">
+            <div class="app-name">Math Riddles</div>
+            <div class="app-desc">Brain Games · Train Your Brain Daily</div>
+          </div>
+        </div>
+        <div class="app-platforms">
+          <a class="platform-link" href="https://apps.apple.com/us/app/math-riddles-brain-games/id6449851642"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            App Store
+          </a>
+          <a class="platform-link" href="https://play.google.com/store/apps/details?id=com.moocsoft.math_puzzle"
+            target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33a1 1 0 0 1 0 1.724l-2.302 1.33-2.535-2.535 2.535-2.849zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+            </svg>
+            Google Play
+          </a>
+          <span class="app-rating">&#9733; 4.8 · 100K+</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <div class="about-card">
+    <div class="about-name">Huseyin Sahinli</div>
+    <div class="about-title">Mobile Developer</div>
+    <p class="about-text">Independent app developer focused on building clean, useful tools that make everyday life a
+      little better. Publishing apps on both the App Store and Google Play — every app is crafted with care, no bloat,
+      no noise.</p>
+    <br>
+    <span class="tag">Swift</span>
+    <span class="tag">SwiftUI</span>
+    <span class="tag">Flutter</span>
+    <span class="tag">Dart</span>
+    <span class="tag">iOS</span>
+    <span class="tag">Android</span>
+    <span class="tag">AI</span>
+    <span class="tag">Productivity</span>
+  </div>
+
+  <div class="divider" style="margin-top: 60px;"></div>
+
+  <!-- LEGAL -->
+  <section class="legal-section">
+    <div class="section-label" style="padding-left: 4px; margin-bottom: 16px;">Legal</div>
+    <div class="legal-grid">
+      <a class="legal-link" href="/privacy-policy/">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+        </svg>
+        Privacy Policy
+      </a>
+      <a class="legal-link" href="/terms-of-use/">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z" />
+        </svg>
+        Terms of Use
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">moocsoft</div>
+    <div class="footer-copy">&copy; 2026 Huseyin Sahinli &middot; All rights reserved</div>
+    <a href="mailto:moocsoft@gmail.com" class="footer-email">moocsoft@gmail.com</a>
+  </footer>
 
 </body>
+
 </html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy – NutriLens: Food AI Scanner – Moocsoft</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1a1a26;
+            --accent: #7c5cfc;
+            --accent2: #fc5c7d;
+            --accent3: #5cf8c8;
+            --text: #f0f0f8;
+            --muted: #7878a0;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20vh;
+            left: -20vw;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(124, 92, 252, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        .content h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content .subtitle {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .content h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: var(--accent3);
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .content ul li {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+
+        .content ul li::before {
+            content: '·';
+            position: absolute;
+            left: 4px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 48px 24px 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">moocsoft</a>
+        <div class="nav-badge">Privacy Policy</div>
+    </nav>
+
+    <main class="content">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Application: NutriLens: Food AI Scanner · Developer: Moocsoft · Last Updated: December 8,
+            2024</p>
+
+        <h2>1. Introduction</h2>
+        <p>Moocsoft ("we," "our," or "us"), operated by Hüseyin Şahinli, is committed to protecting your privacy. This
+            Privacy Policy explains how we collect, use, and safeguard your information when you use our food analysis
+            application, NutriLens: Food AI Scanner ("the App").</p>
+
+        <h2>2. Information We Collect</h2>
+
+        <h3>2.1 User Authentication Data</h3>
+        <ul>
+            <li>Firebase Anonymous Authentication ID: A unique identifier created automatically when you first use the
+                App</li>
+            <li>Purpose: This ID is used solely to manage your credit balance in our system</li>
+            <li>Note: This is not linked to any personal information, email, phone number, or identity</li>
+        </ul>
+
+        <h3>2.2 Credit Usage Data</h3>
+        <ul>
+            <li>Credit Balance: Stored in Firebase Firestore</li>
+            <li>Transaction History: Records of credit deductions when you use the analysis service</li>
+            <li>Purpose: To manage and track your service usage</li>
+        </ul>
+
+        <h3>2.3 Food Photos</h3>
+        <ul>
+            <li>Source: Photos taken from your camera or selected from your gallery</li>
+            <li>Processing: Photos are sent to Google Gemini API for analysis</li>
+            <li>Storage: We do not permanently store your photos on our servers</li>
+            <li>Retention: Photos are only temporarily processed and immediately discarded after analysis</li>
+        </ul>
+
+        <h3>2.4 Analysis Results</h3>
+        <ul>
+            <li>Data: Nutritional information and analysis results returned from Gemini API</li>
+            <li>Display: Results are shown within the App</li>
+            <li>Storage: Results may be temporarily stored for display purposes</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the collected information for the following purposes:</p>
+        <ul>
+            <li><strong>Service Delivery:</strong> To provide food analysis functionality</li>
+            <li><strong>Credit Management:</strong> To track and manage your credit balance</li>
+            <li><strong>Service Improvement:</strong> To improve the accuracy and quality of our analysis</li>
+            <li><strong>Technical Maintenance:</strong> To maintain and optimize App performance</li>
+        </ul>
+
+        <h2>4. Information Sharing and Disclosure</h2>
+
+        <h3>4.1 We Do NOT Share Your Information</h3>
+        <ul>
+            <li>We do not sell, trade, or rent your information to third parties</li>
+            <li>We do not share your data with advertisers or marketing companies</li>
+            <li>Your authentication ID and credit information remain confidential</li>
+        </ul>
+
+        <h3>4.2 Third-Party Service Providers</h3>
+        <p>We use the following third-party services that may process your data:</p>
+        <p><strong>Google Firebase</strong></p>
+        <ul>
+            <li>Services Used: Firebase Authentication, Firebase Firestore</li>
+            <li>Data Processed: Anonymous user ID, credit balance</li>
+            <li>Purpose: User authentication and data storage</li>
+            <li>Privacy Policy: <a
+                    href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a>
+            </li>
+        </ul>
+        <p><strong>Google Gemini API</strong></p>
+        <ul>
+            <li>Data Processed: Food photos you upload</li>
+            <li>Purpose: AI-powered food analysis</li>
+            <li>Retention: Photos are processed in real-time and not permanently stored by us</li>
+            <li>Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>
+            </li>
+        </ul>
+
+        <h3>4.3 Legal Requirements</h3>
+        <p>We may disclose your information if required to do so by law or in response to valid requests by public
+            authorities (e.g., court orders, government agencies).</p>
+
+        <h2>5. Data Security</h2>
+
+        <h3>5.1 Security Measures</h3>
+        <ul>
+            <li>We implement appropriate technical and organizational security measures</li>
+            <li>Firebase provides industry-standard security for data storage</li>
+            <li>All data transmission uses secure protocols (HTTPS)</li>
+            <li>Anonymous authentication minimizes personal data exposure</li>
+        </ul>
+
+        <h3>5.2 Limitations</h3>
+        <ul>
+            <li>No method of transmission over the Internet is 100% secure</li>
+            <li>While we strive to protect your information, we cannot guarantee absolute security</li>
+            <li>You use the App at your own risk</li>
+        </ul>
+
+        <h2>6. Data Retention</h2>
+        <ul>
+            <li>Anonymous User ID: Retained as long as you use the App</li>
+            <li>Credit Balance: Maintained throughout your App usage</li>
+            <li>Photos: Not permanently stored; immediately discarded after analysis</li>
+            <li>Analysis Results: May be temporarily cached for display purposes</li>
+        </ul>
+
+        <h2>7. Your Rights and Choices</h2>
+
+        <h3>7.1 Data Access</h3>
+        <ul>
+            <li>You can view your credit balance within the App</li>
+            <li>Your anonymous user ID is managed automatically by Firebase</li>
+        </ul>
+
+        <h3>7.2 Data Deletion</h3>
+        <ul>
+            <li>If you wish to delete your data, you can uninstall the App</li>
+            <li>Upon uninstalling, your anonymous authentication session ends</li>
+            <li>You may contact us to request manual deletion of your data from Firebase</li>
+        </ul>
+
+        <h3>7.3 Photo Control</h3>
+        <ul>
+            <li>You have full control over which photos you upload</li>
+            <li>You can choose to stop using the photo analysis feature at any time</li>
+        </ul>
+
+        <h2>8. Children's Privacy</h2>
+        <p>The App is not intended for use by children under the age of 13. We do not knowingly collect personal
+            information from children under 13. If you are a parent or guardian and believe your child has provided us
+            with information, please contact us.</p>
+
+        <h2>9. International Data Transfers</h2>
+        <ul>
+            <li>Your information may be transferred to and processed in countries other than your own</li>
+            <li>Firebase and Google services operate globally</li>
+            <li>We ensure appropriate safeguards are in place for international transfers</li>
+        </ul>
+
+        <h2>10. Changes to This Privacy Policy</h2>
+        <ul>
+            <li>We may update this Privacy Policy from time to time</li>
+            <li>Changes will be posted within the App with an updated "Last Updated" date</li>
+            <li>Continued use of the App after changes constitutes acceptance of the updated policy</li>
+            <li>We encourage you to review this Privacy Policy periodically</li>
+        </ul>
+
+        <h2>11. Your Consent</h2>
+        <p>By using the App, you consent to:</p>
+        <ul>
+            <li>Our collection and use of information as described in this Privacy Policy</li>
+            <li>The processing of your photos by Google Gemini API for analysis purposes</li>
+            <li>The use of Firebase services for authentication and data storage</li>
+        </ul>
+
+        <h2>12. Third-Party Links</h2>
+        <p>The App may contain links to third-party websites or services. We are not responsible for the privacy
+            practices of these external sites. We encourage you to read their privacy policies.</p>
+
+        <h2>13. California Privacy Rights (CCPA)</h2>
+        <p>If you are a California resident, you have specific rights regarding your personal information:</p>
+        <ul>
+            <li>Right to know what personal information is collected</li>
+            <li>Right to know whether personal information is sold or disclosed</li>
+            <li>Right to opt-out of the sale of personal information (Note: We do not sell your information)</li>
+            <li>Right to request deletion of personal information</li>
+            <li>Right to non-discrimination for exercising your rights</li>
+        </ul>
+
+        <h2>14. European Privacy Rights (GDPR)</h2>
+        <p>If you are in the European Economic Area (EEA), you have the following rights:</p>
+        <ul>
+            <li><strong>Right of Access:</strong> Request copies of your personal data</li>
+            <li><strong>Right to Rectification:</strong> Request correction of inaccurate data</li>
+            <li><strong>Right to Erasure:</strong> Request deletion of your data</li>
+            <li><strong>Right to Restrict Processing:</strong> Request limitation of data processing</li>
+            <li><strong>Right to Data Portability:</strong> Request transfer of your data</li>
+            <li><strong>Right to Object:</strong> Object to processing of your data</li>
+        </ul>
+
+        <h2>15. Contact Us</h2>
+        <p>If you have questions, concerns, or requests regarding this Privacy Policy or your data, please contact us:
+        </p>
+        <p><strong>Moocsoft</strong><br>Owner: Hüseyin Şahinli<br>Email: moocsoft@gmail.com</p>
+        <p>We will respond to your inquiry within a reasonable timeframe.</p>
+
+        <h2>16. Acceptance of Privacy Policy</h2>
+        <p>By using NutriLens: Food AI Scanner (developed by Moocsoft), you acknowledge that you have read and
+            understood this Privacy Policy and agree to its terms and conditions.</p>
+        <p><strong>Summary:</strong> We use minimal data (anonymous ID and credits) to operate the service. Your food
+            photos are only temporarily processed by Gemini API and never permanently stored. We do not share your
+            information with anyone except the necessary service providers (Firebase and Gemini API). Your privacy is
+            important to us.</p>
+    </main>
+
+    <footer>
+        <div class="footer-logo">moocsoft</div>
+        <div class="footer-copy">&copy; 2026 Huseyin Sahinli &middot; All rights reserved</div>
+    </footer>
+
+</body>
+
+</html>

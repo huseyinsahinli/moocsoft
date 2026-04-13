@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use – Habit Tracker – Daily – Moocsoft</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1a1a26;
+            --accent: #7c5cfc;
+            --accent2: #fc5c7d;
+            --accent3: #5cf8c8;
+            --text: #f0f0f8;
+            --muted: #7878a0;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20vh;
+            left: -20vw;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(124, 92, 252, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        .content h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content .subtitle {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .content ul li {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--muted);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+
+        .content ul li::before {
+            content: '·';
+            position: absolute;
+            left: 4px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 48px 24px 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">moocsoft</a>
+        <div class="nav-badge">Terms of Use</div>
+    </nav>
+
+    <main class="content">
+        <h1>Terms &amp; Conditions</h1>
+        <p class="subtitle">Application: Habit Tracker – Daily · Moocsoft, Istanbul, Turkey</p>
+
+        <p>Please read these terms and conditions carefully before using our Service.</p>
+
+        <h2>Interpretation</h2>
+        <p>Words with initial capital letters have specific meanings in this agreement.</p>
+
+        <h2>Definitions</h2>
+        <p>For the purposes of these Terms and Conditions:</p>
+        <ul>
+            <li><strong>Application</strong> refers to the software provided by the Company, downloaded by You on any
+                electronic device, named Habit Tracker – Daily.</li>
+            <li><strong>Application Store</strong> refers to the digital distribution services (Apple App Store, Google
+                Play Store) from which the Application is downloaded.</li>
+            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control
+                with a party.</li>
+            <li><strong>Country</strong> refers to Turkey.</li>
+            <li><strong>Company</strong> (referred to as "We", "Us", or "Our") refers to Moocsoft, based in Istanbul,
+                Turkey.</li>
+            <li><strong>Device</strong> means any device that can access the Service, mobile phones, and tablets.</li>
+            <li><strong>Service</strong> refers to the Application.</li>
+            <li><strong>Terms and Conditions</strong> (referred to as "Terms") refers to these Terms and Conditions,
+                forming the entire agreement between You and the Company regarding the use of the Service.</li>
+            <li><strong>You</strong> refers to the individual accessing or using the Service, or the company or other
+                legal entity on behalf of which such individual is accessing or using the Service.</li>
+        </ul>
+
+        <h2>Description of Our App</h2>
+        <p>Habit Tracker – Daily is a mobile application designed to help users build and maintain healthy habits
+            through personalized tracking. The app allows users to set specific goals, track their progress, and view
+            achievements over time. Features include daily, weekly, and monthly tracking, personalized notifications,
+            and detailed analytics. Habit Tracker – Daily ensures a user-friendly and customizable experience while
+            keeping data stored locally on the user's device for privacy.</p>
+
+        <h2>Acknowledgment</h2>
+        <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between
+            You and the Company. These Terms set out the rights and obligations of all users regarding the use of the
+            Service.</p>
+        <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms.
+            By accessing or using the Service, You agree to be bound by these Terms. If You disagree with any part of
+            the Terms, You may not access the Service.</p>
+        <p>You represent that You are over the age of 18. The Company does not permit those under 18 to use the Service.
+        </p>
+        <p>Your use of the Service is also conditioned on Your acceptance of and compliance with our Privacy Policy. The
+            Privacy Policy describes how we collect, use, and disclose your personal data when You use the Application
+            and explains Your privacy rights.</p>
+
+        <h2>Links to Other Websites</h2>
+        <p>Our Service may contain links to third-party websites or services not owned or controlled by the Company. The
+            Company assumes no responsibility for the content, privacy policies, or practices of any third-party
+            websites. You acknowledge that the Company shall not be liable for any damage or loss caused by or in
+            connection with the use of or reliance on any third-party services.</p>
+
+        <h2>Termination</h2>
+        <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason
+            whatsoever, including if You breach these Terms. Upon termination, Your right to use the Service will cease
+            immediately.</p>
+
+        <h2>Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, the Company or its suppliers shall not be liable for any
+            indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of
+            profits, data, or business, arising from Your use of the Service.</p>
+        <p>In any case, the Company's liability will be limited to the amount paid by You for using the Service or 100
+            USD if no such payments have been made.</p>
+
+        <h2>"AS IS" Disclaimer</h2>
+        <p>The Service is provided "AS IS" and "AS AVAILABLE" without any warranties of any kind. The Company does not
+            guarantee that the Service will meet Your requirements, be error-free, or be available at all times.</p>
+
+        <h2>Governing Law</h2>
+        <p>The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the
+            Service. Your use of the Application may also be subject to other local, state, national, or international
+            laws.</p>
+
+        <h2>Dispute Resolution</h2>
+        <p>If you have any concerns or disputes regarding the Service, you agree to first attempt to resolve the issue
+            informally by contacting us directly.</p>
+
+        <h2>For European Union (EU) Users</h2>
+        <p>If you are a consumer residing in the European Union, you will benefit from any mandatory provisions of the
+            law in your country of residence.</p>
+
+        <h2>Legal Compliance</h2>
+        <p>You represent and warrant that (i) you are not located in a country that is subject to any government embargo
+            or that has been designated as a "terrorist-supporting" country, and (ii) you are not listed on any
+            government list of prohibited or restricted parties.</p>
+
+        <h2>Changes to These Terms</h2>
+        <p>We reserve the right to modify or replace these Terms at any time. We will notify You of any changes by
+            providing reasonable notice. By continuing to use the Service after the changes become effective, You agree
+            to the revised Terms.</p>
+
+        <h2>Contact Us</h2>
+        <p>If You have any questions about these Terms, You can contact Us by email at <a
+                href="mailto:moocsoft@gmail.com">moocsoft@gmail.com</a>.</p>
+    </main>
+
+    <footer>
+        <div class="footer-logo">moocsoft</div>
+        <div class="footer-copy">&copy; 2026 Huseyin Sahinli &middot; All rights reserved</div>
+    </footer>
+
+</body>
+
+</html>
