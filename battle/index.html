@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join a Battle — Math Riddles</title>
+  <meta name="description" content="Open your Math Riddles battle invite, or get the app for iOS and Android.">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://moocsoft.net/battle/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0c;
+      --surface: #111214;
+      --surface-2: #16171a;
+      --text: #f2ede4;
+      --muted: #8a857c;
+      --accent: #c96a43;
+      --border: rgba(242, 237, 228, 0.06);
+      --border-strong: rgba(242, 237, 228, 0.14);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .glow {
+      position: fixed;
+      top: -30vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90vw;
+      max-width: 640px;
+      height: 60vh;
+      background: radial-gradient(circle, rgba(201, 106, 67, 0.14) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border-strong);
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 7vw, 2.3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .code-card {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .code-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .code {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 9vw, 2.6rem);
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      background: var(--surface-2);
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      flex: none;
+    }
+
+    .status {
+      font-size: 0.82rem;
+      color: var(--muted);
+      min-height: 1.4em;
+      margin-bottom: 22px;
+    }
+
+    .hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 22px;
+      line-height: 1.7;
+    }
+
+    .hint a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 44px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <main>
+    <div class="badge">Math Riddles · Battle</div>
+
+    <h1 id="title">Your battle invite</h1>
+    <p class="lede" id="lede">Opening the app…</p>
+
+    <div class="code-card" id="codeCard" hidden>
+      <div class="code-label">Room code</div>
+      <div class="code" id="code"></div>
+    </div>
+
+    <a class="btn btn-primary" id="openApp" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+      Open in the app
+    </a>
+
+    <p class="status" id="status"></p>
+
+    <a class="btn" id="appStore" href="https://apps.apple.com/app/math-riddles-brain-games/id6449851642">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+      </svg>
+      Download on the App Store
+    </a>
+
+    <a class="btn" id="playStore" href="https://play.google.com/store/apps/details?id=com.moocsoft.math_puzzle">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33a1 1 0 0 1 0 1.724l-2.302 1.33-2.535-2.535 2.535-2.849zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+      </svg>
+      Get it on Google Play
+    </a>
+
+    <p class="hint" id="hint">
+      Already have the app? Open it, go to <strong>Battle → Join Room</strong> and enter the code above.
+    </p>
+  </main>
+
+  <footer>
+    <a href="/">moocsoft</a> &middot; <a href="/math-riddles/">Math Riddles</a>
+  </footer>
+
+  <script>
+    (function () {
+      var APP_STORE = 'https://apps.apple.com/app/math-riddles-brain-games/id6449851642';
+      var PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.moocsoft.math_puzzle';
+
+      var params = new URLSearchParams(window.location.search);
+      // Codes are A-Z and 2-9 only, so anything else is not one of ours and is
+      // never echoed back into the page.
+      var raw = (params.get('code') || '').trim().toUpperCase();
+      var code = /^[A-Z0-9]{4,12}$/.test(raw) ? raw : '';
+
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/.test(ua);
+      var isMobile = isIOS || isAndroid;
+      var store = isIOS ? APP_STORE : PLAY_STORE;
+
+      var el = function (id) { return document.getElementById(id); };
+      var deepLink = code ? 'mathriddles://battle?code=' + encodeURIComponent(code) : 'mathriddles://';
+
+      // Show the code only after validating it.
+      if (code) {
+        el('code').textContent = code;
+        el('codeCard').hidden = false;
+      } else {
+        el('title').textContent = 'Math Riddles';
+        el('lede').textContent = 'Brain games and live 1v1 battles.';
+        el('hint').hidden = true;
+      }
+
+      el('openApp').setAttribute('href', deepLink);
+
+      // Put the relevant store first on mobile; desktop keeps both.
+      if (isAndroid) {
+        var play = el('playStore');
+        play.parentNode.insertBefore(play, el('appStore'));
+      }
+
+      if (!isMobile) {
+        el('lede').textContent = code
+          ? 'Open this link on your phone to join the room.'
+          : 'Brain games and live 1v1 battles.';
+        el('openApp').hidden = true;
+        el('status').textContent = '';
+        return;
+      }
+
+      // Try to hand off to the app. If we are still here a moment later the app
+      // is not installed, so continue to the store.
+      var handedOff = false;
+      var markHandedOff = function () { handedOff = true; };
+      window.addEventListener('pagehide', markHandedOff);
+      window.addEventListener('blur', markHandedOff);
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) markHandedOff();
+      });
+
+      el('status').textContent = 'If nothing happens, use a button below.';
+
+      window.setTimeout(function () { window.location.href = deepLink; }, 60);
+
+      window.setTimeout(function () {
+        if (handedOff || document.hidden) return;
+        el('lede').textContent = 'The app is not installed — taking you to the store…';
+        window.location.href = store;
+      }, 1600);
+    })();
+  </script>
+</body>
+
+</html>

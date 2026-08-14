@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Your Account — Math Riddles — Moocsoft</title>
+  <meta name="description"
+    content="Delete your Math Riddles account and data — from inside the app, or by submitting a request here.">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="canonical" href="https://moocsoft.net/delete-account/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0c;
+      --surface: #111214;
+      --surface-2: #16171a;
+      --text: #f2ede4;
+      --muted: #8a857c;
+      --accent: #c96a43;
+      --danger: #d9534f;
+      --ok: #4caf6d;
+      --border: rgba(242, 237, 228, 0.06);
+      --border-strong: rgba(242, 237, 228, 0.14);
+      --max: 680px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -25vh;
+      left: -15vw;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(201, 106, 67, 0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(9, 10, 12, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-badge {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border-strong);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 24px 72px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 6vw, 2.3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 26px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .tag-fast {
+      color: var(--ok);
+      border: 1px solid rgba(76, 175, 109, 0.4);
+    }
+
+    .tag-slow {
+      color: var(--muted);
+      border: 1px solid var(--border-strong);
+    }
+
+    ol.steps {
+      list-style: none;
+      counter-reset: step;
+      margin: 18px 0 6px;
+    }
+
+    ol.steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 42px;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    ol.steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ul.plain {
+      list-style: none;
+      margin: 10px 0 16px;
+    }
+
+    ul.plain li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    ul.plain li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .req {
+      color: var(--accent);
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .help {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 12px 14px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    #friendCode {
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--danger);
+      background: var(--danger);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .result {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .result.ok {
+      display: block;
+      color: var(--ok);
+      background: rgba(76, 175, 109, 0.08);
+      border: 1px solid rgba(76, 175, 109, 0.35);
+    }
+
+    .result.err {
+      display: block;
+      color: var(--danger);
+      background: rgba(217, 83, 79, 0.08);
+      border: 1px solid rgba(217, 83, 79, 0.35);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="/" class="logo">moocsoft</a>
+    <div class="nav-badge">Delete Account</div>
+  </nav>
+
+  <main>
+    <h1>Delete your account</h1>
+    <p class="subtitle">Math Riddles · Brain Games</p>
+
+    <p>Math Riddles accounts are anonymous — we never ask for your name, email or phone number. Your account exists only
+      so that battle mode can track your trophies, and you can remove it at any time.</p>
+
+    <div class="card">
+      <span class="tag tag-fast">Fastest — takes a few seconds</span>
+      <h2>Delete it from inside the app</h2>
+      <p>This removes everything immediately, with no waiting for us.</p>
+      <ol class="steps">
+        <li>Open <strong>Math Riddles</strong>.</li>
+        <li>Tap the <strong>gear icon</strong> in the top-right corner of the main menu.</li>
+        <li>Scroll to <strong>Delete my data</strong> at the bottom of Settings.</li>
+        <li>Tap it, then confirm. Your account and data are erased right away.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-slow">Alternative — up to 30 days</span>
+      <h2>Or submit a request here</h2>
+      <p>Use this if you have already uninstalled the app. We need your <strong>friend code</strong> to find the right
+        account — it is the only thing that identifies an anonymous account.</p>
+      <p class="help">Your friend code is shown in the app under <strong>Settings → Your code</strong>, and looks
+        like <strong>K7M2QX</strong>. If you no longer have it, email us and we will help.</p>
+
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="friendCode">Friend code <span class="req">*</span></label>
+          <input id="friendCode" name="friendCode" maxlength="12" autocomplete="off" autocapitalize="characters"
+            spellcheck="false" placeholder="K7M2QX" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Your email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" maxlength="200" autocomplete="email"
+            placeholder="you@example.com" required>
+          <div class="help">Only used to confirm the deletion, then discarded.</div>
+        </div>
+
+        <div class="field">
+          <label for="nickname">Nickname in the app</label>
+          <input id="nickname" name="nickname" maxlength="32" autocomplete="off" placeholder="Optional">
+        </div>
+
+        <div class="field">
+          <label for="platform">Platform</label>
+          <select id="platform" name="platform">
+            <option value="">Prefer not to say</option>
+            <option value="ios">iPhone / iPad</option>
+            <option value="android">Android</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Anything else?</label>
+          <textarea id="message" name="message" maxlength="1000" placeholder="Optional"></textarea>
+        </div>
+
+        <button type="submit" id="submit">Request account deletion</button>
+        <div class="result" id="result" role="status"></div>
+      </form>
+    </div>
+
+    <h2>What gets deleted</h2>
+    <ul class="plain">
+      <li>Your anonymous account</li>
+      <li>Your nickname and friend code</li>
+      <li>Your trophies, energy, wins and losses</li>
+      <li>Your match history</li>
+    </ul>
+
+    <h2>What we keep</h2>
+    <p>Nothing that identifies you. Aggregated, anonymous statistics (such as total matches played) may remain, because
+      they can no longer be linked back to any person. Single-player puzzle progress is stored only on your own device,
+      so uninstalling the app removes it.</p>
+
+    <h2>How long it takes</h2>
+    <p>Deleting from inside the app is immediate. Requests submitted through this form are actioned manually, normally
+      within a few days and always within 30 days.</p>
+
+    <h2>Questions</h2>
+    <p>Email <a href="mailto:moocsoft@gmail.com">moocsoft@gmail.com</a> and we will help. See also our
+      <a href="/math-riddles-privacy-policy/">Privacy Policy</a>.</p>
+  </main>
+
+  <footer>
+    <a href="/">moocsoft</a> &middot; &copy; 2026 Huseyin Sahinli
+  </footer>
+
+  <script>
+    (function () {
+      var ENDPOINT = 'https://us-central1-math-puzzle-moocsoft.cloudfunctions.net/submitDeletionRequest';
+
+      var form = document.getElementById('form');
+      var button = document.getElementById('submit');
+      var result = document.getElementById('result');
+      var codeInput = document.getElementById('friendCode');
+
+      codeInput.addEventListener('input', function () {
+        this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      });
+
+      var show = function (kind, text) {
+        result.className = 'result ' + kind;
+        result.textContent = text;
+      };
+
+      var MESSAGES = {
+        invalid_friend_code: 'That does not look like a friend code. It is 6 characters, letters and numbers only.',
+        invalid_email: 'Please enter a valid email address.',
+        too_many_requests: 'You have already sent a request. Please wait a few minutes before trying again.'
+      };
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var payload = {
+          friendCode: codeInput.value.trim(),
+          email: document.getElementById('email').value.trim(),
+          nickname: document.getElementById('nickname').value.trim(),
+          platform: document.getElementById('platform').value,
+          message: document.getElementById('message').value.trim()
+        };
+
+        if (!/^[A-Z0-9]{4,12}$/.test(payload.friendCode)) {
+          show('err', MESSAGES.invalid_friend_code);
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(payload.email)) {
+          show('err', MESSAGES.invalid_email);
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        show('', '');
+
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (response) {
+            return response.json().catch(function () { return {}; });
+          })
+          .then(function (data) {
+            if (data && data.ok) {
+              form.reset();
+              show('ok',
+                'Request received. We will delete the account for ' + payload.friendCode +
+                ' and email you once it is done.');
+            } else {
+              show('err', MESSAGES[data && data.error] ||
+                'Something went wrong. Please email moocsoft@gmail.com instead.');
+            }
+          })
+          .catch(function () {
+            show('err', 'Could not reach the server. Please email moocsoft@gmail.com instead.');
+          })
+          .then(function () {
+            button.disabled = false;
+            button.textContent = 'Request account deletion';
+          });
+      });
+    })();
+  </script>
+</body>
+
+</html>

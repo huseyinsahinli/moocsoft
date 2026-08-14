@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.moocsoft.math_puzzle",
+      "sha256_cert_fingerprints": [
+        "B3:E6:88:C8:5C:85:74:EC:78:2A:34:69:A4:FC:A2:41:B2:5B:50:0D:6D:DB:9B:EE:00:FF:47:1F:88:7C:29:30",
+        "09:5F:4D:37:BD:DF:1B:9A:23:92:9E:6C:02:7F:CE:E4:56:49:94:29:6E:B5:EE:B1:17:A0:15:B6:44:B0:72:DC"
+      ]
+    }
+  }
+]

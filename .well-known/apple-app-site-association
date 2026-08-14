@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["4CWW7ZL335.com.moocsoft.math-puzzle"],
+        "components": [
+          {
+            "/": "/battle/*",
+            "comment": "Battle room invites open the app."
+          },
+          {
+            "/": "/battle",
+            "comment": "Same, without the trailing slash."
+          }
+        ]
+      }
+    ]
+  }
+}
