@@ -9,5 +9,16 @@
         "09:5F:4D:37:BD:DF:1B:9A:23:92:9E:6C:02:7F:CE:E4:56:49:94:29:6E:B5:EE:B1:17:A0:15:B6:44:B0:72:DC"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.moocsoft.did_you_lift",
+      "sha256_cert_fingerprints": [
+        "09:8D:95:66:DC:A2:AD:B3:AA:44:8D:F1:A4:90:9F:02:78:5C:B2:86:E9:D7:24:43:58:74:3E:74:E3:5B:09:34",
+        "B6:95:6A:81:B7:D6:FF:0C:D8:A2:8B:F5:EA:37:F8:10:54:43:98:13:3D:7C:8F:EB:31:1E:4E:C1:2F:21:62:1F"
+      ]
+    }
   }
 ]

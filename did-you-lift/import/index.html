@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open a Did You Lift Plan</title>
+  <meta name="description" content="Open, preview or download a workout plan shared from Did You Lift.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="stylesheet" href="/assets/did-you-lift.css">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="/">moocsoft</a>
+    <a class="nav-label" href="/did-you-lift/">Did You Lift</a>
+  </nav>
+
+  <main class="wrap import-shell">
+    <section class="import-card">
+      <div class="import-mark" aria-hidden="true">DY</div>
+      <p class="eyebrow">Shared workout plan</p>
+      <h1>Ready to import.</h1>
+      <p>Open this link in Did You Lift. The app will show the exercise and set count before replacing your current week.</p>
+      <div class="actions">
+        <button class="button" id="open-app" type="button">Open in Did You Lift</button>
+        <button class="button secondary" id="download" type="button">Download JSON</button>
+      </div>
+      <p class="status" id="status">Checking the shared plan…</p>
+      <div class="callout"><strong>Nothing imports automatically.</strong> Your current week changes only after you review the summary and tap Import in the app.</div>
+      <p><a href="/did-you-lift/#share">See the sharing guide</a> · <a href="/did-you-lift/privacy-policy/">Privacy</a></p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      const payload = params.get('plan');
+      const status = document.getElementById('status');
+      const openButton = document.getElementById('open-app');
+      const downloadButton = document.getElementById('download');
+
+      const decode = () => {
+        if (!payload) throw new Error('This link does not contain a plan.');
+        const padded = payload.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - payload.length % 4) % 4);
+        const bytes = Uint8Array.from(atob(padded), character => character.charCodeAt(0));
+        const text = new TextDecoder().decode(bytes);
+        const plan = JSON.parse(text);
+        if (plan.format !== 'did-you-lift-plan' || !Array.isArray(plan.days) || plan.days.length !== 7) {
+          throw new Error('This is not a valid Did You Lift plan.');
+        }
+        return text;
+      };
+
+      try {
+        decode();
+        status.textContent = 'Plan found. Preview and confirmation happen inside the app.';
+      } catch (error) {
+        status.textContent = error.message;
+        status.classList.add('error');
+        openButton.disabled = true;
+        downloadButton.disabled = true;
+      }
+
+      openButton.addEventListener('click', () => {
+        window.location.href = `didyoulift://import#plan=${payload}`;
+      });
+
+      downloadButton.addEventListener('click', () => {
+        try {
+          const blob = new Blob([decode()], { type: 'application/json' });
+          const anchor = document.createElement('a');
+          anchor.href = URL.createObjectURL(blob);
+          anchor.download = 'did-you-lift-shared-plan.json';
+          document.body.appendChild(anchor);
+          anchor.click();
+          anchor.remove();
+          URL.revokeObjectURL(anchor.href);
+          status.textContent = 'JSON downloaded. Open it from Did You Lift → Share → Import JSON file.';
+        } catch (error) {
+          status.textContent = error.message;
+          status.classList.add('error');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -13,6 +13,19 @@
             "comment": "Same, without the trailing slash."
           }
         ]
+      },
+      {
+        "appIDs": ["CV9TCB58HY.com.moocsoft.didYouLift"],
+        "components": [
+          {
+            "/": "/did-you-lift/import/*",
+            "comment": "Shared workout plans open in Did You Lift."
+          },
+          {
+            "/": "/did-you-lift/import",
+            "comment": "Same, without the trailing slash."
+          }
+        ]
       }
     ]
   }
