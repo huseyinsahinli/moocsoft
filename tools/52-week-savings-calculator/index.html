@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free 52-Week Savings Challenge Calculator &amp; Plan</title>
+  <meta name="description" content="Calculate your 52-week savings challenge total, weekly deposits and quarterly milestones. Free savings planner for USD, EUR, GBP and TRY.">
+  <meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#14c99a">
+  <link rel="canonical" href="https://moocsoft.net/tools/52-week-savings-calculator/"><link rel="icon" href="/assets/apps/savings-goal-tracker/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/tools.css">
+  <style>:root{--accent:#14c99a;--accent-rgb:20,201,154}</style>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Free 52-Week Savings Challenge Calculator"><meta property="og:description" content="Plan every weekly deposit and see your one-year savings total."><meta property="og:url" content="https://moocsoft.net/tools/52-week-savings-calculator/"><meta property="og:image" content="https://moocsoft.net/assets/apps/savings-goal-tracker/screenshot-1.jpg"><meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"52-Week Savings Challenge Calculator","url":"https://moocsoft.net/tools/52-week-savings-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free calculator for planning an increasing weekly savings challenge."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the 52-week savings challenge work?","acceptedAnswer":{"@type":"Answer","text":"You save a chosen amount in week one and increase the deposit by a fixed amount each week for 52 weeks."}},{"@type":"Question","name":"Can I start with any amount?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose any affordable starting deposit and weekly increase. The calculator shows the full-year total and milestone amounts."}}]}]}</script>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="nav-links"><a href="/savings-goal-tracker/">Savings app</a><a href="/tools/">Free tools</a></div></nav>
+  <main>
+    <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / 52-week savings</div>
+    <section class="wrap tool-hero"><span class="eyebrow">Free savings planner</span><h1>Turn one small deposit into a full year.</h1><p class="hero-copy">Build a 52-week savings challenge that fits your budget. Set the first deposit and weekly increase to see every milestone instantly.</p></section>
+    <section class="wrap calculator-layout" aria-label="52-week savings calculator">
+      <form class="panel panel-main" id="savings-form" novalidate>
+        <div class="panel-head"><h2>Shape your challenge.</h2><p>Start small. A realistic plan is easier to keep than an impressive one.</p></div>
+        <div class="fields">
+          <label class="field"><span>Currency</span><select id="currency"><option value="USD">USD · $</option><option value="EUR">EUR · €</option><option value="GBP">GBP · £</option><option value="TRY">TRY · ₺</option></select></label>
+          <label class="field"><span>Number of weeks</span><select id="weeks"><option value="52" selected>52 weeks</option><option value="26">26 weeks</option><option value="13">13 weeks</option></select></label>
+          <label class="field"><span>Week 1 deposit</span><input id="start-amount" type="number" inputmode="decimal" min="0" step="0.01" value="5" required></label>
+          <label class="field"><span>Increase each week</span><input id="weekly-increase" type="number" inputmode="decimal" min="0" step="0.01" value="5" required></label>
+        </div>
+        <div class="action-row"><button class="button" type="submit">Calculate my challenge</button></div><p class="error" id="form-error" role="alert"></p>
+        <div class="milestones hidden" id="milestones" aria-label="Savings milestones"></div>
+      </form>
+      <aside class="panel panel-side" aria-live="polite">
+        <div class="result-empty" id="result-empty"><strong>Your one-year total will appear here.</strong>Use any starting amount and weekly increase.</div>
+        <div class="hidden" id="result-content"><div class="result-hero"><span class="result-label">Total saved</span><strong class="result-big" id="total-saved">$0</strong><span class="result-note"><span id="result-weeks">52</span>-week challenge</span></div><div class="result-list"><div class="result-item"><span class="result-label">Final deposit</span><strong id="final-deposit">$0</strong></div><div class="result-item"><span class="result-label">Average weekly</span><strong id="average-weekly">$0</strong></div><div class="result-item"><span class="result-label">First 13 weeks</span><strong id="first-quarter">$0</strong></div><div class="result-item"><span class="result-label">Monthly average</span><strong id="monthly-average">$0</strong></div></div></div>
+      </aside>
+    </section>
+    <section class="wrap content-section"><div class="content-grid"><h2>How to finish a savings challenge.</h2><div class="prose"><p>A traditional 52-week challenge increases the deposit every week. Starting with $5 and adding $5 each week means saving $5 in week one, $10 in week two and $260 in week 52.</p><ol class="steps"><li>Choose a first deposit that feels almost too easy.</li><li>Pick a weekly increase you can still afford near the end.</li><li>Automate the transfer or mark it complete on the same day each week.</li></ol><h3>Make the plan easier when needed</h3><p>You can reverse the order and begin with the largest deposits, keep the weekly amount flat or pause without abandoning the goal. Consistency matters more than following one challenge format perfectly.</p><div class="notice">This tool is for planning and education. It does not include interest, investment returns, fees, inflation or tax and is not financial advice.</div></div></div></section>
+    <section class="wrap app-cta"><div><span class="eyebrow">Keep every goal together</span><h2>Track the real deposits with Savings Goal Tracker.</h2><p>Create multiple goals, record contributions, add deadlines and export progress when you need it.</p></div><div class="action-row"><a class="button" href="https://apps.apple.com/us/app/savings-goal-tracker/id6450431254" target="_blank" rel="noopener">Download for iOS</a><a class="button secondary" href="https://play.google.com/store/apps/details?id=com.moocsoft.goal_tracker" target="_blank" rel="noopener">Get it on Android</a></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="footer-links"><a href="/tools/">All tools</a><a href="/privacy-policy/">Privacy</a><a href="mailto:moocsoft@gmail.com">Support</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>
+  <script>
+    (() => {
+      const form = document.getElementById('savings-form');
+      const formatMoney = (value, currency) => new Intl.NumberFormat('en-US', { style: 'currency', currency, maximumFractionDigits: value >= 10000 ? 0 : 2 }).format(value);
+      const sum = (count, start, increase) => count / 2 * (2 * start + (count - 1) * increase);
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const currency = document.getElementById('currency').value;
+        const weeks = Number(document.getElementById('weeks').value);
+        const start = Number(document.getElementById('start-amount').value);
+        const increase = Number(document.getElementById('weekly-increase').value);
+        const error = document.getElementById('form-error');
+        if (!Number.isFinite(start) || !Number.isFinite(increase) || start < 0 || increase < 0 || start + increase === 0) { error.textContent = 'Enter a starting deposit or weekly increase greater than zero.'; return; }
+        if (start > 1000000 || increase > 1000000) { error.textContent = 'Please use amounts below 1,000,000.'; return; }
+        error.textContent = '';
+        const total = sum(weeks, start, increase);
+        const finalDeposit = start + (weeks - 1) * increase;
+        const firstQuarterWeeks = Math.min(13, weeks);
+        document.getElementById('total-saved').textContent = formatMoney(total, currency);
+        document.getElementById('result-weeks').textContent = weeks;
+        document.getElementById('final-deposit').textContent = formatMoney(finalDeposit, currency);
+        document.getElementById('average-weekly').textContent = formatMoney(total / weeks, currency);
+        document.getElementById('first-quarter').textContent = formatMoney(sum(firstQuarterWeeks, start, increase), currency);
+        document.getElementById('monthly-average').textContent = formatMoney(total / (weeks / 52 * 12), currency);
+        const checkpoints = [...new Set([Math.ceil(weeks / 4), Math.ceil(weeks / 2), Math.ceil(weeks * .75), weeks])];
+        document.getElementById('milestones').innerHTML = checkpoints.map((week) => `<div class="milestone"><span>Through week ${week}</span><strong>${formatMoney(sum(week, start, increase), currency)}</strong></div>`).join('');
+        document.getElementById('milestones').classList.remove('hidden');
+        document.getElementById('result-empty').classList.add('hidden');
+        document.getElementById('result-content').classList.remove('hidden');
+      });
+    })();
+  </script>
+</body>
+</html>

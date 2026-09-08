@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Calorie &amp; Macro Calculator — Daily Protein, Carbs &amp; Fat</title>
+  <meta name="description" content="Estimate your daily calorie target and macros for weight loss, maintenance or muscle gain. Free calculator with metric and US units, no sign-up required.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#ff6b42">
+  <link rel="canonical" href="https://moocsoft.net/tools/calorie-macro-calculator/">
+  <link rel="icon" href="/assets/apps/nutrilens/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/tools.css">
+  <style>:root{--accent:#ff6b42;--accent-rgb:255,107,66}</style>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Free Calorie &amp; Macro Calculator"><meta property="og:description" content="Estimate daily calories, protein, carbs and fat for your goal."><meta property="og:url" content="https://moocsoft.net/tools/calorie-macro-calculator/"><meta property="og:image" content="https://moocsoft.net/assets/apps/nutrilens/screenshot-1.jpg"><meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Calorie and Macro Calculator","url":"https://moocsoft.net/tools/calorie-macro-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free browser-based calculator for estimating daily calories and macronutrients."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are daily calories estimated?","acceptedAnswer":{"@type":"Answer","text":"The calculator estimates resting energy with the Mifflin-St Jeor equation, applies an activity factor and then adjusts the result for your selected goal."}},{"@type":"Question","name":"Are macro calculator results exact?","acceptedAnswer":{"@type":"Answer","text":"No. Calorie and macro results are starting-point estimates. Real needs vary with health, training, body composition and other factors."}}]}]}
+  </script>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="nav-links"><a href="/nutrilens/">NutriLens</a><a href="/tools/">Free tools</a></div></nav>
+  <main>
+    <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Calorie &amp; macros</div>
+    <section class="wrap tool-hero"><span class="eyebrow">Free nutrition calculator</span><h1>Daily calories and macros, made clear.</h1><p class="hero-copy">Estimate a practical daily target for calories, protein, carbohydrates and fat. Choose metric or US units and get an answer in seconds.</p></section>
+
+    <section class="wrap calculator-layout" aria-label="Calorie and macro calculator">
+      <form class="panel panel-main" id="macro-form" novalidate>
+        <div class="panel-head"><h2>Tell us the basics.</h2><p>Your entries stay in this browser and are not sent to Moocsoft.</p></div>
+        <div class="field full"><span class="field-label">Units</span><div class="segmented" role="group" aria-label="Unit system"><button type="button" id="metric-button" aria-pressed="true">Metric</button><button type="button" id="us-button" aria-pressed="false">US units</button></div></div>
+        <div class="fields">
+          <label class="field"><span>Sex used by formula</span><select id="sex"><option value="female">Female</option><option value="male">Male</option></select></label>
+          <label class="field"><span>Age</span><input id="age" type="number" inputmode="numeric" min="18" max="100" value="30" required></label>
+          <label class="field metric-field"><span>Height (cm)</span><input id="height-cm" type="number" inputmode="decimal" min="120" max="230" value="170" required></label>
+          <div class="field us-field hidden"><span class="field-label">Height</span><div class="input-pair"><label><span class="hidden">Feet</span><input id="height-ft" type="number" inputmode="numeric" min="4" max="7" value="5" aria-label="Height in feet"></label><label><span class="hidden">Inches</span><input id="height-in" type="number" inputmode="decimal" min="0" max="11.9" value="7" aria-label="Additional height in inches"></label></div></div>
+          <label class="field metric-field"><span>Weight (kg)</span><input id="weight-kg" type="number" inputmode="decimal" min="35" max="300" step="0.1" value="70" required></label>
+          <label class="field us-field hidden"><span>Weight (lb)</span><input id="weight-lb" type="number" inputmode="decimal" min="77" max="660" step="0.1" value="154" required></label>
+          <label class="field"><span>Activity level</span><select id="activity"><option value="1.2">Mostly seated</option><option value="1.375">Light activity · 1–3 days/week</option><option value="1.55" selected>Moderate · 3–5 days/week</option><option value="1.725">Very active · 6–7 days/week</option><option value="1.9">Athlete-level activity</option></select></label>
+          <label class="field"><span>Goal</span><select id="goal"><option value="-500">Faster weight loss</option><option value="-250">Gradual weight loss</option><option value="0" selected>Maintain weight</option><option value="250">Gradual muscle gain</option><option value="500">Faster muscle gain</option></select></label>
+        </div>
+        <div class="action-row"><button class="button" type="submit">Calculate my macros</button></div><p class="error" id="form-error" role="alert"></p>
+      </form>
+
+      <aside class="panel panel-side" aria-live="polite">
+        <div class="result-empty" id="result-empty"><strong>Your target will appear here.</strong>Enter your details, then calculate a useful starting point.</div>
+        <div class="hidden" id="result-content">
+          <div class="result-hero"><span class="result-label">Estimated daily target</span><strong class="result-big"><span id="calories">0</span> kcal</strong><span class="result-note">Maintenance estimate: <span id="maintenance">0</span> kcal</span></div>
+          <div class="result-list"><div class="result-item"><span class="result-label">Protein</span><strong><span id="protein">0</span> g</strong></div><div class="result-item"><span class="result-label">Carbs</span><strong><span id="carbs">0</span> g</strong></div><div class="result-item"><span class="result-label">Fat</span><strong><span id="fat">0</span> g</strong></div><div class="result-item"><span class="result-label">Resting energy</span><strong><span id="bmr">0</span> kcal</strong></div></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="wrap content-section"><div class="content-grid"><h2>How this macro calculator works.</h2><div class="prose"><p>The calculator uses your age, height, weight and the sex input required by the Mifflin-St Jeor equation to estimate resting energy. It then applies your activity level and goal.</p><ol class="steps"><li>Estimate basal metabolic rate from your body measurements.</li><li>Multiply by an activity factor to estimate maintenance calories.</li><li>Adjust calories for your goal and divide them into a practical macro starting point.</li></ol><h3>Use the result as a starting point</h3><p>Track your real-world progress for two to four weeks. If your weight, energy or training does not move as expected, adjust gradually rather than making a large change overnight.</p><div class="notice">This calculator provides general estimates, not medical advice. Speak with a qualified health professional for allergies, pregnancy, eating disorders, medical conditions or personalized nutrition treatment.</div></div></div></section>
+    <section class="wrap app-cta"><div><span class="eyebrow">Go beyond the numbers</span><h2>See what is on your plate with NutriLens.</h2><p>Take a meal photo to estimate calories and macros, explore ingredients and compare food choices.</p></div><a class="button" href="https://apps.apple.com/us/app/nutrilens-food-ai-scanner/id6755138291" target="_blank" rel="noopener">Get NutriLens free</a></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="footer-links"><a href="/tools/">All tools</a><a href="/privacy-policy/">Privacy</a><a href="mailto:moocsoft@gmail.com">Support</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>
+  <script>
+    (() => {
+      const form = document.getElementById('macro-form');
+      const metricButton = document.getElementById('metric-button');
+      const usButton = document.getElementById('us-button');
+      const metricFields = [...document.querySelectorAll('.metric-field')];
+      const usFields = [...document.querySelectorAll('.us-field')];
+      let units = 'metric';
+
+      function setUnits(next) {
+        units = next;
+        metricButton.setAttribute('aria-pressed', String(next === 'metric'));
+        usButton.setAttribute('aria-pressed', String(next === 'us'));
+        metricFields.forEach((field) => field.classList.toggle('hidden', next !== 'metric'));
+        usFields.forEach((field) => field.classList.toggle('hidden', next !== 'us'));
+      }
+
+      metricButton.addEventListener('click', () => setUnits('metric'));
+      usButton.addEventListener('click', () => setUnits('us'));
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const age = Number(document.getElementById('age').value);
+        const sex = document.getElementById('sex').value;
+        const activity = Number(document.getElementById('activity').value);
+        const adjustment = Number(document.getElementById('goal').value);
+        const height = units === 'metric' ? Number(document.getElementById('height-cm').value) : Number(document.getElementById('height-ft').value) * 30.48 + Number(document.getElementById('height-in').value) * 2.54;
+        const weight = units === 'metric' ? Number(document.getElementById('weight-kg').value) : Number(document.getElementById('weight-lb').value) * 0.45359237;
+        const error = document.getElementById('form-error');
+        if (!Number.isFinite(age) || age < 18 || age > 100 || !Number.isFinite(height) || height < 120 || height > 230 || !Number.isFinite(weight) || weight < 35 || weight > 300) {
+          error.textContent = 'Please enter realistic values for age, height and weight.';
+          return;
+        }
+        error.textContent = '';
+        const bmr = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161);
+        const maintenance = bmr * activity;
+        const calories = Math.max(1200, maintenance + adjustment);
+        const protein = weight * 1.6;
+        const fat = calories * 0.25 / 9;
+        const carbs = Math.max(0, (calories - protein * 4 - fat * 9) / 4);
+        document.getElementById('calories').textContent = Math.round(calories).toLocaleString();
+        document.getElementById('maintenance').textContent = Math.round(maintenance).toLocaleString();
+        document.getElementById('protein').textContent = Math.round(protein);
+        document.getElementById('carbs').textContent = Math.round(carbs);
+        document.getElementById('fat').textContent = Math.round(fat);
+        document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString();
+        document.getElementById('result-empty').classList.add('hidden');
+        document.getElementById('result-content').classList.remove('hidden');
+      });
+    })();
+  </script>
+</body>
+</html>

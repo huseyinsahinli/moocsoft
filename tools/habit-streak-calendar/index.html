@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Habit Streak Calendar — Current &amp; Longest Streak</title>
+  <meta name="description" content="Mark completed habit days on a private calendar and calculate your current streak, longest streak and monthly completion rate. Free, no account required.">
+  <meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#ff6938">
+  <link rel="canonical" href="https://moocsoft.net/tools/habit-streak-calendar/"><link rel="icon" href="/assets/apps/habit-tracker/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/tools.css">
+  <style>:root{--accent:#ff6938;--accent-rgb:255,105,56}.calendar-day:disabled{cursor:not-allowed;opacity:.3}</style>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Free Habit Streak Calendar"><meta property="og:description" content="Mark completed days and calculate your current and longest habit streak."><meta property="og:url" content="https://moocsoft.net/tools/habit-streak-calendar/"><meta property="og:image" content="https://moocsoft.net/assets/apps/habit-tracker/screenshot-1.jpg"><meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Habit Streak Calendar","url":"https://moocsoft.net/tools/habit-streak-calendar/","applicationCategory":"ProductivityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free local browser calendar for marking habit completions and calculating streaks."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is a current habit streak calculated?","acceptedAnswer":{"@type":"Answer","text":"A current streak counts consecutive completed calendar days ending today. If today is not yet marked, it counts the consecutive days ending yesterday."}},{"@type":"Question","name":"Where is my habit calendar saved?","acceptedAnswer":{"@type":"Answer","text":"When browser storage is available, completed dates are saved locally on the current device. They are not sent to Moocsoft."}}]}]}</script>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="nav-links"><a href="/habit-tracker/">Habit Tracker</a><a href="/tools/">Free tools</a></div></nav>
+  <main>
+    <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Habit streak</div>
+    <section class="wrap tool-hero"><span class="eyebrow">Private habit calendar</span><h1>Give consistency somewhere to land.</h1><p class="hero-copy">Tap each completed day to reveal your current streak, longest streak and monthly completion rate. No account and no server storage.</p></section>
+    <section class="wrap calculator-layout" aria-label="Habit streak calendar">
+      <div class="panel panel-main">
+        <div class="panel-head"><h2>Mark the days you showed up.</h2><p>Your calendar is kept locally in this browser when storage is available.</p></div>
+        <label class="field" style="max-width:420px;margin-bottom:26px"><span>Habit name</span><input id="habit-name" type="text" maxlength="60" value="My daily habit" placeholder="e.g. Read for 20 minutes"></label>
+        <div class="calendar-toolbar"><button class="icon-button" type="button" id="previous-month" aria-label="Previous month">←</button><h3 id="month-title"></h3><button class="icon-button" type="button" id="next-month" aria-label="Next month">→</button></div>
+        <div class="calendar-grid" id="calendar-grid" aria-label="Monthly completion calendar"></div>
+        <div class="action-row"><button class="button secondary small" type="button" id="mark-today">Mark today complete</button><button class="button secondary small" type="button" id="clear-month">Clear this month</button></div><p class="error" id="storage-note" role="status"></p>
+      </div>
+      <aside class="panel panel-side" aria-live="polite"><div class="result-hero"><span class="result-label">Current streak</span><strong class="result-big"><span id="current-streak">0</span> days</strong><span class="result-note" id="streak-message">Start with one honest check-in.</span></div><div class="result-list"><div class="result-item"><span class="result-label">Longest streak</span><strong><span id="longest-streak">0</span> days</strong></div><div class="result-item"><span class="result-label">This month</span><strong><span id="month-completions">0</span> days</strong></div><div class="result-item"><span class="result-label">Completion rate</span><strong id="completion-rate">0%</strong></div><div class="result-item"><span class="result-label">All completions</span><strong id="total-completions">0</strong></div></div></aside>
+    </section>
+    <section class="wrap content-section"><div class="content-grid"><h2>Use a streak without letting it use you.</h2><div class="prose"><p>A streak makes repeated action visible, but it is not the habit itself. The useful part is noticing when, where and how often you can keep the promise.</p><ol class="steps"><li>Choose one action small enough to complete on a difficult day.</li><li>Mark the day only after the action is genuinely finished.</li><li>If the chain breaks, restart immediately instead of waiting for a perfect Monday.</li></ol><h3>Current streak versus longest streak</h3><p>The current streak counts consecutive completions ending today or yesterday. The longest streak is the best uninterrupted run across every locally saved date.</p><div class="notice">Calendar entries use local browser storage and may disappear if you clear site data, use private browsing or change devices. Use the Habit Tracker app when you need richer schedules, exports and long-term tracking.</div></div></div></section>
+    <section class="wrap app-cta"><div><span class="eyebrow">Build a routine that fits</span><h2>Move from one streak to a complete habit system.</h2><p>Habit Tracker adds flexible schedules, categories, calendar editing, progress charts and file export.</p></div><a class="button" href="https://apps.apple.com/us/app/habit-tracker-daily/id6572323963" target="_blank" rel="noopener">Get Habit Tracker free</a></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="footer-links"><a href="/tools/">All tools</a><a href="/habit-tracker-privacy-policy/">Privacy</a><a href="mailto:moocsoft@gmail.com">Support</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>
+  <script>
+    (() => {
+      const STORAGE_KEY = 'moocsoft-habit-streak-v1';
+      const NAME_KEY = 'moocsoft-habit-name-v1';
+      const grid = document.getElementById('calendar-grid');
+      const title = document.getElementById('month-title');
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      let viewDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      let completed = new Set();
+      const keyFor = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      const dateFromKey = (key) => { const [year, month, day] = key.split('-').map(Number); return new Date(year, month - 1, day); };
+      try { completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); document.getElementById('habit-name').value = localStorage.getItem(NAME_KEY) || 'My daily habit'; } catch { document.getElementById('storage-note').textContent = 'Local storage is unavailable; this session will not be saved.'; }
+      function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...completed])); } catch { document.getElementById('storage-note').textContent = 'Changes cannot be saved in this browser.'; } }
+      function differenceInDays(a, b) { return Math.round((a - b) / 86400000); }
+      function calculateStats() {
+        const dates = [...completed].map(dateFromKey).sort((a, b) => a - b);
+        let longest = 0, run = 0, previous = null;
+        dates.forEach((date) => { run = previous && differenceInDays(date, previous) === 1 ? run + 1 : 1; longest = Math.max(longest, run); previous = date; });
+        let cursor = new Date(today), current = 0;
+        if (!completed.has(keyFor(cursor))) cursor.setDate(cursor.getDate() - 1);
+        while (completed.has(keyFor(cursor))) { current += 1; cursor.setDate(cursor.getDate() - 1); }
+        const year = viewDate.getFullYear(), month = viewDate.getMonth();
+        const monthDates = dates.filter((date) => date.getFullYear() === year && date.getMonth() === month);
+        const monthEnd = new Date(year, month + 1, 0);
+        const eligibleDays = year === today.getFullYear() && month === today.getMonth() ? today.getDate() : monthEnd < today ? monthEnd.getDate() : 0;
+        document.getElementById('current-streak').textContent = current;
+        document.getElementById('longest-streak').textContent = longest;
+        document.getElementById('month-completions').textContent = monthDates.length;
+        document.getElementById('completion-rate').textContent = eligibleDays ? `${Math.round(monthDates.length / eligibleDays * 100)}%` : '—';
+        document.getElementById('total-completions').textContent = completed.size;
+        document.getElementById('streak-message').textContent = current > 0 ? `${document.getElementById('habit-name').value || 'Your habit'} is moving.` : 'Start with one honest check-in.';
+      }
+      function render() {
+        title.textContent = viewDate.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+        grid.innerHTML = '';
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach((day) => { const label = document.createElement('div'); label.className = 'weekday'; label.textContent = day; grid.appendChild(label); });
+        const year = viewDate.getFullYear(), month = viewDate.getMonth(), firstWeekday = new Date(year, month, 1).getDay(), days = new Date(year, month + 1, 0).getDate();
+        for (let blank = 0; blank < firstWeekday; blank += 1) { const spacer = document.createElement('span'); spacer.className = 'calendar-day outside'; grid.appendChild(spacer); }
+        for (let day = 1; day <= days; day += 1) {
+          const date = new Date(year, month, day), key = keyFor(date), button = document.createElement('button');
+          button.type = 'button'; button.className = 'calendar-day'; button.textContent = day; button.setAttribute('aria-label', `${date.toLocaleDateString()}: ${completed.has(key) ? 'complete' : 'not complete'}`);
+          if (completed.has(key)) { button.classList.add('complete'); button.setAttribute('aria-pressed', 'true'); } else button.setAttribute('aria-pressed', 'false');
+          if (key === keyFor(today)) button.classList.add('today');
+          if (date > today) button.disabled = true;
+          button.addEventListener('click', () => { completed.has(key) ? completed.delete(key) : completed.add(key); save(); render(); });
+          grid.appendChild(button);
+        }
+        document.getElementById('next-month').disabled = viewDate.getFullYear() === today.getFullYear() && viewDate.getMonth() === today.getMonth();
+        calculateStats();
+      }
+      document.getElementById('previous-month').addEventListener('click', () => { viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1); render(); });
+      document.getElementById('next-month').addEventListener('click', () => { if (!(viewDate.getFullYear() === today.getFullYear() && viewDate.getMonth() === today.getMonth())) { viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1); render(); } });
+      document.getElementById('mark-today').addEventListener('click', () => { completed.add(keyFor(today)); viewDate = new Date(today.getFullYear(), today.getMonth(), 1); save(); render(); });
+      document.getElementById('clear-month').addEventListener('click', () => { if (!window.confirm('Clear every completed day in this month?')) return; const prefix = `${viewDate.getFullYear()}-${String(viewDate.getMonth() + 1).padStart(2, '0')}-`; completed = new Set([...completed].filter((key) => !key.startsWith(prefix))); save(); render(); });
+      document.getElementById('habit-name').addEventListener('input', (event) => { try { localStorage.setItem(NAME_KEY, event.target.value); } catch {} calculateStats(); });
+      render();
+    })();
+  </script>
+</body>
+</html>

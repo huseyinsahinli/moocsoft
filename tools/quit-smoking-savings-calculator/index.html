@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quit Smoking Savings Calculator — Money &amp; Cigarettes Avoided</title>
+  <meta name="description" content="Calculate money saved, cigarettes avoided and smoke-break time reclaimed since your quit date. Free private quit smoking progress calculator.">
+  <meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#1187e8">
+  <link rel="canonical" href="https://moocsoft.net/tools/quit-smoking-savings-calculator/"><link rel="icon" href="/assets/apps/quitbit/icon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/tools.css">
+  <style>:root{--accent:#1187e8;--accent-rgb:17,135,232}</style>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Quit Smoking Savings Calculator"><meta property="og:description" content="See the money, cigarettes and time reclaimed since your quit date."><meta property="og:url" content="https://moocsoft.net/tools/quit-smoking-savings-calculator/"><meta property="og:image" content="https://moocsoft.net/assets/apps/quitbit/screenshot-2.jpg"><meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Quit Smoking Savings Calculator","url":"https://moocsoft.net/tools/quit-smoking-savings-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free browser calculator for estimating money saved, cigarettes avoided and smoking time reclaimed after quitting."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is money saved after quitting calculated?","acceptedAnswer":{"@type":"Answer","text":"The tool divides the pack price by cigarettes per pack, multiplies by cigarettes previously smoked per day and applies the exact time since the quit date."}},{"@type":"Question","name":"Does the calculator store my quit date?","acceptedAnswer":{"@type":"Answer","text":"No. The entries are calculated in the browser and are not sent to Moocsoft."}}]}]}</script>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="nav-links"><a href="/quitbit/">QuitBit</a><a href="/tools/">Free tools</a></div></nav>
+  <main>
+    <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Quit smoking savings</div>
+    <section class="wrap tool-hero"><span class="eyebrow">Free quit progress calculator</span><h1>See what you have already reclaimed.</h1><p class="hero-copy">Calculate the money, cigarettes and smoke-break time left behind since your quit date. Your entries stay on this page.</p></section>
+    <section class="wrap calculator-layout" aria-label="Quit smoking savings calculator">
+      <form class="panel panel-main" id="quit-form" novalidate>
+        <div class="panel-head"><h2>Describe the old routine.</h2><p>Approximate numbers are fine. You can recalculate whenever prices or habits change.</p></div>
+        <div class="fields">
+          <label class="field"><span>Quit date and time</span><input id="quit-date" type="datetime-local" required></label>
+          <label class="field"><span>Currency</span><select id="currency"><option value="USD">USD · $</option><option value="EUR">EUR · €</option><option value="GBP">GBP · £</option><option value="TRY">TRY · ₺</option></select></label>
+          <label class="field"><span>Cigarettes per day</span><input id="per-day" type="number" inputmode="decimal" min="0.1" max="200" step="0.1" value="20" required></label>
+          <label class="field"><span>Cigarettes per pack</span><input id="pack-size" type="number" inputmode="numeric" min="1" max="100" value="20" required></label>
+          <label class="field"><span>Price per pack</span><input id="pack-price" type="number" inputmode="decimal" min="0.01" step="0.01" value="10" required></label>
+          <label class="field"><span>Minutes per cigarette</span><input id="minutes-each" type="number" inputmode="decimal" min="1" max="60" step="0.5" value="5" required></label>
+        </div>
+        <div class="action-row"><button class="button" type="submit">Calculate my progress</button></div><p class="error" id="form-error" role="alert"></p>
+      </form>
+      <aside class="panel panel-side" aria-live="polite">
+        <div class="result-empty" id="result-empty"><strong>Your progress will appear here.</strong>Choose your quit date and previous smoking pattern.</div>
+        <div class="hidden" id="result-content"><div class="result-hero"><span class="result-label">Estimated money saved</span><strong class="result-big" id="money-saved">$0</strong><span class="result-note">Since <span id="since-date">your quit date</span></span></div><div class="result-list"><div class="result-item"><span class="result-label">Cigarettes avoided</span><strong id="cigarettes-avoided">0</strong></div><div class="result-item"><span class="result-label">Smoke-break time</span><strong id="time-reclaimed">0 hours</strong></div><div class="result-item"><span class="result-label">Saved per week</span><strong id="weekly-saving">$0</strong></div><div class="result-item"><span class="result-label">Saved per year</span><strong id="annual-saving">$0</strong></div></div></div>
+      </aside>
+    </section>
+    <section class="wrap content-section"><div class="content-grid"><h2>Make invisible progress visible.</h2><div class="prose"><p>The early days of quitting can feel slow. A progress calculation turns each smoke-free hour into something concrete: money kept, cigarettes avoided and minutes available for something else.</p><ol class="steps"><li>Use your actual quit date or the moment your current attempt began.</li><li>Enter an honest average for cigarettes and pack price.</li><li>Return when you need proof that a difficult day has not erased your progress.</li></ol><h3>A reset does not erase what you learned</h3><p>If you smoke again, seek support and begin from the most honest starting point. Progress is not a moral score, and professional help can make quitting safer and more effective.</p><div class="notice">This calculator tracks cost and time estimates only. It does not calculate health recovery or provide medical treatment. For quitting support, medication questions or urgent symptoms, contact a qualified healthcare professional or your local stop-smoking service.</div></div></div></section>
+    <section class="wrap app-cta"><div><span class="eyebrow">Carry the progress with you</span><h2>Turn the calculation into a living streak with QuitBit.</h2><p>Track time, money, moods and milestones for smoking or any habit you want to leave behind.</p></div><a class="button" href="https://apps.apple.com/us/app/quitbit-break-bad-habits/id6747658536" target="_blank" rel="noopener">Get QuitBit free</a></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="/"><span class="brand-dot"></span>moocsoft</a><div class="footer-links"><a href="/tools/">All tools</a><a href="/privacy-policy-quitbit-break-bad-habits/">Privacy</a><a href="mailto:moocsoft@gmail.com">Support</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>
+  <script>
+    (() => {
+      const form = document.getElementById('quit-form');
+      const dateInput = document.getElementById('quit-date');
+      const initial = new Date(Date.now() - 7 * 86400000);
+      dateInput.value = new Date(initial.getTime() - initial.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      const formatMoney = (value, currency) => new Intl.NumberFormat('en-US', { style: 'currency', currency, maximumFractionDigits: 2 }).format(value);
+      const formatDuration = (minutes) => minutes >= 1440 ? `${Math.floor(minutes / 1440).toLocaleString()} days` : minutes >= 60 ? `${Math.floor(minutes / 60).toLocaleString()} hours` : `${Math.floor(minutes).toLocaleString()} minutes`;
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const quitDate = new Date(dateInput.value);
+        const perDay = Number(document.getElementById('per-day').value);
+        const packSize = Number(document.getElementById('pack-size').value);
+        const packPrice = Number(document.getElementById('pack-price').value);
+        const minutesEach = Number(document.getElementById('minutes-each').value);
+        const currency = document.getElementById('currency').value;
+        const elapsedDays = (Date.now() - quitDate.getTime()) / 86400000;
+        const error = document.getElementById('form-error');
+        if (!dateInput.value || !Number.isFinite(elapsedDays) || elapsedDays < 0) { error.textContent = 'Choose a quit date that is not in the future.'; return; }
+        if (![perDay, packSize, packPrice, minutesEach].every((value) => Number.isFinite(value) && value > 0)) { error.textContent = 'Enter values greater than zero for the old smoking routine.'; return; }
+        error.textContent = '';
+        const cigarettes = elapsedDays * perDay;
+        const dailyCost = perDay / packSize * packPrice;
+        const money = elapsedDays * dailyCost;
+        document.getElementById('money-saved').textContent = formatMoney(money, currency);
+        document.getElementById('since-date').textContent = quitDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+        document.getElementById('cigarettes-avoided').textContent = Math.floor(cigarettes).toLocaleString();
+        document.getElementById('time-reclaimed').textContent = formatDuration(cigarettes * minutesEach);
+        document.getElementById('weekly-saving').textContent = formatMoney(dailyCost * 7, currency);
+        document.getElementById('annual-saving').textContent = formatMoney(dailyCost * 365, currency);
+        document.getElementById('result-empty').classList.add('hidden');
+        document.getElementById('result-content').classList.remove('hidden');
+      });
+    })();
+  </script>
+</body>
+</html>
