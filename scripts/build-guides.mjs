@@ -1,21 +1,30 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { apps, site, published, sources, escape as e } from '../content/apps.mjs';
 import { guides } from '../content/index.mjs';
-import { head, footer, card, download, choices, storeDirectory, storeLinks } from '../content/components.mjs';
+import { head, footer, card, download, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
+const modified = guide => guide.modified || guide.published || published;
+const latest = list => list.map(modified).sort().at(-1) || published;
+const displayDate = value => new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value + 'T00:00:00Z'));
+for (const guide of guides) {
+  for (const value of [guide.published || published, modified(guide)]) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || new Date(value).toISOString().slice(0, 10) !== value) throw new Error(`Invalid date for ${guide.slug}`);
+  }
+  if (modified(guide) < (guide.published || published)) throw new Error(`Modification precedes publication: ${guide.slug}`);
+}
 const byline = { '@type': 'Organization', name: 'Moocsoft', url: `${site}/#about` };
 const breadcrumbs = items => ({ '@type':'BreadcrumbList', itemListElement: items.map(([name, path], i) => ({'@type':'ListItem',position:i+1,name,item:site+path})) });
 const crumbHtml = items => `<div class="guide-breadcrumb" aria-label="Breadcrumb">${items.map(([name,path]) => path ? `<a href="${path}">${e(name)}</a>` : `<span aria-current="page">${e(name)}</span>`).join('<span aria-hidden="true">/</span>')}</div>`;
 const items = list => ({ '@type': 'ItemList', itemListElement: list.map((g,i) => ({'@type':'ListItem',position:i+1,name:g.title,url:`${site}/guides/${g.slug}/`})) });
-function write(path, html) {
+function write(path, html, lastmod = published) {
   const target = resolve(root, '.' + path, 'index.html');
   mkdirSync(dirname(target), {recursive:true});
   writeFileSync(target, html.replace(/[ \t]+$/gm, '').trimEnd() + '\n');
-  outputs.push(path);
+  outputs.push({path, lastmod});
 }
 const slugs = new Set();
 for (const guide of guides) {
@@ -25,7 +34,7 @@ for (const guide of guides) {
   const path = `/guides/${guide.slug}/`;
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
   const graph = [
-    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:published,dateModified:published,author:byline,publisher:byline,image:[site+'/assets/social/moocsoft-og.png'],articleSection:app.category,isAccessibleForFree:true},
+    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+'/assets/social/moocsoft-og.png'],articleSection:app.category,isAccessibleForFree:true},
     breadcrumbs([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`],[guide.title,path]]),
   ];
   const faq = `<section class="guide-faq" id="questions"><h2>Common questions</h2>${guide.faq.map(([q,a]) => `<details><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join('')}</section>`;
@@ -33,7 +42,7 @@ for (const guide of guides) {
   write(path, `${head(guide.title, guide.description, path, graph, app)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
-  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${published}">September 12, 2026</time><span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions"><a href="/tools/${app.tool}/">Open the free ${e(app.toolName.toLowerCase())} →</a><a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
+  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time><span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions"><a href="/tools/${app.tool}/">Open the free ${e(app.toolName.toLowerCase())} →</a><a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
   <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
@@ -48,7 +57,7 @@ for (const guide of guides) {
 </main>
 ${footer()}
 </body>
-</html>`);
+</html>`, modified(guide));
 }
 
 for (const [topic, app] of Object.entries(apps)) {
@@ -65,26 +74,47 @@ for (const [topic, app] of Object.entries(apps)) {
 </main>
 ${footer()}
 </body>
-</html>`);
+</html>`, latest(selected));
 }
 
 const hubTitle = 'Practical Guides for Food, Savings, Fitness and Habits';
-const hubDescription = 'Explore 20 practical guides with calculators, worked examples and worksheets. Find an app to track meals, savings, smoke-free progress, workouts and habits.';
+const hubDescription = `Explore ${guides.length} practical guides with calculators, worked examples and worksheets. Find an app to track meals, savings, smoke-free progress, workouts and habits.`;
 write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])])}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
-  <div class="guide-hero"><span class="guide-kicker">20 guides · 5 free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout or build a routine. Start with a worked example, then use the matching tool or app.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(apps).map(([key,app])=>`<a href="#${key}">${e(app.category)}</a>`).join('')}</div></div>
+  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${Object.keys(apps).length} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout or build a routine. Start with a worked example, then use the matching tool or app.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(apps).map(([key,app])=>`<a href="#${key}">${e(app.category)}</a>`).join('')}</div></div>
   ${Object.entries(apps).map(([topic,app]) => `<section class="guide-related" id="${topic}" style="--guide-accent:${app.color}"><span class="guide-kicker">${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(app.category.toLowerCase())} →</a><a href="/tools/${app.tool}/">${e(app.toolName)} →</a></div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`).join('\n')}
 </main>
 ${footer()}
 </body>
-</html>`);
+</html>`, latest(guides));
+
+// Keep hand-built marketing pages connected to the same brand and guide catalogue.
+function syncMarketing(directory) {
+  for (const entry of readdirSync(directory, {withFileTypes:true})) {
+    if (entry.name.startsWith('.') || ['node_modules', 'assets', 'content', 'scripts', 'guides'].includes(entry.name)) continue;
+    const file = resolve(directory, entry.name);
+    if (entry.isDirectory()) { syncMarketing(file); continue; }
+    if (!entry.name.endsWith('.html')) continue;
+    const original = readFileSync(file, 'utf8');
+    if (!/<body[^>]*class="[^"]*\bmarketing-page\b/.test(original)) continue;
+    let html = original.replace(/[ \t]*<link\b[^>]*rel="(?:icon|shortcut icon|apple-touch-icon)"[^>]*>\n?/g, '');
+    html = html.replace('</head>', `  ${faviconLinks}\n</head>`);
+    html = html.replace(/Browse all \d+ →/g, `Browse all ${guides.length} →`).replace(/Explore all \d+ guides/g, `Explore all ${guides.length} guides`);
+    html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Practical guides)/, (_, before, after) => `${before}${guides.length}${after}`);
+    if ([resolve(root, 'quitbit/index.html'), resolve(root, 'tools/quit-smoking-savings-calculator/index.html')].includes(file)) {
+      html = html.replace(/<section class="wrap guide-inline-resources" style="--guide-accent:#84c5ff">[\s\S]*?<\/section>/, resources('quitting', guides));
+    }
+    if (html !== original) writeFileSync(file, html);
+  }
+}
+syncMarketing(root);
 
 const sitemapPath = resolve(root, 'sitemap.xml');
 const marker = '  <!-- Generated guide pages: scripts/build-guides.mjs -->';
 let sitemap = readFileSync(sitemapPath, 'utf8');
 sitemap = sitemap.replace(/  <!-- Generated guide pages: scripts\/build-guides\.mjs -->[\s\S]*?  <!-- End generated guide pages -->\n?/g, '');
-const entries = outputs.map(path => `  <url>\n    <loc>${site}${path}</loc>\n    <lastmod>${published}</lastmod>\n  </url>`).join('\n');
+const entries = outputs.map(({path, lastmod}) => `  <url>\n    <loc>${site}${path}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n');
 sitemap = sitemap.replace('</urlset>', `${marker}\n${entries}\n  <!-- End generated guide pages -->\n</urlset>`);
 writeFileSync(sitemapPath, sitemap);
 console.log(`Built ${guides.length} guides, ${Object.keys(apps).length} topic pages and the guide hub. Updated sitemap with ${outputs.length} guide URLs.`);

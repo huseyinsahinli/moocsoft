@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/tools/quit-smoking-savings-calculator/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/quitbit/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -179,6 +179,22 @@
     <lastmod>2026-09-12</lastmod>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/quit-smoking-calculator-guide/</loc>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/quit-smoking-cravings-plan/</loc>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/prepare-for-your-quit-date/</loc>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/quit-smoking-at-work/</loc>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/calculate-cigarette-cost-and-savings/</loc>
     <lastmod>2026-09-12</lastmod>
   </url>
@@ -236,7 +252,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
@@ -248,7 +264,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <!-- End generated guide pages -->
 </urlset>
