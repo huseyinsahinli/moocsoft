@@ -170,7 +170,34 @@
 
     /* HERO */
     .hero {
-      padding: 140px 0 72px;
+      padding: 140px 0 8px;
+    }
+
+    .hero .guide-store-directory {
+      padding-bottom: 0;
+    }
+
+    .hero .guide-store-directory summary {
+      gap: 12px;
+      list-style: none;
+    }
+
+    .hero .guide-store-directory summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .hero .guide-store-directory summary::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      flex-shrink: 0;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+    }
+
+    .hero .guide-store-directory[open] summary::after {
+      transform: translateY(2px) rotate(225deg);
     }
 
     .hero h1 {
