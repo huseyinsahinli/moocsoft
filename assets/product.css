@@ -123,6 +123,7 @@ h1 {
   position: relative;
   z-index: 1;
   width: min(310px, 75vw);
+  height: auto;
   border: 1px solid var(--border-strong);
   border-radius: 38px;
   box-shadow: 0 38px 90px rgba(0,0,0,.5);
@@ -156,6 +157,7 @@ h2 { max-width: 13ch; margin: 10px 0 0; font-size: clamp(2rem, 5vw, 3.35rem); fo
 
 .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
 .screen { overflow: hidden; border: 1px solid var(--border); border-radius: 28px; background: var(--surface); box-shadow: 0 26px 60px rgba(0,0,0,.28); }
+.screen img { width: 100%; height: auto; }
 .screen:nth-child(2) { margin-top: 42px; }
 
 .feature-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(48px, 9vw, 120px); align-items: start; }
