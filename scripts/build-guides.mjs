@@ -92,6 +92,14 @@ ${footer()}
 </html>`, latest(guides));
 
 // Keep hand-built marketing pages connected to the same brand and guide catalogue.
+const resourcePages = new Map([
+  [resolve(root, 'nutrilens/index.html'), ['nutrition', true]],
+  [resolve(root, 'savings-goal-tracker/index.html'), ['savings', true]],
+  [resolve(root, 'quitbit/index.html'), ['quitting', true]],
+  [resolve(root, 'did-you-lift/index.html'), ['training', false]],
+  [resolve(root, 'habit-tracker/index.html'), ['habits', true]],
+  [resolve(root, 'tools/quit-smoking-savings-calculator/index.html'), ['quitting', true]],
+]);
 function syncMarketing(directory) {
   for (const entry of readdirSync(directory, {withFileTypes:true})) {
     if (entry.name.startsWith('.') || ['node_modules', 'assets', 'content', 'scripts', 'guides'].includes(entry.name)) continue;
@@ -104,8 +112,9 @@ function syncMarketing(directory) {
     html = html.replace('</head>', `  ${faviconLinks}\n</head>`);
     html = html.replace(/Browse all \d+ →/g, `Browse all ${guides.length} →`).replace(/Explore all \d+ guides/g, `Explore all ${guides.length} guides`);
     html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Practical guides)/, (_, before, after) => `${before}${guides.length}${after}`);
-    if ([resolve(root, 'quitbit/index.html'), resolve(root, 'tools/quit-smoking-savings-calculator/index.html')].includes(file)) {
-      html = html.replace(/<section class="wrap guide-inline-resources" style="--guide-accent:#84c5ff">[\s\S]*?<\/section>/, resources('quitting', guides));
+    if (resourcePages.has(file)) {
+      const [topic, wrapped] = resourcePages.get(file);
+      html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped));
     }
     if (html !== original) writeFileSync(file, html);
   }
