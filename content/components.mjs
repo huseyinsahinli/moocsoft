@@ -12,7 +12,7 @@ export function storeLinks(app, placement = 'header') {
 export function header(app) {
   return `<a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <div class="site-header-top"><a class="site-wordmark" href="/">moocsoft</a><div class="site-menu" role="navigation" aria-label="Main navigation"><a href="/#work">Apps</a><a href="/tools/">Free tools</a><a href="/guides/">Guides</a></div></div>
+    <div class="site-header-top"><a class="site-wordmark" href="/">moocsoft</a><div class="site-menu" role="navigation" aria-label="Main navigation"><a href="/#work">Apps</a><a href="/tools/">Free tools</a><a href="/guides/">Guides</a><a href="/hire-flutter-developer/">Hire me</a></div></div>
     ${app ? `<div class="app-install" aria-label="Download ${e(app.name)}"><img src="${app.icon}" width="42" height="42" alt=""><div class="app-install-copy"><a href="/${app.slug}/">${e(app.name)}</a><span>${e(app.promise)}</span></div>${storeLinks(app)}</div>` : ''}
   </header>`;
 }
@@ -43,7 +43,7 @@ export function resources(topic, guides, wrapped = true) {
 }
 
 export function footer() {
-  return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="mailto:moocsoft@gmail.com">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
+  return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/hire-flutter-developer/">Hire a Flutter developer</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="/contact/">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
 }
 
 export function head(title, description, path, graph, app) {
