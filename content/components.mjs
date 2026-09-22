@@ -36,7 +36,10 @@ export function card(guide) {
 
 export function resources(topic, guides, wrapped = true) {
   const app = apps[topic];
-  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.use)}</p><div class="guide-hero-actions"><a href="/tools/${app.tool}/">Try the free ${e(app.toolName.toLowerCase())} →</a><a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`;
+  const primary = app.tool
+    ? `<a href="/tools/${app.tool}/">Try the free ${e(app.toolName.toLowerCase())} →</a>`
+    : `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>`;
+  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.use)}</p><div class="guide-hero-actions">${primary}<a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`;
 }
 
 export function footer() {

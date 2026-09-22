@@ -9,6 +9,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
 const modified = guide => guide.modified || guide.published || published;
 const latest = list => list.map(modified).sort().at(-1) || published;
+const toolCount = Object.values(apps).filter(app => app.tool).length;
+const toolAction = (app, verb = 'Open') => app.tool ? `<a href="/tools/${app.tool}/">${verb} the free ${e(app.toolName.toLowerCase())} →</a>` : '';
 const displayDate = value => new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value + 'T00:00:00Z'));
 for (const guide of guides) {
   for (const value of [guide.published || published, modified(guide)]) {
@@ -42,7 +44,7 @@ for (const guide of guides) {
   write(path, `${head(guide.title, guide.description, path, graph, app)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
-  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time><span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions"><a href="/tools/${app.tool}/">Open the free ${e(app.toolName.toLowerCase())} →</a><a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
+  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time><span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
   <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
@@ -67,7 +69,7 @@ for (const [topic, app] of Object.entries(apps)) {
   write(path, `${head(app.heading,app.description,path,graph,app)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,null]])}
-  <div class="guide-hero"><span class="guide-kicker">The ${e(app.name)} reading list</span><h1>${e(app.heading)}</h1><p>${e(app.intro)}</p><div class="guide-hero-actions"><a href="/tools/${app.tool}/">Try the free ${e(app.toolName.toLowerCase())} →</a></div></div>
+  <div class="guide-hero"><span class="guide-kicker">The ${e(app.name)} reading list</span><h1>${e(app.heading)}</h1><p>${e(app.intro)}</p><div class="guide-hero-actions">${toolAction(app, 'Try')}<a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
   <section class="guide-related"><h2>Choose your starting point</h2><p class="guide-topic-intro">${e(app.choice)}</p><div class="guide-card-grid">${selected.map(card).join('')}</div></section>
   <section class="guide-related"><span class="guide-kicker">From the guide to the app</span><h2>Put it into practice with ${e(app.name)}</h2><p class="guide-topic-intro">${e(app.use)}</p>${download(app, 'topic-end')}</section>
   <div class="guide-related"><h2>Explore another topic</h2><div class="guide-topic-links">${Object.entries(apps).filter(([key]) => key !== topic).map(([key,a])=>`<a href="/guides/${key}/">${e(a.category)} →</a>`).join('')}</div></div>
@@ -77,13 +79,13 @@ ${footer()}
 </html>`, latest(selected));
 }
 
-const hubTitle = 'Practical Guides for Food, Savings, Fitness and Habits';
-const hubDescription = `Explore ${guides.length} practical guides with calculators, worked examples and worksheets. Find an app to track meals, savings, smoke-free progress, workouts and habits.`;
+const hubTitle = 'Practical Guides for Food, Savings, Fitness, Habits and Math';
+const hubDescription = `Explore ${guides.length} practical guides with calculators, worked examples and worksheets. Find an app to track meals, savings, smoke-free progress, workouts and habits or practise math puzzles.`;
 write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])])}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
-  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${Object.keys(apps).length} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout or build a routine. Start with a worked example, then use the matching tool or app.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(apps).map(([key,app])=>`<a href="#${key}">${e(app.category)}</a>`).join('')}</div></div>
-  ${Object.entries(apps).map(([topic,app]) => `<section class="guide-related" id="${topic}" style="--guide-accent:${app.color}"><span class="guide-kicker">${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(app.category.toLowerCase())} →</a><a href="/tools/${app.tool}/">${e(app.toolName)} →</a></div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`).join('\n')}
+  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout, build a routine or solve a math puzzle. Start with a worked example, then use the matching tool or app.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(apps).map(([key,app])=>`<a href="#${key}">${e(app.category)}</a>`).join('')}</div></div>
+  ${Object.entries(apps).map(([topic,app]) => `<section class="guide-related" id="${topic}" style="--guide-accent:${app.color}"><span class="guide-kicker">${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(app.category.toLowerCase())} →</a>${app.tool ? `<a href="/tools/${app.tool}/">${e(app.toolName)} →</a>` : `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>`}</div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`).join('\n')}
 </main>
 ${footer()}
 </body>
