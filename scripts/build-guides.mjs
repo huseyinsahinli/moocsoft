@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { apps, site, published, sources, escape as e } from '../content/apps.mjs';
 import { guides } from '../content/index.mjs';
-import { head, footer, card, download, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
+import { head, header, footer, card, download, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
@@ -100,6 +100,34 @@ const resourcePages = new Map([
   [resolve(root, 'habit-tracker/index.html'), ['habits', true]],
   [resolve(root, 'tools/quit-smoking-savings-calculator/index.html'), ['quitting', true]],
 ]);
+const productPages = new Map([
+  [resolve(root, 'nutrilens/index.html'), 'nutrition'],
+  [resolve(root, 'savings-goal-tracker/index.html'), 'savings'],
+  [resolve(root, 'quitbit/index.html'), 'quitting'],
+  [resolve(root, 'did-you-lift/index.html'), 'training'],
+  [resolve(root, 'habit-tracker/index.html'), 'habits'],
+  [resolve(root, 'math-riddles/index.html'), 'math'],
+]);
+const appStoreId = app => app.apple?.match(/\/id(\d+)/)?.[1];
+const playPackage = app => app.google ? new URL(app.google).searchParams.get('id') : null;
+function productSchema(app) {
+  const storeUrls = [app.apple, app.google].filter(Boolean);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication', '@id': `${site}/${app.slug}/#app`,
+        name: app.name, applicationCategory: app.schemaCategory,
+        operatingSystem: app.operatingSystem, description: app.schemaDescription,
+        url: `${site}/${app.slug}/`, downloadUrl: storeUrls[0], sameAs: storeUrls,
+        image: `${site}${app.icon}`, isAccessibleForFree: true,
+        author: { '@type': 'Organization', '@id': `${site}/#organization`, name: 'Moocsoft', url: site },
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+      },
+      breadcrumbs([['Home','/'],[app.name,`/${app.slug}/`]]),
+    ],
+  };
+}
 function syncMarketing(directory) {
   for (const entry of readdirSync(directory, {withFileTypes:true})) {
     if (entry.name.startsWith('.') || ['node_modules', 'assets', 'content', 'scripts', 'guides'].includes(entry.name)) continue;
@@ -115,6 +143,33 @@ function syncMarketing(directory) {
     if (resourcePages.has(file)) {
       const [topic, wrapped] = resourcePages.get(file);
       html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped));
+    }
+    if (productPages.has(file)) {
+      const app = apps[productPages.get(file)];
+      const sharedHeader = header(app).replace(/^<a class="skip-link"[\s\S]*?<\/a>\n\s*/, '');
+      html = html.replace(/<header class="site-header">[\s\S]*?<\/header>/, sharedHeader);
+      const mobileMeta = [
+        appStoreId(app) ? `<meta name="apple-itunes-app" content="app-id=${appStoreId(app)}">` : '',
+        playPackage(app) ? `<meta name="google-play-app" content="app-id=${e(playPackage(app))}">` : '',
+      ].filter(Boolean).join('\n  ');
+      if (mobileMeta) html = html.replace(/(<meta name="theme-color"[^>]*>)[\s\S]*?(?=<link rel="canonical")/, `$1\n  ${mobileMeta}\n  `);
+      const schema = `  <script type="application/ld+json">${JSON.stringify(productSchema(app)).replaceAll('<','\\u003c')}</script>`;
+      const schemaPattern = /\s*<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/;
+      html = schemaPattern.test(html) ? html.replace(schemaPattern, `\n${schema}\n  `) : html.replace('</head>', `${schema}\n</head>`);
+      if (app.slug === 'habit-tracker') {
+        const oldDescription = 'Track daily and weekly routines, edit calendar check-ins and review progress with Habit Tracker Daily. Explore a free streak calendar and practical guides.';
+        const newDescription = 'Track daily and weekly routines on iPhone, iPad and Android, edit calendar check-ins and review progress with Habit Tracker Daily.';
+        html = html.replaceAll('Habit Tracker Daily: Routine Planner for iPhone &amp; iPad', 'Habit Tracker App for iPhone, iPad &amp; Android');
+        html = html.replaceAll(oldDescription, newDescription);
+        html = html.replace('Free to download · Optional in-app purchases · iPhone and iPad', 'Free to download · Optional in-app purchases · iPhone, iPad and Android');
+        const playButton = `<a class="store-btn secondary" href="${e(app.google)}" target="_blank" rel="noopener">Get it on Google Play</a>`;
+        html = html.replace('</svg>Download on the App Store</a></div><p class="platform-note">', `</svg>Download on the App Store</a>${playButton}</div><p class="platform-note">`);
+        html = html.replace('target="_blank" rel="noopener">Get Habit Tracker free</a><a class="store-btn secondary" href="/tools/habit-streak-calendar/">', `target="_blank" rel="noopener">Get Habit Tracker for iOS</a>${playButton}<a class="store-btn secondary" href="/tools/habit-streak-calendar/">`);
+      }
+    }
+    if (file === resolve(root, 'index.html')) {
+      const topicLinks = `<div class="guide-topic-links">${Object.entries(apps).map(([topic, app]) => `<a href="/guides/${topic}/">${e(app.category)} →</a>`).join('')}</div>`;
+      html = html.replace(/<div class="guide-topic-links">[\s\S]*?<\/div>(?=<\/section>\s*<!-- ABOUT -->)/, topicLinks);
     }
     if (html !== original) writeFileSync(file, html);
   }

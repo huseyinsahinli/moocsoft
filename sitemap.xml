@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -44,13 +44,13 @@
   </url>
   <url>
     <loc>https://moocsoft.net/nutrilens/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/did-you-lift/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -68,19 +68,19 @@
   </url>
   <url>
     <loc>https://moocsoft.net/quitbit/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/habit-tracker/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/savings-goal-tracker/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -127,6 +127,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/math-riddles/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

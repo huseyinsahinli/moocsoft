@@ -17,6 +17,9 @@ export const apps = {
     use: 'NutriLens analyzes meal photos and provides estimated calories and macronutrients. Check the identified food and portion before using a result. Hidden ingredients and cooking methods can change the estimate.',
     toolHeading: 'Calorie and Macro Calculator',
     landingHeading: 'An AI food scanner for everyday meals.',
+    schemaCategory: 'HealthApplication',
+    operatingSystem: 'iOS, iPadOS, Android',
+    schemaDescription: 'Photo-first food scanner that estimates calories, macros and visible ingredients, with saved meal scans and side-by-side comparison.',
   },
   savings: {
     name: 'Savings Goal Tracker', slug: 'savings-goal-tracker', category: 'Saving money', color: '#76dfb4',
@@ -33,6 +36,9 @@ export const apps = {
     use: 'Savings Goal Tracker lets you organize targets and record progress toward them. A recorded contribution is a record, not a bank transfer. Keep the app totals aligned with money you have actually set aside.',
     toolHeading: '52-Week Savings Challenge Calculator',
     landingHeading: 'A savings goal tracker for every next step.',
+    schemaCategory: 'FinanceApplication',
+    operatingSystem: 'iOS, iPadOS, Android',
+    schemaDescription: 'Savings planner for targets, contributions, milestones, progress charts, reminders, shared goals and portable exports.',
   },
   quitting: {
     name: 'QuitBit', slug: 'quitbit', category: 'Quitting smoking', color: '#84c5ff',
@@ -48,6 +54,9 @@ export const apps = {
     use: 'QuitBit provides abstinence counters, savings tracking, milestones and a mood journal. These are ways to record your journey; they do not diagnose or treat nicotine dependence. A healthcare professional or quitline can help you choose cessation support.',
     toolHeading: 'Quit Smoking Savings Calculator',
     landingHeading: 'Track your smoke-free progress with QuitBit.',
+    schemaCategory: 'HealthApplication',
+    operatingSystem: 'iOS, iPadOS',
+    schemaDescription: 'Quit-smoking and bad-habit tracker with abstinence counters, savings estimates, milestones and a private progress journal.',
   },
   training: {
     name: 'Did You Lift', slug: 'did-you-lift', category: 'Workout planning', color: '#d8ff3e',
@@ -64,6 +73,9 @@ export const apps = {
     use: 'Did You Lift lets you plan exercises with individual set targets and move from a completed set into a rest countdown. Use a training plan suited to your experience and adjust targets with your coach when needed.',
     toolHeading: 'Workout Volume Calculator and Rest Timer',
     landingHeading: 'Your workout log and gym planner.',
+    schemaCategory: 'HealthApplication',
+    operatingSystem: 'iOS, Android',
+    schemaDescription: 'Gym workout planner, set-by-set training log and automatic rest timer with portable weekly routines.',
   },
   habits: {
     name: 'Habit Tracker Daily', slug: 'habit-tracker', category: 'Daily habits', color: '#d4acff',
@@ -80,6 +92,9 @@ export const apps = {
     use: 'Habit Tracker Daily supports flexible repeat schedules, calendar check-ins and progress charts. Your habit data stays on your device, with file export available when you want a copy or need to move it.',
     toolHeading: 'Habit Streak Calendar',
     landingHeading: 'A daily habit tracker that fits your life.',
+    schemaCategory: 'LifestyleApplication',
+    operatingSystem: 'iOS, iPadOS, Android',
+    schemaDescription: 'Private routine and goal tracker with flexible schedules, calendar check-ins, streaks, progress charts and file export.',
   },
   math: {
     name: 'Math Riddles', slug: 'math-riddles', category: 'Math puzzles', color: '#c96a43',
@@ -94,6 +109,9 @@ export const apps = {
     choice: 'Start with the number-pattern walkthrough if sequences slow you down. Use the strategy checklist for mixed puzzles, build a short routine with the mental-math guide, or set up a fair live challenge with a friend.',
     use: 'Math Riddles combines a solo puzzle journey, quick brain games, hints and solutions with live 1v1 matches and private rooms for friends. Practise at your own pace, then test the same reasoning in a short head-to-head round.',
     landingHeading: 'Handcrafted math riddles and live 1v1 brain games.',
+    schemaCategory: 'GameApplication',
+    operatingSystem: 'iOS, iPadOS, Android',
+    schemaDescription: 'Math puzzle and brain-game app with handcrafted riddles, hints, solutions, quick games and live private 1v1 matches.',
   },
 };
 
