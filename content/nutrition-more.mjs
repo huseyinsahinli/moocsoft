@@ -64,4 +64,31 @@ export default [
     sources: ['portions'],
     faq: [['Can a photo tell me the exact grams of food?', 'No. A photo can support a visual estimate, but exact weight requires a measurement or reliable quantity information.'], ['What should I include for scale?', 'Keep the full plate or bowl visible and add known information such as package size, recipe yield or measured utensil volume when available.']],
   },
+  {
+    topic: 'nutrition', slug: 'photo-calorie-scanner-app-checklist', published: '2026-09-22',
+    title: 'Photo Calorie Scanner App: Pre-Save Checklist',
+    description: 'Use this photo calorie scanner checklist to review food identity, portion assumptions and hidden ingredients before saving estimated calories and macros.',
+    intro: 'A photo calorie scanner can make meal logging faster, but the first result is still a starting point. A short review helps you keep a more useful record without pretending that a camera can measure every ingredient.',
+    takeaway: 'Before saving a scan, check whether the foods are identified correctly, whether the portion assumption is plausible and whether oil, dressing, drinks or fillings are missing.',
+    sections: [
+      ['Know what the camera can and cannot observe', table('What a meal photo can contribute', ['Visible clue', 'Useful for', 'What remains uncertain'], [
+        ['Food shape and color', 'Suggesting possible foods', 'Recipe and exact ingredients'],
+        ['Relative area on the plate', 'A rough portion starting point', 'Weight, density and depth'],
+        ['Visible count', 'Recording slices, pieces or items', 'Size and ingredients inside'],
+        ['Container and presentation', 'Adding context to the meal record', 'Container capacity unless known'],
+      ]) + `<p>The image may show grilled chicken, rice and vegetables, but it may not reveal how much oil was used, whether the sauce contains sugar or how deep the serving is. The result should stay editable because you often know more than the photograph.</p>`],
+      ['Take a photo that preserves useful context', `<p>Keep the whole plate or bowl inside the frame, use even light and avoid filters that change the food’s color. A roughly 45-degree angle often shows both surface area and height. For a deep bowl or stacked meal, a second angle can clarify depth.</p><p>Include the container rather than cropping tightly around the food. It is context, not a ruler: plates and bowls vary in size. If you use the same container regularly, measure it once and keep that information with your routine.</p><p>For a fuller setup, use the <a href="/guides/how-to-take-food-photos-for-calorie-tracking/">food photo checklist</a> before opening the scanner.</p>`],
+      ['Run a three-check review before saving', `<ol><li><strong>Food identity:</strong> does the result describe what is actually on the plate?</li><li><strong>Portion basis:</strong> is the proposed amount consistent with a known package, recipe share or measured quantity?</li><li><strong>Hidden items:</strong> are oil, dressing, sauce, drinks, fillings or toppings missing?</li></ol><p>Correct clear mistakes first. When you do not know an amount, keep it as an estimate rather than replacing one unknown with a precise-looking guess. The <a href="/guides/estimate-portion-size-from-food-photo/">portion-size guide</a> explains which clues are stronger than visual volume alone.</p>`],
+      ['Review a mixed meal step by step', table('Illustrative chicken-and-rice bowl review', ['Part of meal', 'What you know', 'Review action'], [
+        ['Chicken', 'Visible pieces; cooking fat unknown', 'Confirm food, note hidden oil uncertainty'],
+        ['Rice', 'One quarter of a known four-portion batch', 'Use the recipe share instead of visual guessing'],
+        ['Vegetables', 'Visible but partly covered', 'Check identity and avoid false precision'],
+        ['Sauce', 'Added after the photo', 'Add it separately before saving'],
+      ]) + `<p>The goal is not to make every line exact. It is to replace avoidable errors with information you already have. For a homemade batch, the ingredient total and number of portions can be more useful than the appearance of the final serving. See the <a href="/guides/track-calories-homemade-meals/">homemade-meal worksheet</a> for that calculation.</p>`],
+      ['Use a label or manual detail when it is stronger evidence', `<p>A packaged item with a readable nutrition label and a known amount may be easier to record manually than to infer from a photograph. The same applies to a recipe you measured while cooking. Photo scanning is most useful when it reduces friction without hiding the uncertainty that still exists.</p><p>You can mix methods: keep the meal photo as a visual record, then use the known package quantity or recipe portion to correct the estimate. This preserves context and avoids rebuilding everything from appearance alone.</p>`],
+      ['Build a repeatable NutriLens workflow', `<p>Open NutriLens, photograph the complete meal, review the foods and portions, add what the camera could not see, and save only after the description makes sense. Saved scans can help you compare familiar meals later without turning an estimate into a medical measurement.</p><p>NutriLens provides informational calorie and macro estimates. It should not be used to determine allergy safety or replace individualized advice from a qualified health professional.</p>`],
+    ],
+    sources: ['portions','energy'],
+    faq: [['Can a photo calorie scanner measure an exact portion?', 'No. A photo can support an estimate, but weight, depth, recipe details and hidden ingredients may remain unknown. Use measured or labeled quantities when available.'], ['What should I check first after scanning?', 'Confirm the food names, then review the portion basis and add visible or known items such as oil, sauce, dressing, drinks or fillings.'], ['Can I keep the photo and correct the result manually?', 'Yes. A photo-first record can preserve the meal visually while manual corrections add information the camera cannot observe.']],
+  },
 ];
