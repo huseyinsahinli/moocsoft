@@ -38,7 +38,7 @@ export const apps = {
     landingHeading: 'A savings goal tracker for every next step.',
     schemaCategory: 'FinanceApplication',
     operatingSystem: 'iOS, iPadOS, Android',
-    schemaDescription: 'Savings planner for targets, contributions, milestones, progress charts, reminders, shared goals and portable exports.',
+    schemaDescription: 'Personal savings planner for targets, contribution history and reminders, with optional Premium analysis and PDF/Excel exports. Does not connect to a bank or move money.',
   },
   quitting: {
     name: 'QuitBit', slug: 'quitbit', category: 'Quitting smoking', color: '#84c5ff',
@@ -62,7 +62,7 @@ export const apps = {
     name: 'Did You Lift', slug: 'did-you-lift', category: 'Workout planning', color: '#d8ff3e',
     icon: '/assets/apps/did-you-lift/icon.png',
     promise: 'Plan your gym week, follow set targets and time your rests.',
-    platform: 'iPhone & Android · Optional lifetime Premium',
+    platform: 'iPhone, iPad & Android · Optional lifetime Premium',
     apple: 'https://apps.apple.com/app/did-you-lift-workout-log/id6808200259',
     google: 'https://play.google.com/store/apps/details?id=com.moocsoft.didyoulift',
     tool: 'workout-volume-rest-timer', toolName: 'Workout Volume Calculator & Rest Timer',
@@ -74,7 +74,7 @@ export const apps = {
     toolHeading: 'Workout Volume Calculator and Rest Timer',
     landingHeading: 'Your workout log and gym planner.',
     schemaCategory: 'HealthApplication',
-    operatingSystem: 'iOS, Android',
+    operatingSystem: 'iOS, iPadOS, Android',
     schemaDescription: 'Gym workout planner, set-by-set training log and automatic rest timer with portable weekly routines.',
   },
   habits: {

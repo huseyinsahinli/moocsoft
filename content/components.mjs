@@ -1,4 +1,5 @@
 import { apps, site, escape as e } from './apps.mjs';
+import { appPreviews } from './app-previews.mjs';
 
 export const faviconLinks = '<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/png" href="/assets/brand/favicon-96.png" sizes="96x96">\n  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" sizes="any">\n  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">';
 
@@ -19,6 +20,18 @@ export function header(app) {
 
 export function download(app, placement = 'article-end') {
   return `<section class="guide-download" style="--guide-accent:${app.color}" aria-label="Get ${e(app.name)}"><div><span class="guide-kicker">Take the next step</span><h2>Get ${e(app.name)}.</h2><p>${e(app.promise)}</p><small>Free to download · ${e(app.platform)}</small></div>${storeLinks(app, placement)}</section>`;
+}
+
+export function appPreview(topic) {
+  const preview = appPreviews[topic];
+  if (!preview) throw new Error(`Missing app preview for ${topic}`);
+  const app = apps[topic];
+  return `<section class="guide-app-preview${preview.image ? ' has-image' : ''}" aria-labelledby="app-preview-title">
+    <div class="guide-preview-intro"><span class="guide-kicker">From this guide to your phone</span><h2 id="app-preview-title">${e(preview.heading)}</h2><p>${e(preview.description)}</p></div>
+    <ol class="guide-preview-steps">${preview.steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>
+    <div class="guide-preview-actions">${storeLinks(app, 'guide-preview')}<p class="guide-preview-note">${e(preview.note)}</p><a class="guide-preview-details" href="/${app.slug}/">Explore ${e(app.name)} features →</a></div>
+    ${preview.image ? `<figure><a href="/${app.slug}/" aria-label="See more ${e(app.name)} screenshots"><img src="${preview.image}" width="${preview.width}" height="${preview.height}" loading="lazy" decoding="async" alt="${e(preview.alt)}"></a><figcaption>${e(preview.caption)}</figcaption></figure>` : ''}
+  </section>`;
 }
 
 export function choices() {

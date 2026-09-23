@@ -53,7 +53,7 @@ export default [
     faq: [['What should a vacation savings goal include?', 'Consider transport, accommodation, food, local travel, activities, fees and a clearly labeled buffer based on your own trip.'], ['How do I calculate the monthly amount?', 'Subtract current trip savings from the target, then divide by the number of monthly deposits before the relevant payment date.']],
   },
   {
-    topic: 'savings', slug: 'savings-goal-tracker-app-vs-spreadsheet', published: '2026-09-22',
+    topic: 'savings', slug: 'savings-goal-tracker-app-vs-spreadsheet', published: '2026-09-22', modified: '2026-09-22', appPreview: true,
     title: 'Savings Tracker App vs Spreadsheet: Which Fits?',
     description: 'Compare a savings goal tracker app with a spreadsheet for targets, recurring deposits, progress updates and maintaining an accurate savings record.',
     intro: 'A spreadsheet and a savings goal tracker app can calculate the same basic plan. The more useful choice is the one you will update honestly when a real contribution, withdrawal or deadline change happens.',

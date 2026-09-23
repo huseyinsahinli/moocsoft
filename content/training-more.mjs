@@ -36,7 +36,7 @@ export default [
     faq: [['What counts as a gym personal record?', 'Define it before comparing: heaviest load under a rep condition, most reps at a fixed load, a session volume total or another specific repeatable result.'], ['Is an estimated one-rep max a PR?', 'It is an estimate derived from another set, not a completed one-repetition result. Label and store it separately.']],
   },
   {
-    topic: 'training', slug: 'workout-planner-vs-workout-log', published: '2026-09-22',
+    topic: 'training', slug: 'workout-planner-vs-workout-log', published: '2026-09-22', modified: '2026-09-22', appPreview: true,
     title: 'Workout Planner vs Workout Log: What to Track',
     description: 'Learn the difference between a workout plan and workout log, compare planned and completed sets, and build a simple record for your next gym session.',
     intro: 'A workout plan describes what you intend to do. A workout log records what actually happened. Keeping both in the same workflow makes the next session easier to prepare without rewriting history.',

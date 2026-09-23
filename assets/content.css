@@ -56,6 +56,23 @@ body.marketing-page { --guide-accent: #ffb192; }
 .guide-answer { padding: 24px; border: 1px solid #45413d; border-left: 3px solid var(--guide-accent); border-radius: 0 14px 14px 0; background: #171719; }
 .guide-answer > span { display: block; margin-bottom: 9px; color: var(--guide-accent); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .guide-answer p { margin: 0; }
+.guide-app-preview { margin: 0 0 40px; padding: 28px; border: 1px solid #45413d; border-radius: 16px; background: #171719; }
+.guide-app-preview.has-image { display: grid; grid-template-columns: minmax(0, 1fr) 180px; grid-template-areas: 'intro image' 'steps image' 'actions image'; column-gap: 32px; align-items: start; }
+.guide-preview-intro { grid-area: intro; }
+.guide-preview-steps { grid-area: steps; }
+.guide-preview-actions { grid-area: actions; }
+.guide-app-preview h2 { margin: 10px 0 14px; max-width: 30ch; color: #f4efe6; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.guide-app-preview p, .guide-app-preview li { color: #d2ccc3; font-size: .94rem; line-height: 1.6; }
+.guide-app-preview ol { padding-left: 22px; margin-block: 16px 22px; }
+.guide-app-preview li { margin-bottom: 8px; padding-left: 4px; }
+.guide-app-preview .guide-preview-note { max-width: 70ch; margin: 16px 0 12px; color: #bcb7ae; font-size: .78rem; }
+.guide-preview-details { color: var(--guide-accent); font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
+.guide-app-preview figure { grid-area: image; margin: 0; align-self: center; }
+.guide-app-preview figure img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.guide-app-preview figcaption { margin-top: 10px; color: #bcb7ae; font-size: .7rem; line-height: 1.5; }
+.marketing-page .hero-workflow ol { padding-left: 22px; color: #f4efe6; }
+.marketing-page .hero-workflow li { margin-block: 14px; padding-left: 4px; }
+.marketing-page .product-purchase-note { max-width: 65ch; color: #bcb7ae; font-size: .8rem; line-height: 1.6; }
 .guide-formula { padding: 18px 20px; border: 1px solid #3c3d43; border-radius: 10px; background: #17181b; color: #f4efe6 !important; font-weight: 500; font-size: 1.08rem; font-variant-numeric: tabular-nums; }
 .guide-table { max-width: 100%; overflow-x: auto; margin: 26px 0; border: 1px solid #3c3d43; border-radius: 12px; background: #121315; }
 .guide-table table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: .86rem; line-height: 1.6; }
@@ -139,6 +156,11 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-card-grid { grid-template-columns: 1fr; }
   .guide-card { padding: 22px; }
   .guide-download { padding: 24px; }
+  .guide-app-preview { padding: 22px; }
+  .guide-app-preview.has-image { grid-template-columns: minmax(0, 1fr) 100px; grid-template-areas: 'intro intro' 'steps image' 'actions actions'; gap: 16px; }
+  .guide-app-preview.has-image .guide-preview-steps { margin-block: 0; }
+  .guide-app-preview figure { margin: 0; align-self: start; }
+  .guide-app-preview .install-link { flex: 1; }
   .guide-download .install-link { flex: 1; }
   .marketing-page :is(h2, h3, section[id], main[id]) { scroll-margin-top: 205px; }
   .marketing-page .hero { padding-top: 36px; }
@@ -148,7 +170,7 @@ body.marketing-page { --guide-accent: #ffb192; }
 }
 @media (prefers-reduced-motion: reduce) { .marketing-page { scroll-behavior: auto; } }
 @media print {
-  .site-header, .skip-link, .guide-toc, .guide-download, .guide-related, .guide-hero-actions, .guide-app-choices, .guide-store-directory { display: none; }
+  .site-header, .skip-link, .guide-toc, .guide-download, .guide-related, .guide-hero-actions, .guide-app-choices, .guide-store-directory, .guide-app-preview { display: none; }
   body.marketing-page { background: #fff; color: #000; }
   body.marketing-page::before { display: none; }
   .guide-shell { width: 100%; }

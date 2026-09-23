@@ -10,6 +10,7 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - The build refreshes guide totals, QuitBit reading lists and marketing-page favicon links. It does not edit legal pages.
 - Update non-guide sitemap dates only when those pages change meaningfully.
 - Health content must distinguish record-keeping from treatment, link to primary sources where appropriate, and avoid promising medical outcomes. Store links must reflect verified platform availability.
+- High-intent guides may set `appPreview: true` to show the matching conversion block from `content/app-previews.mjs`. Use real public app screenshots, accurate captions and current purchase boundaries; do not imply unsupported features.
 
 ## Brand assets
 
@@ -20,6 +21,8 @@ To regenerate its PNG and ICO exports, make the development-only `sharp` package
 ## Local checks
 
 Serve the repository with a static HTTP server. Check mobile and desktop layouts, top download buttons, local links, canonical URLs and structured data before pushing.
+
+Run `node scripts/build-guides.mjs` followed by `node scripts/test-marketing.mjs` to check generated guide metadata, download links, preview assets and sitemap coverage without installing dependencies.
 
 With a local server running on port 4183 and the development-only `playwright` package plus Chrome available, run `node scripts/test-quitbit.cjs`. Set `MOOCSOFT_TEST_URL` for a different local port. The test uses an isolated browser profile and fixed time to check arithmetic, validation, stale results, article metadata and favicon responses.
 
