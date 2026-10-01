@@ -10,5 +10,6 @@ import habits from './habits.mjs';
 import moreHabits from './habits-more.mjs';
 import math from './math.mjs';
 import moreMath from './math-more.mjs';
+import mathPractice from './math-practice.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...savings, ...moreSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...habits, ...moreHabits, ...math, ...moreMath];
+export const guides = [...nutrition, ...moreNutrition, ...savings, ...moreSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice];
