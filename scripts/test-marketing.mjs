@@ -140,6 +140,8 @@ for (const guide of guides) {
     .filter(match => classes(attrs(match[1]).class).includes('guide-app-preview'));
   check(previews.length === (guide.appPreview ? 1 : 0), file, `Expected ${guide.appPreview ? 'one' : 'no'} app preview; found ${previews.length}`);
   if (!guide.appPreview || previews.length !== 1) continue;
+  check(html.indexOf('class="guide-answer"') < html.indexOf('class="guide-app-preview'), file, 'Useful answer must precede the app preview');
+  check(previews[0][1].includes('data-nosnippet'), file, 'Repeated promotional preview should be excluded from snippets');
   previewCount++;
   const preview = appPreviews[guide.topic];
   check(Boolean(preview), file, `No preview source for topic ${guide.topic}`);

@@ -128,7 +128,7 @@ body.marketing-page { --guide-accent: #ffb192; }
 .guide-store-directory .guide-download { margin-block: 14px; }
 @media (max-width: 900px) {
   .guide-layout { grid-template-columns: 1fr; gap: 28px; }
-  .guide-toc { position: static; order: -1; }
+  .guide-toc { position: static; }
   .guide-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
   .guide-toc .install-actions { display: none; }
   .guide-download { grid-template-columns: 1fr; gap: 16px; }

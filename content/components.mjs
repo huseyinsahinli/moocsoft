@@ -14,19 +14,19 @@ export function header(app) {
   return `<a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="site-header-top"><a class="site-wordmark" href="/">moocsoft</a><div class="site-menu" role="navigation" aria-label="Main navigation"><a href="/#work">Apps</a><a href="/tools/">Free tools</a><a href="/guides/">Guides</a><a href="/hire-flutter-developer/">Hire me</a></div></div>
-    ${app ? `<div class="app-install" aria-label="Download ${e(app.name)}"><img src="${app.icon}" width="42" height="42" alt=""><div class="app-install-copy"><a href="/${app.slug}/">${e(app.name)}</a><span>${e(app.promise)}</span></div>${storeLinks(app)}</div>` : ''}
+    ${app ? `<div class="app-install" data-nosnippet aria-label="Download ${e(app.name)}"><img src="${app.icon}" width="42" height="42" alt=""><div class="app-install-copy"><a href="/${app.slug}/">${e(app.name)}</a><span>${e(app.promise)}</span></div>${storeLinks(app)}</div>` : ''}
   </header>`;
 }
 
 export function download(app, placement = 'article-end') {
-  return `<section class="guide-download" style="--guide-accent:${app.color}" aria-label="Get ${e(app.name)}"><div><span class="guide-kicker">Take the next step</span><h2>Get ${e(app.name)}.</h2><p>${e(app.promise)}</p><small>Free to download · ${e(app.platform)}</small></div>${storeLinks(app, placement)}</section>`;
+  return `<section class="guide-download" data-nosnippet style="--guide-accent:${app.color}" aria-label="Get ${e(app.name)}"><div><span class="guide-kicker">Take the next step</span><h2>Get ${e(app.name)}.</h2><p>${e(app.promise)}</p><small>Free to download · ${e(app.platform)}</small></div>${storeLinks(app, placement)}</section>`;
 }
 
 export function appPreview(topic) {
   const preview = appPreviews[topic];
   if (!preview) throw new Error(`Missing app preview for ${topic}`);
   const app = apps[topic];
-  return `<section class="guide-app-preview${preview.image ? ' has-image' : ''}" aria-labelledby="app-preview-title">
+  return `<section class="guide-app-preview${preview.image ? ' has-image' : ''}" data-nosnippet aria-labelledby="app-preview-title">
     <div class="guide-preview-intro"><span class="guide-kicker">From this guide to your phone</span><h2 id="app-preview-title">${e(preview.heading)}</h2><p>${e(preview.description)}</p></div>
     <ol class="guide-preview-steps">${preview.steps.map(step => `<li>${e(step)}</li>`).join('')}</ol>
     <div class="guide-preview-actions">${storeLinks(app, 'guide-preview')}<p class="guide-preview-note">${e(preview.note)}</p><a class="guide-preview-details" href="/${app.slug}/">Explore ${e(app.name)} features →</a></div>

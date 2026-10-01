@@ -45,7 +45,7 @@ for (const guide of guides) {
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
   <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? '<a href="#step-1">Jump to the guide ↓</a>' : ''}</div></div>
-  ${guide.appPreview ? appPreview(guide.topic) + '\n  ' : ''}<div class="guide-layout">
+  <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
       ${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
@@ -54,6 +54,7 @@ for (const guide of guides) {
     </article>
     <aside class="guide-toc" aria-label="On this page"><p>ON THIS PAGE</p><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li></ol>${storeLinks(app, 'sidebar')}</aside>
   </div>
+  ${guide.appPreview ? appPreview(guide.topic) : ''}
   ${download(app)}
   <section class="guide-related"><span class="guide-kicker">Keep exploring</span><h2>More ${e(app.category.toLowerCase())} guides</h2><div class="guide-card-grid">${guides.filter(g => g.topic === guide.topic && g.slug !== guide.slug).map(card).join('')}</div></section>
 </main>
@@ -137,6 +138,8 @@ function syncMarketing(directory) {
     const original = readFileSync(file, 'utf8');
     if (!/<body[^>]*class="[^"]*\bmarketing-page\b/.test(original)) continue;
     let html = original.replace(/[ \t]*<link\b[^>]*rel="(?:icon|shortcut icon|apple-touch-icon)"[^>]*>\n?/g, '');
+    // Keep repeated install copy out of search snippets, without hiding page content.
+    html = html.replace(/<(div|section) class="(app-install|(?:wrap )?app-cta|guide-download|guide-app-preview(?: has-image)?)"(?! data-nosnippet)/g, '<$1 class="$2" data-nosnippet');
     html = html.replace('</head>', `  ${faviconLinks}\n</head>`);
     html = html.replace(/Browse all \d+ →/g, `Browse all ${guides.length} →`).replace(/Explore all \d+ guides/g, `Explore all ${guides.length} guides`);
     html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Practical guides)/, (_, before, after) => `${before}${guides.length}${after}`);
