@@ -1,5 +1,11 @@
 // Reuse public store screenshots; do not present illustrative UI as an app screen.
 export const appPreviews = {
+  math: {
+    heading: 'Enjoy the puzzle? Keep playing on your phone.',
+    description: 'Explore Moocsoft’s Math Riddles, listed as Math Puzzles: Brain Riddles on Google Play. Try the solo puzzle journey or challenge a friend in live 1v1.',
+    steps: ['Make your own attempt at a riddle.', 'Use hints and solutions to review the intended reasoning.', 'Try another challenge or invite a friend to a private battle.'],
+    note: 'Free to download, with ads and optional in-app purchases. Premium unlocks additional features; check your store for current availability. The examples in this guide are separate from app levels.',
+  },
   nutrition: {
     heading: 'See your next meal in NutriLens',
     description: 'Start with a meal photo, then review the estimated calories and macros against what you know about the food.',

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -133,7 +133,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/math-riddles/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -318,6 +318,18 @@
     <lastmod>2026-09-22</lastmod>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/missing-number-puzzles-with-answers/</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/order-of-operations-puzzles/</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/mental-multiplication-tricks/</loc>
+    <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
     <lastmod>2026-09-22</lastmod>
   </url>
@@ -339,11 +351,11 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <!-- End generated guide pages -->
 </urlset>
