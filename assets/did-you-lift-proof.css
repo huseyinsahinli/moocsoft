@@ -1,0 +1,19 @@
+.dyl-proof { scroll-margin-top: 180px; }
+.dyl-proof .section-head { margin-bottom: 20px; }
+.dyl-proof-help { margin-bottom: 20px; color: #bcb7ae; font-size: .82rem; }
+.dyl-proof-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.dyl-proof-screen { min-width: 0; margin: 0; }
+.dyl-proof-screen > a { display: block; border: 1px solid #38393f; border-radius: 12px; }
+.dyl-proof-screen > a:focus-visible, .dyl-proof-gallery:focus-visible { outline: 3px solid #d8ff3e; outline-offset: 5px; }
+.dyl-proof-screen img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.dyl-proof-screen figcaption { padding-top: 18px; }
+.dyl-proof-screen figcaption > span { color: #d8ff3e; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.dyl-proof-screen h3 { margin: 8px 0; font-size: 1.05rem; letter-spacing: -.01em; line-height: 1.3; }
+.dyl-proof-screen p { margin: 0; color: #bcb7ae; font-size: .85rem; line-height: 1.6; }
+.dyl-proof-note { margin: 28px 0 0; max-width: 78ch; color: #bcb7ae; font-size: .8rem; }
+.dyl-proof-note a { color: #d8ff3e; text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 640px) {
+  .dyl-proof-gallery { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 280px); gap: 16px; overflow-x: auto; padding: 5px 5px 20px; margin-inline: -5px; scroll-snap-type: x proximity; }
+  .dyl-proof-screen { scroll-snap-align: start; }
+}

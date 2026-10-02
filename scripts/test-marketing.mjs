@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { apps, published, site } from '../content/apps.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { guides } from '../content/index.mjs';
+import { canonicalStoreUrl, pageCampaign } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = new URL(site).origin;
@@ -24,6 +25,8 @@ const attrs = tag => Object.fromEntries([...tag.matchAll(/([^\s=<>/]+)\s*=\s*(?:
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'gi'))].map(match => attrs(match[0]));
 const classes = value => (value || '').split(/\s+/);
 const documentUrl = file => `${site}/${relative(root, file).split(sep).join('/').replace(/index\.html$/, '')}`;
+const storeDestinations = links => links.map(link => canonicalStoreUrl(link.href)).sort();
+const expectedStores = app => [app.apple, app.google].filter(Boolean).map(canonicalStoreUrl).sort();
 
 function htmlFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -92,6 +95,14 @@ for (const [file, html] of pages) {
   if (!marketing) continue;
   marketingCount++;
   schemas.set(file, schemaNodes(html, file));
+  for (const link of tags(html, 'a')) {
+    const url = new URL(link.href || '#', documentUrl(file));
+    if (url.origin !== 'https://play.google.com' || url.pathname !== '/store/apps/details') continue;
+    check(url.searchParams.get('utm_source') === 'moocsoft', file, 'Play link is missing the public Moocsoft source');
+    check(url.searchParams.get('utm_medium') === 'referral', file, 'Play link is missing its referral medium');
+    check(url.searchParams.get('utm_campaign') === pageCampaign(new URL(documentUrl(file)).pathname), file, 'Play campaign does not identify this page');
+    check(Boolean(url.searchParams.get('utm_content')), file, 'Play link is missing its placement');
+  }
   for (const script of tags(html, 'script').filter(script => script.src)) {
     try {
       const url = new URL(script.src, documentUrl(file));
@@ -160,8 +171,7 @@ for (const guide of guides) {
   const app = apps[guide.topic];
   const previewHtml = previews[0][2];
   const stores = tags(previewHtml, 'a').filter(link => link['data-placement'] === 'guide-preview');
-  const expected = [app.apple, app.google].filter(Boolean).sort();
-  check(JSON.stringify(stores.map(link => link.href).sort()) === JSON.stringify(expected), file, 'App preview store URLs do not match the app catalogue');
+  check(JSON.stringify(storeDestinations(stores)) === JSON.stringify(expectedStores(app)), file, 'App preview store URLs do not match the app catalogue');
   check(stores.every(link => link['data-app'] === app.slug), file, 'App preview links identify the wrong app');
   const screenshots = tags(previewHtml, 'img');
   check(screenshots.length === (preview.image ? 1 : 0), file, 'App preview screenshot count differs from source');
@@ -177,7 +187,7 @@ for (const guide of guides) {
   } catch (error) { check(false, file, error.message); }
 }
 
-for (const topic of ['nutrition', 'savings', 'training']) {
+for (const topic of ['nutrition', 'savings', 'training', 'habits']) {
   const app = apps[topic];
   const file = resolve(root, 'tools', app.tool, 'index.html');
   const html = pages.get(file) || '';
@@ -186,10 +196,32 @@ for (const topic of ['nutrition', 'savings', 'training']) {
   if (blocks.length !== 1) continue;
   const block = blocks[0][1];
   const stores = tags(block, 'a').filter(link => link['data-placement'] === 'calculator-result');
-  check(JSON.stringify(stores.map(link => link.href).sort()) === JSON.stringify([app.apple, app.google].filter(Boolean).sort()), file, 'Calculator download URLs do not match the app catalogue');
+  check(JSON.stringify(storeDestinations(stores)) === JSON.stringify(expectedStores(app)), file, 'Calculator download URLs do not match the app catalogue');
   check(stores.every(link => link['data-app'] === app.slug), file, 'Calculator download links identify the wrong app');
   check(block.includes('data-nosnippet'), file, 'Calculator promotion should be excluded from snippets');
   check(tags(block, 'a').some(link => link.href === `/${app.slug}/`), file, 'Calculator result is missing its app features link');
+}
+
+for (const app of Object.values(apps)) {
+  const file = resolve(root, app.slug, 'index.html');
+  const html = pages.get(file) || '';
+  const headers = [...html.matchAll(/<header class="site-header">([\s\S]*?)<\/header>/g)];
+  check(headers.length === 1, file, 'Expected exactly one shared product header');
+  check(tags(html, 'link').filter(link => link.rel === 'stylesheet' && link.href === '/assets/content.css').length === 1, file, 'Shared product header requires exactly one marketing stylesheet');
+  const stores = tags(headers[0]?.[1] || '', 'a').filter(link => link['data-placement'] === 'header');
+  check(JSON.stringify(storeDestinations(stores)) === JSON.stringify(expectedStores(app)), file, 'Product header must offer every supported store');
+  check(stores.every(link => link['data-app'] === app.slug), file, 'Product header identifies the wrong app');
+}
+for (const route of ['', 'tools', 'guides']) {
+  const file = resolve(root, route, 'index.html');
+  const html = pages.get(file) || '';
+  const choices = tags(html, 'a').filter(link => classes(link.class).includes('guide-app-choice')).map(link => link.href).sort();
+  check(JSON.stringify(choices) === JSON.stringify(Object.values(apps).map(app => `/${app.slug}/`).sort()), file, 'App chooser must include all six apps');
+  const directory = html.match(/<details class="guide-store-directory">([\s\S]*?)<\/details>/)?.[1] || '';
+  for (const app of Object.values(apps)) {
+    const stores = tags(directory, 'a').filter(link => link['data-app'] === app.slug);
+    check(JSON.stringify(storeDestinations(stores)) === JSON.stringify(expectedStores(app)), file, `Store directory is incomplete for ${app.name}`);
+  }
 }
 
 const sitemapFile = resolve(root, 'sitemap.xml');

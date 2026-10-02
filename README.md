@@ -24,7 +24,11 @@ Serve the repository with a static HTTP server. Check mobile and desktop layouts
 
 Run `node scripts/build-guides.mjs` followed by `node scripts/test-marketing.mjs` to check generated guide metadata, download links, preview assets and sitemap coverage without installing dependencies.
 
+Run `node scripts/test-store-attribution.mjs` for static Google Play campaign labels. The builder tags only known app-store anchors with the public source (`moocsoft`), page and placement; canonical/schema store URLs remain unchanged. No cookies, visitor IDs, calculator inputs or new analytics requests are added. In Play Console, use the Ads and referrals traffic source and UTM source/campaign filters. Store-page visits and Install/Open button clicks are not completed installs; review acquisition reports separately.
+
 Run `node scripts/test-click-calculations.cjs` for exact-cent savings plans and CSV values. With a local static server on port 4193 and development-only `playwright` plus Chrome available, run `node scripts/test-click-tools.cjs` for mobile/desktop calculator, download, print and timer checks. Set `MOOCSOFT_TEST_URL` to use another local port. These tests add no browser library to the deployed website.
+
+Run `node scripts/test-discovery.cjs` with the same development-only browser setup and a server on port 4194 to check all six app choices/store directories, product headers, real Did You Lift screens, Habit Tracker check-ins, macro validation and static attribution. Set `MOOCSOFT_TEST_URL` for another port; optional `MOOCSOFT_QA_DIR` saves visual checks outside the published repository.
 
 With a local server running on port 4183 and the development-only `playwright` package plus Chrome available, run `node scripts/test-quitbit.cjs`. Set `MOOCSOFT_TEST_URL` for a different local port. The test uses an isolated browser profile and fixed time to check arithmetic, validation, stale results, article metadata and favicon responses.
 

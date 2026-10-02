@@ -2,7 +2,7 @@ import { table } from './apps.mjs';
 
 export default [
   {
-    topic: 'training', slug: 'how-to-log-gym-workouts', modified: '2026-09-22', appPreview: true,
+    topic: 'training', slug: 'how-to-log-gym-workouts', modified: '2026-10-02', appPreview: true,
     title: 'How to Log Gym Workouts: A Set-by-Set Template',
     description: 'Use a set-by-set workout log template with a worked session, planned versus actual reps, weight conventions and a next-session review checklist.',
     intro: 'The most useful workout log separates what you intended to do from what you completed. A few consistent fields are enough to make the next comparable session easier to understand.',

@@ -1,0 +1,44 @@
+{
+  "app": "Did You Lift: Workout Log",
+  "appStoreId": "6808200259",
+  "version": "1.0",
+  "sourcePage": "https://apps.apple.com/us/app/did-you-lift-workout-log/id6808200259",
+  "metadataUrl": "https://itunes.apple.com/lookup?id=6808200259&country=us",
+  "verifiedOn": "2026-10-02",
+  "notes": "Public iPhone screenshots returned by Apple's lookup API. Both full-size PNG and smaller Apple-served JPEG renditions were downloaded and visually verified. Deployed JPEG files were not locally resized, retouched or edited.",
+  "screenshots": [
+    {
+      "label": "Your whole week",
+      "originalStoreScreenshotUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/61/ec/71/61ec71f7-fe50-bd6c-bcf2-f54972bec986/01-your-whole-week.png/320x480bb.jpg",
+      "verifiedFullSizeUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/61/ec/71/61ec71f7-fe50-bd6c-bcf2-f54972bec986/01-your-whole-week.png/1320x2868bb.png",
+      "fullSize": { "width": 1320, "height": 2868, "bytes": 329717 },
+      "displayUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/61/ec/71/61ec71f7-fe50-bd6c-bcf2-f54972bec986/01-your-whole-week.png/600x1304bb.jpg",
+      "localAsset": "/assets/apps/did-you-lift/app-store-week-plan.jpg",
+      "width": 600,
+      "height": 1304,
+      "bytes": 90290
+    },
+    {
+      "label": "Last time, remembered",
+      "originalStoreScreenshotUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bb/af/fa/bbaffa34-9756-d0e1-8381-a4dc19cdbf18/04-last-time-remembered.png/320x480bb.jpg",
+      "verifiedFullSizeUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bb/af/fa/bbaffa34-9756-d0e1-8381-a4dc19cdbf18/04-last-time-remembered.png/1320x2868bb.png",
+      "fullSize": { "width": 1320, "height": 2868, "bytes": 321252 },
+      "displayUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bb/af/fa/bbaffa34-9756-d0e1-8381-a4dc19cdbf18/04-last-time-remembered.png/600x1304bb.jpg",
+      "localAsset": "/assets/apps/did-you-lift/app-store-set-log.jpg",
+      "width": 600,
+      "height": 1304,
+      "bytes": 86609
+    },
+    {
+      "label": "Rest. Then go.",
+      "originalStoreScreenshotUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/20/2c/61/202c6149-63c3-24c5-5205-6500bf995110/05-rest-then-go.png/320x480bb.jpg",
+      "verifiedFullSizeUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/20/2c/61/202c6149-63c3-24c5-5205-6500bf995110/05-rest-then-go.png/1320x2868bb.png",
+      "fullSize": { "width": 1320, "height": 2868, "bytes": 225557 },
+      "displayUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/20/2c/61/202c6149-63c3-24c5-5205-6500bf995110/05-rest-then-go.png/600x1304bb.jpg",
+      "localAsset": "/assets/apps/did-you-lift/app-store-rest-timer.jpg",
+      "width": 600,
+      "height": 1304,
+      "bytes": 62241
+    }
+  ]
+}

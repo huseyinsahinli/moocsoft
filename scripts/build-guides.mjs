@@ -1,9 +1,10 @@
 import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, relative, sep } from 'node:path';
 import { apps, site, published, sources, escape as e } from '../content/apps.mjs';
 import { guides } from '../content/index.mjs';
 import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
+import { attributeStoreLinks } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
@@ -25,7 +26,7 @@ const items = list => ({ '@type': 'ItemList', itemListElement: list.map((g,i) =>
 function write(path, html, lastmod = published) {
   const target = resolve(root, '.' + path, 'index.html');
   mkdirSync(dirname(target), {recursive:true});
-  writeFileSync(target, html.replace(/[ \t]+$/gm, '').trimEnd() + '\n');
+  writeFileSync(target, attributeStoreLinks(html, path).replace(/[ \t]+$/gm, '').trimEnd() + '\n');
   outputs.push({path, lastmod});
 }
 const slugs = new Set();
@@ -110,7 +111,7 @@ const productPages = new Map([
   [resolve(root, 'habit-tracker/index.html'), 'habits'],
   [resolve(root, 'math-riddles/index.html'), 'math'],
 ]);
-const resultPages = new Map(['nutrition', 'savings', 'training'].map(topic => [resolve(root, `tools/${apps[topic].tool}/index.html`), topic]));
+const resultPages = new Map(['nutrition', 'savings', 'training', 'habits'].map(topic => [resolve(root, `tools/${apps[topic].tool}/index.html`), topic]));
 const appStoreId = app => app.apple?.match(/\/id(\d+)/)?.[1];
 const playPackage = app => app.google ? new URL(app.google).searchParams.get('id') : null;
 function productSchema(app) {
@@ -147,6 +148,10 @@ function syncMarketing(directory) {
     html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Practical guides)/, (_, before, after) => `${before}${guides.length}${after}`);
     // Hand-picked home/tool cards use the same current copy as the article source.
     html = html.replace(/<a\b(?=[^>]*class="guide-card")(?=[^>]*href="\/guides\/([a-z0-9-]+)\/")[^>]*>[\s\S]*?<\/a>/g, (original, slug) => guidesBySlug.has(slug) ? card(guidesBySlug.get(slug)) : original);
+    if (file === resolve(root, 'index.html') || file === resolve(root, 'tools/index.html')) {
+      html = html.replace(/<div class="guide-app-choices"[^>]*>[\s\S]*?<\/div>/, choices());
+      html = html.replace(/<details class="guide-store-directory">[\s\S]*?<\/details>/, storeDirectory());
+    }
     if (resourcePages.has(file)) {
       const [topic, wrapped] = resourcePages.get(file);
       html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped));
@@ -165,7 +170,9 @@ function syncMarketing(directory) {
     if (productPages.has(file)) {
       const app = apps[productPages.get(file)];
       const sharedHeader = header(app).replace(/^<a class="skip-link"[\s\S]*?<\/a>\n\s*/, '');
+      if (!/<header class="site-header">/.test(html)) throw new Error(`Missing shared product header: ${file}`);
       html = html.replace(/<header class="site-header">[\s\S]*?<\/header>/, sharedHeader);
+      if (app.slug === 'math-riddles') html = html.replace(/<!-- Math app download -->[\s\S]*?<!-- End math app download -->/, `<!-- Math app download -->${download(app, 'product-end')}<!-- End math app download -->`);
       const mobileMeta = [
         appStoreId(app) ? `<meta name="apple-itunes-app" content="app-id=${appStoreId(app)}">` : '',
         playPackage(app) ? `<meta name="google-play-app" content="app-id=${e(playPackage(app))}">` : '',
@@ -189,6 +196,8 @@ function syncMarketing(directory) {
       const topicLinks = `<div class="guide-topic-links">${Object.entries(apps).map(([topic, app]) => `<a href="/guides/${topic}/">${e(app.category)} →</a>`).join('')}</div>`;
       html = html.replace(/<div class="guide-topic-links">[\s\S]*?<\/div>(?=<\/section>\s*<!-- ABOUT -->)/, topicLinks);
     }
+    const pagePath = '/' + relative(root, file).split(sep).join('/').replace(/index\.html$/, '');
+    html = attributeStoreLinks(html, pagePath);
     if (html !== original) writeFileSync(file, html);
   }
 }

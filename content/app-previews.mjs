@@ -29,5 +29,8 @@ export const appPreviews = {
     description: 'Keep the plan, actual set results and rest countdown in one workout flow. No account is needed.',
     steps: ['Set a target for each exercise and set.', 'Log the reps and kilograms you actually complete.', 'Move into the automatic rest countdown.'],
     note: 'Free to download with optional lifetime Premium. On iOS, previous logged values, the exercise library and advanced week planning/sharing are Premium features. Check your store for current availability.',
+    image: '/assets/apps/did-you-lift/app-store-set-log.jpg', width: 600, height: 1304,
+    alt: 'Did You Lift set logging screen with actual rep and kilogram fields and a Premium Last time comparison',
+    caption: 'Official iPhone store screenshot. Actual set logging is a core feature; the “Last time” comparison requires Premium.',
   },
 };
