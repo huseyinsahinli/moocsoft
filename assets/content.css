@@ -73,6 +73,13 @@ body.marketing-page { --guide-accent: #ffb192; }
 .marketing-page .hero-workflow ol { padding-left: 22px; color: #f4efe6; }
 .marketing-page .hero-workflow li { margin-block: 14px; padding-left: 4px; }
 .marketing-page .product-purchase-note { max-width: 65ch; color: #bcb7ae; font-size: .8rem; line-height: 1.6; }
+.screens-help { color: #bcb7ae; font-size: .85rem; }
+.result-download { margin-top: 24px; padding: 22px 24px 18px; border-top: 1px solid #45464c; }
+.result-download h3 { margin: 0 0 10px; color: #f4efe6; font-size: 1.2rem; line-height: 1.3; }
+.result-download p { margin: 0 0 16px; color: #c8c3bb; font-size: .87rem; line-height: 1.6; }
+.result-download .install-link { flex: 1; padding-inline: 10px; }
+.result-download small { display: block; margin-top: 12px; color: #bcb7ae; font-size: .75rem; line-height: 1.5; }
+.result-download-details { display: inline-flex; align-items: center; min-height: 44px; color: var(--guide-accent); font-size: .8rem; text-decoration: underline; text-underline-offset: 4px; }
 .guide-formula { padding: 18px 20px; border: 1px solid #3c3d43; border-radius: 10px; background: #17181b; color: #f4efe6 !important; font-weight: 500; font-size: 1.08rem; font-variant-numeric: tabular-nums; }
 .guide-table { max-width: 100%; overflow-x: auto; margin: 26px 0; border: 1px solid #3c3d43; border-radius: 12px; background: #121315; }
 .guide-table table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: .86rem; line-height: 1.6; }
@@ -167,6 +174,12 @@ body.marketing-page { --guide-accent: #ffb192; }
   .marketing-page .hero-copy-col { text-align: left; }
   .marketing-page .hero h1 { margin-inline: 0; }
   .marketing-page .app-mark { margin-inline: 0; }
+  .marketing-page .hero-copy-col .app-mark { width: 64px; height: 64px; margin-bottom: 18px; border-radius: 16px; }
+  .marketing-page .hero-copy-col h1 { max-width: 20ch; font-size: clamp(2.15rem, 8vw, 2.8rem); line-height: 1.08; }
+  .marketing-page .hero-copy-col .hero-copy { font-size: 1.03rem; line-height: 1.6; }
+  .marketing-page .screens { display: flex; gap: 16px; overflow-x: auto; padding: 4px 4px 20px; scroll-snap-type: x mandatory; }
+  .marketing-page .screen { flex: 0 0 78%; scroll-snap-align: start; }
+  .marketing-page .screen:nth-child(2) { margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .marketing-page { scroll-behavior: auto; } }
 @media print {

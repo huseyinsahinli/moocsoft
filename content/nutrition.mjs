@@ -2,11 +2,11 @@ import { table } from './apps.mjs';
 
 export default [
   {
-    topic: 'nutrition', slug: 'estimate-calories-from-food-photo', modified: '2026-09-22', appPreview: true,
-    title: 'How to Estimate Calories from a Food Photo: A Worked Example',
-    description: 'Estimate calories from a meal photo with a portion worksheet and a worked serving-size example. Learn when a food scanner, label or recipe is the better starting point.',
+    topic: 'nutrition', slug: 'estimate-calories-from-food-photo', modified: '2026-10-02', appPreview: true,
+    title: 'How to Estimate Calories From a Food Photo',
+    description: 'Estimate meal calories from a photo with a serving-size example and portion checklist. Learn what an AI food scanner can miss and when to use a label or recipe.',
     intro: 'To estimate calories from a food photo, capture the full serving, review what the scanner identified, then check the portion and anything outside the frame. Here is a practical way to do that without treating an AI result as an exact measurement.',
-    takeaway: 'Photograph the whole serving, review the food identification, and account for portions, sauces and extras. A photo provides an estimate, not a measurement of everything in the recipe.',
+    takeaway: 'Use a clear photo of the full serving, check the food and portion the scanner identified, then account for sauces and extras outside the frame. NutriLens estimates calories and macros from a meal photo; review the estimate against what you know about the dish.',
     sections: [
       ['Choose the starting point that fits your meal', `<p>A mixed restaurant plate is a useful place to try a photo estimate with <a href="/nutrilens/">NutriLens, our food scanner for iPhone and Android</a>. A product label or a recipe with known ingredient amounts can supply details that an image cannot. Choose the source that tells you the most about the serving you actually ate.</p>` + table('Which method gives you useful information about this meal?', ['Meal situation', 'Start with', 'Check next'], [
         ['Packaged food with a label', 'Nutrition label and amount eaten', 'How many labeled servings you ate'],

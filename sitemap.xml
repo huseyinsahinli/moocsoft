@@ -14,13 +14,13 @@
   </url>
   <url>
     <loc>https://moocsoft.net/tools/calorie-macro-calculator/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/52-week-savings-calculator/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/tools/workout-volume-rest-timer/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -44,13 +44,13 @@
   </url>
   <url>
     <loc>https://moocsoft.net/nutrilens/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/did-you-lift/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/savings-goal-tracker/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -155,7 +155,7 @@
   <!-- Generated guide pages: scripts/build-guides.mjs -->
   <url>
     <loc>https://moocsoft.net/guides/estimate-calories-from-food-photo/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calories-vs-macros/</loc>
@@ -343,7 +343,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
@@ -367,7 +367,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <!-- End generated guide pages -->
 </urlset>

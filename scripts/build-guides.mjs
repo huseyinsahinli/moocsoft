@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { apps, site, published, sources, escape as e } from '../content/apps.mjs';
 import { guides } from '../content/index.mjs';
-import { head, header, footer, card, download, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
+import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
@@ -44,7 +44,7 @@ for (const guide of guides) {
   write(path, `${head(guide.title, guide.description, path, graph, app)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
-  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? '<a href="#step-1">Jump to the guide ↓</a>' : ''}</div></div>
+  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? `<a href="#app-preview-title">See ${e(app.name)} in action ↓</a>` : ''}</div></div>
   <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
@@ -99,7 +99,7 @@ const resourcePages = new Map([
   [resolve(root, 'quitbit/index.html'), ['quitting', true]],
   [resolve(root, 'did-you-lift/index.html'), ['training', false]],
   [resolve(root, 'habit-tracker/index.html'), ['habits', true]],
-  [resolve(root, 'tools/quit-smoking-savings-calculator/index.html'), ['quitting', true]],
+  ...Object.entries(apps).filter(([, app]) => app.tool).map(([topic, app]) => [resolve(root, `tools/${app.tool}/index.html`), [topic, true]]),
 ]);
 const productPages = new Map([
   [resolve(root, 'nutrilens/index.html'), 'nutrition'],
@@ -109,6 +109,7 @@ const productPages = new Map([
   [resolve(root, 'habit-tracker/index.html'), 'habits'],
   [resolve(root, 'math-riddles/index.html'), 'math'],
 ]);
+const resultPages = new Map(['nutrition', 'savings', 'training'].map(topic => [resolve(root, `tools/${apps[topic].tool}/index.html`), topic]));
 const appStoreId = app => app.apple?.match(/\/id(\d+)/)?.[1];
 const playPackage = app => app.google ? new URL(app.google).searchParams.get('id') : null;
 function productSchema(app) {
@@ -146,6 +147,17 @@ function syncMarketing(directory) {
     if (resourcePages.has(file)) {
       const [topic, wrapped] = resourcePages.get(file);
       html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped));
+    }
+    if (resultPages.has(file)) {
+      const marker = '<!-- Calculator app download -->';
+      const end = '<!-- End calculator app download -->';
+      const block = `${marker}${resultDownload(resultPages.get(file))}${end}`;
+      if (html.includes(marker)) {
+        html = html.replace(/<!-- Calculator app download -->[\s\S]*?<!-- End calculator app download -->/, block);
+      } else {
+        // The result wrapper is the final child of the calculator's aside.
+        html = html.replace(/(<\/div>)(\s*<\/aside>)/, `${block}$1$2`);
+      }
     }
     if (productPages.has(file)) {
       const app = apps[productPages.get(file)];

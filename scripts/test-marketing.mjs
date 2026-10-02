@@ -166,6 +166,21 @@ for (const guide of guides) {
   } catch (error) { check(false, file, error.message); }
 }
 
+for (const topic of ['nutrition', 'savings', 'training']) {
+  const app = apps[topic];
+  const file = resolve(root, 'tools', app.tool, 'index.html');
+  const html = pages.get(file) || '';
+  const blocks = [...html.matchAll(/<!-- Calculator app download -->([\s\S]*?)<!-- End calculator app download -->/g)];
+  check(blocks.length === 1, file, `Expected one calculator download block; found ${blocks.length}`);
+  if (blocks.length !== 1) continue;
+  const block = blocks[0][1];
+  const stores = tags(block, 'a').filter(link => link['data-placement'] === 'calculator-result');
+  check(JSON.stringify(stores.map(link => link.href).sort()) === JSON.stringify([app.apple, app.google].filter(Boolean).sort()), file, 'Calculator download URLs do not match the app catalogue');
+  check(stores.every(link => link['data-app'] === app.slug), file, 'Calculator download links identify the wrong app');
+  check(block.includes('data-nosnippet'), file, 'Calculator promotion should be excluded from snippets');
+  check(tags(block, 'a').some(link => link.href === `/${app.slug}/`), file, 'Calculator result is missing its app features link');
+}
+
 const sitemapFile = resolve(root, 'sitemap.xml');
 const sitemap = readFileSync(sitemapFile, 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map(match => decode(match[1]));

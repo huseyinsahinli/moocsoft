@@ -22,6 +22,18 @@ export function download(app, placement = 'article-end') {
   return `<section class="guide-download" data-nosnippet style="--guide-accent:${app.color}" aria-label="Get ${e(app.name)}"><div><span class="guide-kicker">Take the next step</span><h2>Get ${e(app.name)}.</h2><p>${e(app.promise)}</p><small>Free to download · ${e(app.platform)}</small></div>${storeLinks(app, placement)}</section>`;
 }
 
+// A relevant next step immediately after a calculator result.
+export function resultDownload(topic) {
+  const app = apps[topic];
+  const copy = {
+    nutrition: ['Estimate your next meal with NutriLens', 'Take a meal photo and review estimated calories, protein, carbs and fat.', 'Free download. Subscriptions and scan credit packs are available.'],
+    savings: ['Track your real deposits', 'Create a goal in Savings Goal Tracker and record the money you actually set aside.', 'Free download. Unlimited goals and exports require Premium.'],
+    training: ['Log your next workout with Did You Lift', 'Plan each set, log your actual reps and weight, and use the automatic rest timer.', 'Free download. Optional lifetime Premium.'],
+  }[topic];
+  if (!app || !copy) throw new Error(`Missing result download copy for ${topic}`);
+  return `<div class="result-download" data-nosnippet aria-label="Continue with ${e(app.name)}"><h3>${e(copy[0])}</h3><p>${e(copy[1])}</p>${storeLinks(app, 'calculator-result')}<small>${e(copy[2])}</small><a class="result-download-details" href="/${app.slug}/">See ${e(app.name)} features →</a></div>`;
+}
+
 export function appPreview(topic) {
   const preview = appPreviews[topic];
   if (!preview) throw new Error(`Missing app preview for ${topic}`);
