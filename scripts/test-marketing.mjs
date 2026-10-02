@@ -92,6 +92,12 @@ for (const [file, html] of pages) {
   if (!marketing) continue;
   marketingCount++;
   schemas.set(file, schemaNodes(html, file));
+  for (const script of tags(html, 'script').filter(script => script.src)) {
+    try {
+      const url = new URL(script.src, documentUrl(file));
+      if (url.origin === origin) check(Boolean(localTarget(url)), file, `Missing local script: ${script.src}`);
+    } catch (error) { check(false, file, `Invalid script URL: ${script.src}`); }
+  }
   const markup = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '');
   for (const tag of markup.matchAll(/<[a-z][^>]*>/gi)) {
     const attributes = attrs(tag[0]);
@@ -135,6 +141,11 @@ for (const guide of guides) {
     check(article.dateModified === (guide.modified || guide.published || published), file, 'Article dateModified differs from source revision date');
     check(article.headline === guide.title && article.description === guide.description, file, 'Article headline/description differs from source');
     check(article.url === documentUrl(file), file, 'Article URL differs from guide URL');
+  }
+  for (const name of guide.assets || []) {
+    const scriptTag = [...html.matchAll(/<script\b[^>]*>/gi)].find(match => attrs(match[0]).src === `/assets/${name}.js`)?.[0] || '';
+    check(/\bdefer(?:\s|>)/.test(scriptTag), file, `Missing deferred guide script: ${name}`);
+    check(tags(html, 'link').some(link => link.rel === 'stylesheet' && link.href === `/assets/${name}.css`), file, `Missing guide stylesheet: ${name}`);
   }
   const previews = [...html.matchAll(/<section\b([^>]*)>([\s\S]*?)<\/section>/gi)]
     .filter(match => classes(attrs(match[1]).class).includes('guide-app-preview'));

@@ -4,7 +4,7 @@ export default [
   {
     topic: 'nutrition', slug: 'estimate-calories-from-food-photo', modified: '2026-10-02', appPreview: true,
     title: 'How to Estimate Calories From a Food Photo',
-    description: 'Estimate meal calories from a photo with a serving-size example and portion checklist. Learn what an AI food scanner can miss and when to use a label or recipe.',
+    description: 'Estimate calories from a food photo with three checks: food identity, portion size and hidden extras. See a worked label example and what AI can miss.',
     intro: 'To estimate calories from a food photo, capture the full serving, review what the scanner identified, then check the portion and anything outside the frame. Here is a practical way to do that without treating an AI result as an exact measurement.',
     takeaway: 'Use a clear photo of the full serving, check the food and portion the scanner identified, then account for sauces and extras outside the frame. NutriLens estimates calories and macros from a meal photo; review the estimate against what you know about the dish.',
     sections: [

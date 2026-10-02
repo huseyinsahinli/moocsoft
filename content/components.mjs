@@ -71,8 +71,10 @@ export function footer() {
   return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/hire-flutter-developer/">Hire a Flutter developer</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="/contact/">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
 }
 
-export function head(title, description, path, graph, app) {
+export function head(title, description, path, graph, app, assets = []) {
   const url = site + path;
+  if (assets.some(name => !/^[a-z0-9-]+$/.test(name))) throw new Error('Invalid guide asset name');
+  const enhancements = assets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">\n  <script src="/assets/${name}.js" defer></script>`).join('');
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +90,7 @@ export function head(title, description, path, graph, app) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/tools.css">
-  <link rel="stylesheet" href="/assets/content.css">
+  <link rel="stylesheet" href="/assets/content.css">${enhancements}
   <meta property="og:type" content="${graph.some(node => node['@type'] === 'Article') ? 'article' : 'website'}">
   <meta property="og:site_name" content="Moocsoft">
   <meta property="og:locale" content="en_US">

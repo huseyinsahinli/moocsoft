@@ -1,0 +1,46 @@
+.savings-hint { margin: 12px 0 0; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+#total-saved { overflow-wrap: anywhere; }
+.savings-presets { min-width: 0; margin: 22px 0 0; padding: 0; border: 0; }
+.savings-presets legend { padding: 0; color: var(--muted); font-size: .82rem; }
+.savings-preset-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.savings-preset-actions .button { text-align: center; }
+#plan-title { margin: 26px 0 12px; font-size: clamp(1.5rem, 4vw, 2rem); }
+#plan-summary { max-width: 760px; color: var(--text); }
+#savings-chart .guide-table table { min-width: 0; font-variant-numeric: tabular-nums; }
+#savings-chart .guide-table th, #savings-chart .guide-table td { padding: 12px 14px; }
+.savings-check-box { display: inline-block; width: 16px; height: 16px; border: 1px solid var(--muted); border-radius: 2px; vertical-align: middle; }
+.savings-print-source { color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+
+@media (max-width: 580px) {
+  .savings-preset-actions { flex-direction: column; align-items: stretch; }
+  .savings-export-actions .button { flex: 1 1 150px; }
+  #savings-chart .guide-table { margin-inline: 0; }
+  #savings-chart .guide-table th, #savings-chart .guide-table td { padding: 10px 7px; }
+  #savings-chart .guide-table table { font-size: .78rem; }
+}
+
+@media print {
+  @page { margin: 14mm; }
+  body.has-savings-plan { background: #fff; color: #000; }
+  body.has-savings-plan::before,
+  body.has-savings-plan > .skip-link,
+  body.has-savings-plan > header,
+  body.has-savings-plan > footer,
+  body.has-savings-plan main > :not(#savings-chart),
+  body.has-savings-plan .savings-chart-intro,
+  body.has-savings-plan .savings-export-actions,
+  body.has-savings-plan .savings-export-note { display: none !important; }
+  body.has-savings-plan #savings-chart { width: 100%; margin: 0; padding: 0; border: 0; }
+  body.has-savings-plan #weekly-plan { max-width: none; }
+  body.has-savings-plan #plan-title { margin: 0 0 8px; font-size: 20pt; color: #000; }
+  body.has-savings-plan #plan-summary { margin: 0 0 12px; font-size: 10pt; color: #000; }
+  body.has-savings-plan #savings-chart .guide-table { margin: 10px 0; overflow: visible; border-radius: 0; }
+  body.has-savings-plan #savings-chart table { min-width: 0; font-size: 9pt; line-height: 1.15; }
+  body.has-savings-plan #savings-chart caption { padding: 7px; font-size: 9pt; }
+  body.has-savings-plan #savings-chart th,
+  body.has-savings-plan #savings-chart td { padding: 4px 7px; color: #000 !important; border-color: #aaa; }
+  body.has-savings-plan #savings-chart thead { display: table-header-group; }
+  body.has-savings-plan #savings-chart tr { break-inside: avoid; }
+  body.has-savings-plan .savings-check-box { width: 10px; height: 10px; border-color: #000; }
+  body.has-savings-plan .savings-print-source { margin: 8px 0 0; color: #000; font-size: 8pt; }
+}

@@ -1,0 +1,24 @@
+.cigarette-cost-calculator { padding: 24px; border: 1px solid #45464c; border-radius: 16px; background: #121315; }
+.cigarette-cost-calculator [hidden] { display: none !important; }
+.cigarette-cost-calculator .cost-error { color: #ffb8a3; margin: 14px 0 0; }
+.cost-totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 24px 0 18px; }
+.cost-totals > div { padding: 16px; border: 1px solid #45464c; border-radius: 10px; min-width: 0; }
+.cost-totals dt { color: #c1bbb2; font-size: .8rem; }
+.cost-totals dd { margin: 5px 0 0; color: #f4efe6; font-size: clamp(1.15rem, 3vw, 1.65rem); font-weight: 600; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.guide-article .cost-assumption, .guide-article .cost-status { font-size: .82rem; line-height: 1.6; color: #bcb7ae; }
+.guide-article .cost-calculation { font-size: .92rem; overflow-wrap: anywhere; }
+.cigarette-cost-calculator .result-download { padding-inline: 0; }
+.cigarette-cost-calculator .result-download .install-link { color: #090a0c; text-decoration: none; }
+.guide-article .cost-status { margin: 16px 0 0; }
+@media (max-width: 520px) {
+  .cigarette-cost-calculator { padding: 18px; }
+  .cigarette-cost-calculator .fields { grid-template-columns: 1fr; }
+  .cigarette-cost-calculator .button { width: 100%; padding-inline: 12px; }
+  .cost-totals > div { padding: 12px; }
+}
+@media print {
+  .cigarette-cost-calculator { border-color: #aaa; background: #fff; }
+  .cigarette-cost-calculator form, .cigarette-cost-calculator .result-download, .cigarette-cost-calculator .cost-status { display: none; }
+  .cost-totals dt, .cost-totals dd, .guide-article .cost-assumption { color: #000; }
+  .cost-totals > div { border-color: #aaa; }
+}
