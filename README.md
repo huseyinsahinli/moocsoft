@@ -11,6 +11,13 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - Update non-guide sitemap dates only when those pages change meaningfully.
 - Health content must distinguish record-keeping from treatment, link to primary sources where appropriate, and avoid promising medical outcomes. Store links must reflect verified platform availability.
 - High-intent guides may set `appPreview: true` to show the matching conversion block from `content/app-previews.mjs`. Use real public app screenshots, accurate captions and current purchase boundaries; do not imply unsupported features.
+- `content/guide-media.mjs` registers original diagrams displayed in selected articles. The build uses each diagram consistently for Article, Open Graph, Twitter and image-sitemap metadata. Only images actually shown in an article belong in its sitemap entry.
+
+## Free printable worksheets
+
+The reverse 52-week chart, 100-envelope checklist and missing-number question sheet are free static website outputs in `assets/worksheets/`, separate from paid app features. Printable HTML is intentionally `noindex, follow`; the corresponding guide is the search destination. Browser printing needs no account, library or network request. Checkboxes are temporary and are not saved or imported into an app.
+
+Edit `scripts/build-search-assets.mjs` (puzzle values live in `content/puzzle-worksheet.mjs`), make the development-only `sharp` package available, and run `node scripts/build-search-assets.mjs` before `node scripts/build-guides.mjs`. It emits deterministic CSV/HTML/native SVG files and 1200×675 PNG diagrams. No image library is loaded on the deployed site. Commit sources and generated outputs together.
 
 ## Brand assets
 
@@ -23,6 +30,8 @@ To regenerate its PNG and ICO exports, make the development-only `sharp` package
 Serve the repository with a static HTTP server. Check mobile and desktop layouts, top download buttons, local links, canonical URLs and structured data before pushing.
 
 Run `node scripts/build-guides.mjs` followed by `node scripts/test-marketing.mjs` to check generated guide metadata, download links, preview assets and sitemap coverage without installing dependencies.
+
+Run `node scripts/test-search-assets.mjs` to verify exact worksheet arithmetic, CSV rows, privacy boundaries and diagram dimensions. With development-only Playwright plus Chrome and a local server on port 4195, run `node scripts/test-search-worksheets.cjs` for mobile/desktop, no-JavaScript and print-mode checks. `MOOCSOFT_TEST_URL` overrides the port; optional `MOOCSOFT_QA_DIR` saves screenshots outside the repository.
 
 Run `node scripts/test-store-attribution.mjs` for static Google Play campaign labels. The builder tags only known app-store anchors with the public source (`moocsoft`), page and placement; canonical/schema store URLs remain unchanged. No cookies, visitor IDs, calculator inputs or new analytics requests are added. In Play Console, use the Ads and referrals traffic source and UTM source/campaign filters. Store-page visits and Install/Open button clicks are not completed installs; review acquisition reports separately.
 

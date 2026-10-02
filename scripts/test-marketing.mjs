@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { apps, published, site } from '../content/apps.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { guides } from '../content/index.mjs';
+import { guideMedia } from '../content/guide-media.mjs';
 import { canonicalStoreUrl, pageCampaign } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -152,6 +153,26 @@ for (const guide of guides) {
     check(article.dateModified === (guide.modified || guide.published || published), file, 'Article dateModified differs from source revision date');
     check(article.headline === guide.title && article.description === guide.description, file, 'Article headline/description differs from source');
     check(article.url === documentUrl(file), file, 'Article URL differs from guide URL');
+    const visual = guideMedia[guide.slug];
+    if (visual) {
+      const expectedImage = site + visual.src;
+      check(JSON.stringify(article.image) === JSON.stringify([expectedImage]), file, 'Article must use its representative diagram');
+      const meta = tags(html, 'meta');
+      check(meta.some(tag => tag.property === 'og:image' && tag.content === expectedImage), file, 'Open Graph diagram differs from Article image');
+      check(meta.some(tag => tag.name === 'twitter:image' && tag.content === expectedImage), file, 'Twitter diagram differs from Article image');
+      check(meta.some(tag => tag.property === 'og:image:alt' && tag.content === visual.alt), file, 'Missing representative image alt metadata');
+      const figure = html.match(/<figure class="guide-visual">([\s\S]*?)<\/figure>/)?.[1] || '';
+      const img = tags(figure, 'img')[0];
+      check(img?.src === visual.src && img?.alt === visual.alt, file, 'Representative image must be visible in the article with matching alt text');
+      check(Number(img?.width) === visual.width && Number(img?.height) === visual.height, file, 'Representative image dimensions differ from source');
+      check(figure.includes(decode(visual.caption).replaceAll('&', '&amp;')), file, 'Representative image caption is missing');
+      try {
+        const asset = localTarget(new URL(visual.src, documentUrl(file)));
+        if (!asset) throw new Error(`Missing diagram ${visual.src}`);
+        const [width, height] = imageSize(asset);
+        check(width === visual.width && height === visual.height, file, 'Diagram pixel dimensions differ from source');
+      } catch (error) { check(false, file, error.message); }
+    }
   }
   for (const name of guide.assets || []) {
     const scriptTag = [...html.matchAll(/<script\b[^>]*>/gi)].find(match => attrs(match[0]).src === `/assets/${name}.js`)?.[0] || '';
@@ -230,6 +251,22 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map(mat
 const sitemapSet = new Set(sitemapUrls);
 check(/<urlset\b/.test(sitemap) && /<\/urlset>/.test(sitemap) && sitemapUrls.length > 0, sitemapFile, 'Expected a non-empty sitemap urlset');
 check(sitemapSet.size === sitemapUrls.length, sitemapFile, 'Sitemap contains duplicate URLs');
+check(sitemap.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'), sitemapFile, 'Missing image sitemap namespace');
+for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+  const location = match[1].match(/<loc>([^<]+)<\/loc>/)?.[1];
+  const parent = location && localTarget(new URL(decode(location)));
+  const html = (parent && pages.get(parent)) || '';
+  const images = [...match[1].matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map(entry => decode(entry[1]));
+  check(new Set(images).size === images.length, sitemapFile, `Duplicate images for ${location}`);
+  for (const image of images) {
+    const url = new URL(image);
+    check(url.origin === origin && !url.search && !url.hash, sitemapFile, `Non-canonical image URL: ${image}`);
+    check(Boolean(localTarget(url)), sitemapFile, `Missing sitemap image: ${image}`);
+    check(tags(html, 'img').some(img => new URL(img.src, location).href === image), sitemapFile, `Sitemap image must be shown on its parent page: ${image}`);
+  }
+  const slug = location?.match(/\/guides\/([a-z0-9-]+)\/$/)?.[1];
+  if (guideMedia[slug]) check(images.includes(site + guideMedia[slug].src), sitemapFile, `Missing representative diagram for ${slug}`);
+}
 for (const location of sitemapUrls) {
   try {
     const url = new URL(location);

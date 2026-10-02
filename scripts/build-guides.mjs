@@ -5,6 +5,8 @@ import { apps, site, published, sources, escape as e } from '../content/apps.mjs
 import { guides } from '../content/index.mjs';
 import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
+import { guideMedia } from '../content/guide-media.mjs';
+import { appPreviews } from '../content/app-previews.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
@@ -23,34 +25,43 @@ const byline = { '@type': 'Organization', name: 'Moocsoft', url: `${site}/#about
 const breadcrumbs = items => ({ '@type':'BreadcrumbList', itemListElement: items.map(([name, path], i) => ({'@type':'ListItem',position:i+1,name,item:site+path})) });
 const crumbHtml = items => `<div class="guide-breadcrumb" aria-label="Breadcrumb">${items.map(([name,path]) => path ? `<a href="${path}">${e(name)}</a>` : `<span aria-current="page">${e(name)}</span>`).join('<span aria-hidden="true">/</span>')}</div>`;
 const items = list => ({ '@type': 'ItemList', itemListElement: list.map((g,i) => ({'@type':'ListItem',position:i+1,name:g.title,url:`${site}/guides/${g.slug}/`})) });
-function write(path, html, lastmod = published) {
+function write(path, html, lastmod = published, images = []) {
   const target = resolve(root, '.' + path, 'index.html');
   mkdirSync(dirname(target), {recursive:true});
   writeFileSync(target, attributeStoreLinks(html, path).replace(/[ \t]+$/gm, '').trimEnd() + '\n');
-  outputs.push({path, lastmod});
+  outputs.push({path, lastmod, images});
 }
 const slugs = new Set();
 const guidesBySlug = new Map(guides.map(guide => [guide.slug, guide]));
+for (const [slug, visual] of Object.entries(guideMedia)) {
+  if (!guidesBySlug.has(slug) || !/^\/assets\/guide-visuals\/[a-z0-9-]+\.png$/.test(visual.src)
+      || visual.width !== 1200 || visual.height !== 675 || !visual.alt || !visual.caption) {
+    throw new Error(`Invalid guide media: ${slug}`);
+  }
+}
 for (const guide of guides) {
   if (!apps[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
   const app = apps[guide.topic];
   const path = `/guides/${guide.slug}/`;
+  const visual = guideMedia[guide.slug];
+  const previewImage = guide.appPreview ? appPreviews[guide.topic]?.image : null;
+  const images = [...new Set([visual?.src, previewImage].filter(Boolean))].map(src => site + src);
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
   const graph = [
-    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+'/assets/social/moocsoft-og.png'],articleSection:app.category,isAccessibleForFree:true},
+    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+(visual?.src || '/assets/social/moocsoft-og.png')],articleSection:app.category,isAccessibleForFree:true},
     breadcrumbs([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`],[guide.title,path]]),
   ];
   const faq = `<section class="guide-faq" id="questions"><h2>Common questions</h2>${guide.faq.map(([q,a]) => `<details><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join('')}</section>`;
   const refs = guide.sources.length ? `<section class="guide-references" id="references"><h2>References and further reading</h2><ul>${guide.sources.map(key => {if(!sources[key])throw new Error('Unknown source '+key);const [name,url]=sources[key];return `<li><a href="${e(url)}" target="_blank" rel="noopener">${e(name)}</a></li>`;}).join('')}</ul></section>` : '';
-  write(path, `${head(guide.title, guide.description, path, graph, app, guide.assets)}
+  write(path, `${head(guide.title, guide.description, path, graph, app, guide.assets, visual)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
   <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? `<a href="#app-preview-title">See ${e(app.name)} in action ↓</a>` : ''}</div></div>
   <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
-      ${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
+      ${visual ? `<figure class="guide-visual"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.</p>
     </article>
@@ -62,7 +73,7 @@ for (const guide of guides) {
 </main>
 ${footer()}
 </body>
-</html>`, modified(guide));
+</html>`, modified(guide), images);
 }
 
 for (const [topic, app] of Object.entries(apps)) {
@@ -206,8 +217,9 @@ syncMarketing(root);
 const sitemapPath = resolve(root, 'sitemap.xml');
 const marker = '  <!-- Generated guide pages: scripts/build-guides.mjs -->';
 let sitemap = readFileSync(sitemapPath, 'utf8');
+if (!sitemap.includes('xmlns:image=')) sitemap = sitemap.replace(/<urlset\b/, '<urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"');
 sitemap = sitemap.replace(/  <!-- Generated guide pages: scripts\/build-guides\.mjs -->[\s\S]*?  <!-- End generated guide pages -->\n?/g, '');
-const entries = outputs.map(({path, lastmod}) => `  <url>\n    <loc>${site}${path}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n');
+const entries = outputs.map(({path, lastmod, images}) => `  <url>\n    <loc>${site}${path}</loc>\n    <lastmod>${lastmod}</lastmod>${images.map(url => `\n    <image:image><image:loc>${e(url)}</image:loc></image:image>`).join('')}\n  </url>`).join('\n');
 sitemap = sitemap.replace('</urlset>', `${marker}\n${entries}\n  <!-- End generated guide pages -->\n</urlset>`);
 writeFileSync(sitemapPath, sitemap);
 console.log(`Built ${guides.length} guides, ${Object.keys(apps).length} topic pages and the guide hub. Updated sitemap with ${outputs.length} guide URLs.`);

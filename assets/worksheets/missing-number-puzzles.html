@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="A free printable missing-number practice sheet with five original questions and a separate answer key with worked checks.">
+  <title>Missing Number Puzzles | Moocsoft printable worksheet</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg">
+  <style>
+  * { box-sizing: border-box; }
+  html { color-scheme: light; background: #f3f5f3; }
+  body { margin: 0; color: #18201c; font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  a { color: #155b43; text-underline-offset: 3px; }
+  .toolbar { max-width: 1020px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  .toolbar a, .toolbar button { font: inherit; }
+  .toolbar button { cursor: pointer; border: 1px solid #446052; background: #fff; border-radius: 7px; padding: 9px 14px; color: #173b2b; }
+  .toolbar button:focus-visible, a:focus-visible { outline: 3px solid #3472b9; outline-offset: 4px; }
+  .toolbar .product { margin-left: auto; }
+  .noscript-note { max-width: 950px; margin: 0 auto 20px; padding: 0 24px; font-size: 14px; }
+  .paper { max-width: 950px; margin: 0 auto 32px; padding: 36px; background: #fff; border: 1px solid #d7dfd9; border-radius: 8px; }
+  .eyebrow { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 6px; color: #47574d; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 12px; }
+  h2 { font-size: 24px; margin: 0 0 12px; }
+  h3 { font-size: 17px; line-height: 1.3; margin: 0 0 8px; }
+  p { margin: 0 0 12px; }
+  .intro { max-width: 76ch; }
+  .details { display: flex; flex-wrap: wrap; gap: 15px 40px; margin: 18px 0; font-size: 14px; }
+  .write-line { display: inline-block; width: 160px; height: 1em; border-bottom: 1px solid #66756c; }
+  .summary { padding: 12px 14px; border: 1px solid #65776b; margin: 16px 0; font-weight: 650; }
+  .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  caption { text-align: left; font-size: 13px; font-weight: 600; padding-bottom: 8px; }
+  th, td { text-align: right; border-bottom: 1px solid #cbd4ce; padding: 5px 8px; font-size: 14px; }
+  th { font-size: 12px; font-weight: 650; border-top: 1px solid #64786b; border-bottom: 1px solid #64786b; }
+  td:first-child, th:first-child { text-align: left; }
+  .completion-cell { width: 48px; text-align: center; }
+  .mark-box { display: inline-block; width: 13px; height: 13px; margin: 0; vertical-align: middle; accent-color: #23624c; cursor: pointer; }
+  .mark-box:focus-visible { outline: 3px solid #3472b9; outline-offset: 3px; }
+  .completion-mark { display: inline-grid; place-items: center; min-width: 24px; min-height: 24px; cursor: pointer; }
+  .notes { margin: 16px 0 0; font-size: 12px; color: #405148; }
+  .envelope-grid { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 7px; margin-top: 20px; padding: 0; list-style: none; }
+  .envelope-grid li { border: 1px solid #75877c; }
+  .envelope-entry { min-height: 61px; padding: 6px; display: grid; grid-template-columns: 1fr auto; align-content: center; cursor: pointer; }
+  .envelope-number { font-size: 19px; font-weight: 650; line-height: 1.25; }
+  .envelope-amount { display: block; grid-column: 1 / -1; font-size: 11px; }
+  .instructions { font-size: 14px; padding-left: 20px; margin: 14px 0 22px; }
+  .question-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .question { padding: 17px; border: 1px solid #92a099; break-inside: avoid; }
+  .question.equation-question { grid-column: 1 / -1; }
+  .question p { font-size: 13px; }
+  .hint { color: #334e40; }
+  .equation { font-size: 25px; font-weight: 650; padding: 4px 0; letter-spacing: .02em; }
+  .question table { margin: 10px 0; }
+  .question th { text-align: center; font-size: 11px; }
+  .question td { text-align: center; font-size: 18px; }
+  .blank { display: inline-block; width: 23px; height: 23px; border: 1px solid #53655a; vertical-align: middle; }
+  .work { margin: 12px 0 0; font-size: 12px; }
+  .work-line { display: block; border-bottom: 1px solid #99a59d; height: 22px; }
+  .answer-key { break-before: page; }
+  .answer { padding: 15px 0; border-bottom: 1px solid #cbd4ce; break-inside: avoid; }
+  .answer p, .answer ul { font-size: 14px; }
+  .answer ul { padding-left: 22px; margin: 0; }
+  .answer-value { display: inline-block; margin-left: 8px; }
+  @media (max-width: 700px) {
+    .paper { margin: 0 12px 20px; padding: 20px; }
+    .toolbar { padding: 16px; }
+    .toolbar .product { margin-left: 0; }
+    .two-columns, .question-grid { grid-template-columns: 1fr; }
+    .question.equation-question { grid-column: auto; }
+    .envelope-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+  @page { size: A4; margin: 12mm; }
+  @media print {
+    html, body { background: #fff; color: #000; }
+    body { font-size: 10pt; line-height: 1.3; }
+    .toolbar { display: none; }
+    .noscript-note { display: none; }
+    .paper { max-width: none; width: 100%; margin: 0; padding: 0; border: 0; border-radius: 0; }
+    .eyebrow { font-size: 8pt; color: #000; }
+    h1 { font-size: 22pt; margin-bottom: 7px; }
+    h2 { font-size: 20pt; }
+    h3 { font-size: 11pt; }
+    p { margin-bottom: 7px; }
+    a { color: #000; }
+    .details { font-size: 9pt; margin: 12px 0; }
+    .summary { margin: 10px 0; padding: 8px; }
+    .two-columns { grid-template-columns: 1fr 1fr; gap: 16px; }
+    caption { font-size: 8pt; padding-bottom: 5px; }
+    th { font-size: 8pt; }
+    td { font-size: 9pt; }
+    th, td { padding: 4px 6px; border-color: #7d7d7d; }
+    .mark-box { width: 11px; height: 11px; accent-color: #000; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .mark-box:focus-visible { outline: 0; }
+    .completion-mark { min-width: 11px; min-height: 11px; }
+    .notes { font-size: 8pt; color: #000; margin-top: 10px; }
+    .envelope-grid { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; margin: 12px 0; }
+    .envelope-grid li { border-color: #555; }
+    .envelope-entry { min-height: 43px; padding: 4px; }
+    .envelope-number { font-size: 13pt; }
+    .envelope-amount { font-size: 8pt; }
+    .instructions { font-size: 9pt; margin: 9px 0 14px; }
+    .question-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .question { padding: 12px; border-color: #555; }
+    .question.equation-question { grid-column: 1 / -1; }
+    .question p { font-size: 9pt; }
+    .hint { color: #000; }
+    .equation { font-size: 17pt; }
+    .question table { margin: 6px 0; }
+    .question th { font-size: 8pt; }
+    .question td { font-size: 12pt; padding: 4px; }
+    .blank { width: 18px; height: 18px; border-color: #000; }
+    .work { font-size: 8pt; margin-top: 7px; }
+    .work-line { height: 15px; border-color: #555; }
+    .answer-key { padding-top: 0; }
+    .answer { padding: 10px 0; }
+    .answer p, .answer ul { font-size: 9pt; }
+    body[data-print-mode="questions"] .answer-key { display: none; }
+  }
+</style>
+</head>
+<body>
+  <nav class="toolbar" aria-label="Worksheet actions">
+    <a href="/guides/missing-number-puzzles-with-answers/">← Read the missing-number guide</a>
+    <button type="button" data-print="questions">Print questions only</button>
+    <button type="button" data-print="all">Print questions + answer key</button>
+    <a href="/assets/worksheets/missing-number-puzzles.svg" download>Download question sheet (SVG)</a>
+    <a class="product" href="/math-riddles/">Explore Math Riddles →</a></nav>
+  <main id="main-content"><noscript><p class="noscript-note">Use your browser’s Print menu to print this worksheet. For a questions-only math sheet, use the <a href="/assets/worksheets/missing-number-puzzles.svg" download>downloadable SVG question sheet</a>.</p></noscript>
+    <section class="paper question-sheet" aria-labelledby="sheet-title">
+      <p class="eyebrow">Moocsoft.net · Free website worksheet</p>
+      <h1 id="sheet-title">Missing Number Puzzles</h1>
+      <p>Five original questions · Separate answer key</p>
+      <ul class="instructions"><li>Write the missing value and one line explaining your method for each question.</li><li>Use the stated rule or rule family consistently across every row.</li><li>Try the question sheet before turning to the separate answer key. There is no time limit.</li><li>These are original website practice examples, not solutions to numbered app levels.</li></ul>
+      <div class="question-grid"><section class="question equation-question" data-question="1" aria-labelledby="question-1"><h3 id="question-1">1. Complete a balanced equation</h3><p>What number belongs in the box?</p><p class="hint"><strong>Rule:</strong> Use ordinary addition and the operation that reverses adding 18.</p><div class="equation" aria-label="missing number + 18 = 47">□ + 18 = 47</div><div class="work">Answer: <span class="write-line"></span><span class="work-line" aria-label="Space to explain your method"></span></div></section><section class="question" data-question="2" aria-labelledby="question-2"><h3 id="question-2">2. Find the repeated row total</h3><p>Complete the last row using the same addition rule.</p><p class="hint"><strong>Rule:</strong> Add the first number to the second number to get the result.</p><table aria-label="Question 2 number grid"><thead><tr><th scope="col">First number</th><th scope="col">Second number</th><th scope="col">Result</th></tr></thead><tbody><tr><td>6</td><td>9</td><td>15</td></tr><tr><td>8</td><td>5</td><td>13</td></tr><tr><td>7</td><td>12</td><td><span class="blank" aria-label="Missing number"></span></td></tr></tbody></table><div class="work">Answer: <span class="write-line"></span><span class="work-line" aria-label="Space to explain your method"></span></div></section><section class="question" data-question="3" aria-labelledby="question-3"><h3 id="question-3">3. Multiply, then make one adjustment</h3><p>Multiply the first two numbers, then find the same subtraction used in both complete rows.</p><p class="hint"><strong>Rule:</strong> Use multiplication followed by one constant subtraction.</p><table aria-label="Question 3 number grid"><thead><tr><th scope="col">First number</th><th scope="col">Second number</th><th scope="col">Result</th></tr></thead><tbody><tr><td>3</td><td>4</td><td>10</td></tr><tr><td>5</td><td>3</td><td>13</td></tr><tr><td>6</td><td>4</td><td><span class="blank" aria-label="Missing number"></span></td></tr></tbody></table><div class="work">Answer: <span class="write-line"></span><span class="work-line" aria-label="Space to explain your method"></span></div></section><section class="question" data-question="4" aria-labelledby="question-4"><h3 id="question-4">4. Recover the missing input</h3><p>The blank is the second input. Work backward from the final result using the stated rule.</p><p class="hint"><strong>Rule:</strong> Result = first number × second number + first number.</p><table aria-label="Question 4 number grid"><thead><tr><th scope="col">First number</th><th scope="col">Second number</th><th scope="col">Result</th></tr></thead><tbody><tr><td>2</td><td>5</td><td>12</td></tr><tr><td>3</td><td>4</td><td>15</td></tr><tr><td>4</td><td><span class="blank" aria-label="Missing number"></span></td><td>28</td></tr></tbody></table><div class="work">Answer: <span class="write-line"></span><span class="work-line" aria-label="Space to explain your method"></span></div></section><section class="question" data-question="5" aria-labelledby="question-5"><h3 id="question-5">5. Compare two squared values</h3><p>Complete the last row by subtracting the second square from the first square.</p><p class="hint"><strong>Rule:</strong> Square each input separately, then subtract: first² − second².</p><table aria-label="Question 5 number grid"><thead><tr><th scope="col">First number</th><th scope="col">Second number</th><th scope="col">Result</th></tr></thead><tbody><tr><td>5</td><td>3</td><td>16</td></tr><tr><td>7</td><td>4</td><td>33</td></tr><tr><td>9</td><td>5</td><td><span class="blank" aria-label="Missing number"></span></td></tr></tbody></table><div class="work">Answer: <span class="write-line"></span><span class="work-line" aria-label="Space to explain your method"></span></div></section></div>
+      <p class="notes">Free website practice sheet. It is separate from the Math Riddles app and does not connect to or import into the app.</p>
+      <p class="notes">Guide: moocsoft.net/guides/missing-number-puzzles-with-answers/</p>
+    </section>
+    <section class="paper answer-key" id="answer-key" aria-labelledby="answer-key-title">
+      <p class="eyebrow">Moocsoft.net · Separate answer key</p>
+      <h2 id="answer-key-title">Missing-number answers and checks</h2>
+      <p>Compare your method with the stated rule, then substitute your answer back into every row.</p>
+      <section class="answer" data-answer="29" data-answer-for="1"><h3>1. Complete a balanced equation <span class="answer-value">Answer: 29</span></h3><p>Subtract 18 from both sides: 47 − 18 = 29. Substitute 29 into the original equation to check your answer.</p><ul><li>29 + 18 = 47.</li></ul></section><section class="answer" data-answer="19" data-answer-for="2"><h3>2. Find the repeated row total <span class="answer-value">Answer: 19</span></h3><p>The first two numbers add to the result in every row. Apply the same rule to the final row: 7 + 12 = 19.</p><ul><li>6 + 9 = 15.</li><li>8 + 5 = 13.</li><li>7 + 12 = 19.</li></ul></section><section class="answer" data-answer="22" data-answer-for="3"><h3>3. Multiply, then make one adjustment <span class="answer-value">Answer: 22</span></h3><p>Each result is the product of the first two numbers minus 2. The final row is (6 × 4) − 2 = 22. Subtract after multiplying; subtracting 2 from an input would change the grouping.</p><ul><li>(3 × 4) − 2 = 10.</li><li>(5 × 3) − 2 = 13.</li><li>(6 × 4) − 2 = 22.</li></ul></section><section class="answer" data-answer="6" data-answer-for="4"><h3>4. Recover the missing input <span class="answer-value">Answer: 6</span></h3><p>The final row means 4 × □ + 4 = 28. Subtract 4 to get 4 × □ = 24, then divide by 4 to get 6. Put 6 back into the original rule to check it.</p><ul><li>2 × 5 + 2 = 12.</li><li>3 × 4 + 3 = 15.</li><li>4 × 6 + 4 = 28.</li></ul></section><section class="answer" data-answer="56" data-answer-for="5"><h3>5. Compare two squared values <span class="answer-value">Answer: 56</span></h3><p>Square both inputs separately. In the final row, 9² − 5² = 81 − 25 = 56. Squaring the difference would be a different operation: (9 − 5)² = 16.</p><ul><li>5² − 3² = 25 − 9 = 16.</li><li>7² − 4² = 49 − 16 = 33.</li><li>9² − 5² = 81 − 25 = 56.</li></ul></section>
+      <p class="notes">These original examples are website practice, not answers to numbered app levels. Explore the current app at moocsoft.net/math-riddles/.</p>
+    </section></main>
+  <script>
+  document.querySelectorAll('[data-print]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      document.body.dataset.printMode = button.dataset.print;
+      window.print();
+    });
+  });
+  window.addEventListener('afterprint', function () { delete document.body.dataset.printMode; });
+</script>
+</body>
+</html>

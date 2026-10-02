@@ -133,6 +133,9 @@ body.marketing-page { --guide-accent: #ffb192; }
 .guide-store-directory summary { cursor: pointer; display: flex; align-items: center; min-height: 44px; color: #f4efe6; font-size: .9rem; }
 .guide-store-directory[open] summary { margin-bottom: 16px; }
 .guide-store-directory .guide-download { margin-block: 14px; }
+.guide-visual { margin: 28px 0; }
+.guide-visual img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.guide-visual figcaption { margin-top: 12px; color: #bcb7ae; font-size: .9rem; line-height: 1.6; }
 @media (max-width: 900px) {
   .guide-layout { grid-template-columns: 1fr; gap: 28px; }
   .guide-toc { position: static; }
@@ -194,4 +197,6 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-table table { min-width: 0; }
   .guide-table tr { break-inside: avoid; }
   .guide-article a { color: #000; }
+  .guide-visual { break-inside: avoid; }
+  .guide-visual figcaption { color: #000; }
 }
