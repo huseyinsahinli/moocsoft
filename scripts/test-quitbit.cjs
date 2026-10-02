@@ -63,7 +63,7 @@ const slugs = ['quit-smoking-calculator-guide', 'quit-smoking-cravings-plan', 'p
       assert.match(await a.getAttribute('href'), /id6747658536$/);
       const bounds = await a.boundingBox();
       assert(bounds.y >= 0 && bounds.y + bounds.height < 200);
-      assert.equal(await page.locator('time').getAttribute('datetime'), '2026-09-13');
+      assert.equal(await page.locator('.guide-byline time').first().getAttribute('datetime'), '2026-09-13');
       const article = await page.locator('script[type="application/ld+json"]').textContent();
       assert.equal(JSON.parse(article)['@graph'][0].datePublished, '2026-09-13');
       assert.equal(await page.locator('link[rel="icon"]').count(), 3);
@@ -72,7 +72,10 @@ const slugs = ['quit-smoking-calculator-guide', 'quit-smoking-cravings-plan', 'p
     await page.goto(base + '/guides/quitting/');
     assert.equal(await page.locator('.guide-card').count(), 8);
     await page.goto(base + '/guides/calculate-cigarette-cost-and-savings/');
-    assert.equal(await page.locator('time').getAttribute('datetime'), '2026-09-12');
+    assert.equal(await page.locator('.guide-byline time').first().getAttribute('datetime'), '2026-09-12');
+    const costArticle = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())['@graph'].find(node => node['@type'] === 'Article');
+    assert.equal(costArticle.datePublished, '2026-09-12');
+    assert.equal(await page.locator('.guide-byline time').last().getAttribute('datetime'), costArticle.dateModified, 'Visible revision date matches Article metadata');
     for (const [file, type] of [['/favicon.ico', /image\//], ['/assets/brand/favicon.svg', /image\/svg\+xml/], ['/assets/brand/favicon-96.png', /image\/png/], ['/apple-touch-icon.png', /image\/png/]]) {
       const response = await context.request.get(base + file);
       assert.equal(response.status(), 200);

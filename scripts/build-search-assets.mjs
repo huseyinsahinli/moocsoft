@@ -385,11 +385,101 @@ const mathVisual = illustration('Missing-number grid reasoning', 'A three-row nu
     <rect x="806" y="363" width="140" height="103" rx="18" fill="#e6dac3" stroke="#b7a582" stroke-width="2"/><text x="876" y="427" font-size="41" fill="#315044">−2</text>
     <circle cx="1028" cy="505" r="9" fill="#96b09d"/><circle cx="1077" cy="449" r="5" fill="#96b09d"/><circle cx="1083" cy="542" r="5" fill="#96b09d"/>
   </g>`);
-for (const [name, svg] of [['reverse-52-week-savings', reverseVisual], ['100-envelope-challenge', envelopeVisual], ['missing-number-puzzles', mathVisual]]) {
+
+// These are original explanatory diagrams, never synthetic app screenshots.
+// Figures below match the worked examples in the corresponding existing guides.
+const macroExample = [
+  { name: 'Protein', grams: 30, factor: 4, kcal: 120, color: '#408564', pale: '#d4e7d7' },
+  { name: 'Carbs', grams: 50, factor: 4, kcal: 200, color: '#608aaa', pale: '#d9e5ee' },
+  { name: 'Fat', grams: 15, factor: 9, kcal: 135, color: '#c4a45c', pale: '#efe3c6' },
+];
+const macroTotal = macroExample.reduce((sum, macro) => sum + macro.kcal, 0);
+const workoutExample = [
+  { set: 1, reps: 10, load: 50, volume: 500, color: '#23624c' },
+  { set: 2, reps: 8, load: 50, volume: 400, color: '#408564' },
+  { set: 3, reps: 8, load: 45, volume: 360, color: '#6da382' },
+];
+const workoutTotal = workoutExample.reduce((sum, set) => sum + set.volume, 0);
+const cigaretteExample = { cigarettesPerDay: 10, cigarettesPerPack: 20, packPrice: 10 };
+const cigaretteDaily = cigaretteExample.cigarettesPerDay / cigaretteExample.cigarettesPerPack * cigaretteExample.packPrice;
+const cigarettePeriods = [1, 30, 365].map(days => ({ days, dollars: days * cigaretteDaily }));
+if (macroExample.some(macro => macro.grams * macro.factor !== macro.kcal) || macroTotal !== 455 || workoutExample.some(set => set.reps * set.load !== set.volume) || workoutTotal !== 1260 || cigarettePeriods.map(period => period.dollars).join(',') !== '5,150,1825') throw new Error('Article illustration arithmetic failed.');
+
+const foodVisual = illustration('Review the full meal photo and separate extras', 'A full plate is framed by camera corners. A separate topping container and dressing bottle have review markers: portions and extras need checking, not an exact calorie claim.', `
+  <circle cx="1092" cy="82" r="180" fill="#dcead7"/><circle cx="43" cy="618" r="205" fill="#e2ebdc"/>
+  <path d="M130 173v-63h66M645 110h66v63M130 511v63h66M645 574h66v-63" fill="none" stroke="#6d937c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="422" cy="352" rx="236" ry="228" fill="#d9e3d6"/><circle cx="420" cy="337" r="221" fill="#fffdf6" stroke="#a7baaa" stroke-width="3"/><circle cx="420" cy="337" r="177" fill="#e9eddc" stroke="#d0ddcd" stroke-width="2"/>
+  <path d="M272 343c-12-102 62-167 141-147 69 18 91 126 36 181-57 56-145 36-177-34" fill="#ecdfb8"/>
+  <g fill="#faf3d4" transform="rotate(-17 349 281)">${Array.from({ length: 30 }, (_, index) => `<ellipse cx="${286 + (index % 6) * 24}" cy="${220 + Math.floor(index / 6) * 25}" rx="9" ry="4"/>`).join('')}</g>
+  <g stroke="#9d7846" stroke-width="2"><path d="M420 380c4-72 111-104 153-54 35 42-28 139-92 132-34-4-64-41-61-78" fill="#c5a074"/><path d="m444 356 49 57m-27-77 56 63m-27-78 47 56" stroke="#a08052" stroke-width="6" stroke-linecap="round"/></g>
+  <g fill="#75a36e" stroke="#5b8656" stroke-width="2"><circle cx="503" cy="230" r="31"/><circle cx="550" cy="249" r="27"/><circle cx="522" cy="284" r="27"/><path d="m502 235 18 53m18-26-22 31" stroke-width="6" stroke-linecap="round"/><ellipse cx="316" cy="424" rx="36" ry="26" transform="rotate(-27 316 424)"/><ellipse cx="339" cy="466" rx="33" ry="23" transform="rotate(19 339 466)"/></g>
+  <g fill="#d78665" stroke="#b9694f" stroke-width="2"><circle cx="381" cy="412" r="25"/><circle cx="355" cy="360" r="20"/></g>
+  <path d="M738 281h80M738 451h76" stroke="#8aa192" stroke-width="4" stroke-dasharray="7 10" fill="none"/>
+  <g transform="translate(825 189)"><rect x="6" y="18" width="187" height="139" rx="17" fill="#e6dac3" stroke="#a8956f" stroke-width="3"/><rect width="199" height="37" rx="10" fill="#d0ddc9" stroke="#8da589" stroke-width="3"/><g fill="#c4a45c">${Array.from({ length: 12 }, (_, index) => `<circle cx="${42 + (index % 4) * 40}" cy="${64 + Math.floor(index / 4) * 31}" r="9"/>`).join('')}</g></g>
+  <g transform="translate(863 370)"><rect x="19" width="65" height="31" rx="7" fill="#6f8c71"/><path d="M29 31h45v37c0 16 23 23 23 43v105c0 15-11 24-25 24H31c-14 0-25-9-25-24V111c0-20 23-27 23-43z" fill="#e1d4a1" stroke="#a8914f" stroke-width="3"/><path d="M12 149h79v62c0 10-7 17-17 17H29c-10 0-17-7-17-17z" fill="#c9b96f"/><path d="M53 84c-19 28-26 42-26 53a26 26 0 0 0 52 0c0-11-7-25-26-53" fill="#f9f2d6" stroke="#a8914f" stroke-width="2"/></g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="37" font-weight="700" text-anchor="middle" fill="#315044"><circle cx="1066" cy="224" r="34" fill="#fffdf6" stroke="#a7baaa" stroke-width="3"/><text x="1066" y="237">?</text><circle cx="1038" cy="428" r="34" fill="#fffdf6" stroke="#a7baaa" stroke-width="3"/><text x="1038" y="441">?</text></g>`);
+
+let macroOffset = 170;
+const macroVisual = illustration('Macro grams contribute different amounts of food energy', 'An illustrative stacked energy bar converts 30 grams protein to 120 kilocalories, 50 grams carbohydrate to 200 kilocalories, and 15 grams fat to 135 kilocalories, totaling 455.', `
+  <circle cx="1076" cy="91" r="179" fill="#e2eadc"/><circle cx="46" cy="600" r="203" fill="#e2eadc"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#193a2b">
+    <text x="600" y="132" font-size="48" font-weight="700">${macroTotal} kcal</text>
+    ${macroExample.map(macro => {
+      const width = 860 * macro.kcal / macroTotal;
+      const x = macroOffset;
+      macroOffset += width;
+      return `<rect x="${x}" y="237" width="${width}" height="138" fill="${macro.color}"/><text x="${x + width / 2}" y="205" font-size="36" font-weight="700">${macro.kcal} kcal</text><path d="M${x + width / 2} 215v14" stroke="${macro.color}" stroke-width="3"/>`;
+    }).join('')}
+    <path d="M170 403v13h860v-13" stroke="#829989" stroke-width="3" fill="none"/>
+    ${macroExample.map((macro, index) => {
+      const x = 162 + index * 306;
+      return `<rect x="${x}" y="459" width="264" height="116" rx="15" fill="${macro.pale}"/><circle cx="${x + 31}" cy="489" r="9" fill="${macro.color}"/><text x="${x + 145}" y="499" font-size="29" font-weight="700">${macro.name}</text><text x="${x + 132}" y="544" font-size="30">${macro.grams} g × ${macro.factor}</text>`;
+    }).join('')}
+  </g>`);
+
+const workoutVisual = illustration('Add volume from each unequal workout set', 'Three bars show set 1: 10 repetitions times 50 kilograms equals 500; set 2: 8 times 50 equals 400; set 3: 8 times 45 equals 360. Total volume load is 1260 kilograms.', `
+  <circle cx="1112" cy="83" r="178" fill="#dcead7"/><circle cx="36" cy="614" r="192" fill="#e2ebdc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#193a2b">
+    <g text-anchor="middle"><text x="600" y="111" font-size="46" font-weight="700">${workoutTotal.toLocaleString('en-US')} kg</text><text x="600" y="150" font-size="27">500 + 400 + 360</text></g>
+    ${workoutExample.map((set, index) => {
+      const y = 237 + index * 108;
+      const width = set.volume / 500 * 520;
+      return `<circle cx="153" cy="${y + 28}" r="23" fill="#d1e3d4"/><text x="153" y="${y + 38}" font-size="30" font-weight="700" text-anchor="middle">${set.set}</text><text x="211" y="${y + 37}" font-size="35">${set.reps} × ${set.load}</text><rect x="415" y="${y}" width="${width}" height="61" rx="10" fill="${set.color}"/><text x="${430 + width}" y="${y + 40}" font-size="35" font-weight="700">${set.volume}</text>`;
+    }).join('')}
+    <text x="250" y="602" font-size="26" text-anchor="middle">reps × kg</text><text x="688" y="602" font-size="26" text-anchor="middle">volume load (kg)</text>
+  </g>`);
+
+const cigaretteVisual = illustration('Example cigarette spending across three time periods', 'An invented 10-dollar pack of 20 and 10 cigarettes per day gives 5 dollars for 1 day, 150 dollars for 30 days and 1825 dollars for 365 days. Horizontal bars use a shared linear scale.', `
+  <circle cx="1083" cy="88" r="179" fill="#e2eadc"/><circle cx="39" cy="610" r="205" fill="#e2eadc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#193a2b">
+    <text x="600" y="115" font-size="32" font-weight="700" text-anchor="middle">10/day · $10/20-pack</text>
+    ${cigarettePeriods.map((period, index) => {
+      const y = 223 + index * 133;
+      const width = 675 * period.dollars / cigarettePeriods.at(-1).dollars;
+      return `<text x="186" y="${y + 31}" font-size="32" text-anchor="end">${period.days} ${period.days === 1 ? 'day' : 'days'}</text><path d="M229 ${y - 9}v76" stroke="#b2c3b0" stroke-width="2"/><rect x="229" y="${y}" width="${width}" height="50" rx="${Math.min(8, width / 2)}" fill="${['#85a68d', '#408564', '#23624c'][index]}"/><circle cx="${229 + width}" cy="${y + 25}" r="5" fill="#23624c"/><text x="${249 + width}" y="${y + 34}" font-size="35" font-weight="700">$${period.dollars.toLocaleString('en-US')}</text>`;
+    }).join('')}
+    <g transform="translate(76 547)" fill="#e8d69a" stroke="#b99d59" stroke-width="2"><ellipse cx="53" cy="38" rx="43" ry="12"/><path d="M10 24v13c0 16 86 16 86 0V24" fill="#d5be75"/><ellipse cx="53" cy="24" rx="43" ry="12"/><circle cx="132" cy="27" r="29"/><circle cx="132" cy="27" r="20" fill="none"/></g>
+    <text x="744" y="613" font-size="27" text-anchor="middle">Illustrative price · constant baseline</text>
+  </g>`);
+
+const illustrations = [
+  ['reverse-52-week-savings', reverseVisual],
+  ['100-envelope-challenge', envelopeVisual],
+  ['missing-number-puzzles', mathVisual],
+  ['food-photo-review', foodVisual],
+  ['calories-vs-macros', macroVisual],
+  ['workout-volume', workoutVisual],
+  ['cigarette-cost', cigaretteVisual],
+];
+for (const [name, svg] of illustrations) {
   writeAsset(`assets/guide-visuals/${name}.svg`, svg);
   const png = await sharp(Buffer.from(svg)).png({ compressionLevel: 9, adaptiveFiltering: false }).toBuffer();
   const metadata = await sharp(png).metadata();
   if (metadata.width !== 1200 || metadata.height !== 675) throw new Error(`Invalid illustration dimensions: ${name}`);
   writeAsset(`assets/guide-visuals/${name}.png`, png);
+  for (const width of [480, 800, 1200]) {
+    const webp = await sharp(Buffer.from(svg)).resize({ width }).webp({ quality: 86, effort: 6 }).toBuffer();
+    writeAsset(`assets/guide-visuals/${name}-${width}.webp`, webp);
+  }
 }
-console.log('Built 6 printable worksheet/CSV/SVG files and 3 original SVG/PNG guide illustrations.');
+console.log(`Built 6 printable worksheet/CSV/SVG files, ${illustrations.length} original SVG/PNG guide illustrations and ${illustrations.length * 3} responsive WebP variants.`);

@@ -103,7 +103,11 @@ const checkNoPersistence = async page => {
           assert.equal(await image.count(), 1);
           await image.scrollIntoViewIfNeeded();
           await image.evaluate(element => element.decode());
-          assert.deepEqual(await image.evaluate(element => [element.naturalWidth, element.naturalHeight]), [1200, 675], 'Guide image decodes at its stated dimensions');
+          const decoded = await image.evaluate(element => ({ width: element.naturalWidth, height: element.naturalHeight, currentSrc: element.currentSrc, declaredWidth: element.getAttribute('width'), declaredHeight: element.getAttribute('height') }));
+          assert.deepEqual([decoded.declaredWidth, decoded.declaredHeight], ['1200', '675'], 'Guide image retains its declared PNG fallback dimensions');
+          assert(decoded.width > 0 && decoded.height > 0 && Math.abs(decoded.height - decoded.width * 9 / 16) <= 1, 'Selected responsive image decodes at the diagram aspect ratio');
+          const selectedWidth = /-(480|800|1200)\.webp$/.exec(new URL(decoded.currentSrc).pathname)?.[1];
+          assert(selectedWidth || new URL(decoded.currentSrc).pathname.endsWith('.png'), 'Guide image selects a known WebP width or its PNG fallback');
           assert((await image.getAttribute('alt')).trim().length > 0, 'Guide image has descriptive alt text');
           assert((await visual.locator('figcaption').innerText()).trim().length > 0, 'Guide image has a visible caption');
           assert(await page.locator(`.guide-hero-actions a[href="${worksheetPath}"]`).isVisible(), 'Printable worksheet is reachable from the guide hero');

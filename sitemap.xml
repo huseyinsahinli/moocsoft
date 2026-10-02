@@ -155,12 +155,14 @@
   <!-- Generated guide pages: scripts/build-guides.mjs -->
   <url>
     <loc>https://moocsoft.net/guides/estimate-calories-from-food-photo/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/food-photo-review.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calories-vs-macros/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/calories-vs-macros.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/track-calories-homemade-meals/</loc>
@@ -207,7 +209,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-savings-goal-contributions/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/apps/savings-goal-tracker/screenshot-1.jpg</image:loc></image:image>
   </url>
   <url>
@@ -251,7 +253,8 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-cigarette-cost-and-savings/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/cigarette-cost.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quit-smoking-milestones-to-track/</loc>
@@ -272,7 +275,8 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/workout-volume-explained/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/workout-volume.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/rest-timer-between-sets/</loc>
@@ -280,7 +284,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/organize-weekly-workout-plan/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/track-progressive-overload-workout-log/</loc>
@@ -362,7 +366,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
@@ -370,11 +374,11 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>

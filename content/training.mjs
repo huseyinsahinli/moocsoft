@@ -30,7 +30,7 @@ export default [
     faq: [['Should I record warm-up sets?', 'If you record them, label them consistently so you can distinguish them from the working sets you intend to compare. The important part is not silently changing what a total includes.'], ['Should I log planned reps or actual reps?', 'Keep both if useful, but label them separately. The actual result is the record of what you completed.'], ['What should I record if I stop a workout early?', 'Keep the results for completed sets, leave remaining planned sets uncompleted, and add a brief note if useful. Do not copy the remaining targets into your actual results.']],
   },
   {
-    topic: 'training', slug: 'workout-volume-explained',
+    topic: 'training', slug: 'workout-volume-explained', modified: '2026-10-03',
     title: 'Workout Volume Explained: Sets × Reps × Weight',
     description: 'Calculate workout volume with equal or changing sets, avoid unit and dumbbell mistakes, and understand what the total can and cannot show.',
     intro: 'Volume load is one way to summarize weighted work: multiply repetitions by external load and add the sets. It is useful for a consistent comparison, but it is not a complete score of training quality.',
@@ -71,13 +71,18 @@ export default [
     faq: [['Which preset should I choose?', 'Use the interval from your training plan or appropriate coaching. The timer presets are controls, not individualized exercise advice.'], ['Will the browser timer sound when my phone is locked?', 'Do not rely on it as a background alarm. Keep the page visible and test behavior on your device; browsers can suspend background pages.']],
   },
   {
-    topic: 'training', slug: 'organize-weekly-workout-plan',
+    topic: 'training', slug: 'organize-weekly-workout-plan', modified: '2026-10-03',
     title: 'How to Organize a Weekly Workout Plan in Your App',
     description: 'Turn an existing training program into a weekly calendar with clear exercises, set targets, rest settings and a pre-workout review checklist.',
     intro: 'Once you have an appropriate training program, the next job is organization: put the right session on the right day and make every target clear enough to follow in the gym.',
     takeaway: 'Map an existing program to your available days, include rest and other activities, and check each exercise’s targets before starting. A calendar organizes the program; it does not validate it for you.',
     sections: [
-      ['Start with availability and the full week', `<p>Write down the days and time windows you can realistically use. Include work, travel and other activities that affect when you can train. A session that fits on paper but not in your day is difficult to follow consistently.</p><p>Strength sessions are only part of a wider activity routine. The CDC adult overview covers both aerobic and muscle-strengthening activity. Use appropriate guidance for your circumstances rather than assuming that a gym calendar alone covers every need.</p><p>If you are new to training or have health considerations, get help choosing a suitable program before filling the planner with exercise targets.</p>`],
+      ['Start with availability and the full week', `<p>Write down the days and time windows you can realistically use. Include work, travel and other activities that affect when you can train. A session that fits on paper but not in your day is difficult to follow consistently.</p><p>If you are new to training or have health considerations, get help choosing a suitable program before filling the planner with exercise targets.</p>`],
+      ['Keep the wider activity routine visible', `<p>The <a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener">CDC overview of adult physical activity</a> includes both aerobic and muscle-strengthening activity. A lifting calendar alone does not describe the whole routine. Use guidance appropriate to your circumstances; this worksheet is not a way to prescribe a program.</p>` + table('Calendar review for a program you already have', ['Part of the week', 'Planning note', 'What the calendar does not decide'], [
+        ['Strength sessions', 'Exercises, set targets and rest from your existing program', 'Suitable load, technique or progression'],
+        ['Aerobic activity', 'When an appropriate planned activity fits around other commitments', 'Suitable intensity or duration'],
+        ['Recovery and schedule constraints', 'Rest, travel and other commitments that affect availability', 'Whether you are medically ready to train'],
+      ]) + `<p>Before copying a week forward, check whether those activities compete for the same time slot. Keep planned and completed activity distinct, and leave a short note when the schedule changes. Did You Lift organizes your gym targets and logged sets; a separate calendar note can hold other activities without implying that the app measures them.</p>`],
       ['Translate each session into specific fields', table('A weekly-planning worksheet', ['Field', 'What to enter', 'What to check'], [
         ['Day and planned time', 'A realistic session slot', 'Travel and equipment access'],
         ['Exercise and equipment', 'A clear movement name', 'Matches the intended program'],

@@ -163,8 +163,17 @@ for (const guide of guides) {
       check(meta.some(tag => tag.property === 'og:image:alt' && tag.content === visual.alt), file, 'Missing representative image alt metadata');
       const figure = html.match(/<figure class="guide-visual">([\s\S]*?)<\/figure>/)?.[1] || '';
       const img = tags(figure, 'img')[0];
+      const source = tags(figure, 'source');
+      check(tags(figure, 'picture').length === 1 && source.length === 1, file, 'Representative diagram must have exactly one responsive picture/source');
+      check(source[0]?.type === 'image/webp', file, 'Responsive diagram source must identify the WebP format');
+      check(source[0]?.srcset === visual.webp.map(image => `${image.src} ${image.width}w`).join(', '), file, 'Responsive diagram srcset differs from its registered variants');
+      check(Boolean(source[0]?.sizes?.trim()), file, 'Responsive diagram requires a sizes hint');
+      for (const variant of visual.webp) {
+        check(Boolean(localTarget(new URL(variant.src, documentUrl(file)))), file, `Missing responsive diagram: ${variant.src}`);
+      }
       check(img?.src === visual.src && img?.alt === visual.alt, file, 'Representative image must be visible in the article with matching alt text');
       check(Number(img?.width) === visual.width && Number(img?.height) === visual.height, file, 'Representative image dimensions differ from source');
+      check(img?.loading === 'lazy' && img?.decoding === 'async', file, 'Below-the-fold diagram must use lazy loading and asynchronous decoding');
       check(figure.includes(decode(visual.caption).replaceAll('&', '&amp;')), file, 'Representative image caption is missing');
       try {
         const asset = localTarget(new URL(visual.src, documentUrl(file)));

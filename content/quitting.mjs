@@ -4,7 +4,7 @@ import { cigaretteCostCalculator } from './cigarette-cost.mjs';
 export default [
   {
     topic: 'quitting', slug: 'calculate-cigarette-cost-and-savings',
-    modified: '2026-10-02',
+    modified: '2026-10-03',
     assets: ['cigarette-cost'],
     startAction: ['#step-1', 'Calculate cigarette costs below ↓'],
     title: 'Cigarette Cost Calculator: Day, Month & Year',

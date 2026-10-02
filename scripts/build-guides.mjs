@@ -38,7 +38,13 @@ for (const [slug, visual] of Object.entries(guideMedia)) {
       || visual.width !== 1200 || visual.height !== 675 || !visual.alt || !visual.caption) {
     throw new Error(`Invalid guide media: ${slug}`);
   }
+  if (visual.webp.length !== 3 || visual.webp.some((image, index) => image.width !== [480, 800, 1200][index]
+      || image.height !== image.width * 9 / 16 || image.src !== visual.src.replace(/\.png$/, `-${image.width}.webp`))) {
+    throw new Error(`Invalid responsive guide media: ${slug}`);
+  }
 }
+// Match the article column in assets/content.css, including the two mobile margins.
+const imageSizes = '(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 40px), (max-width: 1054px) calc(100vw - 294px), 760px';
 for (const guide of guides) {
   if (!apps[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
@@ -61,7 +67,7 @@ for (const guide of guides) {
   <div class="guide-layout">
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
-      ${visual ? `<figure class="guide-visual"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
+      ${visual ? `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.</p>
     </article>

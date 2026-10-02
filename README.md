@@ -12,12 +12,15 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - Health content must distinguish record-keeping from treatment, link to primary sources where appropriate, and avoid promising medical outcomes. Store links must reflect verified platform availability.
 - High-intent guides may set `appPreview: true` to show the matching conversion block from `content/app-previews.mjs`. Use real public app screenshots, accurate captions and current purchase boundaries; do not imply unsupported features.
 - `content/guide-media.mjs` registers original diagrams displayed in selected articles. The build uses each diagram consistently for Article, Open Graph, Twitter and image-sitemap metadata. Only images actually shown in an article belong in its sitemap entry.
+- Link to trustworthy primary references in the paragraph they support, with descriptive anchor text and original explanations rather than copied passages. Editorial references are not paid links; do not mark all of them `nofollow`. References and images help readers, but do not guarantee search rankings, clicks or app installs.
 
 ## Free printable worksheets
 
 The reverse 52-week chart, 100-envelope checklist and missing-number question sheet are free static website outputs in `assets/worksheets/`, separate from paid app features. Printable HTML is intentionally `noindex, follow`; the corresponding guide is the search destination. Browser printing needs no account, library or network request. Checkboxes are temporary and are not saved or imported into an app.
 
-Edit `scripts/build-search-assets.mjs` (puzzle values live in `content/puzzle-worksheet.mjs`), make the development-only `sharp` package available, and run `node scripts/build-search-assets.mjs` before `node scripts/build-guides.mjs`. It emits deterministic CSV/HTML/native SVG files and 1200×675 PNG diagrams. No image library is loaded on the deployed site. Commit sources and generated outputs together.
+Edit `scripts/build-search-assets.mjs` (puzzle values live in `content/puzzle-worksheet.mjs`), make the development-only `sharp` package available, and run `node scripts/build-search-assets.mjs` before `node scripts/build-guides.mjs`. It emits deterministic CSV/HTML/native SVG files, 1200×675 PNG diagrams and 480/800/1200px WebP variants. No image library is loaded on the deployed site. Commit sources and generated outputs together.
+
+Seven guides display original diagrams. Their `<picture>` elements use width-based WebP `srcset` and layout-matched `sizes`, with a crawlable PNG fallback, explicit dimensions, descriptive alt text and visible explanatory captions. PNG remains the representative Article/social/sitemap image; the browser chooses a smaller WebP when appropriate. These are illustrations and worked examples, not invented app screenshots. Keep below-the-fold images lazy-loaded; do not apply that rule blindly to above-the-fold or largest-content images.
 
 ## Brand assets
 
@@ -32,6 +35,8 @@ Serve the repository with a static HTTP server. Check mobile and desktop layouts
 Run `node scripts/build-guides.mjs` followed by `node scripts/test-marketing.mjs` to check generated guide metadata, download links, preview assets and sitemap coverage without installing dependencies.
 
 Run `node scripts/test-search-assets.mjs` to verify exact worksheet arithmetic, CSV rows, privacy boundaries and diagram dimensions. With development-only Playwright plus Chrome and a local server on port 4195, run `node scripts/test-search-worksheets.cjs` for mobile/desktop, no-JavaScript and print-mode checks. `MOOCSOFT_TEST_URL` overrides the port; optional `MOOCSOFT_QA_DIR` saves screenshots outside the repository.
+
+Run `node scripts/test-guide-images.cjs` with the same development-only browser setup and a server on port 4196 to check all seven diagrams at mobile/desktop widths and 1×/2× pixel densities, PNG fallback, no-JavaScript rendering and top store buttons. `MOOCSOFT_TEST_URL` overrides the server; `MOOCSOFT_QA_DIR` keeps screenshots outside the public repository. Static image tests check every WebP's file header, dimensions and size against the PNG fallback.
 
 Run `node scripts/test-store-attribution.mjs` for static Google Play campaign labels. The builder tags only known app-store anchors with the public source (`moocsoft`), page and placement; canonical/schema store URLs remain unchanged. No cookies, visitor IDs, calculator inputs or new analytics requests are added. In Play Console, use the Ads and referrals traffic source and UTM source/campaign filters. Store-page visits and Install/Open button clicks are not completed installs; review acquisition reports separately.
 
