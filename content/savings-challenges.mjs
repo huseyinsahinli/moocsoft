@@ -1,0 +1,37 @@
+import { table } from './apps.mjs';
+
+const dollars = amount => '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+const groupedChart = Array.from({ length: 10 }, (_, index) => {
+  const first = index * 10 + 1;
+  const last = first + 9;
+  return [`${first}–${last}`, dollars(10 * (first + last) / 2), dollars(last * (last + 1) / 2)];
+});
+
+export default [
+  {
+    topic: 'savings', slug: '100-envelope-challenge', published: '2026-10-02', appPreview: true,
+    title: '100 Envelope Challenge: Chart, Rules & $5,050 Total',
+    description: 'See the 100 envelope challenge chart and why the total is $5,050. Compare smaller-budget versions, skip the 100-day pressure, and track real deposits.',
+    intro: 'The 100 envelope challenge labels envelopes from 1 to 100 and fills each with the matching dollar amount. Complete every number once and the deposits total $5,050. The catch: finishing in 100 days means setting aside an average of $50.50 a day.',
+    takeaway: 'The $5,050 total comes from 100 completed deposits, not a promised result. Choose an affordable multiplier and schedule first, then mark each number only after you have actually saved its amount.',
+    sections: [
+      ['How the 100 envelope challenge works', `<p>Write the numbers 1 through 100 on envelopes or in a checklist. Number 1 represents $1, number 37 represents $37, and number 100 represents $100. When you set aside that amount, mark the matching number complete. Use each number once.</p><p class="guide-formula">1 + 2 + … + 100 = 100 × 101 ÷ 2 = $5,050</p><p>You can check the sum by pairing opposite ends: $1 + $100, $2 + $99, and so on. Each pair is $101, and 50 pairs make $5,050. This is money you contribute, not interest, an investment return or extra income created by the challenge.</p>`],
+      ['Why “save $5,050 in 100 days” can be misleading', `<p>One completed envelope a day finishes the checklist in 100 days, but that schedule requires $5,050 of available money over the period. The smallest contribution is $1, the largest is $100, and the average across all 100 is $50.50.</p><p>Drawing numbers randomly changes the order, not the cost. You could draw $98, $99 and $100 close together: $297 across three deposits. Compare the largest possible deposits with money left after essential expenses, not just the inviting $1 opening amount.</p><p>There is no requirement to use consecutive days. A challenge that fits your cash flow is more useful than a deadline you can meet only by borrowing or leaving bills unpaid.</p>`],
+      ['100 envelope challenge chart: every ten numbers', table('Classic dollar amounts: complete every number in a group to reach its total', ['Envelope numbers', 'Group deposit total', 'Cumulative total'], groupedChart) + `<p>The cumulative column assumes groups are completed in numerical order. Otherwise, add the amounts actually completed. Ten filled envelopes do not automatically mean $55; that total applies specifically to numbers 1 through 10. Keep a separate 1–100 checklist for individual numbers.</p>`],
+      ['Use a smaller-budget version before starting', `<p>Multiply every envelope number by the same amount to resize the challenge. With a $0.10 multiplier, number 37 means $3.70. With $0.50, it means $18.50. The checklist still has 100 numbers; only the contribution amounts change.</p>` + table('Resized challenge totals, assuming all 100 contributions are completed', ['Multiplier', 'Number 1', 'Number 100', 'Full total'], [
+        ['$0.10', '$0.10', '$10', '$505'],
+        ['$0.50', '$0.50', '$50', '$2,525'],
+        ['$1', '$1', '$100', '$5,050'],
+      ]) + `<p>If uneven amounts are the problem, replace the numbered rule with a flat plan. One hundred $5 deposits total $500; $10 every week for 52 weeks totals $520. Those are different plans, not completed $5,050 challenges. For another gradual option, compare the <a href="/guides/52-week-savings-challenge/">52-week savings challenge chart</a>.</p>`],
+      ['Build the schedule around your paydays', `<p>Before drawing a number, list your next pay dates, bills and affordable contribution amounts. Choose numbers that fit that plan rather than treating a random draw as a payment you owe.</p><p>For predictable classic deposits, completing one opposite-number pair per week means $101 each week for 50 weeks. That is still a substantial commitment. A $0.10 version needs $10.10 weekly and totals $505 after 50 completed pairs. For every-other-payday contributions, use the <a href="/guides/biweekly-savings-plan/">biweekly planning guide</a> to count usable dates.</p><p>The CFPB’s Your Money, Your Goals toolkit provides separate tools for savings planning, income tracking and cash-flow budgeting. Use those jobs together: a challenge organizes deposits; it does not show that the next one is affordable. For a dated purchase, calculate the required amount with the <a href="/guides/calculate-savings-goal-contributions/">savings contribution worksheet</a> instead.</p>`],
+      ['Keep the checklist and the saved balance honest', `<p>Suppose you complete numbers 4, 20 and 37 in the classic version. Your contribution total is $61 and three numbers are complete. Saving another $10 without assigning it to a number makes the real balance $71, but does not complete an additional numbered envelope.</p><p>Keep that extra amount clearly labeled until you decide how it belongs in the plan. If you withdraw money, reduce the available balance and note what happened. A colored checklist alone cannot show whether the money remains reserved.</p><p>You do not need physical envelopes: a personal note can hold the number checklist while an account or another suitable place holds the money. Choose storage based on security and access needs, not the photo appeal of cash-filled envelopes.</p>`],
+      ['Turn the challenge into a goal you can update on your phone', `<p>In <a href="/savings-goal-tracker/">Savings Goal Tracker</a>, create one goal named for the purpose, such as “Travel fund — 100 envelope plan.” Enter your chosen target, starting amount and realistic target date. Record each real contribution with its date and amount; keep the separate numbered checklist in your personal note.</p><p>The app records goals, contributions and progress. It does not automatically run this 100-envelope method, connect to your bank or move money. It is free to download, with optional Premium for unlimited goals and PDF/Excel exports. Begin with an affordable version and one accurate record, not 100 separate app goals.</p>`],
+    ],
+    sources: ['savings'],
+    faq: [
+      ['How much money does the 100 envelope challenge save?', 'The classic $1-to-$100 version totals $5,050 if every numbered contribution is completed once. A $0.10 multiplier totals $505; a $0.50 multiplier totals $2,525. These totals exclude interest, fees and withdrawals.'],
+      ['Do I have to finish the challenge in 100 days?', 'No. One contribution daily takes 100 days, but you can use a longer schedule that fits your income and expenses. The total depends on completed contributions, not the speed of completion.'],
+      ['Can I do the 100 envelope challenge without cash?', 'Yes. Keep a numbered checklist and set the money aside in a place appropriate for you. Record actual deposits in a savings tracker, then reconcile that record with the money reserved for the goal.'],
+    ],
+  },
+];

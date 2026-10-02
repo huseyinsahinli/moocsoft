@@ -116,6 +116,7 @@ export const apps = {
 };
 
 export const sources = {
+  menuCalories: ['FDA: Menu labeling requirements and restaurant nutrition information', 'https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/menu-labeling-requirements'],
   portions: ['FDA: Serving size on the Nutrition Facts label', 'https://www.fda.gov/food/nutrition-facts-label/serving-size-nutrition-facts-label'],
   energy: ['USDA FoodData Central: Nutrient and energy calculations', 'https://fdc.nal.usda.gov/Foundation_Foods_Documentation/'],
   savings: ['CFPB: Your Money, Your Goals savings worksheets', 'https://www.consumerfinance.gov/consumer-tools/educator-tools/your-money-your-goals/toolkit/'],
