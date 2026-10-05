@@ -7,9 +7,11 @@ import { head, header, footer, card, download, resultDownload, appPreview, choic
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
+import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
+const selectRelatedGuides = createRelatedGuideSelector(guides);
 const modified = guide => guide.modified || guide.published || published;
 const latest = list => list.map(modified).sort().at(-1) || published;
 const toolCount = Object.values(apps).filter(app => app.tool).length;
@@ -65,17 +67,17 @@ for (const guide of guides) {
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
   <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? `<a href="#app-preview-title">See ${e(app.name)} in action ↓</a>` : ''}</div></div>
   <div class="guide-layout">
+    <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${storeLinks(app, 'sidebar')}</aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
       ${visual ? `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.</p>
     </article>
-    <aside class="guide-toc" aria-label="On this page"><p>ON THIS PAGE</p><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li></ol>${storeLinks(app, 'sidebar')}</aside>
   </div>
-  ${guide.appPreview ? appPreview(guide.topic) : ''}
+  ${guide.appPreview ? appPreview(guide.topic, guide.previewCopy) : ''}
   ${download(app)}
-  <section class="guide-related"><span class="guide-kicker">Keep exploring</span><h2>More ${e(app.category.toLowerCase())} guides</h2><div class="guide-card-grid">${guides.filter(g => g.topic === guide.topic && g.slug !== guide.slug).map(card).join('')}</div></section>
+  <section class="guide-related" aria-label="Suggested next reads"><span class="guide-kicker">Your next useful step</span><h2>Keep exploring ${e(app.category.toLowerCase())}</h2><div class="guide-card-grid">${selectRelatedGuides(guide).map(card).join('')}</div><div class="guide-hero-actions"><a href="/guides/${guide.topic}/">Browse all ${e(app.category.toLowerCase())} guides →</a></div></section>
 </main>
 ${footer()}
 </body>

@@ -7,6 +7,7 @@ import { appPreviews } from '../content/app-previews.mjs';
 import { guides } from '../content/index.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { canonicalStoreUrl, pageCampaign } from '../content/store-attribution.mjs';
+import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = new URL(site).origin;
@@ -25,6 +26,7 @@ const attrs = tag => Object.fromEntries([...tag.matchAll(/([^\s=<>/]+)\s*=\s*(?:
   .map(match => [match[1].toLowerCase(), decode(match[2] ?? match[3] ?? match[4])]));
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'gi'))].map(match => attrs(match[0]));
 const classes = value => (value || '').split(/\s+/);
+const eText = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const documentUrl = file => `${site}/${relative(root, file).split(sep).join('/').replace(/index\.html$/, '')}`;
 const storeDestinations = links => links.map(link => canonicalStoreUrl(link.href)).sort();
 const expectedStores = app => [app.apple, app.google].filter(Boolean).map(canonicalStoreUrl).sort();
@@ -140,11 +142,21 @@ for (const [file, html] of pages) {
 }
 
 let previewCount = 0;
+const selectRelatedGuides = createRelatedGuideSelector(guides);
 for (const guide of guides) {
   const file = resolve(root, 'guides', guide.slug, 'index.html');
   const html = pages.get(file);
   check(Boolean(html), file, 'Missing generated guide; run node scripts/build-guides.mjs');
   if (!html) continue;
+  check(html.indexOf('<aside class="guide-toc"') < html.indexOf('<article class="guide-article"'), file, 'Mobile section navigation must precede the article in reading order');
+  const toc = html.match(/<aside class="guide-toc"[^>]*>([\s\S]*?)<\/aside>/)?.[1] || '';
+  check(/<details class="guide-toc-menu">/.test(toc), file, 'Section navigation must be a native, initially collapsed details menu');
+  check(tags(toc, 'a').filter(link => /^#step-\d+$/.test(link.href)).length === guide.sections.length, file, 'Section navigation must cover each article section');
+  check(tags(html, 'script').some(script => script.src === '/assets/guide-navigation.js'), file, 'Missing progressive navigation enhancement');
+  const nextReads = html.match(/<section class="guide-related" aria-label="Suggested next reads">([\s\S]*?)<\/section>/)?.[1] || '';
+  const relatedLinks = tags(nextReads, 'a').filter(link => classes(link.class).includes('guide-card'));
+  check(JSON.stringify(relatedLinks.map(link => link.href)) === JSON.stringify(selectRelatedGuides(guide).map(next => `/guides/${next.slug}/`)), file, 'Expected exactly three curated next reads, in editorial order');
+  check(tags(nextReads, 'a').some(link => link.href === `/guides/${guide.topic}/`), file, 'Full topic hub must remain reachable');
   const articles = (schemas.get(file) || []).filter(node => [].concat(node['@type'] || []).includes('Article'));
   check(articles.length === 1, file, `Expected one Article schema; found ${articles.length}`);
   if (articles[0]) {
@@ -200,6 +212,8 @@ for (const guide of guides) {
   if (!preview) continue;
   const app = apps[guide.topic];
   const previewHtml = previews[0][2];
+  const copy = { ...preview, ...guide.previewCopy };
+  check(previewHtml.includes(eText(copy.heading)) && previewHtml.includes(eText(copy.description)), file, 'App preview must use its contextual heading and description');
   const stores = tags(previewHtml, 'a').filter(link => link['data-placement'] === 'guide-preview');
   check(JSON.stringify(storeDestinations(stores)) === JSON.stringify(expectedStores(app)), file, 'App preview store URLs do not match the app catalogue');
   check(stores.every(link => link['data-app'] === app.slug), file, 'App preview links identify the wrong app');

@@ -20,7 +20,8 @@ export default [
     faq: [['How many habits should I track at once?', 'Start with a number you can review honestly—often one new habit is enough. Add another only when the record remains useful.'], ['What makes a habit easy to track?', 'A clear action, a definition of done and a realistic schedule make the completion decision visible.']],
   },
   {
-    topic: 'habits', slug: 'monthly-habit-tracker', published: '2026-09-22',
+    topic: 'habits', slug: 'monthly-habit-tracker', published: '2026-09-22', modified: '2026-10-05', appPreview: true,
+    previewCopy: { heading: 'Set up the next month on your phone', description: 'Choose a repeat schedule in Habit Tracker Daily and record the actions you complete. The printable examples and web calendar remain separate from your app record.' },
     title: 'Monthly Habit Tracker: Set Up and Review Your Calendar',
     description: 'Create a monthly habit tracker with clear completion rules, planned days, an honest completion-rate calculation and a practical end-of-month review.',
     intro: 'A monthly calendar can show patterns that a single streak hides. Set the rules before the month begins, then review completed and planned days together.',

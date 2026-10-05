@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workout Volume Calculator: Sets × Reps × Weight</title>
-  <meta name="description" content="Calculate workout volume in kg or lb, download a free CSV workout log, and time rests between sets. Add exercises with no sign-up.">
+  <title>Workout Volume Calculator &amp; Rest Timer</title>
+  <meta name="description" content="Calculate sets × reps × weight in kg or lb, total your exercises and download a free CSV log. Includes a rest timer; no sign-up.">
   <meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#f4efe6">
   <link rel="canonical" href="https://moocsoft.net/tools/workout-volume-rest-timer/">  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/tools.css">
   <style>:root{--accent:#e9ff43;--accent-rgb:233,255,67}.eyebrow,.exercise-row .field-label{color:#e9ff43}.button:hover{color:#090a0c}.workout-export{padding:22px;border-bottom:1px solid var(--border)}.workout-export .button{width:100%}.workout-export p{margin:10px 0 0;color:var(--muted);font-size:.82rem}.result-big,.result-item strong{overflow-wrap:anywhere}</style>
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Workout Volume Calculator: Sets × Reps × Weight"><meta property="og:description" content="Calculate workout volume, download a free CSV workout log and time every rest period."><meta property="og:url" content="https://moocsoft.net/tools/workout-volume-rest-timer/"><meta property="og:image" content="https://moocsoft.net/assets/social/moocsoft-og.png"><meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Workout Volume Calculator &amp; Rest Timer"><meta property="og:description" content="Calculate sets × reps × weight in kg or lb, total your exercises and download a free CSV log. Includes a rest timer; no sign-up."><meta property="og:url" content="https://moocsoft.net/tools/workout-volume-rest-timer/"><meta property="og:image" content="https://moocsoft.net/assets/social/moocsoft-og.png"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Workout Volume Calculator and Rest Timer","url":"https://moocsoft.net/tools/workout-volume-rest-timer/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free workout volume calculator with a CSV workout log download and a browser-based gym rest timer."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is workout volume calculated?","acceptedAnswer":{"@type":"Answer","text":"For each weighted exercise, workout volume is sets multiplied by reps multiplied by weight. Exercise totals are then added together."}},{"@type":"Question","name":"How long should I rest between sets?","acceptedAnswer":{"@type":"Answer","text":"Rest needs depend on the exercise, intensity, goal and individual. The timer includes common presets, but it does not prescribe a training program."}}]}]}</script>
   <link rel="stylesheet" href="/assets/content.css">
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
@@ -23,7 +23,7 @@
   </header>
   <main id="main-content">
     <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Workout volume &amp; timer</div>
-    <section class="wrap tool-hero"><span class="eyebrow">Free gym calculator</span><h1>Workout Volume Calculator and Rest Timer</h1><p class="hero-copy">Calculate workout volume as sets × reps × entered weight, plus total sets and reps. Download a free CSV workout log with your exercises and totals, then time your rests. The kg/lb selector labels your entries; it does not convert them.</p></section>
+    <section class="wrap tool-hero"><span class="eyebrow">Free gym calculator</span><h1>Workout Volume Calculator and Rest Timer</h1><p class="hero-copy">Total your exercise rows, download a free CSV workout log and time rests between sets. The kg/lb selector labels your entries; it does not convert them.</p><div class="tool-quick-answer"><p><strong>Workout volume load = sets × reps × entered weight.</strong> Three sets of 10 reps at 50 kg total 1,500 kg. If reps or load change, add one row per set and sum the results. This total describes your entries, not training quality.</p></div></section>
     <section class="wrap calculator-layout" aria-label="Workout calculator and rest timer">
       <div class="panel panel-main">
         <div class="panel-head"><h2>Build this workout.</h2><p>Volume is calculated as sets × reps × weight for each exercise.</p></div>
@@ -144,15 +144,17 @@
       });
 
       let selectedSeconds = 90, remaining = 90, timerId = null;
+      const pageTitle = document.title;
       const display = document.getElementById('timer-display'), toggle = document.getElementById('timer-toggle');
-      function paintTimer() { display.textContent = `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`; document.title = timerId ? `${display.textContent} · Rest Timer` : 'Workout Volume Calculator: Sets × Reps × Weight'; }
-      function stopTimer() { clearInterval(timerId); timerId = null; toggle.textContent = remaining === 0 ? 'Start again' : 'Start timer'; }
+      function paintTimer() { display.textContent = `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`; document.title = timerId ? `${display.textContent} · Rest Timer` : pageTitle; }
+      function stopTimer() { clearInterval(timerId); timerId = null; toggle.textContent = remaining === 0 ? 'Start again' : 'Start timer'; paintTimer(); }
       document.querySelectorAll('.timer-preset').forEach((button) => button.addEventListener('click', () => { stopTimer(); selectedSeconds = Number(button.dataset.seconds); remaining = selectedSeconds; paintTimer(); }));
       toggle.addEventListener('click', () => {
         if (timerId) { stopTimer(); toggle.textContent = 'Resume timer'; return; }
         if (remaining === 0) remaining = selectedSeconds;
         toggle.textContent = 'Pause timer';
         timerId = setInterval(() => { remaining = Math.max(0, remaining - 1); paintTimer(); if (remaining === 0) { stopTimer(); display.setAttribute('aria-live', 'assertive'); setTimeout(() => display.setAttribute('aria-live', 'off'), 1000); } }, 1000);
+        paintTimer();
       });
       document.getElementById('timer-reset').addEventListener('click', () => { stopTimer(); remaining = selectedSeconds; paintTimer(); });
       paintTimer();

@@ -4,7 +4,8 @@ import { cigaretteCostCalculator } from './cigarette-cost.mjs';
 export default [
   {
     topic: 'quitting', slug: 'calculate-cigarette-cost-and-savings',
-    modified: '2026-10-03',
+    modified: '2026-10-05', appPreview: true,
+    previewCopy: { heading: 'Calculated the cost? Track the smoke-free time next.', description: 'If you decide to quit, QuitBit keeps your elapsed time and estimated spending avoided visible. The calculator inputs above are not imported into the app.' },
     assets: ['cigarette-cost'],
     startAction: ['#step-1', 'Calculate cigarette costs below ↓'],
     title: 'Cigarette Cost Calculator: Day, Month & Year',
@@ -28,7 +29,8 @@ export default [
     faq: [['Are these current cigarette prices?', 'No. The examples use an invented $10 pack price. Enter the price and pack size you actually use for a personal estimate.'], ['Is money avoided the same as money in my savings account?', 'No. It estimates cigarette spending you did not incur. Your actual saved balance depends on what you set aside and any other spending.']],
   },
   {
-    topic: 'quitting', slug: 'quit-smoking-milestones-to-track',
+    topic: 'quitting', slug: 'quit-smoking-milestones-to-track', modified: '2026-10-05', appPreview: true,
+    previewCopy: { heading: 'Keep your next milestone close', description: 'Use QuitBit to record smoke-free time and personal milestones, with mood notes and journal entries alongside the counter.' },
     title: 'Quit-Smoking Milestones: Track Time, Savings and Your Wins',
     description: 'Create personal smoke-free checkpoints with a milestone worksheet, example savings totals, and a simple plan for recording difficult days.',
     intro: 'A milestone gives you a moment to notice progress and decide what support you need next. You can track smoke-free time, estimated spending avoided and the everyday situations you handled differently.',

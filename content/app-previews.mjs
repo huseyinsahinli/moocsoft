@@ -33,4 +33,22 @@ export const appPreviews = {
     alt: 'Did You Lift set logging screen with actual rep and kilogram fields and a Premium Last time comparison',
     caption: 'Official iPhone store screenshot. Actual set logging is a core feature; the “Last time” comparison requires Premium.',
   },
+  quitting: {
+    heading: 'Keep your smoke-free record in QuitBit',
+    description: 'Put a smoke-free timer, estimated spending avoided and personal milestones together on your iPhone or iPad.',
+    steps: ['Create a quit-smoking target.', 'Review elapsed time and estimated savings.', 'Use mood notes, journal entries and reset history to keep the record in context.'],
+    note: 'Free to download with optional in-app purchases. Check the store for current access. Estimates are not an account balance; QuitBit is a progress tracker, not cessation treatment.',
+    image: '/assets/apps/quitbit/screenshot-2.jpg', width: 554, height: 1200,
+    alt: 'QuitBit store screenshot showing quit-smoking and gaming targets with abstinence timers',
+    caption: 'Official iPhone store screenshot with example targets. Interface may vary by version.',
+  },
+  habits: {
+    heading: 'Give your routine a schedule in Habit Tracker Daily',
+    description: 'Create a habit, choose its repeat schedule and review calendar check-ins on your phone.',
+    steps: ['Name one clear action and choose its start date.', 'Set the repeat schedule and completion target.', 'Mark completed actions and review your calendar.'],
+    note: 'Free to download with optional in-app purchases. On iOS, unlimited habits, detailed statistics, ready-made habits and file import/export require Premium. Web calendar entries are not automatically imported.',
+    image: '/assets/apps/habit-tracker/screenshot-2.jpg', width: 554, height: 1200,
+    alt: 'Habit Tracker Daily store screenshot with habit name, repeat days and completions per day',
+    caption: 'Official iPhone store screenshot. Ready-made habits include Premium features; interface may vary by version.',
+  },
 };

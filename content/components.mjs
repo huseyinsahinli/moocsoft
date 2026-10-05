@@ -35,9 +35,13 @@ export function resultDownload(topic) {
   return `<div class="result-download" data-nosnippet aria-label="Continue with ${e(app.name)}"><h3>${e(copy[0])}</h3><p>${e(copy[1])}</p>${storeLinks(app, 'calculator-result')}<small>${e(copy[2])}</small><a class="result-download-details" href="/${app.slug}/">See ${e(app.name)} features →</a></div>`;
 }
 
-export function appPreview(topic) {
-  const preview = appPreviews[topic];
-  if (!preview) throw new Error(`Missing app preview for ${topic}`);
+export function appPreview(topic, copy = {}) {
+  if (!appPreviews[topic]) throw new Error(`Missing app preview for ${topic}`);
+  if (Object.keys(copy).some(key => !['heading', 'description'].includes(key)) || Object.values(copy).some(value => typeof value !== 'string' || !value.trim())) {
+    throw new Error(`Invalid app preview copy for ${topic}`);
+  }
+  // Only contextual copy may vary; screenshots, purchase boundaries and destinations stay shared.
+  const preview = { ...appPreviews[topic], ...copy };
   const app = apps[topic];
   return `<section class="guide-app-preview${preview.image ? ' has-image' : ''}" data-nosnippet aria-labelledby="app-preview-title">
     <div class="guide-preview-intro"><span class="guide-kicker">From this guide to your phone</span><h2 id="app-preview-title">${e(preview.heading)}</h2><p>${e(preview.description)}</p></div>
@@ -76,6 +80,7 @@ export function head(title, description, path, graph, app, assets = [], visual) 
   const url = site + path;
   if (assets.some(name => !/^[a-z0-9-]+$/.test(name))) throw new Error('Invalid guide asset name');
   const image = visual || { src: '/assets/social/moocsoft-og.png', width: 1200, height: 630 };
+  const articlePage = graph.some(node => node['@type'] === 'Article');
   const enhancements = assets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">\n  <script src="/assets/${name}.js" defer></script>`).join('');
   return `<!DOCTYPE html>
 <html lang="en">
@@ -92,8 +97,8 @@ export function head(title, description, path, graph, app, assets = [], visual) 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/tools.css">
-  <link rel="stylesheet" href="/assets/content.css">${enhancements}
-  <meta property="og:type" content="${graph.some(node => node['@type'] === 'Article') ? 'article' : 'website'}">
+  <link rel="stylesheet" href="/assets/content.css">${enhancements}${articlePage ? '\n  <script src="/assets/guide-navigation.js" defer></script>' : ''}
+  <meta property="og:type" content="${articlePage ? 'article' : 'website'}">
   <meta property="og:site_name" content="Moocsoft">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="${e(title)}">

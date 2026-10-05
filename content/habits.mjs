@@ -45,7 +45,8 @@ export default [
     faq: [['Should a planned rest day break my habit streak?', 'That depends on whether the metric is based on calendar days or scheduled opportunities. Choose and label a rule that matches the routine.'], ['Can the free calendar track a Monday-and-Thursday schedule?', 'It is a daily calendar and does not account for custom schedules. Use the mobile app’s scheduling options for selected-day routines.']],
   },
   {
-    topic: 'habits', slug: 'habit-streak-vs-completion-rate',
+    topic: 'habits', slug: 'habit-streak-vs-completion-rate', modified: '2026-10-05', appPreview: true,
+    previewCopy: { heading: 'Track the schedule behind your streak', description: 'Habit Tracker Daily lets you choose a repeat schedule and mark calendar check-ins. Review the plan as well as the streak; detailed statistics require Premium on iOS.' },
     title: 'Habit Streak vs Completion Rate: What Each Number Means',
     description: 'Understand current streak, longest streak and completion rate with a 14-day example and clear rules for daily versus scheduled habits.',
     intro: 'A streak tells you about consecutive completions. A completion rate tells you how many opportunities were completed across a period. The same habit record can look different under those two measures.',
