@@ -8,6 +8,7 @@ import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { createRelatedGuideSelector } from '../content/related-guides.mjs';
+import './build-math-challenge.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
@@ -165,6 +166,7 @@ function syncMarketing(directory) {
     html = html.replace('</head>', `  ${faviconLinks}\n</head>`);
     html = html.replace(/Browse all \d+ →/g, `Browse all ${guides.length} →`).replace(/Explore all \d+ guides/g, `Explore all ${guides.length} guides`);
     html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Practical guides)/, (_, before, after) => `${before}${guides.length}${after}`);
+    html = html.replace(/(<div class="stat-num">)\d+(<\/div>\s*<div class="stat-label">Free tools)/, (_, before, after) => `${before}${toolCount}${after}`);
     // Hand-picked home/tool cards use the same current copy as the article source.
     html = html.replace(/<a\b(?=[^>]*class="guide-card")(?=[^>]*href="\/guides\/([a-z0-9-]+)\/")[^>]*>[\s\S]*?<\/a>/g, (original, slug) => guidesBySlug.has(slug) ? card(guidesBySlug.get(slug)) : original);
     if (file === resolve(root, 'index.html') || file === resolve(root, 'tools/index.html')) {

@@ -25,6 +25,12 @@ Edit `scripts/build-search-assets.mjs` (puzzle values live in `content/puzzle-wo
 
 Seven guides display original diagrams. Their `<picture>` elements use width-based WebP `srcset` and layout-matched `sizes`, with a crawlable PNG fallback, explicit dimensions, descriptive alt text and visible explanatory captions. PNG remains the representative Article/social/sitemap image; the browser chooses a smaller WebP when appropriate. These are illustrations and worked examples, not invented app screenshots. Keep below-the-fold images lazy-loaded; do not apply that rule blindly to above-the-fold or largest-content images.
 
+## Free browser challenges and savings plans
+
+The tools directory contains six free website tools. The math challenge's five original questions, hints and explanations live in `content/math-challenge.mjs`; `scripts/build-math-challenge.mjs` is included in the normal guide build. Questions and native answer disclosures work without JavaScript. The optional answer checker runs locally, keeps no saved score and sends no answers to Moocsoft. These exercises are not screenshots or levels from Math Riddles. Keep the current app store destinations and optional purchase boundaries explicit.
+
+The 52-week calculator supports standard and reverse 13/26/52-week plans. In reverse mode the starting input means the final, smallest deposit; the displayed first deposit, cumulative chart, print view and CSV all use the same selected order. `?order=reverse` selects the public mode without putting private amounts in a URL. Changing any input invalidates the old export. Calculator outputs are planning examples, not bank transfers or automatic imports into Savings Goal Tracker.
+
 ## Brand assets
 
 The website favicon is an original small-size Moocsoft monogram in `assets/brand/favicon.svg`. The full wordmark is intentionally not compressed into a tiny browser-tab icon.
@@ -46,6 +52,8 @@ Run `node scripts/test-guide-images.cjs` with the same development-only browser 
 Run `node scripts/test-store-attribution.mjs` for static Google Play campaign labels. The builder tags only known app-store anchors with the public source (`moocsoft`), page and placement; canonical/schema store URLs remain unchanged. No cookies, visitor IDs, calculator inputs or new analytics requests are added. In Play Console, use the Ads and referrals traffic source and UTM source/campaign filters. Store-page visits and Install/Open button clicks are not completed installs; review acquisition reports separately.
 
 Run `node scripts/test-click-calculations.cjs` for exact-cent savings plans and CSV values. With a local static server on port 4193 and development-only `playwright` plus Chrome available, run `node scripts/test-click-tools.cjs` for mobile/desktop calculator, download, print and timer checks. Set `MOOCSOFT_TEST_URL` to use another local port. These tests add no browser library to the deployed website.
+
+Run `node scripts/test-math-challenge.mjs` to independently verify the five answers, input parsing and static page boundaries. With the same local browser setup, run `node scripts/test-math-challenge-browser.cjs` for answer checks, reset, no-JavaScript answers and narrow-screen layouts. `MOOCSOFT_QA_DIR` stores optional screenshots outside the public repository.
 
 Run `node scripts/test-discovery.cjs` with the same development-only browser setup and a server on port 4194 to check all six app choices/store directories, product headers, real Did You Lift screens, Habit Tracker check-ins, macro validation and static attribution. Set `MOOCSOFT_TEST_URL` for another port; optional `MOOCSOFT_QA_DIR` saves visual checks outside the published repository.
 

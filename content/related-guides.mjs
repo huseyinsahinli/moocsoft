@@ -30,7 +30,7 @@ const choices = {
     'food-photo-log',
   ],
   'ai-calorie-scanner-vs-food-diary': [
-    'photo-calorie-scanner-app-checklist',
+    'ai-calorie-scanner-accuracy',
     'food-photo-log',
     'track-calories-homemade-meals',
   ],
@@ -47,6 +47,11 @@ const choices = {
   'restaurant-calorie-estimates': [
     'estimate-portion-size-from-food-photo',
     'estimate-calories-from-food-photo',
+    'photo-calorie-scanner-app-checklist',
+  ],
+  'ai-calorie-scanner-accuracy': [
+    'estimate-calories-from-food-photo',
+    'track-calories-homemade-meals',
     'photo-calorie-scanner-app-checklist',
   ],
 
@@ -79,7 +84,7 @@ const choices = {
   'biweekly-savings-plan': [
     'calculate-savings-goal-contributions',
     'how-to-save-1000-in-a-year',
-    'savings-goal-tracker-app-vs-spreadsheet',
+    'savings-tracker-irregular-income',
   ],
   'vacation-savings-goal-plan': [
     'calculate-savings-goal-contributions',
@@ -95,6 +100,11 @@ const choices = {
     '52-week-savings-challenge',
     'reverse-52-week-savings-challenge',
     'calculate-savings-goal-contributions',
+  ],
+  'savings-tracker-irregular-income': [
+    'calculate-savings-goal-contributions',
+    'sinking-funds-vs-emergency-fund',
+    'biweekly-savings-plan',
   ],
 
   // Quitting: pair the current task with preparation, coping or honest tracking.
@@ -210,7 +220,7 @@ const choices = {
 
   // Math: pair solving methods with practice that exercises the same skills.
   'how-to-solve-number-pattern-puzzles': [
-    'missing-number-puzzles-with-answers',
+    'repeating-pattern-puzzles-with-answers',
     'math-puzzle-strategies',
     'prime-number-puzzles-with-answers',
   ],
@@ -222,7 +232,7 @@ const choices = {
   'math-puzzle-strategies': [
     'how-to-solve-number-pattern-puzzles',
     'order-of-operations-puzzles',
-    'missing-number-puzzles-with-answers',
+    'count-rectangles-in-a-grid',
   ],
   'play-math-games-with-friends': [
     'mental-math-games-for-adults',
@@ -257,6 +267,16 @@ const choices = {
   'target-sum-number-puzzles': [
     'order-of-operations-puzzles',
     'mental-math-games-for-adults',
+    'mental-multiplication-tricks',
+  ],
+  'repeating-pattern-puzzles-with-answers': [
+    'how-to-solve-number-pattern-puzzles',
+    'math-puzzle-strategies',
+    'missing-number-puzzles-with-answers',
+  ],
+  'count-rectangles-in-a-grid': [
+    'math-puzzle-strategies',
+    'missing-number-puzzles-with-answers',
     'mental-multiplication-tricks',
   ],
 };

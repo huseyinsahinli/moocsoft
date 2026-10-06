@@ -7,10 +7,13 @@ The site is static and remains compatible with GitHub Pages. Generated HTML is c
 - `components.mjs`: shared navigation, install links, article cards and metadata.
 - `guide-media.mjs`: original visible article diagrams with matching metadata, responsive WebP variants and image-sitemap entries.
 - `puzzle-worksheet.mjs`: one source for the five original missing-number questions and the separate answer key.
+- `math-challenge.mjs`: five separate website exercises with explicit rules, hints, answer checks and explanations; not app levels.
 - `../assets/content.css`: marketing-only styles; legal and workout import pages do not include this stylesheet.
 - `../scripts/build-guides.mjs`: produces `/guides/`, the topic pages, all articles and their sitemap entries.
 
 Regenerate from the repository root with `node scripts/build-guides.mjs`. No third-party packages are required. Re-running the command without changes produces the same files. The original app and tool landing pages remain ordinary HTML; their related-guide sections should be updated if the reading lists change.
+
+The normal guide build also runs `../scripts/build-math-challenge.mjs` for the free browser challenge. Keep questions, hints and answers in static HTML so readers and crawlers do not need JavaScript. The optional local checker must not save or transmit answers. New practice guides should use specific, independently verified examples and distinguish finite-prefix guesses from a stated repeat rule.
 
 Use unique article slugs and a specific reader task for each article. Keep calculations labeled as examples, distinguish app features from free-tool behavior, and verify store availability before changing platform claims. Publication dates should change only when the relevant content actually changes; when adding future editions, extend the generator to carry per-article publication and modification dates.
 

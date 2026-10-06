@@ -1,4 +1,5 @@
 .savings-hint { margin: 12px 0 0; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+.savings-order-field { grid-column: 1 / -1; }
 #total-saved { overflow-wrap: anywhere; }
 .savings-presets { min-width: 0; margin: 22px 0 0; padding: 0; border: 0; }
 .savings-presets legend { padding: 0; color: var(--muted); font-size: .82rem; }

@@ -111,7 +111,7 @@ for (const [slug, visual] of Object.entries(guideMedia)) {
   const guide = guides.find(item => item.slug === slug);
   assert.ok(guide, `Unknown media guide ${slug}`);
   if (worksheetGuideSlugs.has(slug)) {
-    assert.equal(guide.modified, '2026-10-03');
+    assert.equal(guide.modified, slug === 'reverse-52-week-savings-challenge' ? '2026-10-06' : '2026-10-03');
     assert.ok(guide.startAction?.[0].startsWith('/assets/worksheets/'), `Missing printable action: ${slug}`);
   }
   assert.equal(visual.width, 1200);

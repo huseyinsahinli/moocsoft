@@ -3,6 +3,7 @@
 
   const currencies = ['USD', 'EUR', 'GBP', 'TRY'];
   const durations = [13, 26, 52];
+  const orders = ['standard', 'reverse'];
   const maximumCents = 100000000;
 
   // Parse decimal text directly so every planned deposit is an integer number of cents.
@@ -14,18 +15,22 @@
     return Number.isSafeInteger(cents) && cents <= maximumCents ? cents : null;
   };
 
-  const createPlan = (weeks, startCents, increaseCents, currency) => {
+  // In reverse order, startCents is the smallest (final) deposit. Rebuild the
+  // running balances in display order rather than reversing accumulated totals.
+  const createPlan = (weeks, startCents, increaseCents, currency, order = 'standard') => {
     if (!durations.includes(weeks) || !currencies.includes(currency)) throw new Error('Choose a listed currency and duration.');
+    if (!orders.includes(order)) throw new Error('Choose standard or reverse deposit order.');
     if (![startCents, increaseCents].every((cents) => Number.isSafeInteger(cents) && cents >= 0 && cents <= maximumCents) || startCents + increaseCents === 0) {
       throw new Error('Choose valid deposits with a starting amount or increase greater than zero.');
     }
     let totalCents = 0;
     const rows = Array.from({ length: weeks }, (_, index) => {
-      const depositCents = startCents + index * increaseCents;
+      const amountIndex = order === 'reverse' ? weeks - index - 1 : index;
+      const depositCents = startCents + amountIndex * increaseCents;
       totalCents += depositCents;
       return { week: index + 1, depositCents, totalCents };
     });
-    return { weeks, startCents, increaseCents, currency, rows, totalCents };
+    return { weeks, startCents, increaseCents, currency, order, rows, totalCents };
   };
 
   const decimalAmount = (cents) => `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, '0')}`;
@@ -42,7 +47,8 @@
 
   const byId = (id) => document.getElementById(id);
   const form = byId('savings-form');
-  const inputs = [byId('currency'), byId('weeks'), byId('start-amount'), byId('weekly-increase')];
+  const orderInput = byId('deposit-order');
+  const inputs = [byId('currency'), byId('weeks'), orderInput, byId('start-amount'), byId('weekly-increase')];
   const error = byId('form-error');
   const status = byId('plan-status');
   const printButton = byId('print-plan');
@@ -52,6 +58,19 @@
   const formatMoney = (cents, currency) => new Intl.NumberFormat('en-US', {
     style: 'currency', currency, minimumFractionDigits: 2, maximumFractionDigits: 2
   }).format(cents / 100);
+
+  const updateOrderCopy = () => {
+    const reverse = orderInput.value === 'reverse';
+    byId('start-label').textContent = reverse ? 'Final (smallest) deposit' : 'Week 1 deposit';
+    byId('step-label').textContent = reverse ? 'Decrease each week' : 'Increase each week';
+    byId('amount-help').textContent = reverse
+      ? 'Enter the final, smallest deposit and a positive weekly decrease. The first deposit is calculated for your selected number of weeks. Set the decrease to 0 for a flat plan.'
+      : 'Use up to two decimal places. Set the increase to 0 for a flat weekly deposit.';
+  };
+
+  // Only a public display mode is accepted from the URL. Amounts remain local.
+  if (new URLSearchParams(window.location.search).get('order') === 'reverse') orderInput.value = 'reverse';
+  updateOrderCopy();
 
   const invalidatePlan = () => {
     const hadPlan = activePlan !== null;
@@ -89,7 +108,7 @@
     }
     let plan;
     try {
-      plan = createPlan(Number(byId('weeks').value), startCents, increaseCents, byId('currency').value);
+      plan = createPlan(Number(byId('weeks').value), startCents, increaseCents, byId('currency').value, orderInput.value);
     } catch (problem) {
       showError(problem.message);
       return;
@@ -97,14 +116,19 @@
     const money = (cents) => formatMoney(cents, plan.currency);
     byId('total-saved').textContent = money(plan.totalCents);
     byId('result-weeks').textContent = plan.weeks;
+    byId('result-order').textContent = plan.order === 'reverse' ? 'Reverse' : 'Standard';
+    byId('first-deposit').textContent = money(plan.rows[0].depositCents);
     byId('final-deposit').textContent = money(plan.rows.at(-1).depositCents);
     byId('average-weekly').textContent = money(Math.round(plan.totalCents / plan.weeks));
     byId('first-quarter').textContent = money(plan.rows[Math.min(13, plan.weeks) - 1].totalCents);
     byId('monthly-average').textContent = money(Math.round(plan.totalCents * 52 / (plan.weeks * 12)));
     const checkpoints = [...new Set([Math.ceil(plan.weeks / 4), Math.ceil(plan.weeks / 2), Math.ceil(plan.weeks * .75), plan.weeks])];
     byId('milestones').innerHTML = checkpoints.map((week) => `<div class="milestone"><span>Through week ${week}</span><strong>${money(plan.rows[week - 1].totalCents)}</strong></div>`).join('');
-    byId('plan-title').textContent = `Your ${plan.weeks}-week savings plan`;
-    byId('plan-summary').textContent = `${plan.currency} · Start with ${money(plan.startCents)}, increase by ${money(plan.increaseCents)} each week and save ${money(plan.totalCents)} in total. Final deposit: ${money(plan.rows.at(-1).depositCents)}.`;
+    const orderLabel = plan.order === 'reverse' ? 'reverse' : 'standard';
+    const changeCopy = plan.increaseCents === 0 ? `deposit ${money(plan.startCents)} every week`
+      : `${plan.order === 'reverse' ? 'decrease' : 'increase'} by ${money(plan.increaseCents)} each week`;
+    byId('plan-title').textContent = `Your ${plan.weeks}-week ${orderLabel} savings plan`;
+    byId('plan-summary').textContent = `${plan.currency} · First deposit: ${money(plan.rows[0].depositCents)}; ${changeCopy}. Final deposit: ${money(plan.rows.at(-1).depositCents)}. Planned total: ${money(plan.totalCents)}. These are planned deposits, not money already saved.`;
     byId('weekly-plan-rows').innerHTML = plan.rows.map((row) => `<tr><th scope="row">${row.week}</th><td>${money(row.depositCents)}</td><td>${money(row.totalCents)}</td><td class="savings-done"><span class="savings-check-box" aria-hidden="true"></span></td></tr>`).join('');
     byId('result-empty').classList.add('hidden');
     ['result-content', 'milestones', 'weekly-plan'].forEach((id) => byId(id).classList.remove('hidden'));
@@ -112,7 +136,7 @@
     document.body.classList.add('has-savings-plan');
     printButton.disabled = false;
     exportButton.disabled = false;
-    status.textContent = `Your ${plan.weeks}-week chart is ready. Planned total: ${money(plan.totalCents)}. Print or download CSV below. Weekly and monthly averages are rounded; the monthly average uses 52 weeks over 12 months.`;
+    status.textContent = `Your ${plan.weeks}-week ${orderLabel} chart is ready. Planned total: ${money(plan.totalCents)}. Print or download CSV below. Weekly and monthly averages are rounded; the monthly average uses 52 weeks over 12 months.`;
   };
 
   form.addEventListener('submit', (event) => {
@@ -121,6 +145,7 @@
   });
   form.addEventListener('input', invalidatePlan);
   form.addEventListener('change', invalidatePlan);
+  orderInput.addEventListener('change', updateOrderCopy);
   form.querySelectorAll('[data-start]').forEach((button) => {
     button.addEventListener('click', () => {
       byId('start-amount').value = button.dataset.start;
@@ -136,7 +161,7 @@
     const url = URL.createObjectURL(new Blob([csvForPlan(activePlan)], { type: 'text/csv;charset=utf-8' }));
     const link = document.createElement('a');
     link.href = url;
-    link.download = `moocsoft-${activePlan.weeks}-week-savings-${activePlan.currency.toLowerCase()}.csv`;
+    link.download = `moocsoft-${activePlan.weeks}-week-${activePlan.order}-savings-${activePlan.currency.toLowerCase()}.csv`;
     document.body.append(link);
     link.click();
     link.remove();

@@ -10,6 +10,8 @@ const examples = [
   'estimate-calories-from-food-photo', '52-week-savings-challenge',
   'calculate-cigarette-cost-and-savings', 'workout-volume-explained',
   'monthly-habit-tracker', 'missing-number-puzzles-with-answers',
+  'ai-calorie-scanner-accuracy', 'savings-tracker-irregular-income',
+  'repeating-pattern-puzzles-with-answers', 'count-rectangles-in-a-grid',
 ];
 
 (async () => {
@@ -76,7 +78,7 @@ const examples = [
         }
       }
       for (const [path, answer, title] of [
-        ['/tools/52-week-savings-calculator/', '$1,378', '52-Week Savings Challenge Calculator & Chart'],
+        ['/tools/52-week-savings-calculator/', '$1,378', '52-Week Savings Calculator: Standard & Reverse Chart'],
         ['/tools/workout-volume-rest-timer/', '1,500 kg', 'Workout Volume Calculator & Rest Timer'],
       ]) {
         await page.goto(base + path);
@@ -112,6 +114,6 @@ const examples = [
       await noJs.close();
     }
     assert.deepEqual(errors, []);
-    console.log('Guide navigation passed: six topics, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.');
+    console.log('Guide navigation passed: six topics plus four new guides, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

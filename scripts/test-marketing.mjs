@@ -127,9 +127,13 @@ for (const [file, html] of pages) {
     }
   }
   if (!relative(root, file).startsWith(`guides${sep}`)) continue;
-  const title = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)].map(match => decode(match[1]).trim());
-  const description = tags(html, 'meta').filter(meta => meta.name?.toLowerCase() === 'description').map(meta => meta.content?.trim());
-  const canonical = tags(html, 'link').filter(link => classes(link.rel).includes('canonical')).map(link => link.href);
+  // SVG diagrams have their own accessible <title>; search metadata belongs in <head>.
+  const heads = [...html.matchAll(/<head\b[^>]*>([\s\S]*?)<\/head>/gi)];
+  check(heads.length === 1, file, 'Expected exactly one document head');
+  const pageHead = heads[0]?.[1] || '';
+  const title = [...pageHead.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)].map(match => decode(match[1]).trim());
+  const description = tags(pageHead, 'meta').filter(meta => meta.name?.toLowerCase() === 'description').map(meta => meta.content?.trim());
+  const canonical = tags(pageHead, 'link').filter(link => classes(link.rel).includes('canonical')).map(link => link.href);
   for (const [field, values] of Object.entries({ title, description, canonical })) {
     check(values.length === 1 && Boolean(values[0]), file, `Expected exactly one non-empty ${field}; found ${values.length}`);
     if (!values[0]) continue;
