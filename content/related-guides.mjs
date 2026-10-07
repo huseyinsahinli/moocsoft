@@ -150,6 +150,11 @@ const choices = {
   ],
 
   // Training: connect planned sessions with actual sets and comparable progress.
+  'log-warm-up-and-working-sets': [
+    'how-to-log-gym-workouts',
+    'workout-volume-explained',
+    'track-progressive-overload-workout-log',
+  ],
   'how-to-log-gym-workouts': [
     'workout-volume-explained',
     'track-progressive-overload-workout-log',

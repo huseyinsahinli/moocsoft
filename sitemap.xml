@@ -291,7 +291,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/workout-volume-explained/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/workout-volume.png</image:loc></image:image>
   </url>
   <url>
@@ -313,6 +313,11 @@
   <url>
     <loc>https://moocsoft.net/guides/workout-planner-vs-workout-log/</loc>
     <lastmod>2026-10-02</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/log-warm-up-and-working-sets/</loc>
+    <lastmod>2026-10-07</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
@@ -404,7 +409,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-07</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
@@ -416,7 +421,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
   </url>
   <!-- End generated guide pages -->
 </urlset>

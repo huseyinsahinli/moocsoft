@@ -10,6 +10,7 @@ import quitting from './quitting.mjs';
 import moreQuitting from './quitting-more.mjs';
 import training from './training.mjs';
 import moreTraining from './training-more.mjs';
+import trainingSetTypes from './training-set-types.mjs';
 import habits from './habits.mjs';
 import moreHabits from './habits-more.mjs';
 import math from './math.mjs';
@@ -17,4 +18,4 @@ import moreMath from './math-more.mjs';
 import mathPractice from './math-practice.mjs';
 import mathPatterns from './math-patterns.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns];

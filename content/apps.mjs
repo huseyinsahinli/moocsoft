@@ -130,6 +130,7 @@ export const sources = {
   slip: ['Smokefree.gov: Get back on track after a setback', 'https://smokefree.gov/challenges-when-quitting/stick-with-it/get-back-on-track'],
   withdrawal: ['Smokefree.gov: Managing nicotine withdrawal', 'https://smokefree.gov/challenges-when-quitting/withdrawal/managing-nicotine-withdrawal'],
   activity: ['CDC: Adult physical activity overview', 'https://www.cdc.gov/physical-activity-basics/guidelines/adults.html'],
+  warmupStudy: ['Ribeiro et al.: Warm-up procedures and resistance-training performance (2014 study)', 'https://pubmed.ncbi.nlm.nih.gov/25153744/'],
 };
 
 export const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
