@@ -241,7 +241,7 @@ const choices = {
   ],
   'play-math-games-with-friends': [
     'mental-math-games-for-adults',
-    'target-sum-number-puzzles',
+    'round-robin-match-count',
     'mental-multiplication-tricks',
   ],
   'missing-number-puzzles-with-answers': [
@@ -283,6 +283,11 @@ const choices = {
     'math-puzzle-strategies',
     'missing-number-puzzles-with-answers',
     'mental-multiplication-tricks',
+  ],
+  'round-robin-match-count': [
+    'count-rectangles-in-a-grid',
+    'math-puzzle-strategies',
+    'play-math-games-with-friends',
   ],
 };
 

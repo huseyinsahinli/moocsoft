@@ -12,6 +12,7 @@ const examples = [
   'monthly-habit-tracker', 'missing-number-puzzles-with-answers',
   'ai-calorie-scanner-accuracy', 'savings-tracker-irregular-income',
   'repeating-pattern-puzzles-with-answers', 'count-rectangles-in-a-grid',
+  'round-robin-match-count',
 ];
 
 (async () => {
@@ -114,6 +115,6 @@ const examples = [
       await noJs.close();
     }
     assert.deepEqual(errors, []);
-    console.log('Guide navigation passed: six topics plus four new guides, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.');
+    console.log(`Guide navigation passed: ${examples.length} guides across six topics, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.`);
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

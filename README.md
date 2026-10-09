@@ -55,6 +55,8 @@ Run `node scripts/test-click-calculations.cjs` for exact-cent savings plans and 
 
 Run `node scripts/test-math-challenge.mjs` to independently verify the five answers, input parsing and static page boundaries. With the same local browser setup, run `node scripts/test-math-challenge-browser.cjs` for answer checks, reset, no-JavaScript answers and narrow-screen layouts. `MOOCSOFT_QA_DIR` stores optional screenshots outside the public repository.
 
+Run `node scripts/test-round-robin.mjs` after the guide build to independently enumerate the match-count examples and check the six-player schedule, original question answers, product boundaries and incoming reading link.
+
 Run `node scripts/test-discovery.cjs` with the same development-only browser setup and a server on port 4194 to check all six app choices/store directories, product headers, real Did You Lift screens, Habit Tracker check-ins, macro validation and static attribution. Set `MOOCSOFT_TEST_URL` for another port; optional `MOOCSOFT_QA_DIR` saves visual checks outside the published repository.
 
 With a local server running on port 4183 and the development-only `playwright` package plus Chrome available, run `node scripts/test-quitbit.cjs`. Set `MOOCSOFT_TEST_URL` for a different local port. The test uses an isolated browser profile and fixed time to check arithmetic, validation, stale results, article metadata and favicon responses.

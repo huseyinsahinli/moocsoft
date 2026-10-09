@@ -17,5 +17,6 @@ import math from './math.mjs';
 import moreMath from './math-more.mjs';
 import mathPractice from './math-practice.mjs';
 import mathPatterns from './math-patterns.mjs';
+import mathRoundRobin from './math-round-robin.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin];
