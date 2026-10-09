@@ -347,6 +347,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/weekly-reset-checklist/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/how-to-solve-number-pattern-puzzles/</loc>
     <lastmod>2026-10-06</lastmod>
   </url>
@@ -400,6 +405,10 @@
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/mobile-app-mvp-checklist/</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
     <lastmod>2026-10-06</lastmod>
   </url>
@@ -417,10 +426,14 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-09</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/development/</loc>
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>

@@ -8,6 +8,7 @@ import { guides } from '../content/index.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { canonicalStoreUrl, pageCampaign } from '../content/store-attribution.mjs';
 import { createRelatedGuideSelector } from '../content/related-guides.mjs';
+import { guideHref } from '../content/topics.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = new URL(site).origin;
@@ -159,7 +160,7 @@ for (const guide of guides) {
   check(tags(html, 'script').some(script => script.src === '/assets/guide-navigation.js'), file, 'Missing progressive navigation enhancement');
   const nextReads = html.match(/<section class="guide-related" aria-label="Suggested next reads">([\s\S]*?)<\/section>/)?.[1] || '';
   const relatedLinks = tags(nextReads, 'a').filter(link => classes(link.class).includes('guide-card'));
-  check(JSON.stringify(relatedLinks.map(link => link.href)) === JSON.stringify(selectRelatedGuides(guide).map(next => `/guides/${next.slug}/`)), file, 'Expected exactly three curated next reads, in editorial order');
+  check(JSON.stringify(relatedLinks.map(link => link.href)) === JSON.stringify(selectRelatedGuides(guide).map(guideHref)), file, 'Expected exactly three curated next reads, in editorial order');
   check(tags(nextReads, 'a').some(link => link.href === `/guides/${guide.topic}/`), file, 'Full topic hub must remain reachable');
   const articles = (schemas.get(file) || []).filter(node => [].concat(node['@type'] || []).includes('Article'));
   check(articles.length === 1, file, `Expected one Article schema; found ${articles.length}`);

@@ -1,5 +1,6 @@
 import { apps, site, escape as e } from './apps.mjs';
 import { appPreviews } from './app-previews.mjs';
+import { guideTopics, guideHref } from './topics.mjs';
 
 export const faviconLinks = '<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/png" href="/assets/brand/favicon-96.png" sizes="96x96">\n  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" sizes="any">\n  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">';
 
@@ -60,8 +61,14 @@ export function storeDirectory() {
 }
 
 export function card(guide) {
-  const app = apps[guide.topic];
-  return `<a class="guide-card" style="--guide-accent:${app.color}" href="/guides/${guide.slug}/"><span class="guide-kicker">${e(app.category)}</span><h3>${e(guide.title)}</h3><p>${e(guide.description)}</p><span>Read the guide <span aria-hidden="true">→</span></span></a>`;
+  const topic = guideTopics[guide.topic];
+  if (!topic) throw new Error(`Unknown card topic: ${guide.topic}`);
+  return `<a class="guide-card" style="--guide-accent:${topic.color}" href="${e(guideHref(guide))}"><span class="guide-kicker">${e(topic.category)}</span><h3>${e(guide.title)}</h3><p>${e(guide.description)}</p><span>${e(guide.actionLabel || 'Read the guide')} <span aria-hidden="true">→</span></span></a>`;
+}
+
+export function serviceNextStep(topic) {
+  if (!topic.actionPath || !topic.actionLabel) throw new Error('Missing service next step');
+  return `<section class="guide-download" data-nosnippet style="--guide-accent:${topic.color}" aria-label="Discuss a Flutter project"><div><span class="guide-kicker">From a brief to a project conversation</span><h2>Have a mobile app idea?</h2><p>${e(topic.use)}</p></div><div class="guide-hero-actions"><a href="${e(topic.actionPath)}">${e(topic.actionLabel)}</a></div></section>`;
 }
 
 export function resources(topic, guides, wrapped = true) {

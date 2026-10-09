@@ -14,6 +14,7 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - `content/guide-media.mjs` registers original diagrams displayed in selected articles. The build uses each diagram consistently for Article, Open Graph, Twitter and image-sitemap metadata. Only images actually shown in an article belong in its sitemap entry.
 - Link to trustworthy primary references in the paragraph they support, with descriptive anchor text and original explanations rather than copied passages. Editorial references are not paid links; do not mark all of them `nofollow`. References and images help readers, but do not guarantee search rankings, clicks or app installs.
 - Add three deliberately chosen same-topic next reads in `content/related-guides.mjs` whenever publishing a guide. The build rejects missing, stale, self-linked or duplicate recommendations; the full topic hub remains accessible. Publication order must not decide the recommended reading path.
+- `content/topics.mjs` separates editorial topics from the six-app catalogue. Development guides use a real service CTA and `/guides/development/`, not a fabricated app or store link. Their next steps may use the explicit development resources in `content/related-guides.mjs`; use `guideHref` for guide/resource cards and keep app-topic recommendations unchanged in meaning.
 - A guide with an app preview may set `previewCopy: { heading, description }` to connect its task to the app. Screenshot assets, store destinations and purchase notes remain shared. Do not imply automatic imports from free web tools into the app.
 - Article section navigation is a compact native menu before the answer on mobile and a sidebar on desktop. The small navigation script only sets its default when crossing the layout breakpoint; links and native expansion work without JavaScript. Layout changes alone do not reset article publication or revision dates.
 
@@ -44,6 +45,8 @@ Serve the repository with a static HTTP server. Check mobile and desktop layouts
 Run `node scripts/build-guides.mjs` followed by `node scripts/test-marketing.mjs` to check generated guide metadata, download links, preview assets and sitemap coverage without installing dependencies.
 
 Run `node scripts/test-related-guides.mjs` for curated-reading coverage and invalid-configuration checks. With development-only Playwright, Chrome and a static server on port 4197, run `node scripts/test-guide-navigation.cjs` for mobile/desktop, no-JavaScript navigation, next reads, verified app previews and calculator quick answers. `MOOCSOFT_TEST_URL` overrides the port; `MOOCSOFT_QA_DIR` saves screenshots outside the public repository.
+
+Run `node scripts/test-service-guides.mjs` to check that app guides retain their install headers and download blocks while development articles/hubs have service-only CTAs, real resource destinations, reciprocal links and sitemap entries.
 
 Run `node scripts/test-search-assets.mjs` to verify exact worksheet arithmetic, CSV rows, privacy boundaries and diagram dimensions. With development-only Playwright plus Chrome and a local server on port 4195, run `node scripts/test-search-worksheets.cjs` for mobile/desktop, no-JavaScript and print-mode checks. `MOOCSOFT_TEST_URL` overrides the port; optional `MOOCSOFT_QA_DIR` saves screenshots outside the repository.
 

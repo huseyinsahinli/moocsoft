@@ -118,6 +118,15 @@ export const apps = {
 };
 
 export const sources = {
+  habitStore: ['Habit Tracker Daily: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/habit-tracker-daily/id6572323963'],
+  savingsStore: ['Savings Goal Tracker: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/savings-goal-tracker/id6450431254'],
+  trainingStore: ['Did You Lift: current iOS planning and logging features', 'https://apps.apple.com/us/app/did-you-lift-workout-log/id6808200259'],
+  flutterArchitecture: ['Flutter: Architectural overview and platform support', 'https://docs.flutter.dev/resources/architectural-overview'],
+  flutterPlatformChannels: ['Flutter: Platform-specific code with platform channels', 'https://docs.flutter.dev/platform-integration/platform-channels'],
+  flutterIosRelease: ['Flutter: Build and release an iOS app', 'https://docs.flutter.dev/deployment/ios'],
+  flutterAndroidRelease: ['Flutter: Build and release an Android app', 'https://docs.flutter.dev/deployment/android'],
+  appleTestFlight: ['Apple: TestFlight overview', 'https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview'],
+  appleReviewPrivacy: ['Apple: App Review Guidelines — Privacy', 'https://developer.apple.com/app-store/review/guidelines/#privacy'],
   menuCalories: ['FDA: Menu labeling requirements and restaurant nutrition information', 'https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/menu-labeling-requirements'],
   portions: ['FDA: Serving size on the Nutrition Facts label', 'https://www.fda.gov/food/nutrition-facts-label/serving-size-nutrition-facts-label'],
   energy: ['USDA FoodData Central: Nutrient and energy calculations', 'https://fdc.nal.usda.gov/Foundation_Foods_Documentation/'],

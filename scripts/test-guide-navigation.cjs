@@ -13,11 +13,13 @@ const examples = [
   'ai-calorie-scanner-accuracy', 'savings-tracker-irregular-income',
   'repeating-pattern-puzzles-with-answers', 'count-rectangles-in-a-grid',
   'round-robin-match-count',
+  'weekly-reset-checklist', 'mobile-app-mvp-checklist',
 ];
 
 (async () => {
   const { guides } = await import(pathToFileURL(resolve(__dirname, '../content/index.mjs')).href);
   const { createRelatedGuideSelector } = await import(pathToFileURL(resolve(__dirname, '../content/related-guides.mjs')).href);
+  const { guideHref } = await import(pathToFileURL(resolve(__dirname, '../content/topics.mjs')).href);
   const select = createRelatedGuideSelector(guides);
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   const errors = [];
@@ -53,7 +55,7 @@ const examples = [
         });
         assert.equal(new URL(page.url()).hash, '#step-1');
         const related = page.locator('section[aria-label="Suggested next reads"]');
-        assert.deepEqual(await related.locator('.guide-card').evaluateAll(links => links.map(link => new URL(link.href).pathname)), select(slug).map(guide => `/guides/${guide.slug}/`));
+        assert.deepEqual(await related.locator('.guide-card').evaluateAll(links => links.map(link => new URL(link.href).pathname + new URL(link.href).hash)), select(slug).map(guideHref));
         const guide = guides.find(guide => guide.slug === slug);
         assert.equal(await related.locator(`a[href="/guides/${guide.topic}/"]`).count(), 1);
         if (guide.appPreview) {
@@ -115,6 +117,6 @@ const examples = [
       await noJs.close();
     }
     assert.deepEqual(errors, []);
-    console.log(`Guide navigation passed: ${examples.length} guides across six topics, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.`);
+    console.log(`Guide navigation passed: ${examples.length} guides across app and service topics, mobile/desktop layout, native no-JS links, curated next reads, real app previews and calculator quick answers.`);
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

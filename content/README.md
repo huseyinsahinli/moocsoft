@@ -4,6 +4,8 @@ The site is static and remains compatible with GitHub Pages. Generated HTML is c
 
 - `apps.mjs`: verified app/store destinations, topic copy and reference URLs.
 - Topic modules such as `nutrition.mjs`, `nutrition-more.mjs`, `savings.mjs`, `training.mjs`, `habits.mjs` and `math.mjs`: original English articles, examples, tables and visible FAQs.
+- `topics.mjs`: editorial topic registry. App topics reuse `apps.mjs`; the separate `development` topic uses a service CTA and never adds a fictional app to the store directory. Register new non-app topics here with genuine service destinations, category and hub copy.
+- `mobile-development.mjs` and `weekly-reset.mjs`: development and daily-life articles. Service guides must not request app previews or claim an app download. Their three curated next steps may be the explicit, frozen resource entries in `related-guides.mjs`; app guides still recommend same-topic app guides. Use `guideHref` for either destination type.
 - `components.mjs`: shared navigation, install links, article cards and metadata.
 - `guide-media.mjs`: original visible article diagrams with matching metadata, responsive WebP variants and image-sitemap entries.
 - `puzzle-worksheet.mjs`: one source for the five original missing-number questions and the separate answer key.

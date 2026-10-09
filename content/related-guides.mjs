@@ -215,7 +215,17 @@ const choices = {
   'habit-tracker-ideas': [
     'how-to-start-habit-tracking',
     'daily-vs-weekly-habit-tracking',
-    'monthly-habit-tracker',
+    'weekly-reset-checklist',
+  ],
+  'weekly-reset-checklist': [
+    'daily-vs-weekly-habit-tracking',
+    'habit-tracker-ideas',
+    'restart-habit-after-missing-days',
+  ],
+  'mobile-app-mvp-checklist': [
+    'flutter-development-service',
+    'moocsoft-app-portfolio',
+    'project-contact',
   ],
   'monthly-habit-tracker': [
     'daily-vs-weekly-habit-tracking',
@@ -295,6 +305,14 @@ export const relatedGuideMap = Object.freeze(Object.fromEntries(
   Object.entries(choices).map(([slug, targets]) => [slug, Object.freeze(targets)]),
 ));
 
+// A new service topic can point to genuinely useful existing resources rather
+// than manufacturing extra articles just to populate three recommendation slots.
+export const relatedResources = Object.freeze(Object.fromEntries([
+  ['flutter-development-service', '/hire-flutter-developer/', 'Flutter Mobile App Development', 'Review Moocsoft’s Flutter service, supported project work and what to include in your inquiry.', 'Explore the service'],
+  ['moocsoft-app-portfolio', '/#work', 'Explore Published Moocsoft Apps', 'See the studio’s published apps and the practical tasks each product is designed to support.', 'View the apps'],
+  ['project-contact', '/contact/', 'Contact Moocsoft About Your Project', 'Find the studio’s contact details when you are ready to discuss your mobile app brief.', 'View contact details'],
+].map(([slug, path, title, description, actionLabel]) => [slug, Object.freeze({ slug, path, title, description, actionLabel, topic: 'development' })])));
+
 export function validateRelatedGuides(catalogue, mapping = relatedGuideMap) {
   if (!Array.isArray(catalogue)) throw new TypeError('Related guides: catalogue must be an array.');
   if (!mapping || typeof mapping !== 'object' || Array.isArray(mapping)) {
@@ -308,6 +326,7 @@ export function validateRelatedGuides(catalogue, mapping = relatedGuideMap) {
       throw new TypeError('Related guides: every catalogue guide needs a slug and topic.');
     }
     if (bySlug.has(guide.slug)) throw new Error(`Related guides: duplicate catalogue slug "${guide.slug}".`);
+    if (Object.hasOwn(relatedResources, guide.slug)) throw new Error(`Related guides: reserved resource slug "${guide.slug}".`);
     bySlug.set(guide.slug, guide);
   }
 
@@ -326,7 +345,7 @@ export function validateRelatedGuides(catalogue, mapping = relatedGuideMap) {
     for (const slug of targets) {
       if (slug === guide.slug) throw new Error(`Related guides: self-link for "${guide.slug}".`);
       if (seen.has(slug)) throw new Error(`Related guides: duplicate choice "${slug}" for "${guide.slug}".`);
-      const target = bySlug.get(slug);
+      const target = bySlug.get(slug) || relatedResources[slug];
       if (!target) throw new Error(`Related guides: stale target "${slug}" for "${guide.slug}".`);
       if (target.topic !== guide.topic) {
         throw new Error(`Related guides: wrong-topic choice "${slug}" for "${guide.slug}".`);
@@ -338,12 +357,12 @@ export function validateRelatedGuides(catalogue, mapping = relatedGuideMap) {
 }
 
 // Use this factory in the page builder to validate the complete catalogue once.
-// The selector returns the original guide objects in their curated display order.
+// The selector returns original guides or explicitly registered resources.
 export function createRelatedGuideSelector(catalogue, mapping = relatedGuideMap) {
   validateRelatedGuides(catalogue, mapping);
   const bySlug = new Map(catalogue.map(guide => [guide.slug, guide]));
   const selections = new Map(catalogue.map(guide => [
-    guide.slug, Object.freeze(mapping[guide.slug].map(slug => bySlug.get(slug))),
+    guide.slug, Object.freeze(mapping[guide.slug].map(slug => bySlug.get(slug) || relatedResources[slug])),
   ]));
   return guide => {
     const slug = typeof guide === 'string' ? guide : guide?.slug;

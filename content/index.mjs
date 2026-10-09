@@ -18,5 +18,7 @@ import moreMath from './math-more.mjs';
 import mathPractice from './math-practice.mjs';
 import mathPatterns from './math-patterns.mjs';
 import mathRoundRobin from './math-round-robin.mjs';
+import weeklyReset from './weekly-reset.mjs';
+import mobileDevelopment from './mobile-development.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment];

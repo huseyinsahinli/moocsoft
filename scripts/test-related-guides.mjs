@@ -3,6 +3,7 @@ import { guides } from '../content/index.mjs';
 import {
   createRelatedGuideSelector,
   relatedGuideMap,
+  relatedResources,
   relatedGuides,
   validateRelatedGuides,
 } from '../content/related-guides.mjs';
@@ -16,7 +17,7 @@ for (const guide of guides) {
   assert.equal(new Set(choices.map(choice => choice.slug)).size, 3, guide.slug);
   assert(choices.every(choice => choice !== guide && choice.slug !== guide.slug), guide.slug);
   assert(choices.every(choice => choice.topic === guide.topic), guide.slug);
-  assert(choices.every(choice => guides.includes(choice)), guide.slug);
+  assert(choices.every(choice => guides.includes(choice) || relatedResources[choice.slug] === choice), guide.slug);
   assert.deepEqual(choices.map(choice => choice.slug), relatedGuideMap[guide.slug], guide.slug);
   assert.deepEqual(relatedGuides(guide, guides), choices, guide.slug);
   assert.deepEqual(select(guide.slug), choices, guide.slug);
@@ -30,6 +31,14 @@ for (const guide of guides) assert.deepEqual(reversed(guide), select(guide), gui
 assert.equal(select('reverse-52-week-savings-challenge')[0].slug, '52-week-savings-challenge');
 assert.equal(select('estimate-calories-from-food-photo')[0].slug, 'estimate-portion-size-from-food-photo');
 assert.equal(select('missing-number-puzzles-with-answers')[0].slug, 'how-to-solve-number-pattern-puzzles');
+assert.deepEqual(select('mobile-app-mvp-checklist').map(choice => choice.path), ['/hire-flutter-developer/', '/#work', '/contact/']);
+assert.equal(select('habit-tracker-ideas')[2].slug, 'weekly-reset-checklist');
+for (const resource of Object.values(relatedResources)) {
+  assert.equal(resource.topic, 'development');
+  assert(['/hire-flutter-developer/', '/#work', '/contact/'].includes(resource.path));
+  assert(Object.isFrozen(resource));
+}
+assert(Object.isFrozen(relatedResources));
 
 const cloneMap = () => Object.fromEntries(Object.entries(relatedGuideMap).map(([slug, choices]) => [slug, [...choices]]));
 const current = guides[0];
@@ -46,12 +55,14 @@ assertBadMapping(mapping => { mapping[current.slug][0] = 'removed-article'; }, /
 assertBadMapping(mapping => { mapping[current.slug][0] = current.slug; }, /self-link/);
 assertBadMapping(mapping => { mapping[current.slug][1] = mapping[current.slug][0]; }, /duplicate choice/);
 assertBadMapping(mapping => { mapping[current.slug][0] = guides.find(guide => guide.topic !== current.topic).slug; }, /wrong-topic choice/);
+assertBadMapping(mapping => { mapping[current.slug][0] = 'project-contact'; }, /wrong-topic choice/);
 assertBadMapping(mapping => { mapping[current.slug].pop(); }, /exactly three/);
 assertBadMapping(mapping => { mapping[current.slug].push('calories-vs-macros'); }, /exactly three/);
 assertBadMapping(mapping => { mapping[current.slug] = 'estimate-portion-size-from-food-photo'; }, /exactly three/);
 
 assert.throws(() => validateRelatedGuides([...guides, current]), /duplicate catalogue slug/);
 assert.throws(() => validateRelatedGuides([...guides, { slug: 'missing-topic' }]), /needs a slug and topic/);
+assert.throws(() => validateRelatedGuides([...guides, { slug: 'project-contact', topic: 'development' }]), /reserved resource slug/);
 assert.throws(() => validateRelatedGuides(guides.slice(1)), /stale mapping/);
 assert.throws(() => select('unknown-article'), /unknown guide/);
 assert.throws(() => select({ ...current, topic: 'other' }), /topic mismatch/);
@@ -70,4 +81,4 @@ assert(Object.isFrozen(relatedGuideMap));
 assert(Object.values(relatedGuideMap).every(Object.isFrozen));
 assert(Object.isFrozen(select(current)));
 
-console.log(`Related guides passed: ${guides.length} deliberately mapped articles, three same-topic next reads each, stable order and invalid-configuration failures.`);
+console.log(`Related guides passed: ${guides.length} deliberately mapped articles, three same-topic guides/resources each, stable order and invalid-configuration failures.`);

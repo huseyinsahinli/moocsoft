@@ -3,7 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname, relative, sep } from 'node:path';
 import { apps, site, published, sources, escape as e } from '../content/apps.mjs';
 import { guides } from '../content/index.mjs';
-import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks } from '../content/components.mjs';
+import { guideTopics } from '../content/topics.mjs';
+import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks, serviceNextStep } from '../content/components.mjs';
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
@@ -16,7 +17,8 @@ const selectRelatedGuides = createRelatedGuideSelector(guides);
 const modified = guide => guide.modified || guide.published || published;
 const latest = list => list.map(modified).sort().at(-1) || published;
 const toolCount = Object.values(apps).filter(app => app.tool).length;
-const toolAction = (app, verb = 'Open') => app.tool ? `<a href="/tools/${app.tool}/">${verb} the free ${e(app.toolName.toLowerCase())} →</a>` : '';
+const toolAction = (app, verb = 'Open') => app?.tool ? `<a href="/tools/${app.tool}/">${verb} the free ${e(app.toolName.toLowerCase())} →</a>` : '';
+const topicAction = (topic, app) => app ? `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>` : `<a href="${e(topic.actionPath)}">${e(topic.actionLabel)}</a>`;
 const displayDate = value => new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value + 'T00:00:00Z'));
 for (const guide of guides) {
   for (const value of [guide.published || published, modified(guide)]) {
@@ -49,66 +51,69 @@ for (const [slug, visual] of Object.entries(guideMedia)) {
 // Match the article column in assets/content.css, including the two mobile margins.
 const imageSizes = '(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 40px), (max-width: 1054px) calc(100vw - 294px), 760px';
 for (const guide of guides) {
-  if (!apps[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
+  if (!guideTopics[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
   const app = apps[guide.topic];
+  const topic = guideTopics[guide.topic];
+  if (guide.appPreview && !app) throw new Error(`App preview requires an app topic: ${guide.slug}`);
   const path = `/guides/${guide.slug}/`;
   const visual = guideMedia[guide.slug];
   const previewImage = guide.appPreview ? appPreviews[guide.topic]?.image : null;
   const images = [...new Set([visual?.src, previewImage].filter(Boolean))].map(src => site + src);
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
   const graph = [
-    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+(visual?.src || '/assets/social/moocsoft-og.png')],articleSection:app.category,isAccessibleForFree:true},
-    breadcrumbs([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`],[guide.title,path]]),
+    {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+(visual?.src || '/assets/social/moocsoft-og.png')],articleSection:topic.category,isAccessibleForFree:true},
+    breadcrumbs([['Home','/'],['Guides','/guides/'],[topic.category,`/guides/${guide.topic}/`],[guide.title,path]]),
   ];
   const faq = `<section class="guide-faq" id="questions"><h2>Common questions</h2>${guide.faq.map(([q,a]) => `<details><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join('')}</section>`;
   const refs = guide.sources.length ? `<section class="guide-references" id="references"><h2>References and further reading</h2><ul>${guide.sources.map(key => {if(!sources[key])throw new Error('Unknown source '+key);const [name,url]=sources[key];return `<li><a href="${e(url)}" target="_blank" rel="noopener">${e(name)}</a></li>`;}).join('')}</ul></section>` : '';
   write(path, `${head(guide.title, guide.description, path, graph, app, guide.assets, visual)}
 <main id="main-content" class="guide-shell">
-  ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,`/guides/${guide.topic}/`]])}
-  <div class="guide-hero"><span class="guide-kicker">${e(app.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${toolAction(app)}<a href="/${app.slug}/">Explore ${e(app.name)} →</a>${guide.appPreview ? `<a href="#app-preview-title">See ${e(app.name)} in action ↓</a>` : ''}</div></div>
+  ${crumbHtml([['Home','/'],['Guides','/guides/'],[topic.category,`/guides/${guide.topic}/`]])}
+  <div class="guide-hero"><span class="guide-kicker">${e(topic.category)} · Practical guide</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${toolAction(app)}${topicAction(topic, app)}${guide.appPreview ? `<a href="#app-preview-title">See ${e(app.name)} in action ↓</a>` : ''}</div></div>
   <div class="guide-layout">
-    <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${storeLinks(app, 'sidebar')}</aside>
+    <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${app ? storeLinks(app, 'sidebar') : ''}</aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
       ${visual ? `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
       ${faq}${refs}
-      <p class="guide-editor-note">Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.</p>
+      <p class="guide-editor-note">${app ? `Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.` : 'Published by Moocsoft, an independent Flutter development studio. Examples and worksheets are illustrative. Project scope, platform requirements and release responsibilities need to be agreed for each project.'}</p>
     </article>
   </div>
   ${guide.appPreview ? appPreview(guide.topic, guide.previewCopy) : ''}
-  ${download(app)}
-  <section class="guide-related" aria-label="Suggested next reads"><span class="guide-kicker">Your next useful step</span><h2>Keep exploring ${e(app.category.toLowerCase())}</h2><div class="guide-card-grid">${selectRelatedGuides(guide).map(card).join('')}</div><div class="guide-hero-actions"><a href="/guides/${guide.topic}/">Browse all ${e(app.category.toLowerCase())} guides →</a></div></section>
+  ${app ? download(app) : serviceNextStep(topic)}
+  <section class="guide-related" aria-label="Suggested next reads"><span class="guide-kicker">Your next useful step</span><h2>Keep exploring ${e(topic.category.toLowerCase())}</h2><div class="guide-card-grid">${selectRelatedGuides(guide).map(card).join('')}</div><div class="guide-hero-actions"><a href="/guides/${guide.topic}/">Browse all ${e(topic.category.toLowerCase())} guides →</a></div></section>
 </main>
 ${footer()}
 </body>
 </html>`, modified(guide), images);
 }
 
-for (const [topic, app] of Object.entries(apps)) {
+for (const [topic, config] of Object.entries(guideTopics)) {
+  const app = apps[topic];
   const selected = guides.filter(g => g.topic === topic);
   const path = `/guides/${topic}/`;
-  const graph = [{'@type':'CollectionPage',name:app.heading,description:app.description,inLanguage:'en',url:site+path,mainEntity:items(selected)},breadcrumbs([['Home','/'],['Guides','/guides/'],[app.category,path]])];
-  write(path, `${head(app.heading,app.description,path,graph,app)}
+  const graph = [{'@type':'CollectionPage',name:config.heading,description:config.description,inLanguage:'en',url:site+path,mainEntity:items(selected)},breadcrumbs([['Home','/'],['Guides','/guides/'],[config.category,path]])];
+  write(path, `${head(config.heading,config.description,path,graph,app)}
 <main id="main-content" class="guide-shell">
-  ${crumbHtml([['Home','/'],['Guides','/guides/'],[app.category,null]])}
-  <div class="guide-hero"><span class="guide-kicker">The ${e(app.name)} reading list</span><h1>${e(app.heading)}</h1><p>${e(app.intro)}</p><div class="guide-hero-actions">${toolAction(app, 'Try')}<a href="/${app.slug}/">Explore ${e(app.name)} →</a></div></div>
-  <section class="guide-related"><h2>Choose your starting point</h2><p class="guide-topic-intro">${e(app.choice)}</p><div class="guide-card-grid">${selected.map(card).join('')}</div></section>
-  <section class="guide-related"><span class="guide-kicker">From the guide to the app</span><h2>Put it into practice with ${e(app.name)}</h2><p class="guide-topic-intro">${e(app.use)}</p>${download(app, 'topic-end')}</section>
-  <div class="guide-related"><h2>Explore another topic</h2><div class="guide-topic-links">${Object.entries(apps).filter(([key]) => key !== topic).map(([key,a])=>`<a href="/guides/${key}/">${e(a.category)} →</a>`).join('')}</div></div>
+  ${crumbHtml([['Home','/'],['Guides','/guides/'],[config.category,null]])}
+  <div class="guide-hero"><span class="guide-kicker">The ${e(config.name)} reading list</span><h1>${e(config.heading)}</h1><p>${e(config.intro)}</p><div class="guide-hero-actions">${toolAction(app, 'Try')}${topicAction(config, app)}</div></div>
+  <section class="guide-related"><h2>Choose your starting point</h2><p class="guide-topic-intro">${e(config.choice)}</p><div class="guide-card-grid">${selected.map(card).join('')}</div></section>
+  ${app ? `<section class="guide-related"><span class="guide-kicker">From the guide to the app</span><h2>Put it into practice with ${e(app.name)}</h2><p class="guide-topic-intro">${e(app.use)}</p>${download(app, 'topic-end')}</section>` : serviceNextStep(config)}
+  <div class="guide-related"><h2>Explore another topic</h2><div class="guide-topic-links">${Object.entries(guideTopics).filter(([key]) => key !== topic).map(([key,a])=>`<a href="/guides/${key}/">${e(a.category)} →</a>`).join('')}</div></div>
 </main>
 ${footer()}
 </body>
 </html>`, latest(selected));
 }
 
-const hubTitle = 'Practical Guides for Food, Savings, Fitness, Habits and Math';
-const hubDescription = `Explore ${guides.length} practical guides with calculators, worked examples and worksheets. Find an app to track meals, savings, smoke-free progress, workouts and habits or practise math puzzles.`;
+const hubTitle = 'Practical App Guides and Mobile Development Checklists';
+const hubDescription = `Explore ${guides.length} practical guides for meals, savings, workouts, habits and math puzzles. Plan a mobile app with Flutter development checklists.`;
 write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])])}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
-  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout, build a routine or solve a math puzzle. Start with a worked example, then use the matching tool or app.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(apps).map(([key,app])=>`<a href="#${key}">${e(app.category)}</a>`).join('')}</div></div>
-  ${Object.entries(apps).map(([topic,app]) => `<section class="guide-related" id="${topic}" style="--guide-accent:${app.color}"><span class="guide-kicker">${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(app.category.toLowerCase())} →</a>${app.tool ? `<a href="/tools/${app.tool}/">${e(app.toolName)} →</a>` : `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>`}</div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`).join('\n')}
+  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout, build a routine or solve a math puzzle. For an app idea of your own, start with a mobile development checklist. Use a worked example to choose your next useful step.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(guideTopics).map(([key,config])=>`<a href="#${key}">${e(config.category)}</a>`).join('')}</div></div>
+  ${Object.entries(guideTopics).map(([topic,config]) => { const app = apps[topic]; return `<section class="guide-related" id="${topic}" style="--guide-accent:${config.color}"><span class="guide-kicker">${e(config.name)}</span><h2>${e(config.heading)}</h2><p>${e(config.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(config.category.toLowerCase())} →</a>${app?.tool ? `<a href="/tools/${app.tool}/">${e(app.toolName)} →</a>` : topicAction(config, app)}</div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`; }).join('\n')}
 </main>
 ${footer()}
 </body>
@@ -214,8 +219,10 @@ function syncMarketing(directory) {
       }
     }
     if (file === resolve(root, 'index.html')) {
-      const topicLinks = `<div class="guide-topic-links">${Object.entries(apps).map(([topic, app]) => `<a href="/guides/${topic}/">${e(app.category)} →</a>`).join('')}</div>`;
-      html = html.replace(/<div class="guide-topic-links">[\s\S]*?<\/div>(?=<\/section>\s*<!-- ABOUT -->)/, topicLinks);
+      const topicLinks = `<div class="guide-topic-links">${Object.entries(guideTopics).map(([topic, config]) => `<a href="/guides/${topic}/">${e(config.category)} →</a>`).join('')}</div>`;
+      // Scope discovery links to the guides section; other home sections may
+      // sit between it and About (for example the freelance-service section).
+      html = html.replace(/(<section\b(?=[^>]*\bid="guides")[^>]*>)([\s\S]*?)(<\/section>)/, (_, open, body, close) => open + body.replace(/<div class="guide-topic-links">[\s\S]*?<\/div>/, topicLinks) + close);
     }
     const pagePath = '/' + relative(root, file).split(sep).join('/').replace(/index\.html$/, '');
     html = attributeStoreLinks(html, pagePath);
@@ -232,4 +239,4 @@ sitemap = sitemap.replace(/  <!-- Generated guide pages: scripts\/build-guides\.
 const entries = outputs.map(({path, lastmod, images}) => `  <url>\n    <loc>${site}${path}</loc>\n    <lastmod>${lastmod}</lastmod>${images.map(url => `\n    <image:image><image:loc>${e(url)}</image:loc></image:image>`).join('')}\n  </url>`).join('\n');
 sitemap = sitemap.replace('</urlset>', `${marker}\n${entries}\n  <!-- End generated guide pages -->\n</urlset>`);
 writeFileSync(sitemapPath, sitemap);
-console.log(`Built ${guides.length} guides, ${Object.keys(apps).length} topic pages and the guide hub. Updated sitemap with ${outputs.length} guide URLs.`);
+console.log(`Built ${guides.length} guides, ${Object.keys(guideTopics).length} topic pages and the guide hub. Updated sitemap with ${outputs.length} guide URLs.`);
