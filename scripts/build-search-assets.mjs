@@ -199,7 +199,7 @@ function documentHtml(title, description, toolbar, paper, extra = '') {
 </html>
 `;
 }
-const savingsNote = 'Free website worksheet. On-screen checks are not saved. Keep a printout before leaving; the CSV is a blank spreadsheet copy for your own records. Savings Goal Tracker’s Premium PDF/Excel exports for app records are separate features.';
+const savingsNote = 'Free website worksheet. On-screen checks are not saved. Keep a printout before leaving; the CSV is a blank spreadsheet copy for your own records. Frugal’s Premium PDF/Excel exports for app records are separate features.';
 function savingsTable(rows, caption) {
   return `<table><caption>${caption}</caption><thead><tr><th scope="col">Week</th><th scope="col">Deposit</th><th scope="col">Running total</th><th scope="col" class="completion-cell">Done</th></tr></thead><tbody>${rows.map(row => `<tr data-week="${row.week}"><td>${row.week}</td><td>${money(row.depositCents)}</td><td>${money(row.totalCents)}</td><td class="completion-cell"><label class="completion-mark"><input type="checkbox" class="mark-box" aria-label="Mark week ${row.week} after depositing"></label></td></tr>`).join('')}</tbody></table>`;
 }
@@ -207,7 +207,7 @@ const reverseHtml = documentHtml('Reverse 52-Week Savings Chart', 'Print every r
     <a href="/guides/reverse-52-week-savings-challenge/">← Read the reverse challenge guide</a>
     <button type="button" data-print="all">Print chart</button>
     <a href="/assets/worksheets/reverse-52-week-savings.csv" download>Download CSV</a>
-    <a class="product" href="/savings-goal-tracker/">Explore Savings Goal Tracker →</a>`, `
+    <a class="product" href="/savings-goal-tracker/">Explore Frugal →</a>`, `
     <section class="paper" aria-labelledby="sheet-title">
       <p class="eyebrow">Moocsoft.net · Free website worksheet</p>
       <h1 id="sheet-title">Reverse 52-week savings chart</h1>
@@ -222,7 +222,7 @@ const envelopeHtml = documentHtml('100 Envelope Challenge Checklist', 'Print a c
     <a href="/guides/100-envelope-challenge/">← Read the 100 envelope guide</a>
     <button type="button" data-print="all">Print checklist</button>
     <a href="/assets/worksheets/100-envelope-checklist.csv" download>Download CSV</a>
-    <a class="product" href="/savings-goal-tracker/">Explore Savings Goal Tracker →</a>`, `
+    <a class="product" href="/savings-goal-tracker/">Explore Frugal →</a>`, `
     <section class="paper" aria-labelledby="sheet-title">
       <p class="eyebrow">Moocsoft.net · Free website worksheet</p>
       <h1 id="sheet-title">100 envelope challenge checklist</h1>

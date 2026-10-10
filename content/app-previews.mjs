@@ -16,13 +16,13 @@ export const appPreviews = {
     caption: 'Store screenshot. Detailed analysis includes Premium features; estimates are not measurements.',
   },
   savings: {
-    heading: 'Give this plan a home in Savings Goal Tracker',
+    heading: 'Give this plan a home in Frugal',
     description: 'Keep your target and actual contributions together, so the progress you see matches the money you have set aside.',
     steps: ['Create a named goal with an amount and deadline.', 'Record real deposits and withdrawals.', 'Review the remaining amount before the next contribution.'],
-    note: 'Free to download. Unlimited goals, custom categories, images, detailed analysis and PDF/Excel exports require Premium. This is a personal tracker, not a bank or money-transfer service.',
-    image: '/assets/apps/savings-goal-tracker/screenshot-1.jpg', width: 675, height: 1200,
-    alt: 'Savings Goal Tracker showing an example house goal, recorded progress and contribution controls',
-    caption: 'Store screenshot with an example goal. Interface may vary by version.',
+    note: 'Free to download with ads and feature limits. Premium adds unlimited goals, custom categories, goal images, detailed analysis and PDF/Excel exports. Frugal records the amounts you enter; it does not hold or transfer money.',
+    image: '/assets/apps/frugal/goals.png', width: 1000, height: 2173,
+    alt: 'Frugal store screenshot showing example emergency fund, summer vacation and laptop goals with their targets and saved amounts',
+    caption: 'Official iPhone store screenshot with example goals. Some features shown require Premium; the interface may vary by platform or version.',
   },
   training: {
     heading: 'Take your next set into Did You Lift',

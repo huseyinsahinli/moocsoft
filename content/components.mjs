@@ -28,7 +28,7 @@ export function resultDownload(topic) {
   const app = apps[topic];
   const copy = {
     nutrition: ['Estimate your next meal with NutriLens', 'Take a meal photo and review estimated calories, protein, carbs and fat.', 'Free download. Subscriptions and scan credit packs are available.'],
-    savings: ['Track your real deposits', 'Create a goal in Savings Goal Tracker and record the money you actually set aside.', 'Free download. Unlimited goals and exports require Premium.'],
+    savings: ['Track your real deposits', 'Create a goal in Frugal and record the money you actually set aside.', 'Free download with ads and limits. Unlimited goals and exports require Premium.'],
     training: ['Log your next workout with Did You Lift', 'Plan each set, log your actual reps and weight, and use the automatic rest timer.', 'Free download. Optional lifetime Premium.'],
     habits: ['Track your routine with Habit Tracker Daily', 'Create daily or weekly habits and review calendar check-ins on your phone. Web calendar entries are not automatically imported into the app.', 'Free download. Optional in-app purchases.'],
   }[topic];

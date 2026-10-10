@@ -30,9 +30,13 @@ Seven guides display original diagrams. Their `<picture>` elements use width-bas
 
 The tools directory contains six free website tools. The math challenge's five original questions, hints and explanations live in `content/math-challenge.mjs`; `scripts/build-math-challenge.mjs` is included in the normal guide build. Questions and native answer disclosures work without JavaScript. The optional answer checker runs locally, keeps no saved score and sends no answers to Moocsoft. These exercises are not screenshots or levels from Math Riddles. Keep the current app store destinations and optional purchase boundaries explicit.
 
-The 52-week calculator supports standard and reverse 13/26/52-week plans. In reverse mode the starting input means the final, smallest deposit; the displayed first deposit, cumulative chart, print view and CSV all use the same selected order. `?order=reverse` selects the public mode without putting private amounts in a URL. Changing any input invalidates the old export. Calculator outputs are planning examples, not bank transfers or automatic imports into Savings Goal Tracker.
+The 52-week calculator supports standard and reverse 13/26/52-week plans. In reverse mode the starting input means the final, smallest deposit; the displayed first deposit, cumulative chart, print view and CSV all use the same selected order. `?order=reverse` selects the public mode without putting private amounts in a URL. Changing any input invalidates the old export. Calculator outputs are planning examples, not bank transfers or automatic imports into Frugal.
 
 ## Brand assets
+
+Frugal is the current name of the savings app (`com.moocsoft.goal_tracker`, App Store ID `6450431254`). Marketing copy, previews and store links use Frugal; the established `/savings-goal-tracker/` page, article slugs and public attribution labels remain stable. Current official artwork and its provenance are in `assets/apps/frugal/`. Do not use the previous icon/screenshots for new marketing copy or change historical legal routes as part of a rebrand.
+
+Run `node scripts/test-frugal-brand.mjs` after rebuilding to check the current name, artwork, store identity, purchase boundaries and retained SEO routes across marketing pages and worksheets.
 
 The website favicon is an original small-size Moocsoft monogram in `assets/brand/favicon.svg`. The full wordmark is intentionally not compressed into a tiny browser-tab icon.
 
