@@ -92,7 +92,7 @@ const choices = {
     'biweekly-savings-plan',
   ],
   'savings-goal-tracker-app-vs-spreadsheet': [
-    'calculate-savings-goal-contributions',
+    'track-multiple-savings-goals',
     'sinking-funds-vs-emergency-fund',
     'vacation-savings-goal-plan',
   ],
@@ -105,6 +105,11 @@ const choices = {
     'calculate-savings-goal-contributions',
     'sinking-funds-vs-emergency-fund',
     'biweekly-savings-plan',
+  ],
+  'track-multiple-savings-goals': [
+    'calculate-savings-goal-contributions',
+    'sinking-funds-vs-emergency-fund',
+    'savings-goal-tracker-app-vs-spreadsheet',
   ],
 
   // Quitting: pair the current task with preparation, coping or honest tracking.

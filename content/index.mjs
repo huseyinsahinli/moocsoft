@@ -6,6 +6,7 @@ import savings from './savings.mjs';
 import moreSavings from './savings-more.mjs';
 import savingsChallenges from './savings-challenges.mjs';
 import irregularSavings from './savings-irregular.mjs';
+import multipleSavings from './savings-multiple.mjs';
 import quitting from './quitting.mjs';
 import moreQuitting from './quitting-more.mjs';
 import training from './training.mjs';
@@ -21,4 +22,4 @@ import mathRoundRobin from './math-round-robin.mjs';
 import weeklyReset from './weekly-reset.mjs';
 import mobileDevelopment from './mobile-development.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment];

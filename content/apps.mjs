@@ -118,6 +118,7 @@ export const apps = {
 };
 
 export const sources = {
+  budgetPlanning: ['CFPB: Build a budget using income, spending and bill dates', 'https://www.consumerfinance.gov/archive/blog/budgeting-how-to-create-a-budget-and-stick-with-it/'],
   habitStore: ['Habit Tracker Daily: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/habit-tracker-daily/id6572323963'],
   savingsStore: ['Savings Goal Tracker: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/savings-goal-tracker/id6450431254'],
   trainingStore: ['Did You Lift: current iOS planning and logging features', 'https://apps.apple.com/us/app/did-you-lift-workout-log/id6808200259'],
