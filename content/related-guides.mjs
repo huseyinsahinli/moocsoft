@@ -111,6 +111,11 @@ const choices = {
     'sinking-funds-vs-emergency-fund',
     'savings-goal-tracker-app-vs-spreadsheet',
   ],
+  '7-day-no-spend-challenge': [
+    'savings-goal-tracker-app-vs-spreadsheet',
+    'savings-tracker-irregular-income',
+    'calculate-savings-goal-contributions',
+  ],
 
   // Quitting: pair the current task with preparation, coping or honest tracking.
   'quit-smoking-calculator-guide': [
@@ -227,6 +232,11 @@ const choices = {
     'habit-tracker-ideas',
     'restart-habit-after-missing-days',
   ],
+  'habit-tracker-for-shift-work': [
+    'daily-vs-weekly-habit-tracking',
+    'habit-streak-vs-completion-rate',
+    'weekly-reset-checklist',
+  ],
   'mobile-app-mvp-checklist': [
     'flutter-development-service',
     'moocsoft-app-portfolio',
@@ -236,6 +246,11 @@ const choices = {
     'mobile-app-mvp-checklist',
     'flutter-development-service',
     'project-contact',
+  ],
+  'mobile-app-handover-checklist': [
+    'mobile-app-mvp-checklist',
+    'offline-first-flutter-app-local-storage-cloud-sync',
+    'flutter-development-service',
   ],
   'monthly-habit-tracker': [
     'daily-vs-weekly-habit-tracking',
