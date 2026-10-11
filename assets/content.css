@@ -207,3 +207,6 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-visual { break-inside: avoid; }
   .guide-visual figcaption { color: #000; }
 }
+/* Localized pages keep a visible, keyboard-accessible language choice. */
+.guide-language-switcher { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-block: 16px; font-size: 14px; }
+.guide-language-switcher [aria-current="page"] { color: var(--guide-muted, #aaa); }

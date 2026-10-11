@@ -18,6 +18,16 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - A guide with an app preview may set `previewCopy: { heading, description }` to connect its task to the app. Screenshot assets, store destinations and purchase notes remain shared. Do not imply automatic imports from free web tools into the app.
 - Article section navigation is a compact native menu before the answer on mobile and a sidebar on desktop. The small navigation script only sets its default when crossing the layout breakpoint; links and native expansion work without JavaScript. Layout changes alone do not reset article publication or revision dates.
 
+## German pilot
+
+The German reading hub at `/de/guides/` contains three full, editorially adapted translations, not a duplicate 62-guide catalogue. `content/de-index.mjs` registers these translations; `content/de-products.mjs` contains corresponding localized app destinations and honest language/purchase notes. `scripts/build-localized-guides.mjs` runs inside the normal guide build. English article counts and publication dates stay unchanged.
+
+Only genuine equivalent pages belong in `content/localization.mjs`. Each English/German pair has reciprocal `en`, `de` and English `x-default` links, self-canonicals and a visible language selector. The smaller German hub deliberately has no `hreflang` pairing with the full English catalogue. Never redirect readers automatically or canonicalize German text to English. German URLs are static HTML and included in the existing sitemap.
+
+German example amounts are illustrative euros, not exchange-rate conversions. Reuse numeric fixtures to preserve arithmetic, but translate table labels and captions. Existing official screenshots remain unedited and carry German captions identifying their English interface. App-language support is separate from website language: Frugal's iOS 9.9.10 release notes mention German, while Habit Tracker's current iOS language field lists English. Do not infer Android support or German-speaking customer service.
+
+Run `node scripts/test-localization.mjs` alongside the existing marketing, attribution and service-guide tests. Check German pages and both directions of the language selector on mobile/desktop and without JavaScript. Do not include private market analysis or Search Console exports in the repository.
+
 ## Free printable worksheets
 
 The reverse 52-week chart, 100-envelope checklist and missing-number question sheet are free static website outputs in `assets/worksheets/`, separate from paid app features. Printable HTML is intentionally `noindex, follow`; the corresponding guide is the search destination. Browser printing needs no account, library or network request. Checkboxes are temporary and are not saved or imported into an app.

@@ -222,3 +222,7 @@ h2 { max-width: 13ch; margin: 10px 0 0; font-size: clamp(2rem, 5vw, 3.35rem); fo
   html { scroll-behavior: auto; }
   .store-btn { transition: none; }
 }
+
+/* Paired product pages expose a language choice without loading guide styles. */
+.guide-language-switcher { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; padding-block: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; }
+.guide-language-switcher [aria-current="page"] { color: var(--muted); }

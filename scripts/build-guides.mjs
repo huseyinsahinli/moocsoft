@@ -9,6 +9,8 @@ import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { createRelatedGuideSelector } from '../content/related-guides.mjs';
+import { languageAlternates, languageSwitcher } from '../content/localization.mjs';
+import { buildLocalizedGuides } from './build-localized-guides.mjs';
 import './build-math-challenge.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -112,6 +114,7 @@ const hubDescription = `Explore ${guides.length} practical guides for meals, sav
 write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])])}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
+  <div class="guide-hero-actions"><a href="/de/guides/" lang="de" hreflang="de">Deutsche Leitfäden →</a></div>
   <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Your next step</span><h1>Small steps.<br>Useful answers.</h1><p>Learn how to log a meal, plan a savings goal, record smoke-free progress, organize a workout, build a routine or solve a math puzzle. For an app idea of your own, start with a mobile development checklist. Use a worked example to choose your next useful step.</p>${choices()}${storeDirectory()}<div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(guideTopics).map(([key,config])=>`<a href="#${key}">${e(config.category)}</a>`).join('')}</div></div>
   ${Object.entries(guideTopics).map(([topic,config]) => { const app = apps[topic]; return `<section class="guide-related" id="${topic}" style="--guide-accent:${config.color}"><span class="guide-kicker">${e(config.name)}</span><h2>${e(config.heading)}</h2><p>${e(config.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(config.category.toLowerCase())} →</a>${app?.tool ? `<a href="/tools/${app.tool}/">${e(app.toolName)} →</a>` : topicAction(config, app)}</div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`; }).join('\n')}
 </main>
@@ -198,6 +201,14 @@ function syncMarketing(directory) {
       const sharedHeader = header(app).replace(/^<a class="skip-link"[\s\S]*?<\/a>\n\s*/, '');
       if (!/<header class="site-header">/.test(html)) throw new Error(`Missing shared product header: ${file}`);
       html = html.replace(/<header class="site-header">[\s\S]*?<\/header>/, sharedHeader);
+      const productPath = `/${app.slug}/`;
+      const alternates = languageAlternates(productPath);
+      if (alternates) {
+        html = html.replace(/\s*<link rel="alternate" hreflang="(?:en|de|x-default)"[^>]*>/g, '');
+        html = html.replace(/(<link rel="canonical"[^>]*>)/, '$1\n  ' + alternates);
+        html = html.replace(/\s*<!-- Language switcher -->[\s\S]*?<!-- End language switcher -->/, '');
+        html = html.replace('</header>', '</header>\n' + languageSwitcher(productPath));
+      }
       if (app.slug === 'math-riddles') html = html.replace(/<!-- Math app download -->[\s\S]*?<!-- End math app download -->/, `<!-- Math app download -->${download(app, 'product-end')}<!-- End math app download -->`);
       const mobileMeta = [
         appStoreId(app) ? `<meta name="apple-itunes-app" content="app-id=${appStoreId(app)}">` : '',
@@ -230,6 +241,7 @@ function syncMarketing(directory) {
   }
 }
 syncMarketing(root);
+outputs.push(...buildLocalizedGuides(root));
 
 const sitemapPath = resolve(root, 'sitemap.xml');
 const marker = '  <!-- Generated guide pages: scripts/build-guides.mjs -->';

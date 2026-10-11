@@ -463,5 +463,33 @@
     <loc>https://moocsoft.net/guides/</loc>
     <lastmod>2026-10-11</lastmod>
   </url>
+  <url>
+    <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/de/guides/habit-tracker-schichtarbeit/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/de/guides/mobile-app-uebergabe-checkliste/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/de/guides/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/de/frugal/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/de/habit-tracker/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
+  </url>
   <!-- End generated guide pages -->
 </urlset>

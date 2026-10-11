@@ -1,6 +1,7 @@
 import { apps, site, escape as e } from './apps.mjs';
 import { appPreviews } from './app-previews.mjs';
 import { guideTopics, guideHref } from './topics.mjs';
+import { languageAlternates, languageSwitcher } from './localization.mjs';
 
 export const faviconLinks = '<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/png" href="/assets/brand/favicon-96.png" sizes="96x96">\n  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" sizes="any">\n  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">';
 
@@ -83,14 +84,18 @@ export function footer() {
   return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/hire-flutter-developer/">Hire a Flutter developer</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="/contact/">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
 }
 
-export function head(title, description, path, graph, app, assets = [], visual) {
+export function head(title, description, path, graph, app, assets = [], visual, options = {}) {
   const url = site + path;
+  const locale = options.locale || 'en';
+  if (!['en', 'de'].includes(locale)) throw new Error('Unsupported page language');
+  const alternates = languageAlternates(path);
+  const switcher = languageSwitcher(path);
   if (assets.some(name => !/^[a-z0-9-]+$/.test(name))) throw new Error('Invalid guide asset name');
   const image = visual || { src: '/assets/social/moocsoft-og.png', width: 1200, height: 630 };
   const articlePage = graph.some(node => node['@type'] === 'Article');
   const enhancements = assets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">\n  <script src="/assets/${name}.js" defer></script>`).join('');
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${locale}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,7 +103,7 @@ export function head(title, description, path, graph, app, assets = [], visual) 
   <meta name="description" content="${e(description)}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#090a0c">
-  <link rel="canonical" href="${url}">
+  <link rel="canonical" href="${url}">${alternates ? '\n  ' + alternates : ''}
   ${faviconLinks}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,7 +112,7 @@ export function head(title, description, path, graph, app, assets = [], visual) 
   <link rel="stylesheet" href="/assets/content.css">${enhancements}${articlePage ? '\n  <script src="/assets/guide-navigation.js" defer></script>' : ''}
   <meta property="og:type" content="${articlePage ? 'article' : 'website'}">
   <meta property="og:site_name" content="Moocsoft">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="${locale === 'de' ? 'de_DE' : 'en_US'}">
   <meta property="og:title" content="${e(title)}">
   <meta property="og:description" content="${e(description)}">
   <meta property="og:url" content="${url}">
@@ -120,5 +125,5 @@ export function head(title, description, path, graph, app, assets = [], visual) 
   <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph}).replaceAll('<','\\u003c')}</script>
 </head>
 <body class="marketing-page"${app ? ` style="--guide-accent:${app.color}"` : ''}>
-${header(app)}`;
+${options.header ?? header(app)}${switcher ? '\n' + switcher : ''}`;
 }

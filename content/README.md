@@ -1,5 +1,7 @@
 # English guides
 
+German translations live separately in `de-index.mjs` and `de-*.mjs`; they do not become new English articles. Preserve `originalSlug`, topic and all original sections/FAQs. The normal build also renders `/de/` routes through `../scripts/build-localized-guides.mjs`. Keep reciprocal language pairs in `localization.mjs`, a self-referencing canonical on every version, German navigation/metadata and clear labels for destinations still in English. See the root README's German pilot section and run `test-localization.mjs` before publishing.
+
 The site is static and remains compatible with GitHub Pages. Generated HTML is committed so visitors and crawlers receive all article text, internal links and store links without JavaScript.
 
 - `apps.mjs`: verified app/store destinations, topic copy and reference URLs.
