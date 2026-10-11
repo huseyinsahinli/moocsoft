@@ -232,6 +232,11 @@ const choices = {
     'moocsoft-app-portfolio',
     'project-contact',
   ],
+  'offline-first-flutter-app-local-storage-cloud-sync': [
+    'mobile-app-mvp-checklist',
+    'flutter-development-service',
+    'project-contact',
+  ],
   'monthly-habit-tracker': [
     'daily-vs-weekly-habit-tracking',
     'habit-streak-vs-completion-rate',

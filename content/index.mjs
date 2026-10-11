@@ -21,5 +21,6 @@ import mathPatterns from './math-patterns.mjs';
 import mathRoundRobin from './math-round-robin.mjs';
 import weeklyReset from './weekly-reset.mjs';
 import mobileDevelopment from './mobile-development.mjs';
+import offlineDevelopment from './development-offline.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment, ...offlineDevelopment];

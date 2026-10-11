@@ -21,7 +21,8 @@ for (const guide of guides.filter(guide => apps[guide.topic])) {
   assert(html.includes(attributeStoreLinks(download(apps[guide.topic]), `/guides/${guide.slug}/`)), guide.slug);
   assert(html.includes(`datetime="${guide.published || published}"`), guide.slug);
 }
-for (const path of ['guides/mobile-app-mvp-checklist/index.html', 'guides/development/index.html']) {
+const serviceGuides = guides.filter(guide => guide.topic === 'development');
+for (const path of [...serviceGuides.map(guide => `guides/${guide.slug}/index.html`), 'guides/development/index.html']) {
   const html = read(path);
   assert(html.includes(header().replace(/[ \t]+$/gm, '')), path);
   assert(!html.includes('class="app-install"'), path);
@@ -33,6 +34,16 @@ for (const path of ['guides/mobile-app-mvp-checklist/index.html', 'guides/develo
   assert(html.includes('href="/hire-flutter-developer/"'), path);
 }
 const serviceHtml = read('guides/mobile-app-mvp-checklist/index.html');
+for (const guide of serviceGuides) {
+  const html = read(`guides/${guide.slug}/index.html`);
+  const nodes = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  const article = nodes.find(node => node['@type'] === 'Article');
+  assert.equal(article.articleSection, 'Mobile app development');
+  assert.equal(article.headline, guide.title);
+  assert.equal(article.datePublished, guide.published);
+  assert.equal(article.dateModified, guide.modified || guide.published);
+  assert(nodes.find(node => node['@type'] === 'BreadcrumbList').itemListElement.some(item => item.item.endsWith('/guides/development/')));
+}
 const graph = JSON.parse(serviceHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
 assert.equal(graph.find(node => node['@type'] === 'Article').articleSection, 'Mobile app development');
 assert(graph.find(node => node['@type'] === 'BreadcrumbList').itemListElement.some(item => item.item.endsWith('/guides/development/')));

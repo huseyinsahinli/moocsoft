@@ -9,7 +9,7 @@ export const guideTopics = Object.freeze({
     heading: 'Mobile App Planning and Flutter Development Guides',
     description: 'Plan a focused mobile app with clear scope, data decisions and release checks. Read practical Flutter development guides and explore Moocsoft’s service.',
     intro: 'Turn an app idea into a clear development conversation. Define the user journey, first-release scope and platform decisions before choosing how to build it.',
-    choice: 'Start with the MVP checklist, then review the Flutter service, published apps and contact details when you are ready to discuss a project.',
+    choice: 'Start with the MVP checklist for first-release scope. Use the local storage and cloud sync worksheet to define offline actions, recovery and shared-data behavior. Then review the Flutter service when you are ready to discuss a project.',
     use: 'Moocsoft offers Flutter mobile app development. Bring your user goal, target platforms and existing materials to discuss whether the project is a fit.',
     actionPath: '/hire-flutter-developer/', actionLabel: 'Explore Flutter development services →',
   }),
