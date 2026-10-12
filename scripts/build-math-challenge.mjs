@@ -3,7 +3,8 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apps, site, escape as e } from '../content/apps.mjs';
 import { mathChallenge } from '../content/math-challenge.mjs';
-import { head, footer, storeLinks } from '../content/components.mjs';
+import { head, footer, storeLinks, resources } from '../content/components.mjs';
+import { guides } from '../content/index.mjs';
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -72,6 +73,7 @@ const html = `${head(title, description, path, graph, app, ['math-challenge']).r
     <h3>Is my score saved or shared?</h3><p>No. Answer checks only run in this page. Editing an answer clears its previous check; refreshing or resetting clears the round. Opening an explanation does not count as a correct answer. This is practice, not an IQ test or a claim about cognitive improvement.</p>
     <div class="guide-hero-actions"><a href="/guides/math/">Choose another math guide →</a><a href="/guides/missing-number-puzzles-with-answers/">Get the free missing-number worksheet →</a></div>
   </section>
+  ${resources('math', guides, false)}
 </main>
 ${footer()}
 </body>

@@ -242,6 +242,16 @@ const choices = {
     'habit-streak-vs-completion-rate',
     'weekly-reset-checklist',
   ],
+  'backup-habit-tracker-before-changing-phones': [
+    'how-to-start-habit-tracking',
+    'monthly-habit-tracker',
+    'restart-habit-after-missing-days',
+  ],
+  'website-vs-mobile-app-small-business': [
+    'mobile-app-mvp-checklist',
+    'offline-first-flutter-app-local-storage-cloud-sync',
+    'mobile-app-handover-checklist',
+  ],
   'mobile-app-mvp-checklist': [
     'flutter-development-service',
     'moocsoft-app-portfolio',
@@ -264,6 +274,11 @@ const choices = {
   ],
 
   // Math: pair solving methods with practice that exercises the same skills.
+  'cafe-logic-grid-puzzle-with-answers': [
+    'math-puzzle-strategies',
+    'missing-number-puzzles-with-answers',
+    'play-math-games-with-friends',
+  ],
   'how-to-solve-number-pattern-puzzles': [
     'repeating-pattern-puzzles-with-answers',
     'math-puzzle-strategies',

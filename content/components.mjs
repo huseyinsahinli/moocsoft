@@ -2,6 +2,7 @@ import { apps, site, escape as e } from './apps.mjs';
 import { appPreviews } from './app-previews.mjs';
 import { guideTopics, guideHref } from './topics.mjs';
 import { languageAlternates, languageSwitcher } from './localization.mjs';
+import { formatFor, selectProductPicks } from './discovery.mjs';
 
 export const faviconLinks = '<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/png" href="/assets/brand/favicon-96.png" sizes="96x96">\n  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" sizes="any">\n  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">';
 
@@ -61,10 +62,12 @@ export function storeDirectory() {
   return `<details class="guide-store-directory"><summary>Download an app · App Store &amp; Google Play</summary>${Object.values(apps).map(app => download(app, 'directory')).join('')}</details>`;
 }
 
-export function card(guide) {
+export function card(guide, options = {}) {
   const topic = guideTopics[guide.topic];
   if (!topic) throw new Error(`Unknown card topic: ${guide.topic}`);
-  return `<a class="guide-card" style="--guide-accent:${topic.color}" href="${e(guideHref(guide))}"><span class="guide-kicker">${e(topic.category)}</span><h3>${e(guide.title)}</h3><p>${e(guide.description)}</p><span>${e(guide.actionLabel || 'Read the guide')} <span aria-hidden="true">→</span></span></a>`;
+  const format = formatFor(guide);
+  const filter = options?.filterable === true ? ` data-guide-topic="${e(guide.topic)}" data-guide-format="${format.key}"` : '';
+  return `<a class="guide-card"${filter} style="--guide-accent:${topic.color}" href="${e(guideHref(guide))}"><span class="guide-kicker">${e(topic.category)}${guide.editorialFormat ? ' · ' + e(format.label) : ''}</span><h3>${e(guide.title)}</h3><p>${e(guide.description)}</p><span>${e(guide.actionLabel || format.action)} <span aria-hidden="true">→</span></span></a>`;
 }
 
 export function serviceNextStep(topic) {
@@ -77,7 +80,7 @@ export function resources(topic, guides, wrapped = true) {
   const primary = app.tool
     ? `<a href="/tools/${app.tool}/">Try the free ${e(app.toolName.toLowerCase())} →</a>`
     : `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>`;
-  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.use)}</p><div class="guide-hero-actions">${primary}<a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(card).join('')}</div></section>`;
+  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.use)}</p><p class="guide-topic-intro">Three useful starting points, chosen for this app. The full reading list is one click away.</p><div class="guide-hero-actions">${primary}<a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${selectProductPicks(guides, topic).map(card).join('')}</div></section>`;
 }
 
 export function footer() {

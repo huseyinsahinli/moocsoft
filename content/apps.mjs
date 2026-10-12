@@ -118,6 +118,12 @@ export const apps = {
 };
 
 export const sources = {
+  appleBeforeTradeIn: ['Apple: Back up and transfer information before a phone trade-in', 'https://support.apple.com/en-us/109511'],
+  flutterWebFaq: ['Flutter: Web use cases and text-heavy website limitations', 'https://docs.flutter.dev/platform-integration/web/faq'],
+  pwaInstallation: ['web.dev: Web-app installation and browser differences', 'https://web.dev/learn/pwa/installation'],
+  pwaServiceWorkers: ['web.dev: Service workers and offline behavior', 'https://web.dev/learn/pwa/service-workers'],
+  pwaCapabilities: ['web.dev: Web-app device capabilities and support', 'https://web.dev/learn/pwa/capabilities'],
+  googleSeoStarter: ['Google Search Central: Search discovery fundamentals', 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide'],
   nutritionLabel: ['FDA: Serving and whole-container columns on Nutrition Facts labels', 'https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label'],
   nutritionDeclarationEu: ['Your Europe: Average declared values and as-sold/as-prepared nutrition', 'https://europa.eu/youreurope/business/product-rules-compliance/food/nutrition-declaration/index_en.htm'],
   foodLabelsUk: ['NHS: UK food labels, per-100g values and energy units', 'https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/how-to-read-food-labels/'],

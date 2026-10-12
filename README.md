@@ -18,6 +18,14 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - A guide with an app preview may set `previewCopy: { heading, description }` to connect its task to the app. Screenshot assets, store destinations and purchase notes remain shared. Do not imply automatic imports from free web tools into the app.
 - Article section navigation is a compact native menu before the answer on mobile and a sidebar on desktop. The small navigation script only sets its default when crossing the layout breakpoint; links and native expansion work without JavaScript. Layout changes alone do not reset article publication or revision dates.
 
+## Reader discovery and editorial formats
+
+`content/discovery.mjs` keeps explicit homepage picks, three same-topic product/tool starting reads and three task-based reading journeys. These are editorial choices, not popularity or conversion claims. `editorialFormat` may be `story`, `decision` or `puzzle`; the default remains `guide`. Labels describe the actual content. Fictional people and situations must be disclosed as fictional, never presented as customer testimonials or personal experience.
+
+The English library at `/guides/` renders all guide links in static HTML. Its optional `guide-discovery` assets add local text/topic/format filtering without URL parameters, storage, cookies or network requests. With JavaScript disabled, the full library and topic links remain available. Keep curated selections validated, retain full topic-hub links and test filtering, reset, no-match behavior and mobile/no-JavaScript access.
+
+Use `showToolAction: false` when the matching topic's free tool cannot help the article's task; this does not remove app download links. For example, the website habit calendar is not an app backup. A preview with no real screenshot is labeled as app features/access, not a visual demonstration. Choose a genuinely different reader question and format when useful; do not rename an old checklist a story or multiply near-duplicate pages for traffic.
+
 ## German pilot
 
 The German reading hub at `/de/guides/` contains three full, editorially adapted translations, not a duplicate of the full English catalogue. `content/de-index.mjs` registers these translations; `content/de-products.mjs` contains corresponding localized app destinations and honest language/purchase notes. `scripts/build-localized-guides.mjs` runs inside the normal guide build. Translations do not increase English article counts or change their publication dates.

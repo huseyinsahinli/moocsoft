@@ -26,5 +26,8 @@ import offlineDevelopment from './development-offline.mjs';
 import noSpendSavings from './savings-no-spend.mjs';
 import shiftHabits from './habits-shifts.mjs';
 import handoverDevelopment from './development-handover.mjs';
+import backupHabits from './habits-phone-backup.mjs';
+import cafeMystery from './math-cafe-mystery.mjs';
+import websiteDecision from './development-website-or-app.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision];

@@ -2,59 +2,59 @@
 <urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/calorie-macro-calculator/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/52-week-savings-calculator/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/quit-smoking-savings-calculator/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/workout-volume-rest-timer/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/habit-streak-calendar/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/math-puzzle-challenge/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/nutrilens/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/did-you-lift/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -72,19 +72,19 @@
   </url>
   <url>
     <loc>https://moocsoft.net/quitbit/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/habit-tracker/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/savings-goal-tracker/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -137,7 +137,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/math-riddles/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -372,6 +372,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/backup-habit-tracker-before-changing-phones/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/how-to-solve-number-pattern-puzzles/</loc>
     <lastmod>2026-10-06</lastmod>
   </url>
@@ -425,6 +430,10 @@
     <lastmod>2026-10-09</lastmod>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/cafe-logic-grid-puzzle-with-answers/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/mobile-app-mvp-checklist/</loc>
     <lastmod>2026-10-09</lastmod>
   </url>
@@ -435,6 +444,10 @@
   <url>
     <loc>https://moocsoft.net/guides/mobile-app-handover-checklist/</loc>
     <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/website-vs-mobile-app-small-business/</loc>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
@@ -454,15 +467,15 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/development/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
