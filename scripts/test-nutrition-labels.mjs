@@ -1,0 +1,60 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { guides } from '../content/index.mjs';
+import { labelExamples, preparedExample } from '../content/nutrition-labels.mjs';
+import { apps, site, sources } from '../content/apps.mjs';
+import { createRelatedGuideSelector } from '../content/related-guides.mjs';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const read = file => readFileSync(resolve(root, file), 'utf8');
+const slug = 'calories-per-serving-vs-per-container';
+const path = `/guides/${slug}/`;
+const guide = guides.find(item => item.slug === slug);
+assert.equal(guides.filter(item => item.slug === slug).length, 1);
+assert.equal(guide.topic, 'nutrition');
+assert.equal(guide.published, '2026-10-12');
+assert.equal(guide.sections.length, 6);
+assert.equal(guide.faq.length, 5);
+assert.equal(guide.appPreview, true);
+const html = read(`guides/${slug}/index.html`);
+assert(html.includes(`<link rel="canonical" href="${site}${path}">`));
+const article = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'].find(node => node['@type'] === 'Article');
+assert.equal(article.headline, guide.title);
+assert.equal(article.description, guide.description);
+assert.equal(article.datePublished, guide.published);
+assert.equal(article.dateModified, guide.published);
+assert.equal(article.inLanguage, 'en');
+assert.equal(article.url, site + path);
+
+// Explicit expectations are separate from table generation.
+assert.deepEqual(labelExamples.map(item => item.id), ['whole-pack', 'partial-pack', 'drink', 'per-100g']);
+for (const [index, expected] of [900, 315, 132, 126].entries()) {
+  const row = labelExamples[index];
+  assert.equal(row.labelCalories * row.amountEaten / row.basisAmount, expected);
+  assert.equal(row.result, expected);
+  assert(html.includes(row.calculation));
+}
+assert.equal(labelExamples[0].amountEaten / labelExamples[0].basisAmount, 5);
+assert.equal(labelExamples[1].amountEaten / labelExamples[1].basisAmount, 1.75);
+assert.equal(labelExamples[0].result / 2, 450);
+assert.equal(labelExamples[0].labelCalories * 100 / labelExamples[0].basisAmount, 450);
+assert.equal(preparedExample.foodCalories + preparedExample.additionCalories, 230);
+assert.equal(preparedExample.preparedCalories, 230);
+assert(html.includes('already includes') && html.includes('do not add the same 60 again'));
+for (const phrase of ['not values for real products', 'reasonably represents', 'kJ', 'not barcode scanning', 'not promise automatic label reading', 'subscriptions and scan credit packs', 'Premium', 'cannot confirm allergy safety']) assert(html.includes(phrase), phrase);
+for (const key of guide.sources) assert(html.includes(sources[key][1]), key);
+assert.equal((html.match(/<caption>/g) || []).length, 4);
+const next = createRelatedGuideSelector(guides)(slug).map(item => item.slug);
+assert.deepEqual(next, ['track-calories-homemade-meals', 'calories-vs-macros', 'ai-calorie-scanner-accuracy']);
+assert(read('guides/ai-calorie-scanner-accuracy/index.html').includes(`href="${path}"`));
+assert(read('guides/nutrition/index.html').includes(`href="${path}"`));
+assert(read('sitemap.xml').includes(`<loc>${site}${path}</loc>\n    <lastmod>${guide.published}</lastmod>`));
+const previous = guides.find(item => item.slug === 'ai-calorie-scanner-accuracy');
+assert.equal(previous.published, '2026-10-06');
+assert.equal(previous.modified, undefined, 'A contextual reading link does not reset article freshness');
+assert(html.includes(apps.nutrition.apple));
+assert(html.includes('id=com.moocsoft.food_scan_ai&amp;utm_source=moocsoft&amp;utm_medium=referral&amp;utm_campaign=guides-' + slug));
+assert(html.includes('src="/assets/apps/nutrilens/screenshot-2.jpg"'));
+console.log('PASS: nutrition-label guide, four independent portion calculations, prepared-value boundary, real product links, sources, dated metadata and reciprocal discovery.');

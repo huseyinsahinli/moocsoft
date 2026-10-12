@@ -2,6 +2,7 @@ import nutrition from './nutrition.mjs';
 import moreNutrition from './nutrition-more.mjs';
 import restaurantNutrition from './nutrition-restaurants.mjs';
 import nutritionAccuracy from './nutrition-accuracy.mjs';
+import nutritionLabels from './nutrition-labels.mjs';
 import savings from './savings.mjs';
 import moreSavings from './savings-more.mjs';
 import savingsChallenges from './savings-challenges.mjs';
@@ -26,4 +27,4 @@ import noSpendSavings from './savings-no-spend.mjs';
 import shiftHabits from './habits-shifts.mjs';
 import handoverDevelopment from './development-handover.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment];

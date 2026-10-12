@@ -118,6 +118,10 @@ export const apps = {
 };
 
 export const sources = {
+  nutritionLabel: ['FDA: Serving and whole-container columns on Nutrition Facts labels', 'https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label'],
+  nutritionDeclarationEu: ['Your Europe: Average declared values and as-sold/as-prepared nutrition', 'https://europa.eu/youreurope/business/product-rules-compliance/food/nutrition-declaration/index_en.htm'],
+  foodLabelsUk: ['NHS: UK food labels, per-100g values and energy units', 'https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/how-to-read-food-labels/'],
+  nutritionStore: ['NutriLens: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/nutrilens-food-ai-scanner/id6755138291'],
   budgetPlanning: ['CFPB: Build a budget using income, spending and bill dates', 'https://www.consumerfinance.gov/archive/blog/budgeting-how-to-create-a-budget-and-stick-with-it/'],
   habitStore: ['Habit Tracker Daily: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/habit-tracker-daily/id6572323963'],
   savingsStore: ['Frugal: current iOS features and in-app purchases', 'https://apps.apple.com/us/app/frugal-savings-tracker/id6450431254'],

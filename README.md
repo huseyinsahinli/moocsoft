@@ -20,7 +20,7 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 
 ## German pilot
 
-The German reading hub at `/de/guides/` contains three full, editorially adapted translations, not a duplicate 62-guide catalogue. `content/de-index.mjs` registers these translations; `content/de-products.mjs` contains corresponding localized app destinations and honest language/purchase notes. `scripts/build-localized-guides.mjs` runs inside the normal guide build. English article counts and publication dates stay unchanged.
+The German reading hub at `/de/guides/` contains three full, editorially adapted translations, not a duplicate of the full English catalogue. `content/de-index.mjs` registers these translations; `content/de-products.mjs` contains corresponding localized app destinations and honest language/purchase notes. `scripts/build-localized-guides.mjs` runs inside the normal guide build. Translations do not increase English article counts or change their publication dates.
 
 Only genuine equivalent pages belong in `content/localization.mjs`. Each English/German pair has reciprocal `en`, `de` and English `x-default` links, self-canonicals and a visible language selector. The smaller German hub deliberately has no `hreflang` pairing with the full English catalogue. Never redirect readers automatically or canonicalize German text to English. German URLs are static HTML and included in the existing sitemap.
 

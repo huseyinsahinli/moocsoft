@@ -204,6 +204,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/calories-per-serving-vs-per-container/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/52-week-savings-challenge/</loc>
     <lastmod>2026-09-12</lastmod>
   </url>
@@ -433,7 +438,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
@@ -461,7 +466,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>

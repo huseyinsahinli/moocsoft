@@ -1,7 +1,7 @@
 import { site, escape as e } from './apps.mjs';
 
 // Only genuine equivalents belong here. The small German reading hub is a
-// curated subset, not a full translation of the English 62-guide catalogue.
+// curated subset, not a full translation of the English guide catalogue.
 export const languagePairs = [
   { en: '/guides/7-day-no-spend-challenge/', de: '/de/guides/7-tage-no-spend-challenge/' },
   { en: '/guides/habit-tracker-for-shift-work/', de: '/de/guides/habit-tracker-schichtarbeit/' },

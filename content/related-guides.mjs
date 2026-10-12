@@ -54,6 +54,11 @@ const choices = {
     'track-calories-homemade-meals',
     'photo-calorie-scanner-app-checklist',
   ],
+  'calories-per-serving-vs-per-container': [
+    'track-calories-homemade-meals',
+    'calories-vs-macros',
+    'ai-calorie-scanner-accuracy',
+  ],
 
   // Savings: compare contribution schedules, then connect them to a real goal.
   '52-week-savings-challenge': [
