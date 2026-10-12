@@ -58,7 +58,7 @@ export default [
     takeaway: 'Use a planned-expense goal for a known upcoming cost and an emergency reserve for unexpected needs. Do not assign the same money to both totals.',
     sections: [
       ['Separate a known expense from an unexpected need', `<p>A sinking fund is a common name for money gradually set aside for a planned expense: a yearly bill, a trip or an item you expect to replace. An emergency fund is a reserve for unplanned expenses or financial shocks. The CFPB describes emergency savings as cash set aside for unexpected costs and notes that the appropriate amount depends on your circumstances.</p><p>The distinction is the purpose, not necessarily the number of bank accounts you have. A tracker can show several named goals even if money is held in one account. That makes careful allocation especially important.</p>`],
-      ['Give each goal a clear job', table('Illustrative categories for a savings tracker', ['Goal', 'Type', 'Planning question'], [
+      ['Give each goal a clear job', `<p>For a recurring bill, the first deadline may be much closer than twelve months away. Use the <a href="/guides/annual-bills-sinking-fund/">annual-bills sinking-fund worksheet</a> to count the deposits before renewal and reset the record after paying it.</p>` + table('Illustrative categories for a savings tracker', ['Goal', 'Type', 'Planning question'], [
         ['Annual membership renewal', 'Known expense', 'How much is due, and when?'],
         ['Planned trip', 'Known expense', 'Which costs belong in the target?'],
         ['Unexpected essential repair', 'Emergency reserve', 'What unexpected costs might I need to cover?'],

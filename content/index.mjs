@@ -29,5 +29,8 @@ import handoverDevelopment from './development-handover.mjs';
 import backupHabits from './habits-phone-backup.mjs';
 import cafeMystery from './math-cafe-mystery.mjs';
 import websiteDecision from './development-website-or-app.mjs';
+import { substitutionGuides } from './training-substitution-story.mjs';
+import { annualBillsGuides } from './savings-annual-bills.mjs';
+import { bugReportGuides } from './development-bug-report.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...annualBillsGuides, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...substitutionGuides, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision, ...bugReportGuides];

@@ -118,6 +118,7 @@ export const apps = {
 };
 
 export const sources = {
+  flutterBugReports: ['Flutter: Reproducible bug reports, diagnostics and logs', 'https://docs.flutter.dev/resources/bug-reports'],
   appleBeforeTradeIn: ['Apple: Back up and transfer information before a phone trade-in', 'https://support.apple.com/en-us/109511'],
   flutterWebFaq: ['Flutter: Web use cases and text-heavy website limitations', 'https://docs.flutter.dev/platform-integration/web/faq'],
   pwaInstallation: ['web.dev: Web-app installation and browser differences', 'https://web.dev/learn/pwa/installation'],

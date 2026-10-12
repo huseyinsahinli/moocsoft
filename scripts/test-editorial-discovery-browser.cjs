@@ -55,7 +55,7 @@ const qaDir = process.env.MOOCSOFT_QA_DIR;
         assert.equal(await query.inputValue(), '');
         assert.equal(await shown(), guides.length);
         await format.selectOption('story');
-        assert.equal(await shown(), 1);
+        assert.equal(await shown(), guides.filter(guide => guide.editorialFormat === 'story').length);
         await query.fill('zz-private-filter-probe-5187');
         await query.press('Enter');
         assert.equal(await shown(), 0);

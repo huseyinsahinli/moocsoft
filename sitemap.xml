@@ -265,6 +265,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/annual-bills-sinking-fund/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/quit-smoking-calculator-guide/</loc>
     <lastmod>2026-09-13</lastmod>
   </url>
@@ -333,6 +338,11 @@
   <url>
     <loc>https://moocsoft.net/guides/log-warm-up-and-working-sets/</loc>
     <lastmod>2026-10-07</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/guides/log-exercise-substitution-busy-gym/</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
@@ -450,12 +460,16 @@
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/mobile-app-bug-report-template/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
@@ -463,7 +477,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>

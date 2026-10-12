@@ -3,6 +3,21 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'log-exercise-substitution-busy-gym': [
+    'how-to-log-gym-workouts',
+    'how-to-track-personal-records-in-gym',
+    'workout-volume-explained',
+  ],
+  'annual-bills-sinking-fund': [
+    'sinking-funds-vs-emergency-fund',
+    'calculate-savings-goal-contributions',
+    'track-multiple-savings-goals',
+  ],
+  'mobile-app-bug-report-template': [
+    'mobile-app-mvp-checklist',
+    'mobile-app-handover-checklist',
+    'offline-first-flutter-app-local-storage-cloud-sync',
+  ],
   // Nutrition: improve the estimate, check the inputs, then keep a useful record.
   'estimate-calories-from-food-photo': [
     'estimate-portion-size-from-food-photo',
