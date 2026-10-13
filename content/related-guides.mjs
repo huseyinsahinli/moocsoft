@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'elapsed-time-across-midnight': [
+    'mental-multiplication-tricks',
+    'order-of-operations-puzzles',
+    'mental-math-games-for-adults',
+  ],
   'log-exercise-substitution-busy-gym': [
     'how-to-log-gym-workouts',
     'how-to-track-personal-records-in-gym',

@@ -118,6 +118,8 @@ export const apps = {
 };
 
 export const sources = {
+  nistTimeOfDay: ['NIST: Noon, midnight and the date boundary', 'https://www.nist.gov/pml/time-and-frequency-division/times-day-faqs'],
+  mathStore: ['Math Riddles: current iOS puzzle features and optional purchases', 'https://apps.apple.com/us/app/math-riddles-brain-games/id6449851642'],
   flutterBugReports: ['Flutter: Reproducible bug reports, diagnostics and logs', 'https://docs.flutter.dev/resources/bug-reports'],
   appleBeforeTradeIn: ['Apple: Back up and transfer information before a phone trade-in', 'https://support.apple.com/en-us/109511'],
   flutterWebFaq: ['Flutter: Web use cases and text-heavy website limitations', 'https://docs.flutter.dev/platform-integration/web/faq'],
