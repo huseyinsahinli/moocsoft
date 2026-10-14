@@ -118,6 +118,10 @@ export const apps = {
 };
 
 export const sources = {
+  flutterCameraRecipe: ['Flutter: Camera preview, initialization and photo capture', 'https://docs.flutter.dev/cookbook/plugins/picture-using-camera'],
+  flutterCameraPlugin: ['Flutter camera plugin: Setup, permission errors and lifecycle handling', 'https://pub.dev/packages/camera'],
+  appleCameraAuthorization: ['Apple: Camera authorization and purpose descriptions', 'https://developer.apple.com/documentation/avfoundation/requesting-authorization-to-capture-and-save-media'],
+  androidRuntimePermissions: ['Android Developers: Runtime permission requests and changing access', 'https://developer.android.com/training/permissions/requesting'],
   nistTimeOfDay: ['NIST: Noon, midnight and the date boundary', 'https://www.nist.gov/pml/time-and-frequency-division/times-day-faqs'],
   mathStore: ['Math Riddles: current iOS puzzle features and optional purchases', 'https://apps.apple.com/us/app/math-riddles-brain-games/id6449851642'],
   flutterBugReports: ['Flutter: Reproducible bug reports, diagnostics and logs', 'https://docs.flutter.dev/resources/bug-reports'],

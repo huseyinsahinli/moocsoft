@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'flutter-camera-permission-test-checklist': [
+    'mobile-app-bug-report-template',
+    'mobile-app-mvp-checklist',
+    'mobile-app-handover-checklist',
+  ],
   'elapsed-time-across-midnight': [
     'mental-multiplication-tricks',
     'order-of-operations-puzzles',
