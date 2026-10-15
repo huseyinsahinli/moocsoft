@@ -1,0 +1,62 @@
+.app-brief-page { --brief-accent: #e5b184; }
+.app-brief-page .eyebrow { color: var(--brief-accent); }
+.app-brief-page .tool-hero { padding-bottom: 36px; }
+.app-brief-page h1 { max-width: 19ch; }
+.app-brief-page .brief-jump-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; }
+.app-brief-page .brief-jump-links a,
+.app-brief-page .brief-prose a,
+.app-brief-page .brief-reading a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--brief-accent); }
+.app-brief-page .brief-notice { border-left: 3px solid var(--brief-accent); padding: 12px 16px; color: var(--muted); background: rgba(229, 177, 132, .07); }
+.app-brief-page .brief-builder { padding: clamp(20px, 4vw, 36px); margin: 0 0 36px; scroll-margin-top: 110px; }
+.app-brief-page .brief-builder > h2 { margin-top: 0; font-size: clamp(1.6rem, 4vw, 2.25rem); font-weight: 500; }
+.app-brief-page .brief-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; margin-top: 26px; }
+.app-brief-page .brief-field { display: flex; flex-direction: column; min-width: 0; gap: 8px; }
+.app-brief-page .brief-field-wide { grid-column: 1 / -1; }
+.app-brief-page .brief-field label,
+.app-brief-page .brief-output-label { color: var(--text); font-size: 1rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.app-brief-page .brief-field label span { font-weight: 300; color: var(--muted); }
+.app-brief-page .brief-hint { margin: 0; color: var(--muted); font-size: .9rem; }
+.app-brief-page textarea { width: 100%; min-width: 0; min-height: 120px; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface-2); color: var(--text); font: inherit; line-height: 1.5; resize: vertical; }
+.app-brief-page textarea::placeholder { color: var(--muted); }
+.app-brief-page textarea:focus,
+.app-brief-page input:focus,
+.app-brief-page select:focus { outline: 2px solid var(--brief-accent); outline-offset: 2px; border-color: var(--brief-accent); box-shadow: none; }
+.app-brief-page [aria-invalid="true"] { border-color: #ffb6a3; }
+.app-brief-page .brief-field-error { margin: 0; color: #ffb6a3; font-size: .9rem; }
+.app-brief-page .brief-field-error:empty { display: none; }
+.app-brief-page .brief-status { min-height: 1.6em; margin: 16px 0 0; color: var(--text); }
+.app-brief-page .brief-result { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--border-strong); }
+.app-brief-page .brief-result h3 { margin: 0 0 8px; font-size: 1.6rem; font-weight: 500; }
+.app-brief-page .brief-output-label { display: block; margin-top: 20px; margin-bottom: 8px; }
+.app-brief-page .brief-output { min-height: 440px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .92rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.app-brief-page .button:hover { background: var(--brief-accent); color: #090a0c; }
+.app-brief-page .button.secondary:hover { border-color: var(--brief-accent); }
+.app-brief-page .button:focus-visible,
+.app-brief-page a:focus-visible { outline: 3px solid var(--brief-accent); outline-offset: 4px; }
+.app-brief-page .button:disabled { cursor: not-allowed; opacity: .6; transform: none; }
+.app-brief-page .brief-static { padding: 36px 0; border-top: 1px solid var(--border); scroll-margin-top: 110px; }
+.app-brief-page .brief-static h2 { margin-top: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 500; }
+.app-brief-page .brief-static p,
+.app-brief-page .brief-static li { max-width: 78ch; color: var(--muted); }
+.app-brief-page .brief-static li { padding-bottom: 9px; }
+.app-brief-page .brief-example { padding: clamp(18px, 3vw, 30px); }
+.app-brief-page .brief-example dl { margin: 0; }
+.app-brief-page .brief-example dt { margin-top: 20px; font-weight: 500; }
+.app-brief-page .brief-example dt:first-child { margin-top: 0; }
+.app-brief-page .brief-example dd { margin: 5px 0 0; color: var(--muted); }
+.app-brief-page .brief-reading { display: grid; gap: 14px; margin: 0; padding-left: 20px; }
+.app-brief-page .brief-service-cta { margin: 32px 0 64px; padding: clamp(22px, 4vw, 38px); border: 1px solid rgba(229, 177, 132, .3); border-radius: 22px; background: rgba(229, 177, 132, .06); }
+.app-brief-page .brief-service-cta h2 { margin: 0 0 12px; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 500; }
+.app-brief-page .brief-service-cta p { max-width: 70ch; color: var(--muted); }
+.app-brief-page [hidden] { display: none !important; }
+@media (max-width: 600px) {
+  .app-brief-page .brief-fields { grid-template-columns: minmax(0, 1fr); }
+  .app-brief-page .brief-builder { padding: 20px 16px; }
+  .app-brief-page .action-row .button { width: 100%; }
+  .app-brief-page .brief-output { min-height: 360px; }
+}
+@media print {
+  .app-brief-page .site-header, .app-brief-page .guide-foot,
+  .app-brief-page .brief-jump-links, .app-brief-page .brief-fields,
+  .app-brief-page .action-row, .app-brief-page .brief-service-cta { display: none; }
+}

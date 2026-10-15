@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { apps } from '../content/apps.mjs';
+import { browserTools } from '../content/tools.mjs';
+import { guides } from '../content/index.mjs';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const read = path => readFileSync(resolve(root, path), 'utf8');
+const paths = browserTools.map(tool => tool.path);
+assert.equal(Object.keys(apps).length, 6, 'Service tools do not become fictitious store apps');
+assert.equal(paths.length, 8);
+assert.equal(new Set(paths).size, 8);
+assert(browserTools.every(tool => Object.isFrozen(tool) && tool.name));
+for (const path of paths) assert(existsSync(resolve(root, '.' + path, 'index.html')), path);
+const directory = read('tools/index.html');
+const cards = [...directory.matchAll(/<a class="tool-card" href="([^"]+)"/g)].map(match => match[1]);
+assert.deepEqual([...cards].sort(), [...paths].sort(), 'All eight real tools are discoverable');
+assert.match(directory, /Eight free browser tools/);
+assert.match(read('index.html'), /<div class="stat-num">8<\/div>\s*<div class="stat-label">Free tools/);
+assert(read('guides/index.html').includes(`${guides.length} guides · ${browserTools.length} free tools`));
+assert.equal(new Set(guides.map(guide => guide.slug)).size, guides.length, 'Tool additions must not introduce duplicate article slugs');
+const sitemap = read('sitemap.xml');
+for (const path of ['/tools/savings-goal-calculator/', '/tools/app-brief-builder/']) {
+  assert.equal(sitemap.split(`<loc>https://moocsoft.net${path}</loc>`).length - 1, 1, path);
+  assert(read('index.html').includes(`href="${path}"`));
+}
+assert(read('guides/calculate-savings-goal-contributions/index.html').includes('href="/tools/savings-goal-calculator/"'));
+assert(read('guides/vacation-savings-goal-plan/index.html').includes('href="/tools/savings-goal-calculator/"'));
+assert(read('guides/biweekly-savings-plan/index.html').includes('href="/tools/savings-goal-calculator/"'));
+assert(read('guides/mobile-app-mvp-checklist/index.html').includes('href="/tools/app-brief-builder/"'));
+assert(read('hire-flutter-developer/index.html').includes('href="/tools/app-brief-builder/"'));
+const savings = read('tools/savings-goal-calculator/index.html');
+assert.match(savings, /id6450431254/);
+assert.match(savings, /com\.moocsoft\.goal_tracker/);
+assert.match(savings, /utm_campaign=tools-savings-goal-calculator/);
+const brief = read('tools/app-brief-builder/index.html');
+assert(!/class="install-link|apple-itunes-app|apps\.apple\.com|play\.google\.com/.test(brief), 'Brief has service CTA, not unrelated mobile store targets');
+assert.match(brief, /href="\/hire-flutter-developer\/"/);
+for (const file of ['assets/savings-goal-tool.js', 'assets/app-brief-tool.js']) {
+  assert(!/\b(fetch|XMLHttpRequest|localStorage|sessionStorage)\b|document\.cookie|sendBeacon/.test(read(file)), file + ': no transport or persistence');
+}
+const workout = read('tools/workout-volume-rest-timer/index.html');
+assert.match(workout, /<title>Workout Volume Calculator: Sets, Reps &amp; Weight<\/title>/);
+assert.match(workout, /<h1>Workout Volume Calculator<\/h1>/);
+assert.match(workout, /download your exercise totals as a free CSV workout log/i);
+assert.match(workout, /Three sets of 10 reps at 50 kg total 1,500 kg/);
+assert.match(workout, /it does not convert them/);
+assert.equal(3 * 10 * 50, 1500);
+console.log('PASS: eight real tools, static incoming links, consistent guide counts, new canonicals/sitemap, Frugal identity, service-only brief and no new tracking.');

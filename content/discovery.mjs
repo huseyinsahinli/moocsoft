@@ -75,7 +75,7 @@ export const readerJourneys = Object.freeze([
   journey('plan-your-product', 'Decide what your business needs',
     'Compare a website with a mobile app before choosing features or starting a development conversation.', [
       { href: '/guides/website-vs-mobile-app-small-business/', label: 'Compare a website and a mobile app' },
-      { href: '/guides/mobile-app-mvp-checklist/', label: 'Outline a focused first release' },
+      { href: '/tools/app-brief-builder/', label: 'Prepare a focused app project brief' },
       { href: '/hire-flutter-developer/', label: 'Explore Flutter development services' },
     ]),
 ]);
@@ -117,6 +117,7 @@ export function selectReaderJourneys(guides) {
   const knownResources = new Set([
     '/tools/math-puzzle-challenge/', '/math-riddles/',
     '/habit-tracker/', '/hire-flutter-developer/',
+    '/tools/app-brief-builder/',
   ]);
   const journeyIds = new Set();
   for (const item of readerJourneys) {

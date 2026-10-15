@@ -12,14 +12,17 @@ import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 import { languageAlternates, languageSwitcher } from '../content/localization.mjs';
 import { buildLocalizedGuides } from './build-localized-guides.mjs';
 import { formatFor, editorialFormats, selectHomePicks, selectReaderJourneys } from '../content/discovery.mjs';
+import { browserTools } from '../content/tools.mjs';
 import './build-math-challenge.mjs';
+import './build-savings-goal-tool.mjs';
+import './build-app-brief-tool.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputs = [];
 const selectRelatedGuides = createRelatedGuideSelector(guides);
 const modified = guide => guide.modified || guide.published || published;
 const latest = list => list.map(modified).sort().at(-1) || published;
-const toolCount = Object.values(apps).filter(app => app.tool).length;
+const toolCount = browserTools.length;
 const toolAction = (app, verb = 'Open') => app?.tool ? `<a href="/tools/${app.tool}/">${verb} the free ${e(app.toolName.toLowerCase())} →</a>` : '';
 const topicAction = (topic, app) => app ? `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>` : `<a href="${e(topic.actionPath)}">${e(topic.actionLabel)}</a>`;
 const displayDate = value => new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value + 'T00:00:00Z'));

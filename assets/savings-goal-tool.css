@@ -1,0 +1,52 @@
+.savings-goal-page { --accent: #76dfb4; --accent-rgb: 118, 223, 180; }
+.savings-goal-page [hidden] { display: none !important; }
+.savings-goal-page .tool-hero { padding: 34px 0 36px; }
+.savings-goal-page h1 { max-width: 20ch; }
+.savings-goal-page .goal-note { color: #bdb6aa; font-size: .92rem; }
+.savings-goal-page .goal-planner { padding: clamp(22px, 4vw, 36px); margin-bottom: 34px; }
+.savings-goal-page .goal-planner h2 { margin-top: 0; font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.savings-goal-page .goal-inputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.savings-goal-page .field small { font-size: .82rem; font-weight: 300; letter-spacing: normal; text-transform: none; color: #bdb6aa; }
+.savings-goal-page .goal-inputs input, .savings-goal-page .goal-inputs select { font-size: 1rem; }
+.savings-goal-page .button { background: #76dfb4; color: #09110e; }
+.savings-goal-page .button:hover { background: #a2efce; color: #09110e; }
+.savings-goal-page .button:focus-visible { outline: 3px solid #f4efe6; outline-offset: 4px; }
+.savings-goal-page .button.secondary { color: #f4efe6; background: #17181b; border-color: #aaa49a; }
+.savings-goal-page .button.secondary:hover { background: #282b30; color: #fff; }
+.savings-goal-page [aria-invalid="true"] { border-color: #ffb6a3; }
+.savings-goal-page .goal-error { color: #ffb6a3; min-height: 1.6em; }
+.savings-goal-page .goal-status { color: #bdb6aa; min-height: 1.6em; }
+.savings-goal-page .goal-output { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border-strong); }
+.savings-goal-page .goal-summary { font-size: 1.12rem; color: #f4efe6; }
+.savings-goal-page .goal-table-wrap { overflow: auto; max-width: 100%; max-height: 520px; border: 1px solid var(--border-strong); border-radius: 12px; margin-block: 22px; }
+.savings-goal-page .goal-table-wrap:focus-visible { outline: 3px solid #76dfb4; outline-offset: 3px; }
+.savings-goal-page table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.savings-goal-page caption { padding: 14px; text-align: left; color: #bdb6aa; }
+.savings-goal-page th, .savings-goal-page td { padding: 12px 14px; text-align: right; border-top: 1px solid var(--border); white-space: nowrap; }
+.savings-goal-page th:first-child, .savings-goal-page td:first-child { text-align: left; }
+.savings-goal-page thead th { color: #bdb6aa; font-weight: 500; background: #17181b; }
+.savings-goal-page tbody th { font-weight: 400; }
+.savings-goal-page .goal-example { padding-top: 34px; padding-bottom: 34px; }
+.savings-goal-page .goal-example h2, .savings-goal-page .goal-help h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); }
+.savings-goal-page .goal-formula { padding: 20px; border-left: 3px solid #76dfb4; background: #111214; font-variant-numeric: tabular-nums; }
+.savings-goal-page .goal-reading { padding-bottom: 50px; }
+.savings-goal-page .goal-reading ul { padding-left: 22px; }
+.savings-goal-page .goal-reading a { display: inline-block; padding-block: 8px; text-decoration: underline; text-underline-offset: 4px; }
+.savings-goal-page .goal-help { padding-block: 34px; }
+.savings-goal-page .goal-help a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 600px) {
+  .savings-goal-page .goal-inputs { grid-template-columns: 1fr; }
+  .savings-goal-page .action-row .button { width: 100%; }
+  .savings-goal-page .goal-planner { padding: 20px 16px; }
+}
+@media print {
+  .savings-goal-page .site-header, .savings-goal-page .guide-foot, .savings-goal-page form,
+  .savings-goal-page .result-download, .savings-goal-page .guide-download,
+  .savings-goal-page .goal-reading, .savings-goal-page .button { display: none !important; }
+  .savings-goal-page { background: #fff; color: #000; }
+  .savings-goal-page::before { display: none; }
+  .savings-goal-page .goal-table-wrap { overflow: visible; max-height: none; }
+  .savings-goal-page .panel, .savings-goal-page .goal-formula, .savings-goal-page thead th { background: #fff; box-shadow: none; }
+  .savings-goal-page .goal-summary, .savings-goal-page .goal-note, .savings-goal-page .goal-status,
+  .savings-goal-page caption, .savings-goal-page thead th { color: #000; }
+}

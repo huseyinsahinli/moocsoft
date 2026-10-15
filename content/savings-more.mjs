@@ -24,6 +24,7 @@ export default [
     description: 'Turn a savings target into 26 every-two-week deposits, account for three-paycheck months and recalculate after an extra or missed contribution.',
     intro: 'If you are paid every two weeks, planning 26 deposits can feel more natural than forcing the goal into twelve equal months.',
     takeaway: 'Subtract current savings from the target and divide by the paychecks before the deadline. Keep biweekly and twice-monthly schedules distinct.',
+    startAction: ['/tools/savings-goal-calculator/', 'Build a free every-two-week contribution schedule →'],
     sections: [
       ['Confirm what biweekly means', `<p>Biweekly means once every two weeks, usually 26 pay periods in a 52-week year. Twice monthly means 24 pay periods. The schedules can look similar, but using the wrong count changes the required deposit.</p><p>Check your actual payroll calendar, especially when a deadline covers less than a full year.</p>`],
       ['Calculate the deposit from the remaining goal', `<p>Use this planning formula:</p><p class="guide-formula">deposit per paycheck = (target − current savings) ÷ paychecks remaining</p><p>For a $2,600 target with $520 already saved and 20 paychecks remaining, the calculation is ($2,600 − $520) ÷ 20 = $104 per paycheck.</p>`],
@@ -41,6 +42,7 @@ export default [
     description: 'Estimate a vacation savings target, add a buffer, subtract money already saved and calculate deposits for each payday or month.',
     intro: 'A trip fund works better when the target includes the costs that are easy to forget, not only the flight or hotel shown in the first search.',
     takeaway: 'List each trip category, add a deliberate buffer, subtract current savings and divide the remainder by the deposits before the payment dates.',
+    startAction: ['/tools/savings-goal-calculator/', 'Calculate contributions for your trip fund →'],
     sections: [
       ['Create a category-based estimate', table('Illustrative trip budget, not a quote', ['Category', 'Example estimate'], [
         ['Transport', '$600'], ['Accommodation', '$750'], ['Food', '$350'], ['Local travel', '$120'], ['Activities', '$180'], ['Total before buffer', '$2,000'],

@@ -14,6 +14,7 @@ The site is static and remains compatible with GitHub Pages. Generated HTML is c
 - `math-challenge.mjs`: three fixed five-question website rounds with explicit rules, hints, independent local answer checks and explanations; not app levels. The original `mathChallenge` export and deep links remain compatible. Round sharing copies only the public fragment URL, never answers or scores.
 - `../assets/content.css`: marketing-only styles; legal and workout import pages do not include this stylesheet.
 - `../scripts/build-guides.mjs`: produces `/guides/`, the topic pages, all articles and their sitemap entries.
+- `tools.mjs`: counts all eight real browser tools without treating the service brief builder as a mobile app. The normal build also runs the savings-goal and app-brief tool builders; interactive outputs stay local and worked examples remain static.
 
 Regenerate from the repository root with `node scripts/build-guides.mjs`. No third-party packages are required. Re-running the command without changes produces the same files. The original app and tool landing pages remain ordinary HTML; their related-guide sections should be updated if the reading lists change.
 
