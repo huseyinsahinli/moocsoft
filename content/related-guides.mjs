@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'dry-to-cooked-rice-weight': [
+    'track-calories-homemade-meals',
+    'calories-per-serving-vs-per-container',
+    'ai-calorie-scanner-accuracy',
+  ],
   'flutter-camera-permission-test-checklist': [
     'mobile-app-bug-report-template',
     'mobile-app-mvp-checklist',
