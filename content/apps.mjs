@@ -108,7 +108,7 @@ export const apps = {
     heading: 'Math puzzle and mental-math guides',
     description: 'Learn practical strategies for number patterns, mental math, logic puzzles and friendly 1v1 math challenges with worked examples.',
     intro: 'A good math puzzle asks you to notice a rule, test it against every example and explain why it works. These guides turn that process into a repeatable checklist for solo practice or a friendly challenge.',
-    choice: 'Try the free browser challenge for five original questions with hints, answer checks and explanations. Start with the number-pattern walkthrough if sequences slow you down, use the strategy checklist for mixed puzzles, or set up a fair live challenge with a friend in the app.',
+    choice: 'Choose one of three free five-question browser rounds: mixed reasoning, everyday numbers or logic. Each has hints, answer checks, explanations and a link you can send to a friend. Use the strategy checklist for mixed puzzles, or explore live challenges in the separate app.',
     use: 'Math Riddles combines a solo puzzle journey, quick brain games, hints and solutions with live 1v1 matches and private rooms for friends. Practise at your own pace, then test the same reasoning in a short head-to-head round.',
     landingHeading: 'Handcrafted math riddles and live 1v1 brain games.',
     schemaCategory: 'GameApplication',

@@ -61,9 +61,9 @@ const journey = (id, title, description, steps) => Object.freeze({
 
 export const readerJourneys = Object.freeze([
   journey('puzzle-break', 'Take a puzzle break',
-    'Start with a cafe mystery, try five more original browser questions, then explore the app.', [
+    'Start with a cafe mystery, choose a five-question browser round, then explore the app.', [
       { href: '/guides/cafe-logic-grid-puzzle-with-answers/', label: 'Solve the cafe logic puzzle' },
-      { href: '/tools/math-puzzle-challenge/', label: 'Try the free five-question challenge' },
+      { href: '/tools/math-puzzle-challenge/', label: 'Choose one of three free puzzle rounds' },
       { href: '/math-riddles/', label: 'Explore Math Riddles' },
     ]),
   journey('keep-your-routine', 'Keep your routine when life changes',

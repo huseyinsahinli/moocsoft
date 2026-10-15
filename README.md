@@ -46,7 +46,7 @@ Seven guides display original diagrams. Their `<picture>` elements use width-bas
 
 ## Free browser challenges and savings plans
 
-The tools directory contains six free website tools. The math challenge's five original questions, hints and explanations live in `content/math-challenge.mjs`; `scripts/build-math-challenge.mjs` is included in the normal guide build. Questions and native answer disclosures work without JavaScript. The optional answer checker runs locally, keeps no saved score and sends no answers to Moocsoft. These exercises are not screenshots or levels from Math Riddles. Keep the current app store destinations and optional purchase boundaries explicit.
+The tools directory contains six free website tools. The math challenge's 15 original questions in three fixed five-question rounds, hints and explanations live in `content/math-challenge.mjs`; `scripts/build-math-challenge.mjs` is included in the normal guide build. Questions, round links and native answer disclosures work without JavaScript. The optional checker keeps each round separate, saves no score and sends no answers to Moocsoft. Copying a round link is user-initiated and includes no inputs or score; clipboard failure leaves a selected, manually copyable public URL. Preserve the original `mathChallenge` questions and `#puzzle-*` anchors. These exercises are not screenshots or levels from Math Riddles. Keep current store destinations and optional purchase boundaries explicit.
 
 The 52-week calculator supports standard and reverse 13/26/52-week plans. In reverse mode the starting input means the final, smallest deposit; the displayed first deposit, cumulative chart, print view and CSV all use the same selected order. `?order=reverse` selects the public mode without putting private amounts in a URL. Changing any input invalidates the old export. Calculator outputs are planning examples, not bank transfers or automatic imports into Frugal.
 
@@ -82,7 +82,7 @@ Run `node scripts/test-store-attribution.mjs` for static Google Play campaign la
 
 Run `node scripts/test-click-calculations.cjs` for exact-cent savings plans and CSV values. With a local static server on port 4193 and development-only `playwright` plus Chrome available, run `node scripts/test-click-tools.cjs` for mobile/desktop calculator, download, print and timer checks. Set `MOOCSOFT_TEST_URL` to use another local port. These tests add no browser library to the deployed website.
 
-Run `node scripts/test-math-challenge.mjs` to independently verify the five answers, input parsing and static page boundaries. With the same local browser setup, run `node scripts/test-math-challenge-browser.cjs` for answer checks, reset, no-JavaScript answers and narrow-screen layouts. `MOOCSOFT_QA_DIR` stores optional screenshots outside the public repository.
+Run `node scripts/test-math-challenge.mjs` to independently verify all 15 answers, input parsing and static page boundaries. With the same local browser setup, run `node scripts/test-math-challenge-browser.cjs` for isolated round scores/reset, public-only link copying and manual fallback, no-JavaScript answers and narrow-screen layouts. `MOOCSOFT_QA_DIR` stores optional screenshots outside the public repository.
 
 Run `node scripts/test-round-robin.mjs` after the guide build to independently enumerate the match-count examples and check the six-player schedule, original question answers, product boundaries and incoming reading link.
 

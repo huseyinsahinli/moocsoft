@@ -3,11 +3,11 @@ import { createRequire } from 'node:module';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { mathChallenge } from '../content/math-challenge.mjs';
+import { mathChallenge, mathRounds } from '../content/math-challenge.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const { parseWholeAnswer, checkAnswer, initializeMathChallenge } = require('../assets/math-challenge.js');
+const { parseWholeAnswer, checkAnswer, initializeMathRound, initializeMathChallenge } = require('../assets/math-challenge.js');
 
 // Verify independently rather than merely comparing the checker to its own answer data.
 assert.equal(mathChallenge[0].answer, 9 + 4 * (8 - 5));
@@ -25,7 +25,34 @@ for (let top = 0; top < 2; top++) for (let bottom = top + 1; bottom <= 2; bottom
 assert.equal(mathChallenge[4].answer, rectangles);
 assert.equal(rectangles, 18);
 assert.equal(new Set(mathChallenge.map(q => q.id)).size, 5);
-for (const question of mathChallenge) {
+assert.deepEqual(mathRounds.map(round => round.id), ['mixed', 'everyday', 'logic']);
+assert(mathRounds.every(round => round.questions.length === 5));
+assert.equal(mathRounds[0].questions, mathChallenge, 'Original round and legacy questions remain available');
+const questions = mathRounds.flatMap(round => round.questions);
+assert.equal(new Set(questions.map(question => question.id)).size, 15);
+const answerFor = id => questions.find(question => question.id === id).answer;
+assert.equal(answerFor('notebook-change'), 20 - 4 * 3);
+assert.equal(answerFor('evening-minutes'), (20 * 60 + 10) - (18 * 60 + 35));
+assert.equal(answerFor('pencil-packs'), 6 * 8 - 17);
+assert.equal(answerFor('club-percentage'), 64 * 25 / 100);
+assert.equal(answerFor('paint-ratio'), 35 * 3 / (2 + 3));
+const isPrime = number => number >= 2 && !Array.from({ length: Math.floor(Math.sqrt(number)) - 1 }, (_, i) => i + 2).some(divisor => number % divisor === 0);
+assert.deepEqual(Array.from({ length: 9 }, (_, i) => i + 41).filter(n => isPrime(n) && Math.floor(n / 10) + n % 10 === 11), [answerFor('prime-digit-sum')]);
+assert.deepEqual(Array.from({ length: 29 }, (_, i) => i + 1).filter(large => {
+  const small = 29 - large;
+  return small > 0 && large - small === 7;
+}), [answerFor('two-number-total')]);
+const pairs = new Set();
+for (let first = 1; first <= 8; first++) for (let second = first + 1; second <= 8; second++) pairs.add(`${first},${second}`);
+assert.equal(answerFor('eight-player-pairs'), pairs.size);
+const arrangements = [];
+for (const a of [1, 2, 3]) for (const b of [1, 2, 3]) for (const c of [1, 2, 3]) {
+  const n = a * 100 + b * 10 + c;
+  if (new Set([a, b, c]).size === 3 && n > 200 && a % 2 === 1 && b < c) arrangements.push(n);
+}
+assert.deepEqual(arrangements, [answerFor('three-digit-order')]);
+assert.deepEqual(Array.from({ length: 19 }, (_, i) => i + 11).filter(n => n % 4 === 1 && n % 6 === 3), [answerFor('remainder-clues')]);
+for (const question of questions) {
   assert.equal(checkAnswer(String(question.answer), question.answer).kind, 'correct');
   assert.equal(checkAnswer(String(question.answer + 1), question.answer).kind, 'retry');
   assert.equal(checkAnswer('', question.answer).kind, 'invalid');
@@ -55,10 +82,12 @@ const fakeDocument = {
   querySelectorAll(selector) { assert.equal(selector, '[data-math-question]'); return cards; },
   querySelector(selector) { return { '[data-math-summary]': summary, '[data-math-reset]': reset }[selector]; },
 };
-initializeMathChallenge(fakeDocument);
+initializeMathRound(fakeDocument);
 assert(cards.every(card => !card.form.hidden));
 assert.equal(reset.hidden, false);
 assert.match(summary.textContent, /^0 correct checks out of 5/);
+// A document without rounds is a harmless no-op, not a global score.
+initializeMathChallenge({ querySelectorAll(selector) { assert.equal(selector, '[data-math-round]'); return []; } });
 cards[0].input.value = '21';
 assert(cards[0].form.emit('submit'));
 assert.match(cards[0].feedback.textContent, /^Correct/);
@@ -84,16 +113,26 @@ assert.match(summary.textContent, /^0 correct checks out of 5/);
 
 const html = readFileSync(resolve(root, 'tools/math-puzzle-challenge/index.html'), 'utf8');
 assert.match(html, /<link rel="canonical" href="https:\/\/moocsoft\.net\/tools\/math-puzzle-challenge\/">/);
-assert.equal((html.match(/data-math-question=/g) || []).length, 5);
-assert.equal((html.match(/class="math-challenge-form" hidden/g) || []).length, 5);
-assert.equal((html.match(/Reveal answer and explanation for puzzle/g) || []).length, 5);
-assert.equal((html.match(/role="status" aria-live="polite" aria-atomic="true"/g) || []).length, 6);
-for (const question of mathChallenge) {
+assert.equal((html.match(/data-math-round=/g) || []).length, 3);
+assert.equal((html.match(/data-math-question=/g) || []).length, 15);
+assert.equal((html.match(/class="math-challenge-form" hidden/g) || []).length, 15);
+assert.equal((html.match(/Reveal answer and explanation for puzzle/g) || []).length, 15);
+assert.equal((html.match(/role="status" aria-live="polite" aria-atomic="true"/g) || []).length, 21);
+for (const question of questions) {
   assert(html.includes(`<strong>Answer: ${question.answer}.</strong>`));
   assert(html.includes(question.guide));
   assert(html.includes(`id="answer-${question.id}"`));
   assert(html.includes(`for="answer-${question.id}"`));
 }
+for (const round of mathRounds) {
+  const url = `https://moocsoft.net/tools/math-puzzle-challenge/#round-${round.id}`;
+  assert(html.includes(`id="round-${round.id}" data-math-round="${round.id}"`));
+  assert(html.includes(`data-math-round-link href="${url}"`));
+  assert(html.includes(`readonly value="${url}"`));
+}
+const sitemap = readFileSync(resolve(root, 'sitemap.xml'), 'utf8');
+assert.equal((sitemap.match(/<loc>https:\/\/moocsoft\.net\/tools\/math-puzzle-challenge\/<\/loc>/g) || []).length, 1);
+assert(!sitemap.includes('#round-'), 'Round fragments are not duplicate sitemap URLs');
 assert.match(html, /<noscript>/);
 assert.match(html, /original website practice questions, not app levels/);
 assert.match(html, /Ads and optional in-app purchases/);
@@ -106,4 +145,4 @@ assert.match(html, /\/assets\/math-challenge\.js" defer/);
 assert.match(html, /\/assets\/math-challenge\.css/);
 const script = readFileSync(resolve(root, 'assets/math-challenge.js'), 'utf8');
 assert(!/\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b|document\.cookie/.test(script));
-console.log('PASS: all five independent solutions, whole-number validation, check/edit/reveal/reset behavior, static no-JS answers, accessibility and real store links.');
+console.log('PASS: 15 independently verified solutions in three rounds; check/edit/reveal/reset, static answers, public-only round links, one canonical URL and real store links.');

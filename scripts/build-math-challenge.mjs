@@ -2,23 +2,28 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apps, site, escape as e } from '../content/apps.mjs';
-import { mathChallenge } from '../content/math-challenge.mjs';
+import { mathRounds } from '../content/math-challenge.mjs';
 import { head, footer, storeLinks, resources } from '../content/components.mjs';
 import { guides } from '../content/index.mjs';
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const path = '/tools/math-puzzle-challenge/';
-const title = 'Free Math Puzzle Challenge: 5 Riddles With Answers';
-const description = 'Try five original math puzzles online: order of operations, missing numbers, digit logic, fractions and grid counting. Check answers, hints and explanations. No sign-up.';
+const title = '15 Math Puzzles With Answers: Three Free Online Rounds';
+const description = 'Choose a five-question math puzzle round: mixed riddles, everyday numbers or logic. Check answers, read worked solutions and share a round link. No sign-up.';
 const app = apps.math;
 const ids = new Set();
-if (mathChallenge.length !== 5) throw new Error('This challenge needs five original questions.');
-for (const question of mathChallenge) {
-  if (!/^[a-z0-9-]+$/.test(question.id) || ids.has(question.id) || !Number.isSafeInteger(question.answer)
-      || Math.abs(question.answer) > 999999 || !question.question || !question.hint || !question.explanation
-      || !/^\/guides\/[a-z0-9-]+\/$/.test(question.guide)) throw new Error(`Invalid math challenge: ${question.id}`);
-  ids.add(question.id);
+const roundIds = new Set();
+if (mathRounds.length !== 3) throw new Error('This challenge needs three original rounds.');
+for (const round of mathRounds) {
+  if (!/^[a-z0-9-]+$/.test(round.id) || roundIds.has(round.id) || !round.title || !round.description || round.questions.length !== 5) throw new Error(`Invalid round: ${round.id}`);
+  roundIds.add(round.id);
+  for (const question of round.questions) {
+    if (!/^[a-z0-9-]+$/.test(question.id) || ids.has(question.id) || !Number.isSafeInteger(question.answer)
+        || Math.abs(question.answer) > 999999 || !question.question || !question.hint || !question.explanation
+        || !/^\/guides\/[a-z0-9-]+\/$/.test(question.guide)) throw new Error(`Invalid math challenge: ${question.id}`);
+    ids.add(question.id);
+  }
 }
 const graph = [
   { '@type': 'WebPage', name: title, description, url: site + path, inLanguage: 'en', isAccessibleForFree: true,
@@ -27,9 +32,9 @@ const graph = [
   { '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Free tools', '/tools/'], ['Math puzzle challenge', path]].map(([name, target], index) => ({ '@type': 'ListItem', position: index + 1, name, item: site + target })) },
 ];
 const grid = question => question.grid ? `<svg class="math-grid-visual" width="304" height="204" viewBox="-2 -2 304 204" role="img" aria-labelledby="grid-title-${question.id}"><title id="grid-title-${question.id}">A rectangular grid with two rows and three columns of equal square cells</title><rect x="0" y="0" width="300" height="200" fill="none" stroke="currentColor" stroke-width="3"></rect><path d="M100 0v200M200 0v200M0 100h300" fill="none" stroke="currentColor" stroke-width="3"></path></svg>` : '';
-const questions = mathChallenge.map((question, index) => `<article class="panel math-question" id="puzzle-${e(question.id)}" data-math-question="${e(question.id)}" data-answer="${question.answer}" aria-labelledby="question-title-${e(question.id)}">
+const renderQuestions = round => round.questions.map((question, index) => `<article class="panel math-question" id="puzzle-${e(question.id)}" data-math-question="${e(question.id)}" data-answer="${question.answer}" aria-labelledby="question-title-${e(question.id)}">
       <span class="eyebrow">Puzzle ${index + 1} of 5 · ${e(question.category)}</span>
-      <h2 id="question-title-${e(question.id)}">${e(question.title)}</h2>
+      <h3 id="question-title-${e(question.id)}">${e(question.title)}</h3>
       <p id="question-copy-${e(question.id)}">${e(question.question)}</p>
       <p class="math-question-display" aria-hidden="true">${e(question.display)}</p>${grid(question)}
       <form class="math-challenge-form" hidden novalidate aria-label="Check puzzle ${index + 1}: ${e(question.title)}">
@@ -42,25 +47,37 @@ const questions = mathChallenge.map((question, index) => `<article class="panel 
         <details><summary>Reveal answer and explanation for puzzle ${index + 1}</summary><p><strong>Answer: ${question.answer}.</strong> ${e(question.explanation)}</p><a href="${e(question.guide)}">${e(question.guideLabel)} →</a></details>
       </div>
     </article>`).join('\n    ');
+const rounds = mathRounds.map((round, index) => {
+  const next = mathRounds[(index + 1) % mathRounds.length];
+  const shareUrl = site + path + '#round-' + round.id;
+  return `<section class="math-round" id="round-${e(round.id)}" data-math-round="${e(round.id)}" aria-labelledby="round-title-${e(round.id)}">
+    <header class="math-round-heading"><span class="eyebrow">Round ${index + 1} · Five original questions</span><h2 id="round-title-${e(round.id)}">${e(round.title)}</h2><p>${e(round.description)}</p><a href="#round-picker">Choose a different round ↑</a></header>
+    <div class="math-challenge-list">${renderQuestions(round)}</div>
+    <section class="panel math-round-review" aria-labelledby="round-review-${e(round.id)}">
+      <h3 id="round-review-${e(round.id)}">Review the reasoning, not just the number.</h3>
+      <p data-math-summary role="status" aria-live="polite" aria-atomic="true">Use each worked explanation to check your answer. Your work is not saved.</p>
+      <button class="button secondary" type="button" data-math-reset hidden>Reset this round and close hints</button>
+      <div class="math-round-share"><h4>Send the same questions to a friend</h4><p>Share the round, not your answers. There is no multiplayer match or saved score on this website.</p><a data-math-round-link href="${e(shareUrl)}">Open the ${e(round.title)} link →</a>
+        <label class="field" for="share-${e(round.id)}"><span>Public round link — copy manually if needed</span><input id="share-${e(round.id)}" data-math-share-url type="text" readonly value="${e(shareUrl)}" spellcheck="false"></label>
+        <button class="button secondary" type="button" data-math-copy hidden>Copy round link</button><p data-math-share-status role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <div class="guide-hero-actions"><a href="#round-${e(next.id)}">Try ${e(next.title)} →</a><a href="/math-riddles/">Want app puzzles or live 1v1? Explore Math Riddles →</a></div>
+    </section>
+  </section>`;
+}).join('\n');
 const html = `${head(title, description, path, graph, app, ['math-challenge']).replace('class="marketing-page"', 'class="marketing-page math-challenge-page"')}
 <main id="main-content" class="wrap">
   <div class="breadcrumb" aria-label="Breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Math puzzle challenge</div>
   <section class="tool-hero">
     <span class="eyebrow">Free online math puzzles · No sign-up</span>
-    <h1>Five math puzzles.<br>Can you explain your answers?</h1>
-    <p class="hero-copy">Try a short, untimed round of number puzzles. Enter your answers to check them, or open each hint and worked explanation. Start with reasoning; speed can wait.</p>
-    <p class="math-challenge-note">These are original website practice questions, not app levels or a preview of the app interface. Nothing is saved or sent to Moocsoft. The free web challenge is separate from Math Riddles, which has ads and optional in-app purchases.</p>
-    <div class="guide-hero-actions"><a href="#puzzle-brackets">Start the five-puzzle round ↓</a><a href="/math-riddles/">Explore Math Riddles →</a></div>
+    <h1>15 math puzzles.<br>Pick a five-question round.</h1>
+    <p class="hero-copy">Choose mixed riddles, everyday numbers or a logic break. Every question has a hint and worked solution. Check one round, send its link to a friend, or return for a different set. No timer, account or saved score.</p>
+    <p class="math-challenge-note">These are original website practice questions, not app levels or a preview of the app interface. Your answers stay in this page and are not sent to Moocsoft or stored between visits. The free web challenge is separate from Math Riddles, which has ads and optional in-app purchases.</p>
+    <div class="guide-hero-actions"><a href="#round-picker">Choose your round ↓</a><a href="/math-riddles/">Explore Math Riddles →</a></div>
     <noscript><p class="math-challenge-note">The questions, hints and explanations work without JavaScript. Automatic answer checking needs JavaScript; use “Reveal answer and explanation” to check your work.</p></noscript>
   </section>
-  <section class="math-challenge-list" aria-label="Five original math puzzles">
-    ${questions}
-  </section>
-  <section class="panel math-round-review" aria-labelledby="round-review-title">
-    <h2 id="round-review-title">Review the reasoning, not just the number.</h2>
-    <p data-math-summary role="status" aria-live="polite" aria-atomic="true">Use each worked explanation to check your answer. Your work is not saved.</p>
-    <button class="button secondary" type="button" data-math-reset hidden>Reset all answers and close hints</button>
-  </section>
+  <nav class="math-round-picker" id="round-picker" aria-label="Choose a five-question round">${mathRounds.map((round, index) => `<a class="panel math-round-choice" href="#round-${e(round.id)}"><span class="eyebrow">Round ${index + 1} · 5 questions</span><strong>${e(round.title)}</strong><span>${e(round.description)}</span><span class="math-round-start">Start this round ↓</span></a>`).join('')}</nav>
+  ${rounds}
   <section class="guide-download" id="continue-playing" data-nosnippet aria-label="Continue with Math Riddles">
     <div><span class="guide-kicker">Enjoyed this round?</span><h2>Keep playing with Math Riddles.</h2><p>Explore the separate app’s handcrafted riddles, hints and solutions, or challenge a friend in live 1v1. Available on iPhone, iPad and Android.</p><small>Free to download · Ads and optional in-app purchases. Check your store for current features and access.</small></div>
     ${storeLinks(app, 'tool-end')}
@@ -69,8 +86,8 @@ const html = `${head(title, description, path, graph, app, ['math-challenge']).r
     <h2 id="challenge-help-title">How to use this math puzzle challenge</h2>
     <p>Make one attempt before opening a hint. Write the rule or calculation that led to your answer. If you get stuck, use the hint and try again; the explanation is there to make the reasoning visible, not to grade you.</p>
     <h3>Do these puzzles have one correct answer?</h3><p>Yes, under the stated rules. The row puzzle supplies its formula, the digit puzzle has two constraints, and the grid question defines which rectangles count. Short number patterns without those constraints can support more than one constructed rule.</p>
-    <h3>Are the exercises from Math Riddles app levels?</h3><p>No. This page contains five original web exercises. The mobile app has its own content and modes, including hints, solutions and live 1v1. See the store listing for current platform features and purchases.</p>
-    <h3>Is my score saved or shared?</h3><p>No. Answer checks only run in this page. Editing an answer clears its previous check; refreshing or resetting clears the round. Opening an explanation does not count as a correct answer. This is practice, not an IQ test or a claim about cognitive improvement.</p>
+    <h3>Are the exercises from Math Riddles app levels?</h3><p>No. This page contains 15 original web exercises in three five-question rounds. The mobile app has its own content and modes, including hints, solutions and live 1v1. See the store listing for current platform features and purchases.</p>
+    <h3>Is my score saved or shared?</h3><p>No. Answer checks only run in this page, separately for each round. Editing an answer clears its previous check; refreshing clears all checks, and each reset clears only its own round. Opening an explanation does not count as a correct answer. The copy button copies only a public round link, never your answers or score. This is practice, not an IQ test or a claim about cognitive improvement.</p>
     <div class="guide-hero-actions"><a href="/guides/math/">Choose another math guide →</a><a href="/guides/missing-number-puzzles-with-answers/">Get the free missing-number worksheet →</a></div>
   </section>
   ${resources('math', guides, false)}
@@ -81,4 +98,4 @@ ${footer()}
 const target = resolve(root, '.' + path, 'index.html');
 mkdirSync(dirname(target), { recursive: true });
 writeFileSync(target, attributeStoreLinks(html, path).trimEnd() + '\n');
-console.log('Built one free Math puzzle challenge with five static questions and accessible answer checking.');
+console.log('Built one free Math puzzle challenge with three rounds, 15 static questions and local answer checking.');

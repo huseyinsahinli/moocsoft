@@ -11,7 +11,7 @@ The site is static and remains compatible with GitHub Pages. Generated HTML is c
 - `components.mjs`: shared navigation, install links, article cards and metadata.
 - `guide-media.mjs`: original visible article diagrams with matching metadata, responsive WebP variants and image-sitemap entries.
 - `puzzle-worksheet.mjs`: one source for the five original missing-number questions and the separate answer key.
-- `math-challenge.mjs`: five separate website exercises with explicit rules, hints, answer checks and explanations; not app levels.
+- `math-challenge.mjs`: three fixed five-question website rounds with explicit rules, hints, independent local answer checks and explanations; not app levels. The original `mathChallenge` export and deep links remain compatible. Round sharing copies only the public fragment URL, never answers or scores.
 - `../assets/content.css`: marketing-only styles; legal and workout import pages do not include this stylesheet.
 - `../scripts/build-guides.mjs`: produces `/guides/`, the topic pages, all articles and their sitemap entries.
 
