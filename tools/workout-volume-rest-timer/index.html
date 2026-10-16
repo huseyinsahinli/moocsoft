@@ -6,7 +6,11 @@
   <meta name="description" content="Calculate workout volume in kg or lb from sets, reps and weight. Get exercise totals, a free CSV workout log and a rest timer. No sign-up.">
   <meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#f4efe6">
   <link rel="canonical" href="https://moocsoft.net/tools/workout-volume-rest-timer/">  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/tools.css">
-  <style>:root{--accent:#e9ff43;--accent-rgb:233,255,67}.eyebrow,.exercise-row .field-label{color:#e9ff43}.button:hover{color:#090a0c}.workout-export{padding:22px;border-bottom:1px solid var(--border)}.workout-export .button{width:100%}.workout-export p{margin:10px 0 0;color:var(--muted);font-size:.82rem}.result-big,.result-item strong{overflow-wrap:anywhere}</style>
+  <style>:root{--accent:#e9ff43;--accent-rgb:233,255,67}.eyebrow,.exercise-row .field-label{color:#e9ff43}.button:hover{color:#090a0c}.workout-export{padding:22px;border-bottom:1px solid var(--border)}.workout-export .button{width:100%}.workout-export p{margin:10px 0 0;color:var(--muted);font-size:.82rem}.result-big,.result-item strong{overflow-wrap:anywhere}.calculator-layout[hidden],#workout-breakdown[hidden]{display:none!important}.workout-breakdown{margin-top:24px}.workout-breakdown h3{font-size:1.25rem}.workout-breakdown p,.workout-status{color:var(--muted);font-size:.86rem}.workout-breakdown .guide-table{margin:16px 0}.workout-breakdown table{min-width:570px}.workout-breakdown tbody th{max-width:180px;overflow-wrap:anywhere}.workout-breakdown tfoot th,.workout-breakdown tfoot td{font-weight:600;border-top:2px solid var(--border-strong)}.icon-button:disabled{opacity:.4;cursor:not-allowed}.icon-button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style>
+  <style>
+    #workout-calculator > .panel-main { min-width: 0; }
+    #workout-breakdown table { min-width: 570px; }
+  </style>
   <meta property="og:type" content="website"><meta property="og:site_name" content="Moocsoft"><meta property="og:title" content="Workout Volume Calculator: Sets, Reps &amp; Weight"><meta property="og:description" content="Calculate workout volume in kg or lb from sets, reps and weight. Get exercise totals, a free CSV workout log and a rest timer. No sign-up."><meta property="og:url" content="https://moocsoft.net/tools/workout-volume-rest-timer/"><meta property="og:image" content="https://moocsoft.net/assets/social/moocsoft-og.png"><meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Workout Volume Calculator and Rest Timer","url":"https://moocsoft.net/tools/workout-volume-rest-timer/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free workout volume calculator with a CSV workout log download and a browser-based gym rest timer."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is workout volume calculated?","acceptedAnswer":{"@type":"Answer","text":"For each weighted exercise, workout volume is sets multiplied by reps multiplied by weight. Exercise totals are then added together."}},{"@type":"Question","name":"How long should I rest between sets?","acceptedAnswer":{"@type":"Answer","text":"Rest needs depend on the exercise, intensity, goal and individual. The timer includes common presets, but it does not prescribe a training program."}}]}]}</script>
   <link rel="stylesheet" href="/assets/content.css">
@@ -24,12 +28,20 @@
   <main id="main-content">
     <div class="wrap breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Workout volume &amp; timer</div>
     <section class="wrap tool-hero"><span class="eyebrow">Free gym calculator · CSV log · Rest timer</span><h1>Workout Volume Calculator</h1><p class="hero-copy">Calculate volume from sets, reps and weight, then download your exercise totals as a free CSV workout log. Use the rest timer for your next set. The kg/lb selector labels your entries; it does not convert them.</p><div class="tool-quick-answer"><p><strong>Workout volume load = sets × reps × entered weight.</strong> Three sets of 10 reps at 50 kg total 1,500 kg. If reps or load change, add one row per set and sum the results. This total describes your entries, not training quality.</p></div></section>
-    <section class="wrap calculator-layout" aria-label="Workout calculator and rest timer">
+    <noscript><section class="wrap guide-inline-resources" aria-labelledby="workout-static-title"><h2 id="workout-static-title">Check a workout without JavaScript</h2><p>The interactive calculator, CSV export and timer need JavaScript. You can still use the formula below and the app download links. These are invented arithmetic examples, not a suggested workout.</p><div class="guide-table" tabindex="0" role="region" aria-label="Worked workout volume example"><table><caption>Example: add each entry’s sets × reps × entered weight</caption><thead><tr><th scope="col">Entry</th><th scope="col">Calculation</th><th scope="col">Volume load</th></tr></thead><tbody><tr><th scope="row">Example A</th><td>3 × 8 × 60 kg</td><td>1,440 kg</td></tr><tr><th scope="row">Example B</th><td>3 × 10 × 40 kg</td><td>1,200 kg</td></tr><tr><th scope="row">Total</th><td>6 entered sets · 54 reps</td><td>2,640 kg</td></tr></tbody></table></div><p>A zero-weight entry contributes zero entered external-load volume; it does not measure your effort or all load in a bodyweight movement.</p></section></noscript>
+    <section class="wrap calculator-layout" id="workout-calculator" aria-label="Workout calculator and rest timer" hidden>
       <div class="panel panel-main">
-        <div class="panel-head"><h2>Build this workout.</h2><p>Volume is calculated as sets × reps × weight for each exercise.</p></div>
+        <div class="panel-head"><h2>Build this workout.</h2><p>Volume is calculated as sets × reps × weight for each entry. The starting rows are illustrative, not a recommended routine. Replace them with your own record.</p></div>
         <label class="field" style="max-width:180px;margin-bottom:18px"><span>Weight unit</span><select id="weight-unit"><option value="kg">Kilograms</option><option value="lb">Pounds</option></select></label>
         <div class="exercise-list" id="exercise-list"></div>
-        <div class="action-row"><button class="button secondary small" type="button" id="add-exercise">Add exercise</button><button class="button small" type="button" id="calculate-volume">Calculate volume</button></div><p class="error" id="form-error" role="alert"></p>
+        <div class="action-row"><button class="button secondary small" type="button" id="add-exercise">Add exercise</button><button class="button small" type="button" id="calculate-volume">Calculate volume</button></div><p class="error" id="form-error" role="alert"></p><p class="workout-status" id="workout-status" role="status" aria-live="polite"></p>
+        <section class="workout-breakdown" id="workout-breakdown" aria-labelledby="workout-breakdown-title" hidden>
+          <h3 id="workout-breakdown-title">Check each entry</h3>
+          <p>All entered sets are included; the calculator does not identify warm-up or working sets. Repeated exercise names remain separate rows. Zero entered weight means zero external-load volume here, not zero effort.</p>
+          <p id="workout-table-help">Scroll sideways inside the table to see every column. With a keyboard, focus the table and use the arrow keys.</p>
+          <div class="guide-table" tabindex="0" role="region" aria-label="Your calculated workout entries" aria-describedby="workout-table-help"><table><caption>Entered loads and calculated totals — <span id="breakdown-unit">kg</span></caption><thead><tr><th scope="col">Entry</th><th scope="col">Sets × reps</th><th scope="col">Entered weight</th><th scope="col">Total reps</th><th scope="col">Volume load</th></tr></thead><tbody id="workout-result-rows"></tbody><tfoot><tr><th scope="row">Workout totals</th><td id="breakdown-sets"></td><td>—</td><td id="breakdown-reps"></td><td id="breakdown-volume"></td></tr></tfoot></table></div>
+          <p>Use the same weight and repetition convention throughout. <a href="/guides/dumbbell-workout-volume/">Check whether your dumbbell entry counts one weight or both</a>, or <a href="/guides/log-warm-up-and-working-sets/">separate warm-up and working sets</a> before comparing sessions. The CSV contains these same entries; it is not an automatic app import.</p>
+        </section>
         <div class="timer" aria-label="Rest timer">
           <span class="eyebrow">Rest timer</span><div class="timer-display" id="timer-display" role="timer" aria-live="off">01:30</div>
           <div class="timer-presets" aria-label="Timer presets"><button class="button secondary small timer-preset" type="button" data-seconds="60">60 sec</button><button class="button secondary small timer-preset" type="button" data-seconds="90">90 sec</button><button class="button secondary small timer-preset" type="button" data-seconds="120">2 min</button><button class="button secondary small timer-preset" type="button" data-seconds="180">3 min</button></div>
@@ -38,7 +50,7 @@
       </div>
       <aside class="panel panel-side" aria-live="polite">
         <div class="result-empty" id="result-empty"><strong>Your workout totals will appear here.</strong>Add weighted exercises or use zero weight for bodyweight movements.</div>
-        <div class="hidden" id="result-content"><div class="result-hero"><span class="result-label">Total workout volume</span><strong class="result-big"><span id="total-volume">0</span> <span id="volume-unit">kg</span></strong><span class="result-note">Sets × reps × entered weight</span></div><div class="result-list"><div class="result-item"><span class="result-label">Working sets</span><strong id="total-sets">0</strong></div><div class="result-item"><span class="result-label">Total reps</span><strong id="total-reps">0</strong></div><div class="result-item"><span class="result-label">Exercises</span><strong id="exercise-count">0</strong></div><div class="result-item"><span class="result-label">Most volume</span><strong id="top-exercise">—</strong></div></div><div class="workout-export"><button class="button small" type="button" id="export-workout" disabled>Download workout log (CSV)</button><p>Free browser export: each exercise, entered weight, sets, reps and workout totals. No sign-up.</p></div><!-- Calculator app download --><div class="result-download" data-nosnippet aria-label="Continue with Did You Lift"><h3>Log your next workout with Did You Lift</h3><p>Plan each set, log your actual reps and weight, and use the automatic rest timer.</p><div class="install-actions"><a class="install-link" data-app="did-you-lift" data-placement="calculator-result" href="https://apps.apple.com/app/did-you-lift-workout-log/id6808200259" target="_blank" rel="noopener" aria-label="Download Did You Lift on the App Store">App Store <span aria-hidden="true">↗</span></a><a class="install-link secondary" data-app="did-you-lift" data-placement="calculator-result" href="https://play.google.com/store/apps/details?id=com.moocsoft.didyoulift&amp;utm_source=moocsoft&amp;utm_medium=referral&amp;utm_campaign=tools-workout-volume-rest-timer&amp;utm_content=calculator-result" target="_blank" rel="noopener" aria-label="Download Did You Lift on Google Play">Google Play <span aria-hidden="true">↗</span></a></div><small>Free download. Optional lifetime Premium.</small><a class="result-download-details" href="/did-you-lift/">See Did You Lift features →</a></div><!-- End calculator app download --></div>
+        <div class="hidden" id="result-content"><div class="result-hero"><span class="result-label">Total workout volume</span><strong class="result-big"><span id="total-volume">0</span> <span id="volume-unit">kg</span></strong><span class="result-note">Sets × reps × entered weight</span></div><div class="result-list"><div class="result-item"><span class="result-label">Entered sets</span><strong id="total-sets">0</strong></div><div class="result-item"><span class="result-label">Total reps</span><strong id="total-reps">0</strong></div><div class="result-item"><span class="result-label">Entries</span><strong id="exercise-count">0</strong></div><div class="result-item"><span class="result-label">Most volume</span><strong id="top-exercise">—</strong></div></div><div class="workout-export"><button class="button small" type="button" id="export-workout" disabled>Download workout log (CSV)</button><p>Free browser export: each exercise, entered weight, sets, reps and workout totals. No sign-up.</p></div><!-- Calculator app download --><div class="result-download" data-nosnippet aria-label="Continue with Did You Lift"><h3>Log your next workout with Did You Lift</h3><p>Plan each set, log your actual reps and weight, and use the automatic rest timer.</p><div class="install-actions"><a class="install-link" data-app="did-you-lift" data-placement="calculator-result" href="https://apps.apple.com/app/did-you-lift-workout-log/id6808200259" target="_blank" rel="noopener" aria-label="Download Did You Lift on the App Store">App Store <span aria-hidden="true">↗</span></a><a class="install-link secondary" data-app="did-you-lift" data-placement="calculator-result" href="https://play.google.com/store/apps/details?id=com.moocsoft.didyoulift&amp;utm_source=moocsoft&amp;utm_medium=referral&amp;utm_campaign=tools-workout-volume-rest-timer&amp;utm_content=calculator-result" target="_blank" rel="noopener" aria-label="Download Did You Lift on Google Play">Google Play <span aria-hidden="true">↗</span></a></div><small>Free download. Optional lifetime Premium.</small><a class="result-download-details" href="/did-you-lift/">See Did You Lift features →</a></div><!-- End calculator app download --></div>
       </aside>
     </section>
     <section class="wrap content-section"><div class="content-grid"><h2>What workout volume can tell you.</h2><div class="prose"><p>Volume is one simple way to compare the amount of weighted work between sessions. Ten reps with 50 kg equals 500 kg of volume; three identical sets equal 1,500 kg.</p><ol class="steps"><li>Enter the sets, reps and external weight for each exercise.</li><li>Keep the same unit across the entire workout.</li><li>Compare similar exercises and sessions instead of treating volume as a universal score.</li></ol><h3>Volume is only one part of training</h3><p>Range of motion, effort, technique, exercise selection and recovery also matter. Bodyweight and timed movements are counted in sets and reps here but contribute zero weighted volume unless you enter a load.</p><div class="notice">This tool does not create a training prescription or replace coaching or medical guidance. Stop exercising and seek appropriate help if you feel pain, dizziness or unusual symptoms.</div></div></div></section>
@@ -53,13 +65,31 @@
       const unitInput = document.getElementById('weight-unit');
       const error = document.getElementById('form-error');
       const exportButton = document.getElementById('export-workout');
+      const breakdown = document.getElementById('workout-breakdown');
+      const resultRows = document.getElementById('workout-result-rows');
+      const status = document.getElementById('workout-status');
+      const number = value => value.toLocaleString('en', { maximumFractionDigits: 10 });
       let calculatedWorkout = null;
       function clearResults() {
+        const hadResult = calculatedWorkout !== null;
         calculatedWorkout = null;
         exportButton.disabled = true;
         error.textContent = '';
+        breakdown.hidden = true;
+        resultRows.replaceChildren();
+        list.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute('aria-invalid'));
+        status.textContent = hadResult ? 'Entries changed. Calculate again to update the breakdown and CSV.' : '';
         document.getElementById('result-content').classList.add('hidden');
         document.getElementById('result-empty').classList.remove('hidden');
+      }
+      function updateRowLabels() {
+        [...list.children].forEach((row, index) => {
+          row.setAttribute('role', 'group');
+          row.setAttribute('aria-label', `Workout entry ${index + 1}`);
+          const button = row.querySelector('.remove');
+          button.setAttribute('aria-label', `Remove workout entry ${index + 1}`);
+          button.disabled = list.children.length === 1;
+        });
       }
       function addRow(name = '', sets = 3, reps = 10, weight = 0) {
         const row = document.createElement('div');
@@ -70,16 +100,22 @@
         row.querySelector('.reps').value = reps;
         row.querySelector('.weight').value = weight;
         row.querySelector('.remove').addEventListener('click', () => {
-          if (list.children.length > 1) { row.remove(); clearResults(); }
+          if (list.children.length > 1) {
+            const neighbor = row.nextElementSibling || row.previousElementSibling;
+            row.remove(); clearResults(); updateRowLabels();
+            neighbor.querySelector('.name').focus();
+          }
         });
         list.appendChild(row);
+        updateRowLabels();
         clearResults();
+        return row;
       }
       addRow('Squat', 3, 8, 60); addRow('Bench press', 3, 10, 40);
       list.addEventListener('input', clearResults);
       list.addEventListener('change', clearResults);
       unitInput.addEventListener('change', clearResults);
-      document.getElementById('add-exercise').addEventListener('click', () => addRow());
+      document.getElementById('add-exercise').addEventListener('click', () => addRow().querySelector('.name').focus());
       document.getElementById('calculate-volume').addEventListener('click', () => {
         clearResults();
         const rows = [...list.querySelectorAll('.exercise-row')];
@@ -93,6 +129,7 @@
             const integerRequired = field !== 'weight';
             if (!Number.isFinite(value) || value < Number(input.min) || value > Number(input.max) || (integerRequired && !Number.isInteger(value))) {
               error.textContent = `Exercise ${index + 1}: enter ${integerRequired ? 'whole numbers' : 'a number'} for ${field} from ${input.min} to ${input.max}.`;
+              input.setAttribute('aria-invalid', 'true');
               input.focus();
               return;
             }
@@ -111,14 +148,35 @@
         }
         const unit = unitInput.value;
         calculatedWorkout = { exercises, totalVolume, totalSets, totalReps, unit };
-        document.getElementById('total-volume').textContent = totalVolume.toLocaleString(undefined, { maximumFractionDigits: 1 });
+        document.getElementById('total-volume').textContent = number(totalVolume);
         document.getElementById('volume-unit').textContent = unit;
         document.getElementById('total-sets').textContent = totalSets.toLocaleString();
         document.getElementById('total-reps').textContent = totalReps.toLocaleString();
         document.getElementById('exercise-count').textContent = rows.length;
         document.getElementById('top-exercise').textContent = topName;
+        const fragment = document.createDocumentFragment();
+        exercises.forEach((exercise, index) => {
+          const row = document.createElement('tr');
+          const label = document.createElement('th');
+          label.scope = 'row';
+          label.textContent = `${index + 1}. ${exercise.name}`;
+          row.appendChild(label);
+          for (const value of [`${number(exercise.sets)} × ${number(exercise.reps)}`, `${number(exercise.weight)} ${unit}`, number(exercise.totalReps), `${number(exercise.volume)} ${unit}`]) {
+            const cell = document.createElement('td');
+            cell.textContent = value;
+            row.appendChild(cell);
+          }
+          fragment.appendChild(row);
+        });
+        resultRows.appendChild(fragment);
+        document.getElementById('breakdown-unit').textContent = unit;
+        document.getElementById('breakdown-sets').textContent = `${number(totalSets)} sets`;
+        document.getElementById('breakdown-reps').textContent = number(totalReps);
+        document.getElementById('breakdown-volume').textContent = `${number(totalVolume)} ${unit}`;
+        breakdown.hidden = false;
         document.getElementById('result-empty').classList.add('hidden'); document.getElementById('result-content').classList.remove('hidden');
         exportButton.disabled = false;
+        status.textContent = `Calculated ${exercises.length} ${exercises.length === 1 ? 'entry' : 'entries'}. Check each entry below; the same rows are available in the CSV. Nothing is saved or sent.`;
       });
       function csvCell(value) { return `"${String(value).replace(/"/g, '""')}"`; }
       function safeExerciseName(name) {
@@ -158,6 +216,7 @@
       });
       document.getElementById('timer-reset').addEventListener('click', () => { stopTimer(); remaining = selectedSeconds; paintTimer(); });
       paintTimer();
+      document.getElementById('workout-calculator').hidden = false;
     })();
   </script>
 </body>
