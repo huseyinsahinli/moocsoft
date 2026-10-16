@@ -354,6 +354,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/dumbbell-workout-volume/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/log-exercise-substitution-busy-gym/</loc>
     <lastmod>2026-10-12</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
@@ -498,7 +503,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
@@ -514,7 +519,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>

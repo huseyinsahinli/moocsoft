@@ -13,6 +13,7 @@ import moreQuitting from './quitting-more.mjs';
 import training from './training.mjs';
 import moreTraining from './training-more.mjs';
 import trainingSetTypes from './training-set-types.mjs';
+import dumbbellVolume from './training-dumbbell-volume.mjs';
 import habits from './habits.mjs';
 import moreHabits from './habits-more.mjs';
 import math from './math.mjs';
@@ -36,4 +37,4 @@ import elapsedTime from './math-elapsed-time.mjs';
 import cameraPermissions from './development-camera-permissions.mjs';
 import riceWeight from './nutrition-rice-weight.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...riceWeight, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...annualBillsGuides, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...substitutionGuides, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...elapsedTime, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision, ...bugReportGuides, ...cameraPermissions];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...riceWeight, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...annualBillsGuides, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...dumbbellVolume, ...substitutionGuides, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...elapsedTime, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision, ...bugReportGuides, ...cameraPermissions];

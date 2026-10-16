@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'dumbbell-workout-volume': [
+    'workout-volume-explained',
+    'how-to-log-gym-workouts',
+    'log-warm-up-and-working-sets',
+  ],
   'dry-to-cooked-rice-weight': [
     'track-calories-homemade-meals',
     'calories-per-serving-vs-per-container',
@@ -206,9 +211,9 @@ const choices = {
     'workout-planner-vs-workout-log',
   ],
   'workout-volume-explained': [
+    'dumbbell-workout-volume',
     'how-to-log-gym-workouts',
     'track-progressive-overload-workout-log',
-    'how-to-track-personal-records-in-gym',
   ],
   'rest-timer-between-sets': [
     'how-to-log-gym-workouts',
