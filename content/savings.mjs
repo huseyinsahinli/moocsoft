@@ -4,14 +4,15 @@ const money = n => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 2 })
 
 export default [
   {
-    topic: 'savings', slug: '52-week-savings-challenge',
-    title: '52-Week Savings Challenge: Complete Chart and Examples',
-    description: 'See the full 52-week savings chart, the $1,378 calculation, alternative deposit amounts, and a practical way to track completed contributions.',
-    intro: 'In the classic 52-week savings challenge, you set aside $1 in week one, $2 in week two, and continue up to $52. Completing all deposits adds up to $1,378 before interest.',
+    topic: 'savings', slug: '52-week-savings-challenge', modified: '2026-10-16',
+    title: '52-Week Savings Challenge: Free Printable Chart & CSV',
+    description: 'Print the free 52-week savings challenge chart or download CSV. The $1–$52 plan totals $1,378; compare smaller plans and track completed deposits.',
+    intro: 'In the classic 52-week savings challenge, you set aside $1 in week one, $2 in week two, and continue up to $52. Completing all deposits adds up to $1,378 before interest. Use the full chart below, open the free printable checklist or download the CSV—no app or sign-up required.',
     takeaway: 'The total is $1,378, but the deposits become larger over time. Check the final weeks against your budget before choosing the classic version.',
+    startAction: ['#step-2', 'Get the free printable chart & CSV ↓'],
     sections: [
       ['Understand the total and the final-week commitment', `<p>The week number is the planned deposit in dollars. Add the amounts from 1 through 52 to find the complete challenge total:</p><p class="guide-formula">52 × (1 + 52) ÷ 2 = $1,378</p><p>This is a deposit schedule, not an investment return. It assumes you make every contribution and excludes interest, fees and withdrawals. You can use another currency with the same numbers; that changes the currency of the total, not the arithmetic.</p><p>The first four deposits total only $10. The last four total $202. Before starting, look at those later commitments as carefully as the approachable first week.</p>`],
-      ['Your full 52-week chart', table('Classic challenge: planned deposits and running total', ['Week', 'Deposit', 'Total saved'], Array.from({length: 52}, (_, i) => {const n=i+1; return [String(n), money(n), money(n*(n+1)/2)];})) + `<p>Use this chart as a plan. Mark a week complete only after you have actually set aside the money. A future scheduled deposit belongs in the plan, not in your current saved balance.</p>`],
+      ['Your full 52-week chart', `<h3 id="classic-savings-chart">Free printable checklist and CSV</h3><p><a href="/assets/worksheets/52-week-savings.html">Open the free printable $1–$52 chart and completion checklist</a>. Use your browser’s Print command to print it or save a PDF. For a spreadsheet copy, <a href="/assets/worksheets/52-week-savings.csv" download>download the free 52-week savings CSV</a>.</p><p>The printable checklist has all 52 deposits and running totals, split into two columns for printing. Its on-screen checks are temporary and are not saved. These are free website files, separate from Frugal’s Premium PDF/Excel exports for app records.</p>` + table('Classic challenge: planned deposits and running total', ['Week', 'Deposit', 'Total saved'], Array.from({length: 52}, (_, i) => {const n=i+1; return [String(n), money(n), money(n*(n+1)/2)];})) + `<p>Use this chart as a plan. Mark a week complete only after you have actually set aside the money. A future scheduled deposit belongs in the plan, not in your current saved balance. The worksheet does not connect to a bank or import your plan into the app.</p>`],
       ['Choose an amount that fits your year', table('Alternative versions, assuming every deposit is completed', ['Version', 'First week', 'Weekly increase', 'Week 52', 'Total'], [
         ['Half-size challenge', '$0.50', '$0.50', '$26', '$689'],
         ['Classic challenge', '$1', '$1', '$52', '$1,378'],
@@ -22,7 +23,7 @@ export default [
       ['Make a recovery plan for an expensive week', `<p>If you cannot make a deposit, first check what is affordable after essential expenses. You can revise the finish date, lower a future contribution or replace the increasing schedule with a flat amount. Avoid treating the chart as a bill that must be paid at any cost.</p><p>At each monthly review, compare the actual balance with the plan and choose the next manageable contribution. For a version that starts with larger deposits, read the reverse-challenge guide. For a specific deadline and amount, use the savings-goal formula instead.</p>`],
     ],
     sources: ['savings'],
-    faq: [['Do I have to start in January?', 'No. Start with your first deposit and number the following weeks from there. Fifty-two weekly contributions do not have to align with a calendar year.'], ['Does the $1,378 include interest?', 'No. It is the sum of the 52 planned deposits, before interest, fees or withdrawals.']],
+    faq: [['Is the 52-week savings chart free to print?', 'Yes. The website’s classic $1-to-$52 printable checklist and CSV are free and do not require the app, an account or Premium. Open the printable chart and use your browser’s Print command to print or save a PDF. App Premium exports are separate features.'], ['Do I have to start in January?', 'No. Start with your first deposit and number the following weeks from there. Fifty-two weekly contributions do not have to align with a calendar year.'], ['Does the $1,378 include interest?', 'No. It is the sum of the 52 planned deposits, before interest, fees or withdrawals.']],
   },
   {
     topic: 'savings', slug: 'reverse-52-week-savings-challenge', modified: '2026-10-06',

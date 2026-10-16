@@ -57,6 +57,7 @@ for (const [slug, visual] of Object.entries(guideMedia)) {
 }
 // Match the article column in assets/content.css, including the two mobile margins.
 const imageSizes = '(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 40px), (max-width: 1054px) calc(100vw - 294px), 760px';
+const visualFigure = visual => `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>`;
 for (const guide of guides) {
   if (!guideTopics[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
@@ -65,6 +66,9 @@ for (const guide of guides) {
   if (guide.appPreview && !app) throw new Error(`App preview requires an app topic: ${guide.slug}`);
   const path = `/guides/${guide.slug}/`;
   const visual = guideMedia[guide.slug];
+  if (guide.mediaAfterSection !== undefined && (!visual || !Number.isInteger(guide.mediaAfterSection) || guide.mediaAfterSection < 1 || guide.mediaAfterSection > guide.sections.length)) {
+    throw new Error(`Invalid media section placement: ${guide.slug}`);
+  }
   const previewImage = guide.appPreview ? appPreviews[guide.topic]?.image : null;
   const images = [...new Set([visual?.src, previewImage].filter(Boolean))].map(src => site + src);
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
@@ -82,7 +86,7 @@ for (const guide of guides) {
     <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${app ? storeLinks(app, 'sidebar') : ''}</aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
-      ${visual ? `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>\n      ` : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>`).join('\n      ')}
+      ${visual && !guide.mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${guide.mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">${app ? `Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.` : 'Published by Moocsoft, an independent Flutter development studio. Examples and worksheets are illustrative. Project scope, platform requirements and release responsibilities need to be agreed for each project.'}</p>
     </article>

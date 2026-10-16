@@ -38,11 +38,13 @@ Run `node scripts/test-localization.mjs` alongside the existing marketing, attri
 
 ## Free printable worksheets
 
-The reverse 52-week chart, 100-envelope checklist and missing-number question sheet are free static website outputs in `assets/worksheets/`, separate from paid app features. Printable HTML is intentionally `noindex, follow`; the corresponding guide is the search destination. Browser printing needs no account, library or network request. Checkboxes are temporary and are not saved or imported into an app.
+The classic and reverse 52-week charts, 100-envelope checklist and missing-number question sheet are free static website outputs in `assets/worksheets/`, separate from paid app features. Printable HTML is intentionally `noindex, follow`; the corresponding guide is the search destination. Browser printing needs no account, library or network request. Checkboxes are temporary and are not saved or imported into an app.
 
 Edit `scripts/build-search-assets.mjs` (puzzle values live in `content/puzzle-worksheet.mjs`), make the development-only `sharp` package available, and run `node scripts/build-search-assets.mjs` before `node scripts/build-guides.mjs`. It emits deterministic CSV/HTML/native SVG files, 1200×675 PNG diagrams and 480/800/1200px WebP variants. No image library is loaded on the deployed site. Commit sources and generated outputs together.
 
 Seven guides display original diagrams. Their `<picture>` elements use width-based WebP `srcset` and layout-matched `sizes`, with a crawlable PNG fallback, explicit dimensions, descriptive alt text and visible explanatory captions. PNG remains the representative Article/social/sitemap image; the browser chooses a smaller WebP when appropriate. These are illustrations and worked examples, not invented app screenshots. Keep below-the-fold images lazy-loaded; do not apply that rule blindly to above-the-fold or largest-content images.
+
+A guide may set `mediaAfterSection` to a one-based section number when readers need its calculator or answer before the illustration. It requires an existing registered diagram and a valid section; the default order for other articles is unchanged. This layout-only choice does not reset editorial dates. The cigarette-cost guide uses a direct calculator anchor and keeps its separate quit-date calculator link in context rather than as a competing first action.
 
 ## Free browser challenges and savings plans
 
@@ -79,6 +81,8 @@ Run `node scripts/test-rice-weight.mjs` to independently check dry-equivalent ri
 Run `node scripts/test-dumbbell-volume.mjs` for independently counted paired, alternating and unequal-side examples, dated metadata, actual Did You Lift store/preview links and reciprocal reading. With the same development-only browser setup and a local server on port 4204, run `node scripts/test-dumbbell-volume-browser.cjs` for mobile/desktop, no-JavaScript worked tables, native answer disclosure and calculator navigation. The examples are manual bookkeeping, not an app sidedness setting or a training prescription; QA screenshots belong outside the public site.
 
 Run `node scripts/test-search-assets.mjs` to verify exact worksheet arithmetic, CSV rows, privacy boundaries and diagram dimensions. With development-only Playwright plus Chrome and a local server on port 4195, run `node scripts/test-search-worksheets.cjs` for mobile/desktop, no-JavaScript and print-mode checks. `MOOCSOFT_TEST_URL` overrides the port; optional `MOOCSOFT_QA_DIR` saves screenshots outside the repository.
+
+Run `node scripts/test-classic-savings-worksheet.mjs` for the standard chart’s independent 52-deposit/running-total checks, native print trigger and noindex/free-web boundaries. `node scripts/test-calculator-entry-paths.mjs` checks the calculator-first cigarette layout, unchanged media order elsewhere and the savings tool’s clear fixed-target alternative. With development-only Playwright and a local server on port 4206, run `node scripts/test-gsc-reader-paths.cjs` for mobile/desktop, native direct links, no-JavaScript worksheets, print/CSV access and retained real store destinations. Keep screenshots outside the site. These tests verify reader paths, not search rankings or conversion improvement.
 
 Run `node scripts/test-guide-images.cjs` with the same development-only browser setup and a server on port 4196 to check all seven diagrams at mobile/desktop widths and 1×/2× pixel densities, PNG fallback, no-JavaScript rendering and top store buttons. `MOOCSOFT_TEST_URL` overrides the server; `MOOCSOFT_QA_DIR` keeps screenshots outside the public repository. Static image tests check every WebP's file header, dimensions and size against the PNG fallback.
 

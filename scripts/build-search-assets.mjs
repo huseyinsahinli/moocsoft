@@ -17,6 +17,10 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const money = cents => '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: Number(cents % 100 !== 0) * 2, maximumFractionDigits: 2 });
 const csvMoney = cents => (cents / 100).toFixed(2);
+const classicRows = Array.from({ length: 52 }, (_, index) => {
+  const week = index + 1;
+  return { week, depositCents: week * 100, totalCents: (week * (week + 1) / 2) * 100 };
+});
 const reverseRows = Array.from({ length: 52 }, (_, index) => {
   const week = index + 1;
   return { week, depositCents: (53 - week) * 100, totalCents: (week * (105 - week) / 2) * 100 };
@@ -26,7 +30,7 @@ const envelopeRows = Array.from({ length: 100 }, (_, index) => {
   return { number, classicCents: number * 100, halfCents: number * 50, tenthCents: number * 10 };
 });
 const quarterTotals = Array.from({ length: 4 }, (_, index) => reverseRows.slice(index * 13, (index + 1) * 13).reduce((sum, row) => sum + row.depositCents, 0));
-if (reverseRows.at(-1).totalCents !== 137800 || envelopeRows.reduce((sum, row) => sum + row.classicCents, 0) !== 505000 || envelopeRows.reduce((sum, row) => sum + row.halfCents, 0) !== 252500 || envelopeRows.reduce((sum, row) => sum + row.tenthCents, 0) !== 50500 || quarterTotals.join(',') !== '59800,42900,26000,9100') throw new Error('Savings arithmetic failed.');
+if (classicRows.at(-1).totalCents !== 137800 || reverseRows.at(-1).totalCents !== 137800 || envelopeRows.reduce((sum, row) => sum + row.classicCents, 0) !== 505000 || envelopeRows.reduce((sum, row) => sum + row.halfCents, 0) !== 252500 || envelopeRows.reduce((sum, row) => sum + row.tenthCents, 0) !== 50500 || quarterTotals.join(',') !== '59800,42900,26000,9100') throw new Error('Savings arithmetic failed.');
 
 function verifyQuestions() {
   if (worksheet.questions.length !== 5) throw new Error('Expected five original practice questions.');
@@ -203,6 +207,22 @@ const savingsNote = 'Free website worksheet. On-screen checks are not saved. Kee
 function savingsTable(rows, caption) {
   return `<table><caption>${caption}</caption><thead><tr><th scope="col">Week</th><th scope="col">Deposit</th><th scope="col">Running total</th><th scope="col" class="completion-cell">Done</th></tr></thead><tbody>${rows.map(row => `<tr data-week="${row.week}"><td>${row.week}</td><td>${money(row.depositCents)}</td><td>${money(row.totalCents)}</td><td class="completion-cell"><label class="completion-mark"><input type="checkbox" class="mark-box" aria-label="Mark week ${row.week} after depositing"></label></td></tr>`).join('')}</tbody></table>`;
 }
+const classicHtml = documentHtml('52-Week Savings Challenge Chart', 'Print the classic 52-week savings chart from $1 to $52, with planned running totals and a completion box for every deposit.', `
+    <a href="/guides/52-week-savings-challenge/">← Read the 52-week challenge guide</a>
+    <button type="button" data-print="all">Print chart</button>
+    <a href="/assets/worksheets/52-week-savings.csv" download>Download CSV</a>
+    <a class="product" href="/savings-goal-tracker/">Explore Frugal →</a>`, `
+    <section class="paper" aria-labelledby="sheet-title">
+      <p class="eyebrow">Moocsoft.net · Free website worksheet</p>
+      <h1 id="sheet-title">52-week savings challenge chart</h1>
+      <p class="intro">Start with $1 in week 1, then increase each planned weekly deposit by $1 until $52 in week 52. Tick a box only after you have actually set aside that amount. Totals below assume every planned deposit is completed in order.</p>
+      <div class="details"><span>Name: <span class="write-line"></span></span><span>Start date: <span class="write-line"></span></span></div>
+      <p class="summary">52 deposits · $1 → $52 · Planned total: $1,378, excluding interest</p>
+      <div class="two-columns">${savingsTable(classicRows.slice(0, 26), 'Weeks 1–26')}${savingsTable(classicRows.slice(26), 'Weeks 27–52')}</div>
+      <p class="notes">Check the larger final weeks against your budget before starting. A planned deposit is not money already saved; totals exclude interest, fees and withdrawals.</p>
+      <p class="notes">${savingsNote}</p>
+      <p class="notes">Guide: moocsoft.net/guides/52-week-savings-challenge/</p>
+    </section>`);
 const reverseHtml = documentHtml('Reverse 52-Week Savings Chart', 'Print every reverse 52-week deposit from $52 down to $1, with planned running totals and completion boxes.', `
     <a href="/guides/reverse-52-week-savings-challenge/">← Read the reverse challenge guide</a>
     <button type="button" data-print="all">Print chart</button>
@@ -268,6 +288,8 @@ function writeAsset(path, content) {
   mkdirSync(dirname(target), { recursive: true });
   writeFileSync(target, content);
 }
+writeAsset('assets/worksheets/52-week-savings.html', classicHtml);
+writeAsset('assets/worksheets/52-week-savings.csv', 'Week,PlannedDepositUSD,PlannedCumulativeUSD,Completed,ActualDepositDate\n' + classicRows.map(row => `${row.week},${csvMoney(row.depositCents)},${csvMoney(row.totalCents)},,`).join('\n') + '\n');
 writeAsset('assets/worksheets/reverse-52-week-savings.html', reverseHtml);
 writeAsset('assets/worksheets/reverse-52-week-savings.csv', 'Week,PlannedDepositUSD,PlannedCumulativeUSD,Completed,ActualDepositDate\n' + reverseRows.map(row => `${row.week},${csvMoney(row.depositCents)},${csvMoney(row.totalCents)},,`).join('\n') + '\n');
 writeAsset('assets/worksheets/100-envelope-checklist.html', envelopeHtml);
@@ -482,4 +504,4 @@ for (const [name, svg] of illustrations) {
     writeAsset(`assets/guide-visuals/${name}-${width}.webp`, webp);
   }
 }
-console.log(`Built 6 printable worksheet/CSV/SVG files, ${illustrations.length} original SVG/PNG guide illustrations and ${illustrations.length * 3} responsive WebP variants.`);
+console.log(`Built 8 printable worksheet/CSV/SVG files, ${illustrations.length} original SVG/PNG guide illustrations and ${illustrations.length * 3} responsive WebP variants.`);

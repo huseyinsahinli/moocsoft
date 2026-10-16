@@ -5,9 +5,10 @@ export default [
   {
     topic: 'quitting', slug: 'calculate-cigarette-cost-and-savings',
     modified: '2026-10-05', appPreview: true,
+    mediaAfterSection: 2, showToolAction: false,
     previewCopy: { heading: 'Calculated the cost? Track the smoke-free time next.', description: 'If you decide to quit, QuitBit keeps your elapsed time and estimated spending avoided visible. The calculator inputs above are not imported into the app.' },
     assets: ['cigarette-cost'],
-    startAction: ['#step-1', 'Calculate cigarette costs below ↓'],
+    startAction: ['#cigarette-cost-calculator', 'Calculate my cigarette costs ↓'],
     title: 'Cigarette Cost Calculator: Day, Month & Year',
     description: 'Calculate daily, weekly, 30-day and yearly cigarette costs from your pack price and daily use. Free, no sign-up; includes formulas and quit-date savings.',
     intro: 'See what your cigarette habit costs per day, week, 30 days and year. Enter your own pack price below—no quit date or sign-up needed. For example, ten cigarettes a day from a $10 pack of 20 costs $1,825 over 365 days.',

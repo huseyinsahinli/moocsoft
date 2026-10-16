@@ -2,7 +2,7 @@ import { apps } from './apps.mjs';
 import { storeLinks } from './components.mjs';
 
 export const cigaretteCostCalculator = `<p>Enter your own pack price, pack size and average daily use. This free cost calculator does not need a quit date. Your inputs stay in this browser; they are not saved or sent to QuitBit.</p>
-<div class="cigarette-cost-calculator">
+<div class="cigarette-cost-calculator" id="cigarette-cost-calculator" tabindex="-1">
   <form id="cigarette-cost-form" novalidate hidden>
     <div class="fields">
       <div class="field"><label for="cost-currency">Currency</label><select id="cost-currency"><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option><option value="GBP">GBP (£)</option><option value="CAD">CAD (C$)</option><option value="AUD">AUD (A$)</option><option value="TRY">TRY (₺)</option></select></div>

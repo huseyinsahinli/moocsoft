@@ -1,0 +1,44 @@
+// Public reader-path regression checks; private search data is not a fixture.
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { guides } from '../content/index.mjs';
+import { guideMedia } from '../content/guide-media.mjs';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const read = file => readFileSync(resolve(root, file), 'utf8');
+const guide = guides.find(item => item.slug === 'calculate-cigarette-cost-and-savings');
+assert(guide);
+assert.equal(guide.modified, '2026-10-05', 'Layout changes do not reset the editorial revision date');
+assert.equal(guide.mediaAfterSection, 2);
+assert.equal(guide.showToolAction, false);
+assert.deepEqual(guide.startAction, ['#cigarette-cost-calculator', 'Calculate my cigarette costs ↓']);
+assert.equal(guides.filter(item => item.mediaAfterSection !== undefined).length, 1, 'Other guides keep their existing media order');
+const html = read('guides/' + guide.slug + '/index.html');
+assert.equal(html.split('id="cigarette-cost-calculator"').length - 1, 1);
+assert.match(html, /<div class="cigarette-cost-calculator" id="cigarette-cost-calculator" tabindex="-1">/);
+assert(html.indexOf('id="cigarette-cost-form"') < html.indexOf('<figure class="guide-visual">'), 'The real calculator precedes the illustration');
+assert(html.indexOf('<section id="step-2">') < html.indexOf('<figure class="guide-visual">'));
+assert(html.indexOf('<figure class="guide-visual">') < html.indexOf('<section id="step-3">'));
+assert.equal(html.split('<figure class="guide-visual">').length - 1, 1);
+const hero = html.match(/<div class="guide-hero">([\s\S]*?)<div class="guide-layout">/)?.[1];
+assert(hero.includes('href="#cigarette-cost-calculator"'));
+assert(!hero.includes('href="/tools/quit-smoking-savings-calculator/"'), 'The first action targets the cost task, not a separate quit-date task');
+assert(html.includes('href="/tools/quit-smoking-savings-calculator/"'), 'Quit-date calculator stays available in context');
+assert(html.includes('data-placement="header"'));
+assert(html.includes('data-placement="guide-preview"'));
+assert(html.includes('id6747658536'));
+assert(!html.includes('play.google.com'), 'QuitBit stays iOS-only');
+assert(html.includes(guideMedia[guide.slug].src));
+assert.match(html, /"dateModified":"2026-10-05"/);
+for (const other of Object.keys(guideMedia).filter(slug => slug !== guide.slug)) {
+  const page = read('guides/' + other + '/index.html');
+  assert(page.indexOf('<figure class="guide-visual">') < page.indexOf('<section id="step-1">'), other + ': no unrelated reorder');
+}
+const calculator = read('tools/52-week-savings-calculator/index.html');
+assert.match(calculator, /<h1>52-Week Savings Calculator<\/h1>/);
+assert.match(calculator, /<title>52-Week Savings Calculator: Standard &amp; Reverse Chart<\/title>/);
+assert(calculator.includes('href="#savings-form"'));
+assert(calculator.includes('href="/tools/savings-goal-calculator/"'));
+assert.match(calculator, /not automatically imported into Frugal/);
+console.log('PASS: calculator-first cigarette layout/direct anchor, unchanged other media/editorial dates and correct store boundaries; shorter savings tool heading and genuine fixed-target route.');

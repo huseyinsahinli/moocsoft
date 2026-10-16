@@ -24,7 +24,9 @@ Use unique article slugs and a specific reader task for each article. Keep calcu
 
 Privacy policies, terms, account deletion pages, `.well-known` files and workout import behavior are outside this content generator. No tracking scripts, cookies or redirects are added by these components.
 
-Selected guides link to free print/CSV/SVG outputs in `../assets/worksheets/`. Regenerate these with `node scripts/build-search-assets.mjs` (development-only `sharp` required) before rebuilding guides. The printable HTML is `noindex, follow`; do not add it as another article or sitemap URL. Diagrams use native SVG source and PNG exports, not invented app screenshots. The free web files do not change paid app features or import records into an app.
+Selected guides link to free print/CSV/SVG outputs in `../assets/worksheets/`, including both classic and reverse 52-week checklists. Regenerate these with `node scripts/build-search-assets.mjs` (development-only `sharp` required) before rebuilding guides. The printable HTML is `noindex, follow`; do not add it as another article or sitemap URL. Diagrams use native SVG source and PNG exports, not invented app screenshots. The free web files do not change paid app features or import records into an app.
+
+Use an optional one-based `mediaAfterSection` only when an existing illustration should follow a particular article section. The builder validates its range and media registration; the default remains before the first section. Keep representative image metadata and image-sitemap references unchanged when moving an illustration. A layout-only move does not justify a new modified date.
 
 Every registered diagram also has 480/800/1200px WebP exports for its responsive `<picture>`. Preserve the 1200px PNG fallback and its Article/Open Graph/Twitter/image-sitemap metadata. Only register a representative diagram actually shown in the corresponding article; use descriptive alt text and a caption that explains invented numbers or other limitations.
 
