@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'mobile-app-backend-decision': [
+    'offline-first-flutter-app-local-storage-cloud-sync',
+    'mobile-app-mvp-checklist',
+    'mobile-app-handover-checklist',
+  ],
   'dumbbell-workout-volume': [
     'workout-volume-explained',
     'how-to-log-gym-workouts',
