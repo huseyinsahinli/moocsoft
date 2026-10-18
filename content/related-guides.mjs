@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'weekly-to-monthly-savings': [
+    'calculate-savings-goal-contributions',
+    'biweekly-savings-plan',
+    'track-multiple-savings-goals',
+  ],
   'mobile-app-backend-decision': [
     'offline-first-flutter-app-local-storage-cloud-sync',
     'mobile-app-mvp-checklist',

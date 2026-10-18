@@ -283,6 +283,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/weekly-to-monthly-savings/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/quit-smoking-calculator-guide/</loc>
     <lastmod>2026-09-13</lastmod>
   </url>
@@ -499,7 +504,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
@@ -523,7 +528,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>

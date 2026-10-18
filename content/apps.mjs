@@ -118,6 +118,8 @@ export const apps = {
 };
 
 export const sources = {
+  billCalendar: ['CFPB: Match bill due dates with a calendar and overall budget', 'https://www.consumerfinance.gov/archive/blog/budget-help-manage-your-monthly-expenses-bill-calendar/'],
+  savingsGoogleStore: ['Frugal: Current Android goal records and Premium boundaries', 'https://play.google.com/store/apps/details?id=com.moocsoft.goal_tracker'],
   flutterCameraRecipe: ['Flutter: Camera preview, initialization and photo capture', 'https://docs.flutter.dev/cookbook/plugins/picture-using-camera'],
   flutterCameraPlugin: ['Flutter camera plugin: Setup, permission errors and lifecycle handling', 'https://pub.dev/packages/camera'],
   appleCameraAuthorization: ['Apple: Camera authorization and purpose descriptions', 'https://developer.apple.com/documentation/avfoundation/requesting-authorization-to-capture-and-save-media'],
