@@ -118,6 +118,7 @@ export const apps = {
 };
 
 export const sources = {
+  nutritionGoogleStore: ['NutriLens: Current Android photo estimates and optional Premium features', 'https://play.google.com/store/apps/details?id=com.moocsoft.food_scan_ai'],
   billCalendar: ['CFPB: Match bill due dates with a calendar and overall budget', 'https://www.consumerfinance.gov/archive/blog/budget-help-manage-your-monthly-expenses-bill-calendar/'],
   savingsGoogleStore: ['Frugal: Current Android goal records and Premium boundaries', 'https://play.google.com/store/apps/details?id=com.moocsoft.goal_tracker'],
   flutterCameraRecipe: ['Flutter: Camera preview, initialization and photo capture', 'https://docs.flutter.dev/cookbook/plugins/picture-using-camera'],

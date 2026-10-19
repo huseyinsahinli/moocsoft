@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'count-cooking-oil-calories': [
+    'track-calories-homemade-meals',
+    'calories-per-serving-vs-per-container',
+    'ai-calorie-scanner-accuracy',
+  ],
   'weekly-to-monthly-savings': [
     'calculate-savings-goal-contributions',
     'biweekly-savings-plan',
