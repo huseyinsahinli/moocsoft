@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'percentage-change-vs-percentage-points': [
+    'mental-math-games-for-adults',
+    'compare-fractions-without-decimals',
+    'mental-multiplication-tricks',
+  ],
   'count-cooking-oil-calories': [
     'track-calories-homemade-meals',
     'calories-per-serving-vs-per-container',

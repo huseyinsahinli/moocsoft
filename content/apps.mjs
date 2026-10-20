@@ -118,6 +118,9 @@ export const apps = {
 };
 
 export const sources = {
+  onsPercentagePoints: ['ONS: Distinguishing percentages and percentage points', 'https://service-manual.ons.gov.uk/content/numbers/percentages'],
+  openLearnPercentagePoints: ['Open University: Percentage points and relative changes', 'https://www.open.edu/openlearn/mod/oucontent/view.php?id=126533&section=_unit7.4'],
+  mathGoogleStore: ['Math Puzzles: Current Android puzzle features and optional purchases', 'https://play.google.com/store/apps/details?id=com.moocsoft.math_puzzle'],
   nutritionGoogleStore: ['NutriLens: Current Android photo estimates and optional Premium features', 'https://play.google.com/store/apps/details?id=com.moocsoft.food_scan_ai'],
   billCalendar: ['CFPB: Match bill due dates with a calendar and overall budget', 'https://www.consumerfinance.gov/archive/blog/budget-help-manage-your-monthly-expenses-bill-calendar/'],
   savingsGoogleStore: ['Frugal: Current Android goal records and Premium boundaries', 'https://play.google.com/store/apps/details?id=com.moocsoft.goal_tracker'],
