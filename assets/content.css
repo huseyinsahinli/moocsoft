@@ -140,6 +140,9 @@ body.marketing-page { --guide-accent: #ffb192; }
 .guide-visual { margin: 28px 0; }
 .guide-visual img { display: block; width: 100%; height: auto; border-radius: 14px; }
 .guide-visual figcaption { margin-top: 12px; color: #bcb7ae; font-size: .9rem; line-height: 1.6; }
+.guide-visual-enlarge { display: block; border-radius: 14px; }
+.guide-visual + .guide-visual-open { margin: -20px 0 28px; }
+.guide-visual-open a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; }
 @media (max-width: 900px) {
   .guide-layout { grid-template-columns: 1fr; grid-template-areas: 'toc' 'article'; gap: 28px; }
   .guide-toc { position: static; }

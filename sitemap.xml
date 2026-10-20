@@ -179,56 +179,68 @@
   <url>
     <loc>https://moocsoft.net/guides/track-calories-homemade-meals/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/food-photo-log/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-take-food-photos-for-calorie-tracking/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/ai-calorie-scanner-vs-food-diary/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/estimate-portion-size-from-food-photo/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/photo-calorie-scanner-app-checklist/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/restaurant-calorie-estimates/</loc>
     <lastmod>2026-10-02</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/ai-calorie-scanner-accuracy/</loc>
     <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calories-per-serving-vs-per-container/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/calories-per-serving-vs-per-container.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/dry-to-cooked-rice-weight/</loc>
     <lastmod>2026-10-15</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/dry-to-cooked-rice-weight.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/count-cooking-oil-calories/</loc>
     <lastmod>2026-10-19</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/count-cooking-oil-calories.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/52-week-savings-challenge/</loc>
     <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/reverse-52-week-savings-challenge/</loc>
@@ -238,27 +250,33 @@
   <url>
     <loc>https://moocsoft.net/guides/sinking-funds-vs-emergency-fund/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-savings-goal-contributions/</loc>
     <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-save-1000-in-a-year/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/biweekly-savings-plan/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/vacation-savings-goal-plan/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings-goal-tracker-app-vs-spreadsheet/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
@@ -270,43 +288,52 @@
   <url>
     <loc>https://moocsoft.net/guides/savings-tracker-irregular-income/</loc>
     <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/track-multiple-savings-goals/</loc>
     <lastmod>2026-10-10</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/track-multiple-savings-goals.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/7-day-no-spend-challenge/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/annual-bills-sinking-fund/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/weekly-to-monthly-savings/</loc>
     <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/weekly-to-monthly-savings.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quit-smoking-calculator-guide/</loc>
     <lastmod>2026-09-13</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quit-smoking-cravings-plan/</loc>
     <lastmod>2026-09-13</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/prepare-for-your-quit-date/</loc>
     <lastmod>2026-09-13</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quit-smoking-at-work/</loc>
     <lastmod>2026-09-13</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-cigarette-cost-and-savings/</loc>
@@ -317,19 +344,23 @@
   <url>
     <loc>https://moocsoft.net/guides/quit-smoking-milestones-to-track/</loc>
     <lastmod>2026-10-05</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/quitbit/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/smoking-trigger-journal-template/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/smoking-slip-reset-and-restart/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-log-gym-workouts/</loc>
     <lastmod>2026-10-02</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
@@ -340,95 +371,116 @@
   <url>
     <loc>https://moocsoft.net/guides/rest-timer-between-sets/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/organize-weekly-workout-plan/</loc>
     <lastmod>2026-10-03</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/track-progressive-overload-workout-log/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-track-personal-records-in-gym/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/workout-planner-vs-workout-log/</loc>
     <lastmod>2026-10-02</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/log-warm-up-and-working-sets/</loc>
     <lastmod>2026-10-07</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/dumbbell-workout-volume/</loc>
     <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/dumbbell-workout-volume.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/log-exercise-substitution-busy-gym/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-start-habit-tracking/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/daily-vs-weekly-habit-tracking/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habit-streak-vs-completion-rate/</loc>
     <lastmod>2026-10-05</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/habit-streak-vs-completion-rate.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/restart-habit-after-missing-days/</loc>
     <lastmod>2026-09-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habit-tracker-ideas/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/monthly-habit-tracker/</loc>
     <lastmod>2026-10-05</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/weekly-reset-checklist/</loc>
     <lastmod>2026-10-09</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habit-tracker-for-shift-work/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/backup-habit-tracker-before-changing-phones/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-solve-number-pattern-puzzles/</loc>
     <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mental-math-games-for-adults/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math-puzzle-strategies/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/play-math-games-with-friends/</loc>
     <lastmod>2026-09-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/missing-number-puzzles-with-answers/</loc>
@@ -438,74 +490,92 @@
   <url>
     <loc>https://moocsoft.net/guides/order-of-operations-puzzles/</loc>
     <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mental-multiplication-tricks/</loc>
     <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/compare-fractions-without-decimals/</loc>
     <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/compare-fractions-without-decimals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/prime-number-puzzles-with-answers/</loc>
     <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/target-sum-number-puzzles/</loc>
     <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/repeating-pattern-puzzles-with-answers/</loc>
     <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/count-rectangles-in-a-grid/</loc>
     <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/round-robin-match-count/</loc>
     <lastmod>2026-10-09</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/cafe-logic-grid-puzzle-with-answers/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/elapsed-time-across-midnight/</loc>
     <lastmod>2026-10-13</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/elapsed-time-across-midnight.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/percentage-change-vs-percentage-points/</loc>
     <lastmod>2026-10-20</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/percentage-change-vs-percentage-points.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mobile-app-mvp-checklist/</loc>
     <lastmod>2026-10-09</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/offline-first-flutter-app-local-storage-cloud-sync/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mobile-app-handover-checklist/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/website-vs-mobile-app-small-business/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mobile-app-bug-report-template/</loc>
     <lastmod>2026-10-12</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/flutter-camera-permission-test-checklist/</loc>
     <lastmod>2026-10-14</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mobile-app-backend-decision/</loc>
     <lastmod>2026-10-17</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-charts/mobile-app-backend-decision.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
@@ -542,16 +612,19 @@
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/habit-tracker-schichtarbeit/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/habit-tracker/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/mobile-app-uebergabe-checkliste/</loc>
     <lastmod>2026-10-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/</loc>

@@ -82,7 +82,7 @@ const examples = [
       }
       for (const [path, answer, title] of [
         ['/tools/52-week-savings-calculator/', '$1,378', '52-Week Savings Calculator: Standard & Reverse Chart'],
-        ['/tools/workout-volume-rest-timer/', '1,500 kg', 'Workout Volume Calculator & Rest Timer'],
+        ['/tools/workout-volume-rest-timer/', '1,500 kg', 'Workout Volume Calculator: Sets, Reps & Weight'],
       ]) {
         await page.goto(base + path);
         assert((await page.locator('.tool-quick-answer').innerText()).includes(answer));

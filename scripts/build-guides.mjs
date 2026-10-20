@@ -7,6 +7,8 @@ import { guideTopics } from '../content/topics.mjs';
 import { head, header, footer, card, download, resultDownload, appPreview, choices, storeDirectory, storeLinks, resources, faviconLinks, serviceNextStep } from '../content/components.mjs';
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
+import { guideCharts } from '../content/guide-charts.mjs';
+import { editorialPhotos } from '../content/editorial-media.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 import { languageAlternates, languageSwitcher } from '../content/localization.mjs';
@@ -45,6 +47,44 @@ function write(path, html, lastmod = published, images = []) {
 }
 const slugs = new Set();
 const guidesBySlug = new Map(guides.map(guide => [guide.slug, guide]));
+function rasterSize(src) {
+  const data = readFileSync(resolve(root, '.' + src));
+  if (data.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) return [data.readUInt32BE(16), data.readUInt32BE(20)];
+  if (data.toString('ascii', 0, 4) === 'RIFF' && data.toString('ascii', 8, 12) === 'WEBP') {
+    const format = data.toString('ascii', 12, 16);
+    if (format === 'VP8X') return [1 + data.readUIntLE(24, 3), 1 + data.readUIntLE(27, 3)];
+    if (format === 'VP8 ') return [data.readUInt16LE(26) & 0x3fff, data.readUInt16LE(28) & 0x3fff];
+    if (format === 'VP8L') {
+      const packed = data.readUInt32LE(21);
+      return [(packed & 0x3fff) + 1, ((packed >>> 14) & 0x3fff) + 1];
+    }
+  }
+  if (data[0] === 0xff && data[1] === 0xd8) {
+    for (let offset = 2; offset + 9 < data.length;) {
+      if (data[offset] !== 0xff) break;
+      while (data[offset] === 0xff) offset++;
+      const marker = data[offset++];
+      if (marker === 0xda || marker === 0xd9) break;
+      if (marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) continue;
+      const length = data.readUInt16BE(offset);
+      if (length < 2 || offset + length > data.length) break;
+      if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) return [data.readUInt16BE(offset + 5), data.readUInt16BE(offset + 3)];
+      offset += length;
+    }
+  }
+  throw new Error(`Unsupported or invalid raster: ${src}`);
+}
+function validateVisual(visual, label) {
+  if (visual.width !== 1200 || visual.height !== 675 || !visual.alt || !visual.caption || !Array.isArray(visual.webp)
+      || visual.webp.length !== 3) throw new Error(`Invalid visual metadata: ${label}`);
+  for (const image of [visual, ...visual.webp]) {
+    if (!/^\/assets\/[a-z0-9/-]+\.(?:png|jpg|webp)$/.test(image.src)) throw new Error(`Invalid visual asset path: ${label}`);
+    const [width, height] = rasterSize(image.src);
+    if (width !== image.width || height !== image.height) throw new Error(`Visual file dimensions differ from metadata: ${image.src}`);
+  }
+  if (visual.webp.some((image, index) => image.width !== [480, 800, 1200][index]
+      || image.height !== image.width * 9 / 16 || image.src !== visual.src.replace(/\.(?:png|jpg)$/, `-${image.width}.webp`))) throw new Error(`Invalid responsive visual: ${label}`);
+}
 for (const [slug, visual] of Object.entries(guideMedia)) {
   if (!guidesBySlug.has(slug) || !/^\/assets\/guide-visuals\/[a-z0-9-]+\.png$/.test(visual.src)
       || visual.width !== 1200 || visual.height !== 675 || !visual.alt || !visual.caption) {
@@ -54,10 +94,25 @@ for (const [slug, visual] of Object.entries(guideMedia)) {
       || image.height !== image.width * 9 / 16 || image.src !== visual.src.replace(/\.png$/, `-${image.width}.webp`))) {
     throw new Error(`Invalid responsive guide media: ${slug}`);
   }
+  validateVisual(visual, slug);
+}
+for (const [slug, visual] of Object.entries(guideCharts)) {
+  const guide = guidesBySlug.get(slug);
+  if (!guide || guideMedia[slug] || visual.kind !== 'chart' || visual.src !== `/assets/guide-charts/${slug}.png` || !Number.isInteger(visual.afterSection)
+      || visual.afterSection < 1 || visual.afterSection > guide.sections.length) throw new Error(`Invalid guide chart or placement: ${slug}`);
+  validateVisual(visual, slug);
+}
+for (const [topic, visual] of Object.entries(editorialPhotos)) {
+  if (!guideTopics[topic] || visual.kind !== 'photo' || visual.src !== `/assets/editorial/${topic}.jpg`) throw new Error(`Invalid editorial photo: ${topic}`);
+  validateVisual(visual, topic);
 }
 // Match the article column in assets/content.css, including the two mobile margins.
 const imageSizes = '(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 40px), (max-width: 1054px) calc(100vw - 294px), 760px';
-const visualFigure = visual => `<figure class="guide-visual"><picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture><figcaption>${e(visual.caption)}</figcaption></figure>`;
+const visualFigure = visual => {
+  const picture = `<picture><source type="image/webp" srcset="${visual.webp.map(image => `${image.src} ${image.width}w`).join(', ')}" sizes="${imageSizes}"><img data-visual-kind="${visual.kind || 'diagram'}" src="${visual.src}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" alt="${e(visual.alt)}"></picture>`;
+  const chart = visual.kind === 'chart';
+  return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
+};
 for (const guide of guides) {
   if (!guideTopics[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
@@ -65,10 +120,12 @@ for (const guide of guides) {
   const topic = guideTopics[guide.topic];
   if (guide.appPreview && !app) throw new Error(`App preview requires an app topic: ${guide.slug}`);
   const path = `/guides/${guide.slug}/`;
-  const visual = guideMedia[guide.slug];
-  if (guide.mediaAfterSection !== undefined && (!visual || !Number.isInteger(guide.mediaAfterSection) || guide.mediaAfterSection < 1 || guide.mediaAfterSection > guide.sections.length)) {
+  const visual = guideMedia[guide.slug] ?? guideCharts[guide.slug] ?? editorialPhotos[guide.topic];
+  if (!visual) throw new Error(`Missing representative visual: ${guide.slug}`);
+  if (guide.mediaAfterSection !== undefined && (!guideMedia[guide.slug] || !Number.isInteger(guide.mediaAfterSection) || guide.mediaAfterSection < 1 || guide.mediaAfterSection > guide.sections.length)) {
     throw new Error(`Invalid media section placement: ${guide.slug}`);
   }
+  const mediaAfterSection = guideMedia[guide.slug] ? guide.mediaAfterSection : guideCharts[guide.slug] ? visual.afterSection : 1;
   const previewImage = guide.appPreview ? appPreviews[guide.topic]?.image : null;
   const images = [...new Set([visual?.src, previewImage].filter(Boolean))].map(src => site + src);
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
@@ -86,7 +143,7 @@ for (const guide of guides) {
     <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${app ? storeLinks(app, 'sidebar') : ''}</aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
-      ${visual && !guide.mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${guide.mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}`).join('\n      ')}
+      ${!mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">${app ? `Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.` : 'Published by Moocsoft, an independent Flutter development studio. Examples and worksheets are illustrative. Project scope, platform requirements and release responsibilities need to be agreed for each project.'}</p>
     </article>
