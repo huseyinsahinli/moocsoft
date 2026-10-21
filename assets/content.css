@@ -84,6 +84,13 @@ body.marketing-page { --guide-accent: #ffb192; }
 .result-download small { display: block; margin-top: 12px; color: #bcb7ae; font-size: .75rem; line-height: 1.5; }
 .result-download-details { display: inline-flex; align-items: center; min-height: 44px; color: var(--guide-accent); font-size: .8rem; text-decoration: underline; text-underline-offset: 4px; }
 .guide-formula { padding: 18px 20px; border: 1px solid #3c3d43; border-radius: 10px; background: #17181b; color: #f4efe6 !important; font-weight: 500; font-size: 1.08rem; font-variant-numeric: tabular-nums; }
+.guide-superset-sequence { margin: 26px 0; }
+.guide-superset-sequence ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0; list-style: none; }
+.guide-superset-sequence li { display: grid; gap: 6px; margin: 0; padding: 16px; border: 1px solid #45413d; border-radius: 12px; background: #171719; }
+.guide-superset-sequence span { color: #bcb7ae; font-size: .85rem; }
+.guide-superset-sequence strong { font-size: 1.18rem; }
+.guide-superset-sequence figcaption { color: #bcb7ae; font-size: .9rem; line-height: 1.6; }
+@media (max-width: 600px) { .guide-superset-sequence ol { grid-template-columns: 1fr; } }
 .guide-table { max-width: 100%; overflow-x: auto; margin: 26px 0; border: 1px solid #3c3d43; border-radius: 12px; background: #121315; }
 .guide-table table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: .86rem; line-height: 1.6; }
 .guide-table caption { padding: 16px 18px; color: #f4efe6; font-weight: 500; text-align: left; background: #1c1d21; }
@@ -209,6 +216,8 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-article a { color: #000; }
   .guide-visual { break-inside: avoid; }
   .guide-visual figcaption { color: #000; }
+  .guide-superset-sequence li { background: #fff; border-color: #999; break-inside: avoid; }
+  .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Localized pages keep a visible, keyboard-accessible language choice. */
 .guide-language-switcher { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-block: 16px; font-size: 14px; }

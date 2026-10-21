@@ -413,6 +413,12 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/how-to-log-supersets/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/how-to-start-habit-tracking/</loc>
     <lastmod>2026-09-12</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
@@ -591,7 +597,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
@@ -607,7 +613,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-21</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>

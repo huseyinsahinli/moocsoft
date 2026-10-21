@@ -220,6 +220,11 @@ const choices = {
   ],
 
   // Training: connect planned sessions with actual sets and comparable progress.
+  'how-to-log-supersets': [
+    'how-to-log-gym-workouts',
+    'rest-timer-between-sets',
+    'workout-volume-explained',
+  ],
   'log-warm-up-and-working-sets': [
     'how-to-log-gym-workouts',
     'workout-volume-explained',
