@@ -94,9 +94,11 @@ export function head(title, description, path, graph, app, assets = [], visual, 
   const alternates = languageAlternates(path);
   const switcher = languageSwitcher(path);
   if (assets.some(name => !/^[a-z0-9-]+$/.test(name))) throw new Error('Invalid guide asset name');
+  const stylesheets = options.stylesheets || [];
+  if (!Array.isArray(stylesheets) || stylesheets.some(name => !/^[a-z0-9-]+$/.test(name))) throw new Error('Invalid guide stylesheet name');
   const image = visual || { src: '/assets/social/moocsoft-og.png', width: 1200, height: 630 };
   const articlePage = graph.some(node => node['@type'] === 'Article');
-  const enhancements = assets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">\n  <script src="/assets/${name}.js" defer></script>`).join('');
+  const enhancements = assets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">\n  <script src="/assets/${name}.js" defer></script>`).join('') + stylesheets.map(name => `\n  <link rel="stylesheet" href="/assets/${name}.css">`).join('');
   return `<!DOCTYPE html>
 <html lang="${locale}">
 <head>

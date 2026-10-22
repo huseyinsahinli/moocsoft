@@ -9,6 +9,7 @@ import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { guideCharts } from '../content/guide-charts.mjs';
 import { editorialPhotos } from '../content/editorial-media.mjs';
+import { pageVisualUpdated, englishVisualTopics, pagePhotoFigure, visualTopicNavigation } from '../content/page-visuals.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
 import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 import { languageAlternates, languageSwitcher } from '../content/localization.mjs';
@@ -161,27 +162,30 @@ for (const [topic, config] of Object.entries(guideTopics)) {
   const app = apps[topic];
   const selected = guides.filter(g => g.topic === topic);
   const path = `/guides/${topic}/`;
-  const graph = [{'@type':'CollectionPage',name:config.heading,description:config.description,inLanguage:'en',url:site+path,mainEntity:items(selected)},breadcrumbs([['Home','/'],['Guides','/guides/'],[config.category,path]])];
-  write(path, `${head(config.heading,config.description,path,graph,app)}
+  const visual = editorialPhotos[topic];
+  const graph = [{'@type':'CollectionPage',name:config.heading,description:config.description,inLanguage:'en',url:site+path,image:[site+visual.src],mainEntity:items(selected)},breadcrumbs([['Home','/'],['Guides','/guides/'],[config.category,path]])];
+  write(path, `${head(config.heading,config.description,path,graph,app,[],visual,{stylesheets:['page-visuals']})}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[config.category,null]])}
   <div class="guide-hero"><span class="guide-kicker">The ${e(config.name)} reading list</span><h1>${e(config.heading)}</h1><p>${e(config.intro)}</p><div class="guide-hero-actions">${toolAction(app, 'Try')}${topicAction(config, app)}</div></div>
+  ${pagePhotoFigure(visual)}
   <section class="guide-related"><h2>Choose your starting point</h2><p class="guide-topic-intro">${e(config.choice)}</p><div class="guide-card-grid">${selected.map(card).join('')}</div></section>
   ${app ? `<section class="guide-related"><span class="guide-kicker">From the guide to the app</span><h2>Put it into practice with ${e(app.name)}</h2><p class="guide-topic-intro">${e(app.use)}</p>${download(app, 'topic-end')}</section>` : serviceNextStep(config)}
   <div class="guide-related"><h2>Explore another topic</h2><div class="guide-topic-links">${Object.entries(guideTopics).filter(([key]) => key !== topic).map(([key,a])=>`<a href="/guides/${key}/">${e(a.category)} →</a>`).join('')}</div></div>
 </main>
 ${footer()}
 </body>
-</html>`, latest(selected));
+</html>`, [latest(selected), pageVisualUpdated].sort().at(-1), [site+visual.src]);
 }
 
 const hubTitle = 'Stories, Puzzles and Practical App Guides';
 const hubDescription = 'Find a useful answer: solve an original puzzle, read an illustrative story, compare app ideas or use a practical worksheet for your everyday routine.';
-write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])], undefined, ['guide-discovery'])}
+write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'CollectionPage',name:hubTitle,description:hubDescription,inLanguage:'en',url:site+'/guides/',image:englishVisualTopics.map(item=>site+item.visual.src),mainEntity:items(guides)},breadcrumbs([['Home','/'],['Guides','/guides/']])], undefined, ['guide-discovery'], undefined, {stylesheets:['page-visuals']})}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
   <div class="guide-hero-actions"><a href="/de/guides/" lang="de" hreflang="de">Deutsche Leitfäden →</a></div>
   <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Different ways to begin</span><h1>Stories, puzzles<br>and useful answers.</h1><p>Try a mystery, follow a fictional everyday story or compare a real product decision. Choose a question you want to answer—not a reading list you need to finish.</p><div class="guide-hero-actions"><a href="#guide-library">Find a guide ↓</a><a href="/tools/">Try a free browser tool →</a></div></div>
+  ${visualTopicNavigation(englishVisualTopics)}
   <section class="guide-related" aria-labelledby="start-here"><span class="guide-kicker">Start with one task</span><h2 id="start-here">Three paths into the library</h2><div class="reader-journeys">${selectReaderJourneys(guides).map(journey => `<article class="reader-journey"><h3>${e(journey.title)}</h3><p>${e(journey.description)}</p><ol>${journey.steps.map(step => `<li><a href="${e(step.href)}">${e(step.label)}</a></li>`).join('')}</ol></article>`).join('')}</div></section>
   <section id="guide-library" data-guide-library aria-labelledby="library-title"><h2 id="library-title">Find your next useful read</h2><p>Search stays in your browser. Without JavaScript, every guide is still listed by topic below.</p><form data-guide-filter hidden role="search" aria-label="Find a Moocsoft guide"><label>Search the library<input name="q" type="search" autocomplete="off" placeholder="Try backup, café, meal or Flutter"></label><label>Topic<select name="topic"><option value="">All topics</option>${Object.entries(guideTopics).map(([key,config]) => `<option value="${key}">${e(config.category)}</option>`).join('')}</select></label><label>Format<select name="format"><option value="">All formats</option>${Object.values(editorialFormats).map(format => `<option value="${format.key}">${e(format.label)}</option>`).join('')}</select></label><button type="reset">Clear filters</button></form><p data-guide-result-count role="status" aria-live="polite">All ${guides.length} guides are listed below.</p><p data-guide-no-results hidden>No matching guide yet. Try fewer words, another topic or clear the filters. You can also <a href="/tools/">browse the free tools</a>.</p><div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(guideTopics).map(([key,config]) => `<a href="/guides/${key}/">${e(config.category)} →</a>`).join('')}</div>
   ${Object.entries(guideTopics).map(([topic,config]) => { const app = apps[topic]; return `<section class="guide-related" id="${topic}" data-guide-topic="${topic}" style="--guide-accent:${config.color}"><span class="guide-kicker">${e(config.name)}</span><h2>${e(config.heading)}</h2><p>${e(config.intro)}</p><div class="guide-hero-actions"><a href="/guides/${topic}/">Browse ${e(config.category.toLowerCase())} →</a>${app?.tool ? `<a href="/tools/${app.tool}/">${e(app.toolName)} →</a>` : topicAction(config, app)}</div><div class="guide-card-grid">${guides.filter(g => g.topic === topic).map(guide => card(guide, { filterable: true })).join('')}</div></section>`; }).join('\n')}</section>
@@ -189,7 +193,7 @@ write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'Collecti
 </main>
 ${footer()}
 </body>
-</html>`, latest(guides));
+</html>`, [latest(guides), pageVisualUpdated].sort().at(-1), englishVisualTopics.map(item=>site+item.visual.src));
 
 // Keep hand-built marketing pages connected to the same brand and guide catalogue.
 const resourcePages = new Map([

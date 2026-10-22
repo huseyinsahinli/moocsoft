@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'mobile-app-large-text-testing': [
+    'mobile-app-bug-report-template',
+    'flutter-camera-permission-test-checklist',
+    'mobile-app-mvp-checklist',
+  ],
   'percentage-change-vs-percentage-points': [
     'mental-math-games-for-adults',
     'compare-fractions-without-decimals',
@@ -54,9 +59,9 @@ const choices = {
     'track-multiple-savings-goals',
   ],
   'mobile-app-bug-report-template': [
+    'mobile-app-large-text-testing',
     'mobile-app-mvp-checklist',
     'mobile-app-handover-checklist',
-    'offline-first-flutter-app-local-storage-cloud-sync',
   ],
   // Nutrition: improve the estimate, check the inputs, then keep a useful record.
   'estimate-calories-from-food-photo': [

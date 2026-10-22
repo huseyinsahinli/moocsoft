@@ -118,6 +118,10 @@ export const apps = {
 };
 
 export const sources = {
+  appleLargerText: ['Apple: Change text size and use larger accessibility text', 'https://support.apple.com/en-us/102453'],
+  androidNonlinearText: ['Android: Nonlinear font scaling and maximum-font testing', 'https://developer.android.com/about/versions/14/features#non-linear-font-scaling'],
+  flutterTextScaler: ['Flutter API: MediaQuery.textScalerOf', 'https://api.flutter.dev/flutter/widgets/MediaQuery/textScalerOf.html'],
+  flutterAccessibility: ['Flutter: Accessibility release checklist', 'https://docs.flutter.dev/ui/accessibility'],
   onsPercentagePoints: ['ONS: Distinguishing percentages and percentage points', 'https://service-manual.ons.gov.uk/content/numbers/percentages'],
   openLearnPercentagePoints: ['Open University: Percentage points and relative changes', 'https://www.open.edu/openlearn/mod/oucontent/view.php?id=126533&section=_unit7.4'],
   mathGoogleStore: ['Math Puzzles: Current Android puzzle features and optional purchases', 'https://play.google.com/store/apps/details?id=com.moocsoft.math_puzzle'],

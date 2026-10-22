@@ -104,7 +104,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/hire-flutter-developer/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -145,7 +145,8 @@
   </url>
   <url>
     <loc>https://moocsoft.net/math-riddles/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/missing-number-puzzles.png</image:loc></image:image>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -584,36 +585,55 @@
     <image:image><image:loc>https://moocsoft.net/assets/guide-charts/mobile-app-backend-decision.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/mobile-app-large-text-testing/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/development/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>
@@ -634,7 +654,10 @@
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/frugal/</loc>
