@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'compare-unit-prices': [
+    'compare-fractions-without-decimals',
+    'mental-multiplication-tricks',
+    'mental-math-games-for-adults',
+  ],
   'mobile-app-large-text-testing': [
     'mobile-app-bug-report-template',
     'flutter-camera-permission-test-checklist',

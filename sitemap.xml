@@ -2,7 +2,7 @@
 <urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -550,6 +550,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/guide-charts/percentage-change-vs-percentage-points.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/compare-unit-prices/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/mobile-app-mvp-checklist/</loc>
     <lastmod>2026-10-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
@@ -616,7 +621,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -626,7 +631,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

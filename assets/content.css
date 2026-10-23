@@ -220,6 +220,20 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
+.unit-price-comparison { margin: 28px 0; padding: 24px; background: #151a1e; border: 1px solid #4a5054; border-radius: 16px; }
+.unit-price-comparison .unit-price-chart-title { margin: 0 0 10px; color: #f4efe6; font-weight: 600; font-size: 1.1rem; line-height: 1.5; }
+.unit-price-comparison .unit-price-scale { margin: 0 0 22px; font-size: .85rem; line-height: 1.5; color: #c3c9d0; }
+.unit-price-comparison ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
+.unit-price-comparison li { margin: 0; }
+.unit-price-comparison li > div:first-child { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 9px; font-size: .94rem; }
+.unit-price-comparison li > div:first-child > span { color: #f4efe6; font-variant-numeric: tabular-nums; }
+.unit-price-bar { height: 20px; border-radius: 5px; background: #353d46; overflow: hidden; }
+.unit-price-bar > span { display: block; height: 100%; background: #a6d3f4; }
+.unit-price-comparison li[data-pack="B"] .unit-price-bar > span { background: #c6dda2; }
+.unit-price-comparison small { display: block; margin-top: 7px; color: #c3c9d0; font-size: .82rem; line-height: 1.5; }
+.unit-price-comparison figcaption { margin-top: 24px; color: #b9bdc5; font-size: .85rem; line-height: 1.6; }
+@media (max-width: 560px) { .unit-price-comparison { padding: 18px; } }
+@media print { .unit-price-comparison { background: #fff; border-color: #999; break-inside: avoid; } .unit-price-comparison :is(p, span, small, figcaption) { color: #000 !important; } .unit-price-bar { background: #eee; border: 1px solid #777; } .unit-price-bar > span { background: #666 !important; } }
 .large-text-journey { margin: 28px 0; }
 .large-text-journey ol, .service-process { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; list-style: none; padding: 0; margin: 0; }
 .large-text-journey li, .service-process li { min-width: 0; padding: 20px; border: 1px solid #484950; border-radius: 14px; background: #16191d; }

@@ -118,6 +118,8 @@ export const apps = {
 };
 
 export const sources = {
+  nistUnitPricing: ['NIST: Unit Pricing Guide — consistent units and comparable quantities', 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/1181e2025/NIST.SP.1181e2025.html'],
+  acccUnitPricing: ['ACCC: Grocery unit prices and standard measurement units', 'https://www.accc.gov.au/consumers/pricing/unit-prices-for-groceries'],
   appleLargerText: ['Apple: Change text size and use larger accessibility text', 'https://support.apple.com/en-us/102453'],
   androidNonlinearText: ['Android: Nonlinear font scaling and maximum-font testing', 'https://developer.android.com/about/versions/14/features#non-linear-font-scaling'],
   flutterTextScaler: ['Flutter API: MediaQuery.textScalerOf', 'https://api.flutter.dev/flutter/widgets/MediaQuery/textScalerOf.html'],
