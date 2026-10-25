@@ -317,6 +317,12 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/reconcile-savings-tracker-balance/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/frugal/goals.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/quit-smoking-calculator-guide/</loc>
     <lastmod>2026-09-13</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
@@ -601,7 +607,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
@@ -631,7 +637,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

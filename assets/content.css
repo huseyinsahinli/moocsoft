@@ -220,6 +220,15 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
+.savings-reconciliation-flow { margin: 28px 0; }
+.savings-reconciliation-flow ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.savings-reconciliation-flow li { min-width: 0; padding: 20px; border: 1px solid #49524e; border-radius: 14px; background: #16201c; }
+.savings-reconciliation-flow li > span { display: block; color: #c5cec8; font-size: .88rem; line-height: 1.5; }
+.savings-reconciliation-flow li > strong { display: block; margin-top: 10px; color: #edf6ee; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.3; }
+.savings-reconciliation-flow li[data-reconcile-step="corrected"] { border-color: #85b8a0; background: #1b3428; }
+.savings-reconciliation-flow figcaption { margin-top: 14px; color: #b9c4bd; font-size: .88rem; line-height: 1.6; }
+@media (max-width: 560px) { .savings-reconciliation-flow ol { grid-template-columns: minmax(0, 1fr); } }
+@media print { .savings-reconciliation-flow li { background: #fff !important; border-color: #999; break-inside: avoid; } .savings-reconciliation-flow :is(span, strong, figcaption) { color: #000; } }
 .unit-price-comparison { margin: 28px 0; padding: 24px; background: #151a1e; border: 1px solid #4a5054; border-radius: 16px; }
 .unit-price-comparison .unit-price-chart-title { margin: 0 0 10px; color: #f4efe6; font-weight: 600; font-size: 1.1rem; line-height: 1.5; }
 .unit-price-comparison .unit-price-scale { margin: 0 0 22px; font-size: .85rem; line-height: 1.5; color: #c3c9d0; }

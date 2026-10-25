@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'reconcile-savings-tracker-balance': [
+    'savings-goal-tracker-app-vs-spreadsheet',
+    'track-multiple-savings-goals',
+    'sinking-funds-vs-emergency-fund',
+  ],
   'compare-unit-prices': [
     'compare-fractions-without-decimals',
     'mental-multiplication-tricks',
