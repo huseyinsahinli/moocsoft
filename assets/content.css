@@ -220,6 +220,19 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
+.notification-routes { margin: 28px 0; }
+.notification-route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.notification-route-grid > div { min-width: 0; padding: 22px; background: #161e25; border: 1px solid #496276; border-radius: 14px; }
+.notification-route-grid > div[data-notification-route="remote"] { background: #201c2a; border-color: #655679; }
+.notification-route-grid h3 { margin: 0 0 18px; color: #f2f4f7; font-size: 1.12rem; line-height: 1.5; }
+.notification-route-grid ol { padding-left: 22px; margin: 0; display: grid; gap: 18px; }
+.notification-route-grid li { margin: 0; padding-left: 5px; color: #bed7ea; }
+.notification-route-grid :is(strong, span) { display: block; }
+.notification-route-grid strong { margin-bottom: 5px; color: #eef1f6; font-size: .98rem; }
+.notification-route-grid span, .notification-routes figcaption { color: #bec8d1; font-size: .9rem; line-height: 1.6; }
+.notification-routes figcaption { margin-top: 14px; }
+@media (max-width: 700px) { .notification-route-grid { grid-template-columns: minmax(0, 1fr); } }
+@media print { .notification-route-grid > div { background: #fff !important; border-color: #999; break-inside: avoid; } .notification-routes :is(h3, li, strong, span, figcaption) { color: #000; } }
 .savings-reconciliation-flow { margin: 28px 0; }
 .savings-reconciliation-flow ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .savings-reconciliation-flow li { min-width: 0; padding: 20px; border: 1px solid #49524e; border-radius: 14px; background: #16201c; }

@@ -601,6 +601,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/local-vs-push-notifications/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
@@ -632,12 +637,12 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/development/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

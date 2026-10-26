@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'local-vs-push-notifications': [
+    'mobile-app-backend-decision',
+    'offline-first-flutter-app-local-storage-cloud-sync',
+    'mobile-app-mvp-checklist',
+  ],
   'reconcile-savings-tracker-balance': [
     'savings-goal-tracker-app-vs-spreadsheet',
     'track-multiple-savings-goals',
