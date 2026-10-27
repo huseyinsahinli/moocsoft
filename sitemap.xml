@@ -239,6 +239,12 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/kj-to-kcal-food-labels/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/52-week-savings-challenge/</loc>
     <lastmod>2026-10-16</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
@@ -607,7 +613,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
@@ -642,7 +648,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

@@ -118,6 +118,9 @@ export const apps = {
 };
 
 export const sources = {
+  nistEnergyUnits: ['NIST: Thermochemical kilocalorie and kilojoule conversion', 'https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9'],
+  cfsEnergyConversion: ['Centre for Food Safety: Energy conversion and nutrient-factor calculations, section 4.3', 'https://www.cfs.gov.hk/english/programme/programme_nifl/programme_nifl_faq.html'],
+  fsanzNutritionPanels: ['FSANZ: Energy units, average values and nutrition-panel quantities', 'https://www.foodstandards.gov.au/consumer/labelling/panels'],
   accountStatements: ['NCUA: Account statements as records of balances and activity', 'https://mycreditunion.gov/brochure-publications/brochure/money-basics-guide-savings-and-checking-accounts'],
   nistUnitPricing: ['NIST: Unit Pricing Guide — consistent units and comparable quantities', 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/1181e2025/NIST.SP.1181e2025.html'],
   acccUnitPricing: ['ACCC: Grocery unit prices and standard measurement units', 'https://www.accc.gov.au/consumers/pricing/unit-prices-for-groceries'],

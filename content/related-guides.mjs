@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'kj-to-kcal-food-labels': [
+    'calories-per-serving-vs-per-container',
+    'calories-vs-macros',
+    'estimate-calories-from-food-photo',
+  ],
   'local-vs-push-notifications': [
     'mobile-app-backend-decision',
     'offline-first-flutter-app-local-storage-cloud-sync',

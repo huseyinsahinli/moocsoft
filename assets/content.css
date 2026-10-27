@@ -220,6 +220,22 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
+.energy-unit-directions { margin: 28px 0; }
+.energy-unit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.energy-unit-grid > div { min-width: 0; padding: 22px; border: 1px solid #79614d; border-radius: 14px; background: #241d18; }
+.energy-unit-grid > div[data-energy-direction="kcal-to-kj"] { border-color: #526c65; background: #192521; }
+.energy-unit-grid :is(span, strong) { display: block; }
+.energy-unit-grid span { color: #ddc6b5; font-size: .9rem; margin-bottom: 12px; }
+.energy-unit-grid strong { color: #f7f0e7; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 500; line-height: 1.5; }
+.energy-unit-grid p, .energy-unit-directions figcaption { color: #c8c3bd; font-size: .9rem; line-height: 1.6; }
+.energy-unit-grid p { margin: 12px 0 0; font-variant-numeric: tabular-nums; }
+.energy-unit-directions figcaption { margin-top: 14px; }
+.energy-unit-exercise { margin: 26px 0; padding: 20px; border: 1px solid #4e4641; border-radius: 14px; background: #171715; }
+.energy-unit-exercise h3 { margin: 0 0 12px; color: #f0ede7; font-size: 1.12rem; line-height: 1.5; }
+.energy-unit-exercise details { margin-top: 16px; }
+.energy-unit-exercise summary { min-height: 44px; cursor: pointer; color: #f3c5a5; line-height: 1.6; }
+@media (max-width: 700px) { .energy-unit-grid { grid-template-columns: minmax(0, 1fr); } }
+@media print { .energy-unit-grid > div, .energy-unit-exercise { background: #fff !important; border-color: #999; break-inside: avoid; } .energy-unit-directions :is(span, strong, p, figcaption), .energy-unit-exercise :is(h3, summary) { color: #000; } }
 .notification-routes { margin: 28px 0; }
 .notification-route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .notification-route-grid > div { min-width: 0; padding: 22px; background: #161e25; border: 1px solid #496276; border-radius: 14px; }
