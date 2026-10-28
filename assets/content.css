@@ -220,6 +220,17 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
+.bill-split-flow { margin: 28px 0; }
+.bill-split-flow ol { padding: 0; margin: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.bill-split-flow li { min-width: 0; padding: 20px; border: 1px solid #6d5b4d; border-radius: 14px; background: #251e19; }
+.bill-split-flow li[data-bill-step="total"] { border-color: #7da48f; background: #203027; }
+.bill-split-flow li > span { display: block; color: #cfc4b9; font-size: .9rem; line-height: 1.5; }
+.bill-split-flow li > strong { display: block; margin-top: 12px; color: #f5efe6; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.3; font-weight: 500; font-variant-numeric: tabular-nums; }
+.bill-split-flow figcaption { margin-top: 14px; color: #c2beb8; font-size: .88rem; line-height: 1.6; }
+.bill-split-check { margin: 22px 0; padding: 18px 20px; border: 1px solid #615248; border-radius: 12px; background: #191713; }
+.bill-split-check summary { min-height: 44px; line-height: 1.6; color: #f0c29f; cursor: pointer; }
+@media (max-width: 560px) { .bill-split-flow ol { grid-template-columns: minmax(0, 1fr); } }
+@media print { .bill-split-flow li, .bill-split-check { background: #fff !important; border-color: #999; break-inside: avoid; } .bill-split-flow :is(span, strong, figcaption), .bill-split-check summary { color: #000; } }
 .energy-unit-directions { margin: 28px 0; }
 .energy-unit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .energy-unit-grid > div { min-width: 0; padding: 22px; border: 1px solid #79614d; border-radius: 14px; background: #241d18; }

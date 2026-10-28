@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'split-restaurant-bill': [
+    'mental-multiplication-tricks',
+    'compare-fractions-without-decimals',
+    'compare-unit-prices',
+  ],
   'kj-to-kcal-food-labels': [
     'calories-per-serving-vs-per-container',
     'calories-vs-macros',

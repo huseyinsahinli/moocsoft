@@ -118,6 +118,8 @@ export const apps = {
 };
 
 export const sources = {
+  openStaxPercentApplications: ['OpenStax: Percent-times-base applications', 'https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent'],
+  cfpbSpendingTracker: ['CFPB: Reviewing actual spending with a spending tracker', 'https://www.consumerfinance.gov/archive/blog/track-your-spending-with-this-easy-tool/'],
   nistEnergyUnits: ['NIST: Thermochemical kilocalorie and kilojoule conversion', 'https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9'],
   cfsEnergyConversion: ['Centre for Food Safety: Energy conversion and nutrient-factor calculations, section 4.3', 'https://www.cfs.gov.hk/english/programme/programme_nifl/programme_nifl_faq.html'],
   fsanzNutritionPanels: ['FSANZ: Energy units, average values and nutrition-panel quantities', 'https://www.foodstandards.gov.au/consumer/labelling/panels'],
