@@ -160,6 +160,7 @@ export const sources = {
   trainingGoogleStore: ['Did You Lift: current Android planning and logging features', 'https://play.google.com/store/apps/details?id=com.moocsoft.didyoulift'],
   aceSupersets: ['American Council on Exercise: paired exercises within split routines', 'https://www.acefitness.org/continuing-education/certified/may-2024/8630/mastering-the-art-of-the-split-routine/'],
   flutterArchitecture: ['Flutter: Architectural overview and platform support', 'https://docs.flutter.dev/resources/architectural-overview'],
+  flutterAppArchitectureGuide: ['Flutter: App architecture guide', 'https://docs.flutter.dev/app-architecture/guide'],
   flutterCli: ['Flutter: Command-line tools for setup, analysis and testing', 'https://docs.flutter.dev/reference/flutter-cli'],
   playSigning: ['Google Play: Upload keys and app signing keys', 'https://support.google.com/googleplay/android-developer/answer/9842756?hl=en'],
   appleUsers: ['Apple: App Store Connect users and access', 'https://developer.apple.com/help/app-store-connect/manage-your-team/add-and-edit-users/'],

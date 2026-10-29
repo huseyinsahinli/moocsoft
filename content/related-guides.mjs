@@ -18,6 +18,11 @@ const choices = {
     'offline-first-flutter-app-local-storage-cloud-sync',
     'mobile-app-mvp-checklist',
   ],
+  'compare-flutter-app-development-quotes': [
+    'mobile-app-mvp-checklist',
+    'mobile-app-backend-decision',
+    'flutter-development-service',
+  ],
   'reconcile-savings-tracker-balance': [
     'savings-goal-tracker-app-vs-spreadsheet',
     'track-multiple-savings-goals',

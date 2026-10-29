@@ -91,6 +91,15 @@ body.marketing-page { --guide-accent: #ffb192; }
 .guide-superset-sequence strong { font-size: 1.18rem; }
 .guide-superset-sequence figcaption { color: #bcb7ae; font-size: .9rem; line-height: 1.6; }
 @media (max-width: 600px) { .guide-superset-sequence ol { grid-template-columns: 1fr; } }
+.quote-comparison-flow { margin: 26px 0; }
+.quote-comparison-flow ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding: 0; list-style: none; }
+.quote-comparison-flow li { display: grid; align-content: start; gap: 7px; min-height: 124px; margin: 0; padding: 16px; border: 1px solid #45413d; border-radius: 12px; background: #171719; }
+.quote-comparison-flow li span { color: #bcb7ae; font-size: .85rem; }
+.quote-comparison-flow li strong { font-size: 1.05rem; }
+.quote-comparison-flow li small { color: #d4d0c8; font-size: .9rem; line-height: 1.5; }
+.quote-comparison-flow figcaption { color: #bcb7ae; font-size: .9rem; line-height: 1.6; }
+@media (max-width: 760px) { .quote-comparison-flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 440px) { .quote-comparison-flow ol { grid-template-columns: 1fr; } }
 .guide-table { max-width: 100%; overflow-x: auto; margin: 26px 0; border: 1px solid #3c3d43; border-radius: 12px; background: #121315; }
 .guide-table table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: .86rem; line-height: 1.6; }
 .guide-table caption { padding: 16px 18px; color: #f4efe6; font-weight: 500; text-align: left; background: #1c1d21; }
@@ -218,6 +227,8 @@ body.marketing-page { --guide-accent: #ffb192; }
   .guide-visual figcaption { color: #000; }
   .guide-superset-sequence li { background: #fff; border-color: #999; break-inside: avoid; }
   .guide-superset-sequence span, .guide-superset-sequence figcaption { color: #000; }
+  .quote-comparison-flow li { background: #fff; border-color: #999; break-inside: avoid; }
+  .quote-comparison-flow li span, .quote-comparison-flow li small, .quote-comparison-flow figcaption { color: #000; }
 }
 /* Native explanatory visuals; these are not app screens or measured results. */
 .bill-split-flow { margin: 28px 0; }
