@@ -23,6 +23,11 @@ const choices = {
     'mobile-app-backend-decision',
     'flutter-development-service',
   ],
+  'app-store-submission-checklist': [
+    'mobile-app-mvp-checklist',
+    'mobile-app-bug-report-template',
+    'mobile-app-handover-checklist',
+  ],
   'reconcile-savings-tracker-balance': [
     'savings-goal-tracker-app-vs-spreadsheet',
     'track-multiple-savings-goals',
