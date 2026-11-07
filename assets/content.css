@@ -267,6 +267,14 @@ body.marketing-page { --guide-accent: #ffb192; }
 .review-flow figcaption { margin-top: 14px; }
 @media (max-width: 720px) { .review-flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media print { .review-flow li { background: #fff !important; border-color: #999; break-inside: avoid; } .review-flow :is(strong, span, figcaption) { color: #000; } }
+.four-fours-flow { margin: 28px 0; }
+.four-fours-flow ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+.four-fours-flow li { display: flex; flex-direction: column; gap: 8px; min-height: 118px; padding: 18px; border: 1px solid #4e5963; border-radius: 12px; background: #1d252d; }
+.four-fours-flow li strong { color: #f3f6f8; font-size: 1rem; }
+.four-fours-flow li span, .four-fours-flow figcaption { color: #bec8d1; font-size: .9rem; line-height: 1.6; }
+.four-fours-flow figcaption { margin-top: 14px; }
+@media (max-width: 720px) { .four-fours-flow ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media print { .four-fours-flow li { background: #fff !important; border-color: #999; break-inside: avoid; } .four-fours-flow :is(strong, span, figcaption) { color: #000; } }
 .notification-route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .notification-route-grid > div { min-width: 0; padding: 22px; background: #161e25; border: 1px solid #496276; border-radius: 14px; }
 .notification-route-grid > div[data-notification-route="remote"] { background: #201c2a; border-color: #655679; }

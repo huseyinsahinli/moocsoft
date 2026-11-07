@@ -572,6 +572,11 @@
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/four-fours-make-24-puzzle/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/mobile-app-mvp-checklist/</loc>
     <lastmod>2026-10-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
@@ -653,7 +658,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -663,7 +668,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

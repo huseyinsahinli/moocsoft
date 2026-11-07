@@ -38,6 +38,11 @@ const choices = {
     'mental-multiplication-tricks',
     'mental-math-games-for-adults',
   ],
+  'four-fours-make-24-puzzle': [
+    'order-of-operations-puzzles',
+    'target-sum-number-puzzles',
+    'math-puzzle-strategies',
+  ],
   'mobile-app-large-text-testing': [
     'mobile-app-bug-report-template',
     'flutter-camera-permission-test-checklist',
