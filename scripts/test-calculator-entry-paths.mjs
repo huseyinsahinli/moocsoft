@@ -9,7 +9,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(resolve(root, file), 'utf8');
 const guide = guides.find(item => item.slug === 'calculate-cigarette-cost-and-savings');
 assert(guide);
-assert.equal(guide.modified, '2026-10-05', 'Layout changes do not reset the editorial revision date');
+assert.equal(guide.modified, '2026-11-09', 'The worked price-change comparison is a substantive revision; publication stays unchanged');
 assert.equal(guide.mediaAfterSection, 2);
 assert.equal(guide.showToolAction, false);
 assert.deepEqual(guide.startAction, ['#cigarette-cost-calculator', 'Calculate my cigarette costs ↓']);
@@ -30,7 +30,7 @@ assert(html.includes('data-placement="guide-preview"'));
 assert(html.includes('id6747658536'));
 assert(!html.includes('play.google.com'), 'QuitBit stays iOS-only');
 assert(html.includes(guideMedia[guide.slug].src));
-assert.match(html, /"dateModified":"2026-10-05"/);
+assert.match(html, /"dateModified":"2026-11-09"/);
 for (const other of Object.keys(guideMedia).filter(slug => slug !== guide.slug)) {
   const page = read('guides/' + other + '/index.html');
   assert(page.indexOf('<figure class="guide-visual">') < page.indexOf('<section id="step-1">'), other + ': no unrelated reorder');

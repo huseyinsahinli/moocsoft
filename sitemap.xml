@@ -167,6 +167,10 @@
   </url>
   <!-- Generated guide pages: scripts/build-guides.mjs -->
   <url>
+    <loc>https://moocsoft.net/editorial-policy/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/estimate-calories-from-food-photo/</loc>
     <lastmod>2026-10-03</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/food-photo-review.png</image:loc></image:image>
@@ -184,7 +188,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/food-photo-log/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
@@ -267,17 +271,17 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-save-1000-in-a-year/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/biweekly-savings-plan/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/vacation-savings-goal-plan/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
@@ -350,7 +354,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-cigarette-cost-and-savings/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/cigarette-cost.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/quitbit/screenshot-2.jpg</image:loc></image:image>
   </url>
@@ -398,7 +402,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/how-to-track-personal-records-in-gym/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
@@ -454,7 +458,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habit-tracker-ideas/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
@@ -493,7 +497,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math-puzzle-strategies/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -633,32 +637,32 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/habits/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -668,7 +672,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

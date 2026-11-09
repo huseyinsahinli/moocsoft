@@ -15,6 +15,7 @@ import { createRelatedGuideSelector } from '../content/related-guides.mjs';
 import { languageAlternates, languageSwitcher } from '../content/localization.mjs';
 import { buildLocalizedGuides } from './build-localized-guides.mjs';
 import { formatFor, editorialFormats, selectHomePicks, selectReaderJourneys } from '../content/discovery.mjs';
+import { editorialPolicy } from '../content/editorial-policy.mjs';
 import { browserTools } from '../content/tools.mjs';
 import './build-math-challenge.mjs';
 import './build-savings-goal-tool.mjs';
@@ -114,6 +115,8 @@ const visualFigure = visual => {
   const chart = visual.kind === 'chart';
   return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
 };
+write('/editorial-policy/', editorialPolicy(), '2026-11-09');
+
 for (const guide of guides) {
   if (!guideTopics[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
   slugs.add(guide.slug);
@@ -139,14 +142,14 @@ for (const guide of guides) {
   write(path, `${head(guide.title, guide.description, path, graph, app, guide.assets, visual)}
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides','/guides/'],[topic.category,`/guides/${guide.topic}/`]])}
-  <div class="guide-hero"><span class="guide-kicker">${e(topic.category)} · ${e(formatFor(guide).label)}</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${guide.showToolAction === false ? '' : toolAction(app)}${topicAction(topic, app)}${guide.appPreview ? `<a href="#app-preview-title">${appPreviews[guide.topic].image ? `See ${e(app.name)} in action` : 'See app features and access'} ↓</a>` : ''}</div></div>
+  <div class="guide-hero"><span class="guide-kicker">${e(topic.category)} · ${e(formatFor(guide).label)}</span><h1>${e(guide.title)}</h1><p>${e(guide.intro)}</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="${guide.published || published}">${displayDate(guide.published || published)}</time>${modified(guide) !== (guide.published || published) ? `<span>Updated <time datetime="${modified(guide)}">${displayDate(modified(guide))}</time></span>` : ''}<span>${Math.max(2,Math.ceil(words/200))} min read</span></div><div class="guide-hero-actions">${guide.startAction ? `<a href="${e(guide.startAction[0])}">${e(guide.startAction[1])}</a>` : ''}${guide.showToolAction === false ? '' : toolAction(app)}${app ? '' : topicAction(topic, app)}${guide.appPreview ? `<a href="#app-preview-title">${appPreviews[guide.topic].image ? `See ${e(app.name)} in action` : 'See app features and access'} ↓</a>` : ''}</div></div>
   <div class="guide-layout">
-    <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">See ${e(app.name)} in action</a></li>` : ''}</ol></nav></details>${app ? storeLinks(app, 'sidebar') : ''}</aside>
+    <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">${appPreviews[guide.topic].image ? `See ${e(app.name)} in action` : 'App features and access'}</a></li>` : ''}</ol></nav></details></aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
       ${!mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}`).join('\n      ')}
       ${faq}${refs}
-      <p class="guide-editor-note">${app ? `Published by Moocsoft, the independent studio behind ${e(app.name)}. Examples and worksheets are illustrative. App features can vary by platform and version; see the store listing for current availability and in-app purchases.` : 'Published by Moocsoft, an independent Flutter development studio. Examples and worksheets are illustrative. Project scope, platform requirements and release responsibilities need to be agreed for each project.'}</p>
+      <p class="guide-editor-note">${app ? `Published by Moocsoft, the studio behind ${e(app.name)}.` : 'Published by Moocsoft, a Flutter development studio.'} This guide uses AI assistance. <a href="/editorial-policy/">How we prepare guides, label examples and handle corrections</a>.</p>
     </article>
   </div>
   ${guide.appPreview ? appPreview(guide.topic, guide.previewCopy) : ''}

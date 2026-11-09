@@ -18,6 +18,10 @@ Static HTML deployed from this repository to GitHub Pages. Existing legal-policy
 - A guide with an app preview may set `previewCopy: { heading, description }` to connect its task to the app. Screenshot assets, store destinations and purchase notes remain shared. Do not imply automatic imports from free web tools into the app.
 - Article section navigation is a compact native menu before the answer on mobile and a sidebar on desktop. The small navigation script only sets its default when crossing the layout breakpoint; links and native expansion work without JavaScript. Layout changes alone do not reset article publication or revision dates.
 
+## Editorial transparency
+
+`content/editorial-policy.mjs` generates `/editorial-policy/` with publisher identity, AI assistance, example/source boundaries and a correction route. English and German articles link to it. Preserve the original publication dates; update only substantially revised guides. Keep app download links in the header, and keep section navigation free of duplicate store buttons. An editorial policy is reader information, not a ranking or penalty-removal claim.
+
 ## Reader discovery and editorial formats
 
 `content/discovery.mjs` keeps explicit homepage picks, three same-topic product/tool starting reads and three task-based reading journeys. These are editorial choices, not popularity or conversion claims. `editorialFormat` may be `story`, `decision` or `puzzle`; the default remains `guide`. Labels describe the actual content. Fictional people and situations must be disclosed as fictional, never presented as customer testimonials or personal experience.

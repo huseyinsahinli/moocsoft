@@ -103,7 +103,7 @@ assert.throws(() => selectProductPicks(guides.map(guide => guide.slug === produc
 assert.throws(() => formatFor({ slug: 'test', editorialFormat: 'testimonial' }), /Unknown editorial format/);
 for (const [slug, published, modified] of [
   ['monthly-habit-tracker', '2026-09-22', '2026-10-05'],
-  ['math-puzzle-strategies', '2026-09-22', undefined],
+  ['math-puzzle-strategies', '2026-09-22', '2026-11-09'],
   ['mobile-app-mvp-checklist', '2026-10-09', undefined],
 ]) {
   const guide = guides.find(item => item.slug === slug);

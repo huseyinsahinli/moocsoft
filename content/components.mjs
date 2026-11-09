@@ -84,7 +84,7 @@ export function resources(topic, guides, wrapped = true) {
 }
 
 export function footer() {
-  return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/hire-flutter-developer/">Hire a Flutter developer</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="/contact/">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
+  return `<footer class="guide-foot"><div class="guide-shell"><a class="site-wordmark" href="/">moocsoft</a><div class="guide-foot-links"><a href="/#about">About the studio</a><a href="/editorial-policy/">How our guides are made</a><a href="/hire-flutter-developer/">Hire a Flutter developer</a><a href="/guides/">All guides</a><a href="/tools/">Free tools</a><a href="/privacy-policy/">Privacy</a><a href="/contact/">Contact</a></div><span>© 2026 Huseyin Sahinli</span></div></footer>`;
 }
 
 export function head(title, description, path, graph, app, assets = [], visual, options = {}) {

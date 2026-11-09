@@ -48,7 +48,7 @@ export default [
     ],
   },
   {
-    topic: 'math', slug: 'math-puzzle-strategies', published: '2026-09-22',
+    topic: 'math', slug: 'math-puzzle-strategies', modified: '2026-11-09', published: '2026-09-22',
     title: 'Math Puzzle Strategies: Operations, Sequences and Hidden Rules',
     description: 'Use a clear checklist for math puzzles: identify the question type, test operations, track constraints, reject near-matches and verify the final rule.',
     intro: 'Most frustrating math puzzles become manageable once you separate observation from calculation. The goal is not to try every formula—it is to identify the puzzle type and test the smallest plausible rule.',
@@ -62,7 +62,7 @@ export default [
         ['Mixed operations', 'A two-step relationship repeats', 'Is the operation order consistent?'],
         ['Position-based rule', 'Squares, powers or alternating terms', 'Does the term index explain the value?'],
       ]) + `<p>Begin with the simplest operations because they are easier to verify and more common in short puzzles. Parentheses matter: if a rule combines addition and multiplication, write the grouping explicitly instead of relying on memory.</p>`],
-      ['Reject rules that only almost work', `<p>A near-match is useful evidence, but it is not a solution. If “add four” explains three transitions and fails on the fourth, either the rule changes in a visible pattern or your hypothesis is incomplete.</p><p>Be suspicious of rules that require a different unexplained exception for each line. Split alternating positions, inspect a second-difference row or reconsider the layout before adding complexity.</p>`],
+      ['Test a rule against a counterexample', `<p>Take the finite sequence <strong>2, 4, 8</strong>. “Double each term” predicts 16. Another rule adds 2, then 4, then 6, predicting 14. Both rules reproduce all three displayed terms. The short prefix alone does not force one next number.</p><table><caption>Two candidate rules for the same visible prefix</caption><thead><tr><th scope="col">Candidate rule</th><th scope="col">Reproduces 2, 4, 8?</th><th scope="col">Next term</th></tr></thead><tbody><tr><td>Multiply by 2 each step</td><td>Yes</td><td>16</td></tr><tr><td>Add successive even numbers: 2, 4, 6…</td><td>Yes</td><td>14</td></tr></tbody></table><p>If the question explicitly says “each term doubles,” 16 follows from that constraint. If it instead specifies consecutive even increments, 14 follows. With neither condition, describe your answer as a candidate under a stated rule.</p><p>For a grid puzzle, apply a proposed rule to every given row. A rule that works on the first row and fails on the second is rejected unless the question explicitly defines alternating rules. Write the failed calculation beside the hypothesis so you do not repeatedly rediscover it. The <a href="/guides/how-to-solve-number-pattern-puzzles/">number-pattern walkthrough</a> has more examples of choosing and checking a rule.</p>`],
       ['Use answer choices as a final check, not the method', `<p>Multiple-choice answers can reveal whether you misplaced a sign or applied the correct rule in the wrong order. They should not replace the explanation. Work out the relationship first, then compare the result with the options.</p><p>In Math Riddles, hints and solutions let you inspect the intended reasoning after you answer. Review why a rule works across the whole puzzle, then try a different puzzle type or challenge a friend in live 1v1 mode to practise under light time pressure.</p>`],
     ],
     sources: [],

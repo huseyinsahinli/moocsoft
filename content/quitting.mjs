@@ -4,7 +4,7 @@ import { cigaretteCostCalculator } from './cigarette-cost.mjs';
 export default [
   {
     topic: 'quitting', slug: 'calculate-cigarette-cost-and-savings',
-    modified: '2026-10-05', appPreview: true,
+    modified: '2026-11-09', appPreview: true,
     mediaAfterSection: 2, showToolAction: false,
     previewCopy: { heading: 'Calculated the cost? Track the smoke-free time next.', description: 'If you decide to quit, QuitBit keeps your elapsed time and estimated spending avoided visible. The calculator inputs above are not imported into the app.' },
     assets: ['cigarette-cost'],
@@ -16,7 +16,7 @@ export default [
     sections: [
       ['Calculate your cigarette costs', cigaretteCostCalculator],
       ['How much does a pack-a-day habit cost?', `<p>At an example price of $10 for a pack of 20, smoking one pack a day costs $10 per day, $70 per week, $300 over 30 days and $3,650 over 365 days. Half a pack a day costs half those amounts. These are illustrative prices, not current retail prices.</p><p><a href="/tools/quit-smoking-savings-calculator/">Calculate your own cigarette costs and quit-date savings</a> with your pack price, pack size and daily use. If you have already quit, enter your quit date to estimate spending avoided so far.</p>`],
-      ['Use your own inputs', `<p>Write down the price you usually pay, how many cigarettes are in that pack and your average cigarettes per day before quitting. If your use varied, choose a reasonable average from a typical period and keep a note of that assumption.</p><p>The calculation is proportional. It does not require you to buy a whole pack every day. Someone who smoked ten cigarettes daily from a twenty-cigarette pack used about half a pack per day on average.</p><p>Use a single currency throughout. The examples below use an invented $10 pack price; they are not claims about current cigarette prices in any country.</p>`],
+      ['See which input changes the estimate', `<p>Use the pack price you actually pay, the cigarette count in that pack and your previous average daily use. Keep all amounts in one currency. A fictional $10 pack of 20 and ten cigarettes per day produce $5 per day; the same use at $12 per pack produces $6 per day.</p><table><caption>Illustrative sensitivity check: 10 cigarettes daily, 20 per pack</caption><thead><tr><th scope="col">Pack price</th><th scope="col">Daily baseline</th><th scope="col">365-day projection</th></tr></thead><tbody><tr><td>$10</td><td>$5</td><td>$1,825</td></tr><tr><td>$12</td><td>$6</td><td>$2,190</td></tr><tr><td>Difference</td><td>$1</td><td>$365</td></tr></tbody></table><p>This changes the assumed price, not the number of cigarettes. If both price and use changed, calculate each period separately rather than applying today’s price to the entire past year. For example, 100 days at $5 per day and 20 days at $6 per day total <strong>$620</strong>, not 120 × $6 = $720.</p><p>These are consumption-cost estimates. Buying whole packs, keeping unused stock and making other purchases can make cash-account movements differ. The projected amount is not money automatically deposited into savings. Keep your actual reserved balance separate from the baseline estimate.</p>`],
       ['Compare daily and longer-term costs', table('Illustrative spending: $10 per pack, 20 cigarettes per pack', ['Cigarettes per day', 'Per day', '30 days', '365 days'], [
         ['5', '$2.50', '$75', '$912.50'],
         ['10', '$5', '$150', '$1,825'],
