@@ -4,7 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { guides } from '../content/index.mjs';
 import { apps, site, sources } from '../content/apps.mjs';
-import { editorialFormats, formatFor, homePicks, productPicks, selectHomePicks, selectProductPicks, selectReaderJourneys } from '../content/discovery.mjs';
+import { editorialFormats, formatFor, homePicks, productPicks, toolPicks, selectHomePicks, selectProductPicks, selectReaderJourneys } from '../content/discovery.mjs';
 import { cafePeople, cafeDrinks, cafePrices, cafeAnswer, satisfiesCafeClues } from '../content/math-cafe-mystery.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -91,7 +91,7 @@ for (const [topic, app] of Object.entries(apps)) {
     const html = read(file);
     const block = html.match(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">([\s\S]*?)<\/section>/)[1];
     assert.equal((block.match(/class="guide-card"/g) || []).length, 3, file);
-    for (const slug of productPicks[topic]) assert(block.includes(`href="/guides/${slug}/"`), file);
+    for (const slug of (file.startsWith('tools/') ? toolPicks[topic] : productPicks[topic])) assert(block.includes(`href="/guides/${slug}/"`), file);
     assert(block.includes(`href="/guides/${topic}/"`), file);
   }
 }

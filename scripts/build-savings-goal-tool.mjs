@@ -20,7 +20,7 @@ const html = `${head(title, description, path, graph, apps.savings, ['savings-go
   <div class="breadcrumb" aria-label="Breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Savings goal calculator</div>
   <section class="tool-hero">
     <span class="eyebrow">Free savings goal calculator · No sign-up</span>
-    <h1>What should each<br>deposit be?</h1>
+    <h1>Savings Goal Calculator</h1>
     <p class="hero-copy">Subtract the money already set aside from your target, then split the gap across the future deposits you choose. Get a cent-accurate plan for weekly, every-two-week or monthly contributions.</p>
     <p class="goal-note">Count your real contribution dates before entering a number. This free website tool does not select calendar dates, assess affordability, earn interest, connect to a bank or move money. Your inputs stay in this page; they are not stored or sent to Moocsoft.</p>
     <div class="guide-hero-actions"><a href="#goal-planner">Build your plan ↓</a><a href="#worked-example">See the worked example ↓</a></div>

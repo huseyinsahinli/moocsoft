@@ -90,7 +90,7 @@ const html = `${head(title, description, path, graph, app, ['math-challenge']).r
     <h3>Is my score saved or shared?</h3><p>No. Answer checks only run in this page, separately for each round. Editing an answer clears its previous check; refreshing clears all checks, and each reset clears only its own round. Opening an explanation does not count as a correct answer. The copy button copies only a public round link, never your answers or score. This is practice, not an IQ test or a claim about cognitive improvement.</p>
     <div class="guide-hero-actions"><a href="/guides/math/">Choose another math guide →</a><a href="/guides/missing-number-puzzles-with-answers/">Get the free missing-number worksheet →</a></div>
   </section>
-  ${resources('math', guides, false)}
+  ${resources('math', guides, false, 'tool')}
 </main>
 ${footer()}
 </body>

@@ -135,3 +135,9 @@ With a local server running on port 4183 and the development-only `playwright` p
 The quit-smoking calculator uses elapsed time and the previous smoking-cost baseline. Seven-, 30-, 90- and 365-day figures are complete-period projections, not additions to savings so far. Inputs stay in the browser and are not stored or synced to QuitBit. Editing an input hides the previous result until recalculation.
 
 The cigarette-cost guide also has a quick calculator that needs no quit date. Its month/year labels mean 30/365 days, and longer-period totals use unrounded daily costs. Savings charts and workout CSV downloads are free web-tool outputs, separate from paid app features. Editing calculator inputs invalidates the previous output before export.
+
+## Search and task-specific discovery
+
+Tool pages use the separate `toolPicks` in `content/discovery.mjs`: three relevant next reads for the calculation or exercise. Product pages retain their product-oriented selections. `resources` defaults to product context; tool builders explicitly opt into tool context. Avoid linking a tool to itself as the next action. The normal build adds matching BreadcrumbList metadata only to legacy tool pages without an existing breadcrumb schema. No extra script or tracking is loaded.
+
+Run `node scripts/test-seo-discovery.mjs` for tool selection validation, crawlable relevant links, breadcrumb coverage, unchanged article dates and descriptive landing-page headings. Inspect the rendered headings at mobile and desktop widths after changing landing-page copy.

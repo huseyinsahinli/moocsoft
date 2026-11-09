@@ -54,6 +54,21 @@ export const productPicks = Object.freeze({
   ]),
 });
 
+// Tool readers need help with the calculation or task they just performed.
+export const toolPicks = Object.freeze({
+  nutrition: Object.freeze(['calories-vs-macros', 'calories-per-serving-vs-per-container', 'dry-to-cooked-rice-weight']),
+  savings: Object.freeze(['52-week-savings-challenge', 'reverse-52-week-savings-challenge', 'weekly-to-monthly-savings']),
+  quitting: Object.freeze(['quit-smoking-calculator-guide', 'calculate-cigarette-cost-and-savings', 'quit-smoking-milestones-to-track']),
+  training: Object.freeze(['workout-volume-explained', 'dumbbell-workout-volume', 'log-warm-up-and-working-sets']),
+  habits: Object.freeze(['habit-streak-vs-completion-rate', 'monthly-habit-tracker', 'restart-habit-after-missing-days']),
+  math: Object.freeze(['order-of-operations-puzzles', 'how-to-solve-number-pattern-puzzles', 'mental-multiplication-tricks']),
+});
+
+export function selectToolPicks(guides, topic) {
+  if (!Object.hasOwn(toolPicks, topic)) throw new Error(`Unknown tool reading topic: ${topic}`);
+  return select(toolPicks[topic], guideMap(guides), `${topic} tool`, topic);
+}
+
 const journey = (id, title, description, steps) => Object.freeze({
   id, title, description,
   steps: Object.freeze(steps.map(step => Object.freeze(step))),

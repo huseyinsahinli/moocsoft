@@ -2,7 +2,7 @@ import { apps, site, escape as e } from './apps.mjs';
 import { appPreviews } from './app-previews.mjs';
 import { guideTopics, guideHref } from './topics.mjs';
 import { languageAlternates, languageSwitcher } from './localization.mjs';
-import { formatFor, selectProductPicks } from './discovery.mjs';
+import { formatFor, selectProductPicks, selectToolPicks } from './discovery.mjs';
 
 export const faviconLinks = '<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/png" href="/assets/brand/favicon-96.png" sizes="96x96">\n  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" sizes="any">\n  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">';
 
@@ -75,12 +75,15 @@ export function serviceNextStep(topic) {
   return `<section class="guide-download" data-nosnippet style="--guide-accent:${topic.color}" aria-label="Discuss a Flutter project"><div><span class="guide-kicker">From a brief to a project conversation</span><h2>Have a mobile app idea?</h2><p>${e(topic.use)}</p></div><div class="guide-hero-actions"><a href="${e(topic.actionPath)}">${e(topic.actionLabel)}</a></div></section>`;
 }
 
-export function resources(topic, guides, wrapped = true) {
+export function resources(topic, guides, wrapped = true, context = 'product') {
   const app = apps[topic];
-  const primary = app.tool
+  if (!['product', 'tool'].includes(context)) throw new Error('Unknown resource context');
+  const tool = context === 'tool';
+  const picks = tool ? selectToolPicks(guides, topic) : selectProductPicks(guides, topic);
+  const primary = app.tool && !tool
     ? `<a href="/tools/${app.tool}/">Try the free ${e(app.toolName.toLowerCase())} →</a>`
     : `<a href="/${app.slug}/">Explore ${e(app.name)} →</a>`;
-  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(app.heading)}</h2><p>${e(app.use)}</p><p class="guide-topic-intro">Three useful starting points, chosen for this app. The full reading list is one click away.</p><div class="guide-hero-actions">${primary}<a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${selectProductPicks(guides, topic).map(card).join('')}</div></section>`;
+  return `<section class="${wrapped ? 'wrap ' : ''}guide-inline-resources" style="--guide-accent:${app.color}"><span class="guide-kicker">Learn with ${e(app.name)}</span><h2>${e(tool ? `Guides for the ${app.toolName.toLowerCase()}` : app.heading)}</h2><p>${e(tool ? "Understand the method, check the assumptions and work through an example before using your result." : app.use)}</p><p class="guide-topic-intro">${tool ? "Three next reads for this tool." : "Three useful starting points, chosen for this app."} The full reading list is one click away.</p><div class="guide-hero-actions">${primary}<a href="/guides/${topic}/">All ${e(app.category.toLowerCase())} guides →</a></div><div class="guide-card-grid">${picks.map(card).join('')}</div></section>`;
 }
 
 export function footer() {

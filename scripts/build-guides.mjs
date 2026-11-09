@@ -260,7 +260,16 @@ function syncMarketing(directory) {
     }
     if (resourcePages.has(file)) {
       const [topic, wrapped] = resourcePages.get(file);
-      html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped));
+      html = html.replace(/<section class="(?:wrap )?guide-inline-resources" style="--guide-accent:[^"]+">[\s\S]*?<\/section>/, resources(topic, guides, wrapped, file.startsWith(resolve(root, 'tools') + sep) ? 'tool' : 'product'));
+    }
+    // Add breadcrumbs to legacy tool pages that already display this navigation.
+    const tool = browserTools.find(item => file === resolve(root, '.' + item.path, 'index.html'));
+    if (tool) {
+      html = html.replace(/\s*<script type="application\/ld\+json" id="tool-breadcrumb-schema">[\s\S]*?<\/script>/g, '');
+      if (!html.includes('"BreadcrumbList"')) {
+        const graph = { '@context': 'https://schema.org', ...breadcrumbs([['Home', '/'], ['Free tools', '/tools/'], [tool.name, tool.path]]) };
+        html = html.replace('</head>', `  <script type="application/ld+json" id="tool-breadcrumb-schema">${JSON.stringify(graph).replaceAll('<', '\\u003c')}</script>\n</head>`);
+      }
     }
     if (resultPages.has(file)) {
       const marker = '<!-- Calculator app download -->';
