@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'app-store-conversion-rate-vs-google-play-ctr': [
+    'app-store-submission-checklist',
+    'mobile-app-handover-checklist',
+    'flutter-development-service',
+  ],
   'split-restaurant-bill': [
     'mental-multiplication-tricks',
     'compare-fractions-without-decimals',

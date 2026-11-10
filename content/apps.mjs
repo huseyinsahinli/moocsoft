@@ -118,6 +118,9 @@ export const apps = {
 };
 
 export const sources = {
+  appleStoreMetrics: ['Apple: App Store Connect metric definitions', 'https://developer.apple.com/help/app-store-connect-analytics/reference/metrics-definitions'],
+  appleAcquisitionMetrics: ['Apple: Acquisition reporting and filters', 'https://developer.apple.com/help/app-store-connect-analytics/acquisition/acquisition'],
+  googleListingMetrics: ['Google Play: Listing performance, clicks and acquisitions', 'https://support.google.com/googleplay/android-developer/answer/9859173?hl=en'],
   openStaxPercentApplications: ['OpenStax: Percent-times-base applications', 'https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent'],
   cfpbSpendingTracker: ['CFPB: Reviewing actual spending with a spending tracker', 'https://www.consumerfinance.gov/archive/blog/track-your-spending-with-this-easy-tool/'],
   nistEnergyUnits: ['NIST: Thermochemical kilocalorie and kilojoule conversion', 'https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9'],
