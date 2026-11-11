@@ -3,6 +3,11 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'barbell-weight-bar-and-plates': [
+    'workout-volume-explained',
+    'log-warm-up-and-working-sets',
+    'dumbbell-workout-volume',
+  ],
   'app-store-conversion-rate-vs-google-play-ctr': [
     'app-store-submission-checklist',
     'mobile-app-handover-checklist',

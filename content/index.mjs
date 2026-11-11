@@ -13,6 +13,7 @@ import moreQuitting from './quitting-more.mjs';
 import training from './training.mjs';
 import moreTraining from './training-more.mjs';
 import trainingSetTypes from './training-set-types.mjs';
+import barbellWeight from './training-barbell-weight.mjs';
 import dumbbellVolume from './training-dumbbell-volume.mjs';
 import habits from './habits.mjs';
 import moreHabits from './habits-more.mjs';
@@ -52,4 +53,4 @@ import storeReview from './development-store-review.mjs';
 import fourFours from './four-fours.mjs';
 import storeMetrics from './development-store-metrics.mjs';
 
-export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...riceWeight, ...cookingOil, ...foodEnergyUnits, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...annualBillsGuides, ...weeklyMonthlySavings, ...savingsReconciliation, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...dumbbellVolume, ...substitutionGuides, ...supersetLogging, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...elapsedTime, ...percentagePoints, ...unitPriceComparison, ...restaurantBillStory, ...fourFours, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision, ...bugReportGuides, ...cameraPermissions, ...backendDecision, ...largeTextTesting, ...notificationDecision, ...quoteComparison, ...storeReview, ...storeMetrics];
+export const guides = [...nutrition, ...moreNutrition, ...restaurantNutrition, ...nutritionAccuracy, ...nutritionLabels, ...riceWeight, ...cookingOil, ...foodEnergyUnits, ...savings, ...moreSavings, ...savingsChallenges, ...irregularSavings, ...multipleSavings, ...noSpendSavings, ...annualBillsGuides, ...weeklyMonthlySavings, ...savingsReconciliation, ...moreQuitting, ...quitting, ...training, ...moreTraining, ...trainingSetTypes, ...dumbbellVolume, ...barbellWeight, ...substitutionGuides, ...supersetLogging, ...habits, ...moreHabits, ...weeklyReset, ...shiftHabits, ...backupHabits, ...math, ...moreMath, ...mathPractice, ...mathPatterns, ...mathRoundRobin, ...cafeMystery, ...elapsedTime, ...percentagePoints, ...unitPriceComparison, ...restaurantBillStory, ...fourFours, ...mobileDevelopment, ...offlineDevelopment, ...handoverDevelopment, ...websiteDecision, ...bugReportGuides, ...cameraPermissions, ...backendDecision, ...largeTextTesting, ...notificationDecision, ...quoteComparison, ...storeReview, ...storeMetrics];

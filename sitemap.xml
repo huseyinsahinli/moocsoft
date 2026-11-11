@@ -424,6 +424,12 @@
     <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://moocsoft.net/guides/barbell-weight-bar-and-plates/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/apps/did-you-lift/app-store-set-log.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://moocsoft.net/guides/log-exercise-substitution-busy-gym/</loc>
     <lastmod>2026-10-12</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
@@ -657,7 +663,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/training/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/training.jpg</image:loc></image:image>
   </url>
   <url>
@@ -677,7 +683,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
