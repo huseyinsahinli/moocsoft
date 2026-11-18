@@ -1,3 +1,4 @@
+import { coverFigure, coverMeta, coverPath } from './gta-art.mjs';
 const support = 'https://www.playstation.com/en-us/support/games/gta-vi-support/';
 const voucher = 'https://www.playstation.com/en-us/support/store/redeem-ps-store-voucher-code/';
 const people = 'https://www.rockstargames.com/VI/only-in-leonida';
@@ -5,7 +6,7 @@ const people = 'https://www.rockstargames.com/VI/only-in-leonida';
 export const playerGuides = [
   {
     path: '/gta-6-download-time/',
-    title: 'How long will my GTA 6 download take?',
+    title: 'GTA 6 download time calculator',
     description: 'Estimate your remaining GTA 6 download time using the progress on your own console. Compare a speed estimate with a timed sample.',
     body: `<p>Use the amount left in the download queue. A console showing 80 GB of 120 GB has 40 GB left. At a steady 50 Mbps, that takes about 1 hour 47 minutes. Those figures are an example. Use the size your console reports for your edition and update.</p>
 <h2>Estimate from your download speed</h2>
@@ -40,7 +41,7 @@ form.addEventListener('submit', event => {
   },
   {
     path: '/gta-6-character-guide/',
-    title: 'GTA 6 characters: a spoiler-light guide to who knows whom',
+    title: 'GTA 6 character guide: Jason, Lucia and their connections',
     description: 'Trace Jason and Lucia’s starting points, Jason’s connections in the Keys and the people behind Only Raw Records in Vice City.',
     body: `<p>Start with two names: <strong>Jason Duval and Lucia Caminos</strong>. Then follow two smaller circles, Jason’s connections in the Keys and the musicians around Only Raw Records. This guide uses Rockstar’s character introductions and leaves mission outcomes out.</p>
 <h2>Jason and Lucia</h2><p>Jason has a military background and works in the Keys. Lucia wants a fresh start after leaving prison. When you read their profiles, notice what each expects from their partnership. Jason wants life to get easier. Lucia already has a plan.</p>
@@ -54,14 +55,14 @@ form.addEventListener('submit', event => {
 export function renderPlayerGuide(guide) {
   const related = playerGuides.filter(item => item !== guide);
   const url = 'https://moocsoft.net' + guide.path;
-  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,datePublished:'2026-11-18',mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
+  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,image:"https://moocsoft.net"+coverPath(guide.path),datePublished:'2026-11-18',mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${guide.title} | Moocsoft</title><meta name="description" content="${guide.description}">
 <link rel="canonical" href="${url}"><link rel="stylesheet" href="/assets/gta6-controls.css">
 <style>article{max-width:850px;margin:auto}form{display:grid;gap:1rem;padding:1.4rem;background:#292840;border-radius:1rem}input,button{font:inherit;padding:.5rem;border-radius:.5rem}label,input{display:block}input{max-width:100%}button{width:fit-content;cursor:pointer}output{font-size:1.4rem;color:#b9eedf}</style>
-<script type="application/ld+json">${JSON.stringify(article)}</script></head><body>
+<script type="application/ld+json">${JSON.stringify(article)}</script>${coverMeta(guide.path, guide.title, guide.description)}</head><body>
 <header><a class="brand" href="/">moocsoft</a><a href="/gta-6-controls/">GTA 6 guides</a></header>
-<main><article><h1>${guide.title}</h1>${guide.body}<nav aria-label="More GTA 6 guides"><h2>More GTA 6 guides</h2><ul>${related.map(item => `<li><a href="${item.path}">${item.title}</a></li>`).join('')}<li><a href="/gta-6-ps5-languages/">PS5 voice and text languages</a></li></ul></nav></article></main>
+<main><article><h1>${guide.title}</h1>${guide.body.replace('</p>', '</p>' + coverFigure(guide.path))}<nav aria-label="More GTA 6 guides"><h2>More GTA 6 guides</h2><ul>${related.map(item => `<li><a href="${item.path}">${item.title}</a></li>`).join('')}<li><a href="/gta-6-ps5-languages/">PS5 voice and text languages</a></li></ul></nav></article></main>
 <footer><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Corrections</a></footer></body></html>`;
 }

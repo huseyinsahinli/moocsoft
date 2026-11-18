@@ -1,3 +1,4 @@
+import { coverFigure, coverMeta, coverPath } from './gta-art.mjs';
 export const languagePath = '/gta-6-ps5-languages/';
 const title = 'GTA 6 PS5 languages: voice acting and on-screen text';
 const description = 'Which languages can you hear or read in GTA 6 on PS5? Check the English audio, Spanish text variants and whether Turkish is listed.';
@@ -8,6 +9,7 @@ export function languagePage() {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
+    image: "https://moocsoft.net" + coverPath(languagePath),
     description,
     datePublished: '2026-11-18',
     mainEntityOfPage: url,
@@ -21,12 +23,13 @@ export function languagePage() {
 <link rel="canonical" href="${url}">
 <link rel="stylesheet" href="/assets/gta6-controls.css">
 <script type="application/ld+json">${JSON.stringify(article)}</script>
-</head><body>
+${coverMeta(languagePath, title, description)}</head><body>
 <a class="skip" href="#main">Skip to language list</a>
 <header><a class="brand" href="/">moocsoft</a><a href="/gta-6-controls/">GTA 6 player guide</a></header>
 <main id="main"><article>
 <h1>Which languages does GTA 6 support on PS5?</h1>
 <p class="intro">English is the only voice language in PlayStation’s US support table. The table lists 12 on-screen text options, counting the two Spanish variants and the two Chinese scripts separately.</p>
+${coverFigure(languagePath)}
 <dl class="places">
 <div><dt>Voice and text</dt><dd>English</dd></div>
 <div><dt>Other Latin and Cyrillic text options</dt><dd>French, German, Italian, Polish, Russian, Brazilian Portuguese, Spanish (Mexico) and Spanish (Spain).</dd></div>

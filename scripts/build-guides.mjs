@@ -1,3 +1,4 @@
+import { coverPath } from '../content/gta-art.mjs';
 import { playerGuides, renderPlayerGuide } from '../content/gta-player-library.mjs';
 import { languagePage, languagePath } from '../content/gta6-languages.mjs';
 import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
@@ -118,9 +119,9 @@ const visualFigure = visual => {
   const chart = visual.kind === 'chart';
   return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
 };
-for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), '2026-11-18');
-write(languagePath, languagePage(), '2026-11-18');
-write(gtaPath, gtaPage(), gtaDate);
+for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), '2026-11-18', [site + coverPath(guide.path)]);
+write(languagePath, languagePage(), '2026-11-18', [site + coverPath(languagePath)]);
+write(gtaPath, gtaPage(), gtaDate, [site + coverPath(gtaPath)]);
 write('/editorial-policy/', editorialPolicy(), '2026-11-09');
 
 for (const guide of guides) {
