@@ -1,3 +1,4 @@
+import { languagePage, languagePath } from '../content/gta6-languages.mjs';
 import { mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname, relative, sep } from 'node:path';
@@ -116,6 +117,7 @@ const visualFigure = visual => {
   const chart = visual.kind === 'chart';
   return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
 };
+write(languagePath, languagePage(), '2026-11-18');
 write(gtaPath, gtaPage(), gtaDate);
 write('/editorial-policy/', editorialPolicy(), '2026-11-09');
 
