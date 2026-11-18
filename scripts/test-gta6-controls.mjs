@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {gtaPage,gtaPath,gtaFaq} from '../content/gta6-controls.mjs';
+const html=readFileSync(new URL('../gta-6-controls/index.html',import.meta.url),'utf8');
+assert.equal(html.trim(),gtaPage().trim());
+assert.match(html, /<link rel="canonical" href="https:\/\/moocsoft.net\/gta-6-controls\/">/);
+assert.equal((html.match(/<h1>/g)||[]).length,1);
+assert.doesNotMatch(html,/noindex|apps.apple.com|play.google.com/);
+const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+assert.deepEqual(schema['@graph'].find(x=>x['@type']==='FAQPage').mainEntity.map(x=>[x.name,x.acceptedAnswer.text]),gtaFaq);
+assert.match(html,/not independently confirmed here/);
+assert.match(html,/not hands-on tested/);
+assert.match(html,/<svg[^>]+role="img"[^>]+aria-labelledby=/);
+for(const [,id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(html.includes(`id="${id}"`),id);
+assert.ok(readFileSync(new URL('../sitemap.xml',import.meta.url),'utf8').includes('https://moocsoft.net'+gtaPath));
+assert.ok(readFileSync(new URL('../guides/index.html',import.meta.url),'utf8').includes(`href="${gtaPath}"`));
+console.log('GTA guide: generated parity, canonical, source boundaries, accessible illustration, FAQ and discovery passed.');
