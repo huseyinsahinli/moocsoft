@@ -1,3 +1,4 @@
+import { playerGuides } from './gta-player-library.mjs';
 import { escape as e } from './apps.mjs';
 export const gtaPath = '/gta-6-controls/';
 export const gtaDate = '2026-11-18';
@@ -40,7 +41,8 @@ export function gtaPage() {
 <ol class="steps"><li><strong>Check the queue.</strong><span>Open Downloads/Uploads from the control center. If GTA VI is listed but stalled, pause the download and resume it.</span></li><li><strong>Check available space.</strong><span>Open Settings → Storage. Compare the available space with the size shown for your download.</span></li><li><strong>Check the account.</strong><span>If the game is missing from your library, sign in with the account that bought it or redeemed the code and check its order history.</span></li></ol>
 <p><a href="https://www.playstation.com/en-us/support/games/gta-vi-support/">PlayStation’s installation and download support →</a></p></section>
  <p><a href="/gta-6-ps5-languages/">Which languages can you hear and read in GTA 6 on PS5? →</a></p>
- <section id="faq"><p class="eyebrow">05 / QUICK QUESTIONS</p><h2>GTA 6 controls FAQ</h2>${gtaFaq.map(([q,a])=>`<details><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join('')}</section>
+ <h2>More GTA 6 player guides</h2><ul>${playerGuides.map(guide => `<li><a href="${guide.path}">${guide.title}</a></li>`).join('')}</ul>
+<section id="faq"><p class="eyebrow">05 / QUICK QUESTIONS</p><h2>GTA 6 controls FAQ</h2>${gtaFaq.map(([q,a])=>`<details><summary>${e(q)}</summary><p>${e(a)}</p></details>`).join('')}</section>
  <section id="sources"><p class="eyebrow">06 / SOURCES & SCOPE</p><h2>What this guide is based on.</h2><ul><li>Reader-supplied PS5 settings image, received November 18, 2026: Default / On Foot labels. The original broadcast link was not available.</li><li><a href="https://www.shacknews.com/article/151396/gta6-ps5-controls">Shacknews: GTA 6 PS5 controls</a> — additional Loadout and vehicle bindings, checked November 18, 2026.</li><li><a href="https://www.playstation.com/en-us/support/games/gta-vi-support/">PlayStation: GTA VI support</a> — PS5 launch timing and console preparation.</li><li><a href="https://www.rockstargames.com/VI">Rockstar Games: Grand Theft Auto VI</a> — official game information.</li></ul><p>Prepared by Moocsoft with AI assistance. We have not hands-on tested these controls. This is an independent reference, not a Rockstar or PlayStation publication. Illustrations explain button locations and contexts; they do not depict gameplay.</p><p><a href="/editorial-policy/">Editorial standards</a> · <a href="/contact/">Report a correction</a></p></section>
  </main><footer><a href="/">Moocsoft</a><a href="/guides/">Explore other guides</a><span>GTA VI and platform marks belong to their respective owners.</span></footer></body></html>`;
 }

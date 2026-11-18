@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How long will my GTA 6 download take? | Moocsoft</title><meta name="description" content="Estimate your remaining GTA 6 download time using the progress on your own console. Compare a speed estimate with a timed sample.">
+<link rel="canonical" href="https://moocsoft.net/gta-6-download-time/"><link rel="stylesheet" href="/assets/gta6-controls.css">
+<style>article{max-width:850px;margin:auto}form{display:grid;gap:1rem;padding:1.4rem;background:#292840;border-radius:1rem}input,button{font:inherit;padding:.5rem;border-radius:.5rem}label,input{display:block}input{max-width:100%}button{width:fit-content;cursor:pointer}output{font-size:1.4rem;color:#b9eedf}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How long will my GTA 6 download take?","datePublished":"2026-11-18","mainEntityOfPage":"https://moocsoft.net/gta-6-download-time/","author":{"@type":"Organization","name":"Moocsoft"}}</script></head><body>
+<header><a class="brand" href="/">moocsoft</a><a href="/gta-6-controls/">GTA 6 guides</a></header>
+<main><article><h1>How long will my GTA 6 download take?</h1><p>Use the amount left in the download queue. A console showing 80 GB of 120 GB has 40 GB left. At a steady 50 Mbps, that takes about 1 hour 47 minutes. Those figures are an example. Use the size your console reports for your edition and update.</p>
+<h2>Estimate from your download speed</h2>
+<form id="estimate"><label>Remaining download (GB) <input name="remaining" type="number" min="0" max="100000" step="any" value="40" required></label>
+<label>Download speed (Mbps) <input name="speed" type="number" min="0.001" max="100000" step="any" value="50" required></label>
+<button type="submit">Estimate time</button><output aria-live="polite">About 1 h 47 min</output></form>
+<noscript>Multiply remaining GB by 8,000, then divide by Mbps and by 60 to get minutes.</noscript>
+<h2>What if the speed keeps changing?</h2>
+<p>Write down the progress twice, five minutes apart. Suppose it moves from 80 to 82 GB out of 120. That is 2 GB per five minutes, or 0.4 GB per minute. The remaining 38 GB would take about 95 minutes at that pace. This method uses the rate your console actually sustained over the sample.</p>
+<h2>Why can the console finish later?</h2><p>Internet plans usually quote megabits per second. Download queues often show gigabytes. Eight bits make one byte, and the estimate uses decimal GB. Shared Wi-Fi, changing server speeds and pauses affect the transfer. Installation time comes afterward. If the queue stops moving, check <a href="https://www.playstation.com/en-us/support/games/gta-vi-support/">PlayStation’s GTA VI download help</a>.</p>
+<script>
+const form = document.querySelector('#estimate');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const minutes = Math.ceil(form.elements.remaining.valueAsNumber * 8000 / form.elements.speed.valueAsNumber / 60);
+  form.querySelector('output').value = minutes === 0 ? 'Download complete' : 'About ' + Math.floor(minutes / 60) + ' h ' + minutes % 60 + ' min';
+});
+</script><nav aria-label="More GTA 6 guides"><h2>More GTA 6 guides</h2><ul><li><a href="/gta-6-ps5-code-in-box/">GTA 6 on PS5: what to do with a code-in-box copy</a></li><li><a href="/gta-6-character-guide/">GTA 6 characters: a spoiler-light guide to who knows whom</a></li><li><a href="/gta-6-ps5-languages/">PS5 voice and text languages</a></li></ul></nav></article></main>
+<footer><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Corrections</a></footer></body></html>
