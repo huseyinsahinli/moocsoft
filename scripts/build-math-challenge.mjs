@@ -9,7 +9,7 @@ import { attributeStoreLinks } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const path = '/tools/math-puzzle-challenge/';
-const title = '15 Math Puzzles With Answers: Three Free Online Rounds';
+const title = 'Free Math Puzzle Challenge: 15 Puzzles With Hints and Answers';
 const description = 'Choose a five-question math puzzle round: mixed riddles, everyday numbers or logic. Check answers, read worked solutions and share a round link. No sign-up.';
 const app = apps.math;
 const ids = new Set();
@@ -61,7 +61,7 @@ const rounds = mathRounds.map((round, index) => {
         <label class="field" for="share-${e(round.id)}"><span>Public round link — copy manually if needed</span><input id="share-${e(round.id)}" data-math-share-url type="text" readonly value="${e(shareUrl)}" spellcheck="false"></label>
         <button class="button secondary" type="button" data-math-copy hidden>Copy round link</button><p data-math-share-status role="status" aria-live="polite" aria-atomic="true"></p>
       </div>
-      <div class="guide-hero-actions"><a href="#round-${e(next.id)}">Try ${e(next.title)} →</a><a href="/math-riddles/">Want app puzzles or live 1v1? Explore Math Riddles →</a></div>
+      <div class="guide-hero-actions"><a href="#round-${e(next.id)}">Try ${e(next.title)} →</a><a href="/math-riddles/">Want app puzzles or live 1v1? Get the Math Riddles puzzle app →</a></div>
     </section>
   </section>`;
 }).join('\n');
@@ -70,10 +70,16 @@ const html = `${head(title, description, path, graph, app, ['math-challenge']).r
   <div class="breadcrumb" aria-label="Breadcrumb"><a href="/">Moocsoft</a> / <a href="/tools/">Free tools</a> / Math puzzle challenge</div>
   <section class="tool-hero">
     <span class="eyebrow">Free online math puzzles · No sign-up</span>
-    <h1>15 math puzzles.<br>Pick a five-question round.</h1>
-    <p class="hero-copy">Choose mixed riddles, everyday numbers or a logic break. Every question has a hint and worked solution. Check one round, send its link to a friend, or return for a different set. No timer, account or saved score.</p>
+    <h1>Free math puzzle challenge</h1>
+    <p class="hero-copy">Try the opening puzzle, then pick a round of five. All 15 puzzles come with a hint and a worked answer.</p>
+    <div class="panel math-opening">
+      <p><strong>First puzzle</strong></p>
+      <p class="math-question-display">${e(mathRounds[0].questions[0].display)}</p>
+      <details><summary>Show the worked answer</summary><p>${e(mathRounds[0].questions[0].explanation)}</p></details>
+      <p><a href="#puzzle-row-rule">Try the next missing-number puzzle →</a></p>
+    </div>
     <p class="math-challenge-note">These are original website practice questions, not app levels or a preview of the app interface. Your answers stay in this page and are not sent to Moocsoft or stored between visits. The free web challenge is separate from Math Riddles, which has ads and optional in-app purchases.</p>
-    <div class="guide-hero-actions"><a href="#round-picker">Choose your round ↓</a><a href="/math-riddles/">Explore Math Riddles →</a></div>
+    <div class="guide-hero-actions"><a href="#round-picker">Choose your round ↓</a><a href="/math-riddles/">Get the Math Riddles puzzle app →</a></div>
     <noscript><p class="math-challenge-note">The questions, hints and explanations work without JavaScript. Automatic answer checking needs JavaScript; use “Reveal answer and explanation” to check your work.</p></noscript>
   </section>
   <nav class="math-round-picker" id="round-picker" aria-label="Choose a five-question round">${mathRounds.map((round, index) => `<a class="panel math-round-choice" href="#round-${e(round.id)}"><span class="eyebrow">Round ${index + 1} · 5 questions</span><strong>${e(round.title)}</strong><span>${e(round.description)}</span><span class="math-round-start">Start this round ↓</span></a>`).join('')}</nav>
