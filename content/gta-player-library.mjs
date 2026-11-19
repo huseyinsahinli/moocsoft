@@ -1,9 +1,12 @@
+import { captureGuide, storageGuide } from './gta-capture-storage.mjs';
 import { coverFigure, coverMeta, coverPath } from './gta-art.mjs';
 const support = 'https://www.playstation.com/en-us/support/games/gta-vi-support/';
 const voucher = 'https://www.playstation.com/en-us/support/store/redeem-ps-store-voucher-code/';
 const people = 'https://www.rockstargames.com/VI/only-in-leonida';
 
 export const playerGuides = [
+  captureGuide,
+  storageGuide,
   {
     path: '/gta-6-download-time/',
     modified: '2026-11-19',
@@ -66,7 +69,7 @@ form.addEventListener('submit', event => {
 export function renderPlayerGuide(guide) {
   const related = playerGuides.filter(item => item !== guide);
   const url = 'https://moocsoft.net' + guide.path;
-  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,image:"https://moocsoft.net"+coverPath(guide.path),datePublished:'2026-11-18',...(guide.modified ? {dateModified:guide.modified} : {}),mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
+  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,image:"https://moocsoft.net"+coverPath(guide.path),datePublished:guide.published || '2026-11-18',...(guide.modified ? {dateModified:guide.modified} : {}),mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${guide.title} | Moocsoft</title><meta name="description" content="${guide.description}">

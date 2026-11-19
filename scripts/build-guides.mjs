@@ -119,7 +119,7 @@ const visualFigure = visual => {
   const chart = visual.kind === 'chart';
   return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
 };
-for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), guide.modified || '2026-11-18', [site + coverPath(guide.path)]);
+for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), guide.modified || guide.published || '2026-11-18', [site + coverPath(guide.path)]);
 write(languagePath, languagePage(), '2026-11-18', [site + coverPath(languagePath)]);
 write(gtaPath, gtaPage(), gtaDate, [site + coverPath(gtaPath)]);
 write('/editorial-policy/', editorialPolicy(), '2026-11-09');

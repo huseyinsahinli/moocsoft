@@ -1,4 +1,6 @@
 export const covers = {
+  '/gta-6-save-gameplay-clips-ps5/': ['controls', 'A white controller on a convertible beside the beach'],
+  '/gta-6-ps5-storage-usb-m2/': ['download', 'A network cable and router on a neon-lit desk'],
   '/gta-6-controls/': ['controls', 'A white controller on a convertible beside the beach'],
   '/gta-6-ps5-languages/': ['languages', 'Headphones and a phrasebook in a coastal recording studio'],
   '/gta-6-download-time/': ['download', 'A network cable and router on a neon-lit desk'],
