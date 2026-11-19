@@ -24,3 +24,7 @@ footer {border-top:1px solid #435452}
 .field-library a {display:block;overflow:hidden;border-radius:12px;background:#203337;text-decoration:none}
 .field-library img {width:100%;height:auto;aspect-ratio:1.85;object-fit:cover;display:block}
 .field-library strong {display:block;padding:1rem}
+#estimate ~ table {width:100%;border-collapse:collapse;margin:1rem 0 2rem}
+#estimate ~ table caption {text-align:left;color:#bbcac4;margin-bottom:.5rem}
+#estimate ~ table :is(th,td) {text-align:left;padding:.6rem .8rem;border-bottom:1px solid #435452}
+#estimate ~ table thead {background:#203337}

@@ -119,7 +119,7 @@ const visualFigure = visual => {
   const chart = visual.kind === 'chart';
   return `<figure class="guide-visual">${chart ? `<a class="guide-visual-enlarge" href="${visual.src}" target="_blank" rel="noopener" aria-label="Open full-size explanatory chart">${picture}</a>` : picture}<figcaption>${e(visual.caption)}</figcaption></figure>${chart ? `<p class="guide-visual-open"><a href="${visual.src}" target="_blank" rel="noopener">Open full-size chart ↗</a></p>` : ''}`;
 };
-for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), '2026-11-18', [site + coverPath(guide.path)]);
+for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), guide.modified || '2026-11-18', [site + coverPath(guide.path)]);
 write(languagePath, languagePage(), '2026-11-18', [site + coverPath(languagePath)]);
 write(gtaPath, gtaPage(), gtaDate, [site + coverPath(gtaPath)]);
 write('/editorial-policy/', editorialPolicy(), '2026-11-09');
@@ -195,7 +195,7 @@ write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'Collecti
   ${crumbHtml([['Home','/'],['Guides',null]])}
   <div class="guide-hero-actions"><a href="/de/guides/" lang="de" hreflang="de">Deutsche Leitfäden →</a></div>
   <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Different ways to begin</span><h1>Stories, puzzles<br>and useful answers.</h1><p>Try a mystery, follow a fictional everyday story or compare a real product decision. Choose a question you want to answer—not a reading list you need to finish.</p><div class="guide-hero-actions"><a href="#guide-library">Find a guide ↓</a><a href="/tools/">Try a free browser tool →</a></div></div>
-  <aside class="guide-related"><h2>Console quick reference</h2><p><a href="/gta-6-controls/">GTA 6 PS5 controls: weapons, driving, map and menu →</a></p><p>An independent, source-based gaming reference, separate from our app guides.</p></aside>
+  <aside class="guide-related"><h2>GTA 6 player guides</h2><p>Choose the task you need help with.</p><ul><li><a href="/gta-6-controls/">PS5 controls for driving, weapons and the map</a></li><li><a href="/gta-6-ps5-languages/">PS5 voice and text languages</a></li>${playerGuides.map(guide => `<li><a href="${guide.path}">${e(guide.title)}</a></li>`).join('')}</ul></aside>
   ${visualTopicNavigation(englishVisualTopics)}
   <section class="guide-related" aria-labelledby="start-here"><span class="guide-kicker">Start with one task</span><h2 id="start-here">Three paths into the library</h2><div class="reader-journeys">${selectReaderJourneys(guides).map(journey => `<article class="reader-journey"><h3>${e(journey.title)}</h3><p>${e(journey.description)}</p><ol>${journey.steps.map(step => `<li><a href="${e(step.href)}">${e(step.label)}</a></li>`).join('')}</ol></article>`).join('')}</div></section>
   <section id="guide-library" data-guide-library aria-labelledby="library-title"><h2 id="library-title">Find your next useful read</h2><p>Search stays in your browser. Without JavaScript, every guide is still listed by topic below.</p><form data-guide-filter hidden role="search" aria-label="Find a Moocsoft guide"><label>Search the library<input name="q" type="search" autocomplete="off" placeholder="Try backup, café, meal or Flutter"></label><label>Topic<select name="topic"><option value="">All topics</option>${Object.entries(guideTopics).map(([key,config]) => `<option value="${key}">${e(config.category)}</option>`).join('')}</select></label><label>Format<select name="format"><option value="">All formats</option>${Object.values(editorialFormats).map(format => `<option value="${format.key}">${e(format.label)}</option>`).join('')}</select></label><button type="reset">Clear filters</button></form><p data-guide-result-count role="status" aria-live="polite">All ${guides.length} guides are listed below.</p><p data-guide-no-results hidden>No matching guide yet. Try fewer words, another topic or clear the filters. You can also <a href="/tools/">browse the free tools</a>.</p><div class="guide-topic-links" aria-label="Browse guide topics">${Object.entries(guideTopics).map(([key,config]) => `<a href="/guides/${key}/">${e(config.category)} →</a>`).join('')}</div>
@@ -324,7 +324,7 @@ function syncMarketing(directory) {
       }
     }
     if (file === resolve(root, 'index.html')) {
-      const topicLinks = `<div class="guide-topic-links">${Object.entries(guideTopics).map(([topic, config]) => `<a href="/guides/${topic}/">${e(config.category)} →</a>`).join('')}</div>`;
+      const topicLinks = `<div class="guide-topic-links"><a href="/gta-6-controls/">GTA 6 player guides →</a>${Object.entries(guideTopics).map(([topic, config]) => `<a href="/guides/${topic}/">${e(config.category)} →</a>`).join('')}</div>`;
       // Scope discovery links to the guides section; other home sections may
       // sit between it and About (for example the freelance-service section).
       html = html.replace(/(<section\b(?=[^>]*\bid="guides")[^>]*>)([\s\S]*?)(<\/section>)/, (_, open, body, close) => open + body

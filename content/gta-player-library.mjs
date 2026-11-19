@@ -6,6 +6,7 @@ const people = 'https://www.rockstargames.com/VI/only-in-leonida';
 export const playerGuides = [
   {
     path: '/gta-6-download-time/',
+    modified: '2026-11-19',
     title: 'GTA 6 download time calculator',
     description: 'Estimate your remaining GTA 6 download time using the progress on your own console. Compare a speed estimate with a timed sample.',
     body: `<p>Use the amount left in the download queue. A console showing 80 GB of 120 GB has 40 GB left. At a steady 50 Mbps, that takes about 1 hour 47 minutes. Those figures are an example. Use the size your console reports for your edition and update.</p>
@@ -14,6 +15,15 @@ export const playerGuides = [
 <label>Download speed (Mbps) <input name="speed" type="number" min="0.001" max="100000" step="any" value="50" required></label>
 <button type="submit">Estimate time</button><output aria-live="polite">About 1 h 47 min</output></form>
 <noscript>Multiply remaining GB by 8,000, then divide by Mbps and by 60 to get minutes.</noscript>
+<h2>How long for the last 30 GB?</h2>
+<p>Find the row closest to your sustained speed. Each estimate covers the same 30 GB so you can see the effect of a slower connection.</p>
+<table><caption>Estimated transfer time for 30 GB remaining</caption><thead><tr><th scope="col">Speed</th><th scope="col">Time remaining</th></tr></thead><tbody>
+<tr><th scope="row">25 Mbps</th><td>2 h 40 min</td></tr>
+<tr><th scope="row">50 Mbps</th><td>1 h 20 min</td></tr>
+<tr><th scope="row">100 Mbps</th><td>40 min</td></tr>
+<tr><th scope="row">200 Mbps</th><td>20 min</td></tr>
+</tbody></table>
+<aside class="puzzle-ad" aria-label="Advertisement from Moocsoft"><img src="/assets/apps/math-riddles/icon.png" width="64" height="64" alt="" loading="lazy"><div><small>Advertisement · Our app</small><p>Something to play while the download runs: <a href="/math-riddles/">try a number puzzle in Math Riddles</a>.</p></div></aside>
 <h2>What if the speed keeps changing?</h2>
 <p>Write down the progress twice, five minutes apart. Suppose it moves from 80 to 82 GB out of 120. That is 2 GB per five minutes, or 0.4 GB per minute. The remaining 38 GB would take about 95 minutes at that pace. This method uses the rate your console actually sustained over the sample.</p>
 <h2>Why can the console finish later?</h2><p>Internet plans usually quote megabits per second. Download queues often show gigabytes. Eight bits make one byte, and the estimate uses decimal GB. Shared Wi-Fi, changing server speeds and pauses affect the transfer. Installation time comes afterward. If the queue stops moving, check <a href="${support}">PlayStation’s GTA VI download help</a>.</p>
@@ -37,6 +47,7 @@ form.addEventListener('submit', event => {
 <details><summary>The code is missing or unreadable</summary><p>Keep the packaging and proof of purchase. Contact the retailer about a missing insert. For a damaged voucher, follow PlayStation’s voucher support steps. Keep the full code private.</p></details>
 <details><summary>The voucher says it has already been used</summary><p>Check the transaction history of the account used for redemption, then its library. On a family console, check which account was active at the time. If nobody in the household redeemed it, use voucher support with your receipt.</p></details>
 <details><summary>I can see the game, but it hasn’t started downloading</summary><p>Select it in Game Library, then look in Downloads/Uploads. If the transfer is queued, inspect free storage and queue progress before attempting another redemption.</p></details>
+<aside class="puzzle-ad" aria-label="Advertisement from Moocsoft"><img src="/assets/apps/frugal/icon.jpg" width="64" height="64" alt="" loading="lazy"><div><small>Advertisement · Our app</small><p>Saving for your next game? <a href="/savings-goal-tracker/">Track your game fund with Frugal</a> and record what you set aside for each purchase.</p></div></aside>
 <p><a href="${support}">GTA VI edition and installation details</a> · <a href="${voucher}">PlayStation voucher instructions</a></p>`
   },
   {
@@ -55,7 +66,7 @@ form.addEventListener('submit', event => {
 export function renderPlayerGuide(guide) {
   const related = playerGuides.filter(item => item !== guide);
   const url = 'https://moocsoft.net' + guide.path;
-  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,image:"https://moocsoft.net"+coverPath(guide.path),datePublished:'2026-11-18',mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
+  const article = {'@context':'https://schema.org','@type':'Article',headline:guide.title,image:"https://moocsoft.net"+coverPath(guide.path),datePublished:'2026-11-18',...(guide.modified ? {dateModified:guide.modified} : {}),mainEntityOfPage:url,author:{'@type':'Organization',name:'Moocsoft'}};
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${guide.title} | Moocsoft</title><meta name="description" content="${guide.description}">
