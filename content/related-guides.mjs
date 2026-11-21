@@ -3,6 +3,7 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'new-years-resolutions-2027': ['weekly-reset-checklist', 'daily-vs-weekly-habit-tracking', 'restart-habit-after-missing-days'],
   'track-savings-pace-after-a-missed-deposit': ['reconcile-savings-tracker-balance', 'weekly-to-monthly-savings', 'calculate-savings-goal-contributions'],
   'find-nth-term-repeating-pattern': ['repeating-pattern-puzzles-with-answers', 'how-to-solve-number-pattern-puzzles', 'missing-number-puzzles-with-answers'],
   'barbell-weight-bar-and-plates': [
