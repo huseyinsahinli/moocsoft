@@ -64,7 +64,7 @@ for (const tool of readerTools) {
     <section class="guide-article"><h2>Try it with your numbers</h2><p>${e(tool.help)}</p>
     <form hidden data-reader-calculator="${tool.key}">${fields}<button type="submit">Calculate</button><output aria-live="polite" aria-atomic="true"></output></form>
     <noscript><p>Enable JavaScript to calculate with your own entries, or follow the worked example below.</p></noscript>
-    <h2>Worked example</h2><p>${e(tool.example)}</p><p><a href="/guides/${guide.slug}/">${e(guide.title)}</a></p></section></main>` + footer(), guide.published);
+    <h2>Worked example</h2><p>${e(tool.example)}</p><p><a href="/guides/${guide.slug}/">${e(guide.title)}</a></p>${tool.nextStep ? `<p>${e(tool.nextStep)} <a href="/${apps[tool.topic].slug}/">Explore Frugal Savings Tracker →</a></p>` : ''}</section></main>` + footer(), guide.published);
 }
 const slugs = new Set();
 const guidesBySlug = new Map(guides.map(guide => [guide.slug, guide]));

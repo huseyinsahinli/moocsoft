@@ -2,9 +2,10 @@ import { table } from './apps.mjs';
 
 export const readerTools = [
   {
-    key: 'savings-pace-tracker', topic: 'savings', name: 'Savings Pace Tracker',
-    description: 'Compare planned and actual deposits through the last completed week. See the gap and the average deposit needed over the remaining weeks.',
+    key: 'savings-pace-tracker', topic: 'savings', name: 'Weekly Savings Tracker: Plan vs. Actual Deposits',
+    description: 'Use this free savings tracking tool to compare weekly deposits with your plan. See how far ahead or behind you are and what to set aside next week.',
     guide: 'track-savings-pace-after-a-missed-deposit',
+    nextStep: 'Want to keep a record between visits? Record contributions in Frugal on your phone. Entries from this calculator stay on this page.',
     fields: [['goal', 'Target amount', '300'], ['opening', 'Starting balance', '60'], ['weeks', 'Total planned weeks (1–104)', '6'], ['entries', 'Net deposits for completed weeks, separated by commas', '40, 0, 55']],
     help: 'Use one currency and plain numbers. Enter 0 for a completed week with no deposit and a negative amount for a withdrawal. Leave future weeks out. A blank list means the plan has just started.',
     example: 'With 60 at the start and a target of 300, six weeks call for 40 per week. Deposits of 40, 0 and 55 leave 155 after week three. The planned balance is 180, so the gap is 25. The remaining 145 can be split into 48.34, 48.33 and 48.33.',
