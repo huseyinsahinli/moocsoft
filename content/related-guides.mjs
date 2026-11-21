@@ -3,6 +3,10 @@
 // There is no automatic first-three fallback, so publication order cannot quietly
 // change recommendations or send readers to a different topic.
 const choices = {
+  'smart-goals-for-the-new-year': ['weekly-reset-checklist', 'habit-tracker-ideas', 'daily-vs-weekly-habit-tracking'],
+  'realistic-health-fitness-resolutions': ['workout-volume-explained', 'log-warm-up-and-working-sets', 'dumbbell-workout-volume'],
+  'new-year-financial-goals-2027': ['track-savings-pace-after-a-missed-deposit', 'reconcile-savings-tracker-balance', 'calculate-savings-goal-contributions'],
+  'restart-new-years-resolutions-february': ['restart-habit-after-missing-days', 'weekly-reset-checklist', 'habit-tracker-ideas'],
   'new-years-resolutions-2027': ['weekly-reset-checklist', 'daily-vs-weekly-habit-tracking', 'restart-habit-after-missing-days'],
   'track-savings-pace-after-a-missed-deposit': ['reconcile-savings-tracker-balance', 'weekly-to-monthly-savings', 'calculate-savings-goal-contributions'],
   'find-nth-term-repeating-pattern': ['repeating-pattern-puzzles-with-answers', 'how-to-solve-number-pattern-puzzles', 'missing-number-puzzles-with-answers'],

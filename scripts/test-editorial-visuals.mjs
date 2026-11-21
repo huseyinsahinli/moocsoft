@@ -7,6 +7,7 @@ import { guides } from '../content/index.mjs';
 import { germanGuides } from '../content/de-index.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { guideCharts } from '../content/guide-charts.mjs';
+import { resolutionPhotos } from '../content/resolution-photos.mjs';
 import { editorialPhotos, editorialPhotosDe } from '../content/editorial-media.mjs';
 import { site, published, escape } from '../content/apps.mjs';
 
@@ -79,7 +80,12 @@ const checkGuide = (guide, locale, visual) => {
   const path = (locale === 'de' ? '/de' : '') + '/guides/' + guide.slug + '/';
   const html = text(path+'index.html');
   const figures = [...html.matchAll(/<figure class="guide-visual">([\s\S]*?)<\/figure>/g)];
-  assert.equal(figures.length, 1, path);
+  const series = locale === 'en' ? resolutionPhotos[guide.slug] : undefined;
+  assert.equal(figures.length, series?.length || 1, path);
+  for (const [i, photo] of (series || []).entries()) {
+    assert(figures[i][1].includes(photo.src) && figures[i][1].includes(escape(photo.alt)), path);
+    assert(figures[i].index > html.indexOf(`<section id="step-${photo.afterSection}">`));
+  }
   const figure = figures[0][1], img = attrs(figure.match(/<img\b[^>]*>/)[0]), source = attrs(figure.match(/<source\b[^>]*>/)[0]);
   assert.equal(img.src, visual.src, path);
   assert.equal(img.alt, escape(visual.alt));
@@ -112,7 +118,7 @@ const checkGuide = (guide, locale, visual) => {
     assert(html.includes(fullSize), 'Native full-resolution chart link: ' + path);
   }
 };
-for (const guide of guides) checkGuide(guide, 'en', guideMedia[guide.slug] || guideCharts[guide.slug] || editorialPhotos[guide.topic]);
+for (const guide of guides) checkGuide(guide, 'en', guideMedia[guide.slug] || guideCharts[guide.slug] || resolutionPhotos[guide.slug]?.[0] || editorialPhotos[guide.topic]);
 for (const guide of germanGuides) checkGuide(guide, 'de', editorialPhotosDe[guide.topic]);
 assert(!text('/guides/count-rectangles-in-a-grid/index.html').includes('rectangle-grid-title'), 'Replace the older duplicate inline grid with the new explanatory boundary diagram');
 assert.equal(photoGuides, guides.length - 7 - 12);

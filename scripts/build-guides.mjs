@@ -11,6 +11,7 @@ import { head, header, footer, card, download, resultDownload, appPreview, choic
 import { attributeStoreLinks } from '../content/store-attribution.mjs';
 import { guideMedia } from '../content/guide-media.mjs';
 import { guideCharts } from '../content/guide-charts.mjs';
+import { resolutionPhotos } from '../content/resolution-photos.mjs';
 import { editorialPhotos } from '../content/editorial-media.mjs';
 import { pageVisualUpdated, englishVisualTopics, pagePhotoFigure, visualTopicNavigation } from '../content/page-visuals.mjs';
 import { appPreviews } from '../content/app-previews.mjs';
@@ -145,14 +146,16 @@ for (const guide of guides) {
   const topic = guideTopics[guide.topic];
   if (guide.appPreview && !app) throw new Error(`App preview requires an app topic: ${guide.slug}`);
   const path = `/guides/${guide.slug}/`;
-  const visual = guideMedia[guide.slug] ?? guideCharts[guide.slug] ?? editorialPhotos[guide.topic];
+  const seriesPhotos = resolutionPhotos[guide.slug] || [];
+  for (const photo of seriesPhotos) validateVisual(photo, guide.slug);
+  const visual = guideMedia[guide.slug] ?? guideCharts[guide.slug] ?? seriesPhotos[0] ?? editorialPhotos[guide.topic];
   if (!visual) throw new Error(`Missing representative visual: ${guide.slug}`);
   if (guide.mediaAfterSection !== undefined && (!guideMedia[guide.slug] || !Number.isInteger(guide.mediaAfterSection) || guide.mediaAfterSection < 1 || guide.mediaAfterSection > guide.sections.length)) {
     throw new Error(`Invalid media section placement: ${guide.slug}`);
   }
   const mediaAfterSection = guideMedia[guide.slug] ? guide.mediaAfterSection : guideCharts[guide.slug] ? visual.afterSection : 1;
   const previewImage = guide.appPreview ? appPreviews[guide.topic]?.image : null;
-  const images = [...new Set([visual?.src, previewImage].filter(Boolean))].map(src => site + src);
+  const images = [...new Set([visual?.src, ...seriesPhotos.slice(1).map(photo => photo.src), previewImage].filter(Boolean))].map(src => site + src);
   const words = [guide.intro,guide.takeaway,...guide.sections.map(([title,html]) => title+' '+html.replace(/<[^>]*>/g,' '))].join(' ').split(/\s+/).filter(Boolean).length;
   const graph = [
     {'@type':'Article','@id':site+path+'#article',headline:guide.title,description:guide.description,inLanguage:'en',mainEntityOfPage:site+path,url:site+path,datePublished:guide.published || published,dateModified:modified(guide),author:byline,publisher:byline,image:[site+(visual?.src || '/assets/social/moocsoft-og.png')],articleSection:topic.category,isAccessibleForFree:true},
@@ -168,7 +171,7 @@ for (const guide of guides) {
     <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol>${guide.sections.map(([title],i) => `<li><a href="#step-${i+1}">${e(title)}</a></li>`).join('')}<li><a href="#questions">Common questions</a></li>${guide.appPreview ? `<li><a href="#app-preview-title">${appPreviews[guide.topic].image ? `See ${e(app.name)} in action` : 'App features and access'}</a></li>` : ''}</ol></nav></details></aside>
     <article class="guide-article" aria-label="${e(guide.title)}">
       <div class="guide-answer"><span>The useful takeaway</span><p>${e(guide.takeaway)}</p></div>
-      ${!mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}`).join('\n      ')}
+      ${!mediaAfterSection ? visualFigure(visual) + '\n      ' : ''}${guide.sections.map(([title,body],i) => `<section id="step-${i+1}"><h2>${e(title)}</h2>${body}</section>${mediaAfterSection === i + 1 ? '\n      ' + visualFigure(visual) : ''}${seriesPhotos.slice(1).filter(photo => photo.afterSection === i + 1).map(visualFigure).join('\n')}`).join('\n      ')}
       ${faq}${refs}
       <p class="guide-editor-note">${app ? `Published by Moocsoft, the studio behind ${e(app.name)}.` : 'Published by Moocsoft, a Flutter development studio.'} This guide uses AI assistance. <a href="/editorial-policy/">How we prepare guides, label examples and handle corrections</a>.</p>
     </article>
