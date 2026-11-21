@@ -20,6 +20,7 @@ import { buildLocalizedGuides } from './build-localized-guides.mjs';
 import { formatFor, editorialFormats, selectHomePicks, selectReaderJourneys } from '../content/discovery.mjs';
 import { gtaPage, gtaPath, gtaDate } from '../content/gta6-controls.mjs';
 import { editorialPolicy } from '../content/editorial-policy.mjs';
+import { readerTools } from '../content/reader-calculators.mjs';
 import { browserTools } from '../content/tools.mjs';
 import './build-math-challenge.mjs';
 import './build-savings-goal-tool.mjs';
@@ -50,6 +51,19 @@ function write(path, html, lastmod = published, images = []) {
   mkdirSync(dirname(target), {recursive:true});
   writeFileSync(target, attributeStoreLinks(html, path).replace(/[ \t]+$/gm, '').trimEnd() + '\n');
   outputs.push({path, lastmod, images});
+}
+for (const tool of readerTools) {
+  const path = '/tools/' + tool.key + '/';
+  const trail = [['Home', '/'], ['Free tools', '/tools/'], [tool.name, path]];
+  const fields = tool.fields.map(([name, label, value]) => `<label>${e(label)}<input name="${e(name)}" value="${e(value)}" maxlength="1800" autocomplete="off"></label>`).join('');
+  const guide = guides.find(article => article.slug === tool.guide);
+  write(path, head(tool.name, tool.description, path, [breadcrumbs(trail)], apps[tool.topic], ['reader-calculator']) +
+    `<main class="guide-shell" id="main-content">${crumbHtml([...trail.slice(0, 2), [tool.name]])}
+    <div class="guide-hero"><h1>${e(tool.name)}</h1><p>${e(tool.description)}</p></div>
+    <section class="guide-article"><h2>Try it with your numbers</h2><p>${e(tool.help)}</p>
+    <form hidden data-reader-calculator="${tool.key}">${fields}<button type="submit">Calculate</button><output aria-live="polite" aria-atomic="true"></output></form>
+    <noscript><p>Enable JavaScript to calculate with your own entries, or follow the worked example below.</p></noscript>
+    <h2>Worked example</h2><p>${e(tool.example)}</p><p><a href="/guides/${guide.slug}/">${e(guide.title)}</a></p></section></main>` + footer(), guide.published);
 }
 const slugs = new Set();
 const guidesBySlug = new Map(guides.map(guide => [guide.slug, guide]));

@@ -1,0 +1,5 @@
+[data-reader-calculator]:not([hidden]) { display:grid; gap:1rem; max-width:40rem; padding:clamp(1rem,4vw,2rem); border:1px solid #667078; border-radius:1rem; background:#172028; color:#f4f6f8; }
+[data-reader-calculator] label { display:grid; gap:.35rem; font-weight:600; }
+[data-reader-calculator] input { box-sizing:border-box; width:100%; min-width:0; font:inherit; padding:.7rem; border:1px solid #829099; border-radius:.45rem; background:#fff; color:#162028; }
+[data-reader-calculator] button { justify-self:start; cursor:pointer; font:inherit; font-weight:700; border:0; border-radius:.45rem; padding:.7rem 1.2rem; background:#c9ef9a; color:#162028; }
+[data-reader-calculator] output { overflow-wrap:anywhere; line-height:1.65; }

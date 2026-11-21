@@ -23,7 +23,7 @@ The site is static and remains compatible with GitHub Pages. Generated HTML is c
 - `math-split-bill.mjs`: one disclosed fictional dinner story comparing equal and itemized allocations of the same total, with a native total-building diagram and cent remainders. Keep percentage bases, shared-item membership and rounding explicit. Rates are assumptions, not tipping advice or local tax law; allocated shares are not payments or an app bill feature.
 - `../assets/content.css`: marketing-only styles; legal and workout import pages do not include this stylesheet.
 - `../scripts/build-guides.mjs`: produces `/guides/`, the topic pages, all articles and their sitemap entries.
-- `tools.mjs`: counts all eight real browser tools without treating the service brief builder as a mobile app. The normal build also runs the savings-goal and app-brief tool builders; interactive outputs stay local and worked examples remain static.
+- `tools.mjs`: counts all ten real browser tools without treating the service brief builder as a mobile app. The normal build also runs the savings-goal and app-brief tool builders; interactive outputs stay local and worked examples remain static.
 
 Regenerate from the repository root with `node scripts/build-guides.mjs`. No third-party packages are required. Re-running the command without changes produces the same files. The original app and tool landing pages remain ordinary HTML; their related-guide sections should be updated if the reading lists change.
 

@@ -30,7 +30,7 @@ const destinations = [
       page.on('request', request => { if (!['GET', 'HEAD'].includes(request.method())) errors.push(request.method()); });
       try {
         assert.equal((await page.goto(base + '/tools/')).status(), 200);
-        assert.equal(await page.locator('.tool-card').count(), 8);
+        assert.equal(await page.locator('.tool-card').count(), 10);
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
         for (const target of ['/tools/savings-goal-calculator/', '/tools/app-brief-builder/']) {
           const card = page.locator(`.tool-card[href="${target}"]`);
@@ -49,11 +49,11 @@ const destinations = [
           assert.equal(new URL(page.url()).pathname, target);
         }
         await page.goto(base + '/');
-        assert.match(await page.locator('.stat').filter({ hasText: 'Free tools' }).innerText(), /8\s+Free tools/i);
+        assert.match(await page.locator('.stat').filter({ hasText: 'Free tools' }).innerText(), /10\s+Free tools/i);
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
       } finally { await context.close(); }
     }
     assert.deepEqual(errors, []);
-    console.log('PASS: eight-tool directory, new canonical destinations, five static guide/service paths and homepage count at 320/390/1440px with JS on/off.');
+    console.log('PASS: ten-tool directory, new canonical destinations, five static guide/service paths and homepage count at 320/390/1440px with JS on/off.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
