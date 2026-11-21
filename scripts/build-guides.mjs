@@ -63,6 +63,7 @@ for (const tool of readerTools) {
     <div class="guide-hero"><h1>${e(tool.name)}</h1><p>${e(tool.description)}</p></div>
     <section class="guide-article"><h2>Try it with your numbers</h2><p>${e(tool.help)}</p>
     <form hidden data-reader-calculator="${tool.key}">${fields}<button type="submit">Calculate</button><output aria-live="polite" aria-atomic="true"></output></form>
+    <div hidden data-reader-app-result>${resultDownload(tool.topic)}</div>
     <noscript><p>Enable JavaScript to calculate with your own entries, or follow the worked example below.</p></noscript>
     <h2>Worked example</h2><p>${e(tool.example)}</p><p><a href="/guides/${guide.slug}/">${e(guide.title)}</a></p>${tool.nextStep ? `<p>${e(tool.nextStep)} <a href="/${apps[tool.topic].slug}/">Explore Frugal Savings Tracker →</a></p>` : ''}</section></main>` + footer(), guide.published);
 }

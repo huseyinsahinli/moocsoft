@@ -29,6 +29,7 @@ export function download(app, placement = 'article-end') {
 export function resultDownload(topic) {
   const app = apps[topic];
   const copy = {
+    math: ['Try your next puzzle in Math Riddles', 'Work through a number puzzle on your phone and check the solution when you are ready.', 'Free download with optional in-app purchases.'],
     nutrition: ['Estimate your next meal with NutriLens', 'Take a meal photo and review estimated calories, protein, carbs and fat.', 'Free download. Subscriptions and scan credit packs are available.'],
     savings: ['Track your real deposits', 'Create a goal in Frugal and record the money you actually set aside.', 'Free download with ads and limits. Unlimited goals and exports require Premium.'],
     training: ['Log your next workout with Did You Lift', 'Plan each set, log your actual reps and weight, and use the automatic rest timer.', 'Free download. Optional lifetime Premium.'],
