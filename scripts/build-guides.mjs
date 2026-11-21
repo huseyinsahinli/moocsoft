@@ -137,7 +137,7 @@ const visualFigure = visual => {
 for (const guide of playerGuides) write(guide.path, renderPlayerGuide(guide), guide.modified || guide.published || '2026-11-18', [site + coverPath(guide.path)]);
 write(languagePath, languagePage(), '2026-11-18', [site + coverPath(languagePath)]);
 write(gtaPath, gtaPage(), gtaDate, [site + coverPath(gtaPath)]);
-write('/editorial-policy/', editorialPolicy(), '2026-11-09');
+write('/editorial-policy/', editorialPolicy(), '2026-11-21');
 
 for (const guide of guides) {
   if (!guideTopics[guide.topic] || slugs.has(guide.slug) || !/^[a-z0-9-]+$/.test(guide.slug)) throw new Error(`Invalid guide: ${guide.slug}`);
