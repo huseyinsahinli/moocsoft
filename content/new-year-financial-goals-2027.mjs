@@ -6,6 +6,12 @@ export default {
   description: "Set a savings target, count the paydays before a bill and track real spending. Worked examples show how to revise a plan after a smaller or missed deposit.",
   intro: "The first draft of your financial goals for 2027 needs only three figures: the amount a particular expense will cost, the money already reserved for it, and the number of paydays before payment is due. Pick one expense you can name. A school trip, an annual membership you intend to keep, or a visit to family gives the money a job you can recognize later.",
   takeaway: "Subtract the money already reserved from the amount due. Count the paydays before the deadline and check each amount against the bills due that week.",
+  modified: '2026-11-22',
+  appPreview: true,
+  previewCopy: {
+    heading: 'Keep your 2027 payday goal in Frugal',
+    description: 'Give the bill its own goal and due date. When payday comes, enter the amount you actually put aside so you can see what the next payday needs to cover.',
+  },
   sections: [
     ["Set financial goals for 2027 using your next payday",
       "<p>Before opening a calculator, write down when payment actually leaves your account. A trip in August might require a deposit in March. A bill labelled “annual” might renew on the first working day of July. Use the earlier payment deadline for that portion of the goal. A lovely-looking plan can still be a week late if you count a payday after the money is due.</p>" +
@@ -16,7 +22,7 @@ export default {
       "<p>Now open the calendar to the first payday. What must be covered before the following one? Look at rent, the grocery shop and anything charged automatically. If there's room for $25 on that date and $40 on the next, write those amounts into the plan. An average is a useful starting point, but cash comes in on particular dates and goes out on others.</p>" +
       "<p>After those first two deposits, the reserved balance is $185. The amount still needed is $295 over seven paydays. Six transfers of $42.14 and one of $42.16 would finish at $480. If your calendar suggests those transfers are unrealistic, you've found that out early enough to adjust the amount, the timing where possible, or another flexible part of your budget.</p>" +
       "<h3>Use a simple payday record</h3>" +
-      "<p>Give each date four entries on one line: the balance before payday, the planned deposit, the amount actually moved and the new balance. For that first date the four entries are $120, $25, $25 and $145. If an unexpected expense leaves only $15, the closing balance is $135. Keep the planned $25 visible so you can understand the difference later.</p>"],
+      "<p>Give each date four entries on one line: the balance before payday, the planned deposit, the amount actually moved and the new balance. For that first date the four entries are $120, $25, $25 and $145. If an unexpected expense leaves only $15, the closing balance is $135. Keep the planned $25 visible so you can understand the difference later.</p><h3>Try the first entry in Frugal</h3><p>Create a goal called “2027 annual bill” with a $480 target and the renewal date. If the $120 already set aside has not been recorded, enter it once. After you move $25 into savings on payday, record that contribution. Your goal now shows $145 saved, leaving $335. If you open the app before moving the money, wait to enter the deposit until you can confirm it.</p>"],
     ["Find one spending decision you can change",
       "<p>Take an ordinary week of purchases and circle one recurring decision. Perhaps you buy lunch on campus on both your long teaching days. You enjoy lunch with colleagues on Wednesday. Monday's purchase happens because there is never anything ready to carry. Keep the part you value and experiment with the one that's mostly inconvenience. It makes for a much more useful spending review than promising to eliminate every lunch out.</p>" +
       "<p>Suppose the Monday lunch usually costs $11. A packed version uses $4 of ingredients, giving a possible difference of $7 that week. Track the actual amounts. If you buy ingredients for four lunches and use only two before they spoil, include the waste when deciding whether the idea helped. “I packed twice” and “I saved $14” are two different claims with different evidence.</p>" +
