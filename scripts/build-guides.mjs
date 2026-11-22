@@ -23,6 +23,7 @@ import { gtaPage, gtaPath, gtaDate } from '../content/gta6-controls.mjs';
 import { editorialPolicy } from '../content/editorial-policy.mjs';
 import { readerTools } from '../content/reader-calculators.mjs';
 import { browserTools } from '../content/tools.mjs';
+import { etsyHomeSection, latestEtsyPostDate, writeEtsyBlog } from '../content/etsy-blog.mjs';
 import './build-math-challenge.mjs';
 import './build-savings-goal-tool.mjs';
 import './build-app-brief-tool.mjs';
@@ -212,7 +213,7 @@ write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'Collecti
 <main id="main-content" class="guide-shell">
   ${crumbHtml([['Home','/'],['Guides',null]])}
   <div class="guide-hero-actions"><a href="/de/guides/" lang="de" hreflang="de">Deutsche Leitfäden →</a></div>
-  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Different ways to begin</span><h1>Stories, puzzles<br>and useful answers.</h1><p>Try a mystery, follow a fictional everyday story or compare a real product decision. Choose a question you want to answer—not a reading list you need to finish.</p><div class="guide-hero-actions"><a href="#guide-library">Find a guide ↓</a><a href="/tools/">Try a free browser tool →</a></div></div>
+  <div class="guide-hero"><span class="guide-kicker">${guides.length} guides · ${toolCount} free tools · Different ways to begin</span><h1>Stories, puzzles<br>and useful answers.</h1><p>Try a mystery, follow a fictional everyday story or compare a real product decision. Choose a question you want to answer—not a reading list you need to finish.</p><div class="guide-hero-actions"><a href="#guide-library">Find a guide ↓</a><a href="/tools/">Try a free browser tool →</a><a href="/blog/">Read the Moocsoft Paper blog →</a></div></div>
   <aside class="guide-related"><h2>GTA 6 player guides</h2><p>Choose the task you need help with.</p><ul><li><a href="/gta-6-controls/">PS5 controls for driving, weapons and the map</a></li><li><a href="/gta-6-ps5-languages/">PS5 voice and text languages</a></li>${playerGuides.map(guide => `<li><a href="${guide.path}">${e(guide.title)}</a></li>`).join('')}</ul></aside>
   ${visualTopicNavigation(englishVisualTopics)}
   <section class="guide-related" aria-labelledby="start-here"><span class="guide-kicker">Start with one task</span><h2 id="start-here">Three paths into the library</h2><div class="reader-journeys">${selectReaderJourneys(guides).map(journey => `<article class="reader-journey"><h3>${e(journey.title)}</h3><p>${e(journey.description)}</p><ol>${journey.steps.map(step => `<li><a href="${e(step.href)}">${e(step.label)}</a></li>`).join('')}</ol></article>`).join('')}</div></section>
@@ -222,7 +223,9 @@ write('/guides/', `${head(hubTitle,hubDescription,'/guides/',[{'@type':'Collecti
 </main>
 ${footer()}
 </body>
-</html>`, [latest(guides), pageVisualUpdated].sort().at(-1), englishVisualTopics.map(item=>site+item.visual.src));
+</html>`, [latest(guides), pageVisualUpdated, latestEtsyPostDate].sort().at(-1), englishVisualTopics.map(item=>site+item.visual.src));
+
+writeEtsyBlog(write);
 
 // Keep hand-built marketing pages connected to the same brand and guide catalogue.
 const resourcePages = new Map([
@@ -342,6 +345,10 @@ function syncMarketing(directory) {
       }
     }
     if (file === resolve(root, 'index.html')) {
+      html = html.replace(/<!-- Etsy storefront -->[\s\S]*?<!-- End Etsy storefront -->/, () =>
+        `<!-- Etsy storefront -->
+    ${etsyHomeSection()}
+    <!-- End Etsy storefront -->`);
       const topicLinks = `<div class="guide-topic-links"><a href="/gta-6-controls/">GTA 6 player guides →</a>${Object.entries(guideTopics).map(([topic, config]) => `<a href="/guides/${topic}/">${e(config.category)} →</a>`).join('')}</div>`;
       // Scope discovery links to the guides section; other home sections may
       // sit between it and About (for example the freelance-service section).

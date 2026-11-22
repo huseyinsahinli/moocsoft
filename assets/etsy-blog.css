@@ -1,0 +1,42 @@
+#etsy { scroll-margin-top: 72px; }
+#etsy .section-meta { color: #f1be9e; }
+
+.paper-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.paper-product {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #36373d;
+  border-radius: 14px;
+  background: #141517;
+}
+
+.paper-product picture, .paper-product img { display: block; width: 100%; }
+.paper-product img { height: auto; }
+.paper-product-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 22px; }
+
+.paper-product-copy h2, .paper-product-copy h3, .paper-post-card h2 {
+  margin: 0 0 12px;
+  color: #f4efe6;
+  font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.paper-product-copy p { margin: 0 0 16px; color: #c8c3bb; line-height: 1.65; }
+.paper-product .paper-link { margin-top: auto; }
+.paper-link, .paper-more a, .paper-post-card > span:last-child { color: #f1be9e; }
+.paper-link, .paper-more a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: underline; text-underline-offset: .22em; }
+.paper-more { margin: 16px 0 0; }
+.paper-blog { padding-bottom: 50px; }
+.paper-blog time { color: #f1be9e; font-size: .88rem; }
+.paper-post-card h2 { margin-top: 14px; }
+
+@media (max-width: 680px) {
+  .paper-grid { grid-template-columns: 1fr; }
+}

@@ -2,7 +2,7 @@
 <urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -781,6 +781,16 @@
     <image:image><image:loc>https://moocsoft.net/assets/editorial/habits.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/development.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/moocsoft-paper-on-etsy/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/new-year-kit-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/perfect-february-1200.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/de/guides/7-tage-no-spend-challenge/</loc>
