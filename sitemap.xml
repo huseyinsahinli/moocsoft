@@ -773,7 +773,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
@@ -784,7 +784,16 @@
   </url>
   <url>
     <loc>https://moocsoft.net/blog/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/christmas-printables/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/cookie-exchange-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/christmas-eve-box-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/christmas-dinner-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/secret-santa-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/missing-tree-star-1200.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/blog/moocsoft-paper-on-etsy/</loc>

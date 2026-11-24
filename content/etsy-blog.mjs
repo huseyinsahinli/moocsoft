@@ -4,6 +4,41 @@ import { footer, head } from './components.mjs';
 export const etsyShop = 'https://www.etsy.com/shop/MoocsoftPaper';
 
 const products = {
+  'missing-tree-star': {
+    name: 'The Missing Tree Star',
+    image: '/assets/etsy/missing-tree-star',
+    alt: 'Christmas Mystery Game cover showing the case briefing and deduction grid',
+    summary: 'A Christmas detective game with six witness clues, two logic grids, a letter code and a full answer key.',
+    url: 'https://www.etsy.com/listing/4624416089/christmas-mystery-game-printable-the',
+  },
+  'cookie-exchange': {
+    name: 'Christmas Cookie Exchange Kit',
+    image: '/assets/etsy/cookie-exchange',
+    alt: 'Cookie Exchange Kit cover showing the printable recipe cards and tent labels',
+    summary: 'A baker sign-up sheet, recipe cards, fold-over labels, voting slips, take-home tags and an award.',
+    url: 'https://www.etsy.com/listing/4624420958/christmas-cookie-exchange-printable-kit',
+  },
+  'secret-santa': {
+    name: 'Secret Santa Questionnaire',
+    image: '/assets/etsy/secret-santa',
+    alt: 'Secret Santa cover showing the workplace and family questionnaires',
+    summary: 'Separate office and family wish lists, two half-page forms, a match organizer and six gift tags.',
+    url: 'https://www.etsy.com/listing/4624416235/secret-santa-questionnaire-printable-for',
+  },
+  'christmas-eve-box': {
+    name: 'Christmas Eve Box Kit',
+    image: '/assets/etsy/christmas-eve-box',
+    alt: 'Christmas Eve Box Kit cover showing write-in box labels and cozy night tickets',
+    summary: 'Two box labels, six tags, eight activity tickets, a family note, a checklist and a memory page.',
+    url: 'https://www.etsy.com/listing/4624421462/christmas-eve-box-printable-kit-with-box',
+  },
+  'christmas-dinner': {
+    name: 'Christmas Dinner Planner',
+    image: '/assets/etsy/christmas-dinner',
+    alt: 'Christmas Dinner Planner cover showing the menu and oven schedule pages',
+    summary: 'A menu planner, categorized shopping list, oven schedule, serving timeline, guest list and place cards.',
+    url: 'https://www.etsy.com/listing/4624420956/christmas-dinner-planner-printable-with',
+  },
   'perfect-february': {
     name: 'Perfect February 2027',
     image: '/assets/etsy/perfect-february',
@@ -21,6 +56,21 @@ const products = {
 };
 
 const posts = [{
+  slug: 'christmas-printables',
+  title: 'Five Christmas Printables for the Table and Gift Exchange',
+  description: 'Print a Christmas mystery game, cookie swap kit, Secret Santa wish lists, Christmas Eve box labels or a dinner planner.',
+  published: '2026-11-24',
+  products: ['cookie-exchange', 'christmas-eve-box', 'christmas-dinner', 'secret-santa', 'missing-tree-star'],
+  intro: 'Set out a puzzle while dinner is in the oven, give your Secret Santa a few useful hints, or make a simple Christmas Eve box with a handwritten note. Here are five new printables from Moocsoft Paper and a way to use each one.',
+  details: {
+    'cookie-exchange': 'Send the sign-up sheet before the swap. At the party, put a recipe card and a fold-over label next to each plate before guests vote.',
+    'christmas-eve-box': 'Wrap a box you already have, write a short note and tuck one of the tickets inside. The story ticket gives someone the job of picking the bedtime book.',
+    'christmas-dinner': 'Write down your serving time, then work backward on the oven schedule. Use the timeline to give each helper a task before everyone sits down.',
+    'secret-santa': 'Hand out the office questionnaire before drawing names. For a larger group, print the two-up quick form and keep the match sheet with the organizer.',
+    'missing-tree-star': 'Hand each team the witness notes, worksheet and code. Keep the hints and answer key aside until the teams are ready to check their theories.',
+  },
+  closing: 'All five sets are paid digital downloads in English. Each includes an A4 PDF and a US Letter PDF with the same pages. Etsy shows the current prices and previews.',
+}, {
   slug: 'moocsoft-paper-on-etsy',
   title: 'Introducing Moocsoft Paper on Etsy',
   description: 'Meet our first two printable PDF sets: New Year cards and goals for 2027, and a February planner built around four full weeks.',
@@ -67,7 +117,7 @@ export function etsyHomeSection() {
       <h2 class="section-title" id="etsy-title">Moocsoft Paper on Etsy</h2>
       <a class="section-meta" href="${etsyShop}">Shop on Etsy <span aria-hidden="true">↗</span></a>
     </div>
-    <p class="guide-topic-intro">Printable greeting cards, calendars and planners in A4 and US Letter.</p>
+    <p class="guide-topic-intro">Printable games, party kits, greeting cards and planners in A4 and US Letter.</p>
     <div class="paper-grid">${featured.map(key => productCard(products[key], 'h3')).join('')}</div>
     <p class="paper-more"><a href="${blogPath}">Read the Moocsoft Paper blog <span aria-hidden="true">→</span></a></p>
   </section>`;
@@ -75,7 +125,7 @@ export function etsyHomeSection() {
 
 export function writeEtsyBlog(write) {
   const blogTitle = 'Moocsoft Paper Blog';
-  const blogDescription = 'New printable cards, calendars and planners from Moocsoft Paper, with previews and links to Etsy.';
+  const blogDescription = 'Printable games, party kits, cards and planners from Moocsoft Paper, with previews and links to Etsy.';
   const collection = {
     '@type': 'CollectionPage', name: blogTitle, description: blogDescription, url: site + blogPath,
     mainEntity: { '@type': 'ItemList', itemListElement: newestFirst.map((post, index) => ({
