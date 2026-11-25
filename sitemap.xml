@@ -773,7 +773,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
@@ -784,7 +784,27 @@
   </url>
   <url>
     <loc>https://moocsoft.net/blog/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/host-a-christmas-cookie-exchange/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/cookie-exchange-1200.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/organize-secret-santa-with-wish-lists/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/secret-santa-1200.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/print-and-send-new-year-cards/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/new-year-kit-1200.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/plan-february-2027-in-four-weeks/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/perfect-february-1200.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/blog/christmas-printables/</loc>

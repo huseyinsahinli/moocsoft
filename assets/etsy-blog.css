@@ -36,6 +36,7 @@
 .paper-blog { padding-bottom: 50px; }
 .paper-blog time { color: #f1be9e; font-size: .88rem; }
 .paper-post-card h2 { margin-top: 14px; }
+.paper-post-body { max-width: 68ch; }
 
 @media (max-width: 680px) {
   .paper-grid { grid-template-columns: 1fr; }
