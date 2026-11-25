@@ -1,4 +1,4 @@
-import { site, escape as e } from './apps.mjs';
+import { apps, site, escape as e } from './apps.mjs';
 import { footer, head } from './components.mjs';
 
 export const etsyShop = 'https://www.etsy.com/shop/MoocsoftPaper';
@@ -57,8 +57,8 @@ const products = {
 
 const posts = [{
   slug: 'christmas-printables',
-  title: "5 Printable Christmas Activities for Your Holiday Gathering",
-  description: "Choose a Christmas activity by the job you need to do, from labeling a cookie swap to giving dinner guests a mystery to solve.",
+  title: "Christmas Printables for Parties and Gift Swaps",
+  description: "Choose Christmas printables for a cookie swap, Secret Santa draw, family mystery or dinner. See what to print before guests arrive and what to set out.",
   published: '2026-11-24',
   products: ['cookie-exchange', 'christmas-eve-box', 'christmas-dinner', 'secret-santa', 'missing-tree-star'],
   intro: "If your guests arrive at four and dinner starts at six, what happens in between? A mystery gives early arrivals something to solve together. A cookie swap works better when everyone has agreed to bake ahead. Start with the part of the gathering you want help with, then choose a set below.",
@@ -70,6 +70,22 @@ const posts = [{
     'missing-tree-star': 'Hand each team the witness notes, worksheet and code. Keep the hints and answer key aside until the teams are ready to check their theories.',
   },
   modified: "2026-11-25",
+  table: {
+    caption: "Which Christmas printable fits your plans?",
+    headers: ["If you’re planning…", "Choose this set", "Prepare it when…"],
+    rows: [
+      ["A cookie swap", "Cookie Exchange Kit", "Send the sign-up before guests bake."],
+      ["A gift exchange", "Secret Santa Questionnaire", "Collect wish lists before drawing names."],
+      ["A game before dinner", "The Missing Tree Star", "Set out clues before the first guests arrive."],
+      ["A sit-down meal", "Christmas Dinner Planner", "Sketch the oven schedule before shopping."],
+      ["A quiet family night", "Christmas Eve Box Kit", "Put a ticket and note in the box before opening."],
+    ],
+  },
+  related: [
+    ["Calculate cookie swap quantities", "/blog/host-a-christmas-cookie-exchange/"],
+    ["Collect Secret Santa wish lists", "/blog/organize-secret-santa-with-wish-lists/"],
+    ["Write a card for a holiday host", "/blog/print-and-send-new-year-cards/"],
+  ],
   sections: [
     ["For guests who arrive at different times", "Set a small table for The Missing Tree Star. Put the briefing, clues and a pencil there, and keep the answer key with the host. If people arrive halfway through, one player can bring them up to speed using the deduction grid."],
     ["For a gathering built around food", "Choose the cookie exchange kit when guests are bringing the treats. Send the sign-up before anyone shops. For a sit-down dinner, start with the dinner planner instead. Write the serving time first, then work backward to the dishes that share the oven."],
@@ -78,8 +94,8 @@ const posts = [{
   closing: 'All five sets are paid digital downloads in English. Each includes an A4 PDF and a US Letter PDF with the same pages. Etsy shows the current prices and previews.',
 }, {
   slug: 'moocsoft-paper-on-etsy',
-  title: "2027 Printable Calendars, New Year Cards and Goal Sheets",
-  description: "Compare two Moocsoft Paper PDF sets for 2027. See which pages suit a New Year greeting, an annual goal or a four-week February plan.",
+  title: "2027 Printable Planners and New Year Cards",
+  description: "Compare 2027 printable planners and New Year cards in A4 and US Letter. Find the right pages for a greeting, a yearly goal or four weeks of February plans.",
   published: '2026-11-22',
   products: ['new-year-kit', 'perfect-february'],
   intro: "To send a January greeting, choose the New Year kit. To see all four weeks of February on dated planning pages, choose Perfect February. Both sets come in A4 and US Letter. The difference is what you want to have on your desk once the page comes out of the printer.",
@@ -88,6 +104,21 @@ const posts = [{
     'perfect-february': 'February 2027 starts on Monday the 1st and ends on Sunday the 28th. That gives the month four complete Monday-to-Sunday weeks. The weekly sheets follow those dates, and the tracker has room for three habits.',
   },
   modified: "2026-11-25",
+  table: {
+    caption: "Which pages will you actually use?",
+    headers: ["What you want to do", "Set to choose", "Page to print first"],
+    rows: [
+      ["Send a personal greeting", "2027 New Year Printable Kit", "One of the four greeting cards"],
+      ["Keep a goal in sight", "2027 New Year Printable Kit", "A cut-out goal card for your desk"],
+      ["Map a project across February", "Perfect February 2027", "The dated monthly calendar"],
+      ["Record a daily routine", "Perfect February 2027", "The 28-day habit tracker"],
+    ],
+  },
+  related: [
+    ["Find a message for your New Year card", "/blog/print-and-send-new-year-cards/"],
+    ["See the February calendar", "/blog/plan-february-2027-in-four-weeks/"],
+    ["Compare Christmas party printables", "/blog/christmas-printables/"],
+  ],
   sections: [
     ["For a note that turns into a plan", "The New Year kit pairs four greeting cards with a year calendar, a goals page and four cut-out goal cards. You might send a card to the friend who taught you to knit, then use a goal card of your own to schedule an evening to finish the scarf."],
     ["For a month you can see week by week", "Perfect February works well for a project with several steps. Keep the monthly page on the fridge for shared dates and the current weekly page on your desk for tasks. The 28-day tracker gives you a separate place to record a recurring action."],
@@ -96,12 +127,25 @@ const posts = [{
   closing: 'Both sets are paid digital downloads in English, with A4 and US Letter PDFs. You can preview the pages and see the current price on Etsy.',
 }, {
   slug: 'host-a-christmas-cookie-exchange',
-  title: "Christmas Cookie Exchange Rules and How Many Cookies to Bring",
-  description: "Calculate cookies per baker, copy an invitation and set up a swap table where everyone leaves with a share of each batch.",
+  title: "Cookie Exchange: How Many Cookies Per Person?",
+  description: "Work out how many cookies per person to bring to a cookie exchange. Compare six- and eight-baker swaps, copy an invitation and plan your tasting plate.",
   published: '2026-11-25',
   products: ['cookie-exchange'],
   intro: "For a Christmas cookie exchange with eight bakers, ask each person to bring 21 cookies if everyone takes home three from each of the seven other bakers. Add eight more per baker if you want everyone to taste one of every kind at the party.",
   modified: "2026-11-25",
+  table: {
+    caption: "How many cookies should each baker bring?",
+    headers: ["Bakers", "Cookies per other baker", "For the swap", "With one tasting cookie per guest"],
+    rows: [
+      ["6", "2", "10", "16"],
+      ["8", "3", "21", "29"],
+    ],
+  },
+  related: [
+    ["Choose printable activities for your party", "/blog/christmas-printables/"],
+    ["Add a Secret Santa draw", "/blog/organize-secret-santa-with-wish-lists/"],
+    ["Write a thank-you card for your host", "/blog/print-and-send-new-year-cards/"],
+  ],
   sections: [
     ["Calculate the batch before sending invitations", "Multiply the number of other bakers by the cookies you want from each batch. For six bakers taking two of each other’s cookies, each baker brings 5 × 2 = 10. Count a couple baking one recipe together as one baker. If someone cancels after baking day, divide the spare portions at the table."],
     ["An invitation you can copy", "“Cookie swap at my place on December 12 at 3 p.m.! We have eight bakers. Bring 21 cookies of one kind, packed in seven groups of three, and an empty container for the trip home. Tell me what you’re baking by December 5 so I can make the table labels.” Add tasting quantities if you plan to serve samples."],
@@ -110,40 +154,83 @@ const posts = [{
   closing: 'The Christmas Cookie Exchange Kit is a paid digital download with A4 and US Letter PDFs. Preview the sign-up sheet, recipe cards and labels on Etsy.',
 }, {
   slug: 'organize-secret-santa-with-wish-lists',
-  title: "Secret Santa Questionnaire Ideas for Work and Family",
-  description: "Get sample Secret Santa questions, a filled-in wish list and a simple way to match gifts to people within the agreed budget.",
+  title: "Secret Santa Questionnaire for Work or Family",
+  description: "Use this Secret Santa questionnaire for work or family. See three answers, choose questions that fit your group and organize a private gift exchange.",
   published: '2026-11-25',
   products: ['secret-santa'],
   intro: "The most useful Secret Santa question is one a giver can shop from. “What do you reach for on a rainy afternoon?” might get you “crosswords and ginger tea.” That gives the giver two affordable ideas and leaves the surprise intact.",
   modified: "2026-11-25",
+  table: {
+    caption: "A filled-in Secret Santa wish list",
+    headers: ["Question", "Example answer"],
+    rows: [
+      ["What small treat would you enjoy?", "Ginger tea or a bar of dark chocolate."],
+      ["What hobby supplies do you use up?", "Fine black pens for my sketchbook."],
+      ["What would you prefer to skip?", "Scented candles. I already have plenty."],
+    ],
+  },
+  related: [
+    ["Choose a printable for your gift exchange", "/blog/christmas-printables/"],
+    ["Plan a cookie swap for the same gathering", "/blog/host-a-christmas-cookie-exchange/"],
+    ["Write a personal note to go with a gift", "/blog/print-and-send-new-year-cards/"],
+  ],
   sections: [
-    ["Three prompts that give a shopper a starting point", "Ask “What small treat do you buy for yourself?”, “What hobby could always use fresh supplies?” and “Is there anything you’d prefer to skip?” A reply like “dark chocolate, black sketch pens, and please skip scented candles” gives the shopper room to choose. Share the budget before people fill in their forms."],
+    ["How do you turn a wish list into a gift?", "Suppose the group agrees on a $15 limit. The list above gives the shopper two routes: a little tea assortment or replacement drawing pens. Ask participants to describe everyday favorites and share the budget before they fill out their forms."],
     ["Adjust the questions for an office or a family", "For an office draw, make it easy to opt in privately and keep the prompts about everyday tastes. For family, try one question about a shared memory. A cousin who remembers making popcorn on movie nights has a gift idea even if the recipient leaves the rest blank."],
     ["Keep the matches private through gift day", "Collect forms, draw names and check the organizer sheet for self-matches or anyone assigned twice. Send each giver their recipient’s form. Put the exchange date and drop-off location in the same message. On the day, label packages with the recipient’s name so the organizer can spot a missing gift before people leave."],
   ],
   closing: 'The Secret Santa Questionnaire is a paid digital download with office and family forms, a match organizer and gift tags in A4 and US Letter PDFs.',
 }, {
   slug: 'print-and-send-new-year-cards',
-  title: "What to Write in a 2027 New Year Card, Plus Printing Tips",
-  description: "Adapt three New Year card messages for a friend, a colleague or someone far away, then print a test card that fits your envelope.",
+  title: "New Year Card Messages: 3 Notes for 2027",
+  description: "Find New Year card messages for a friend, colleague or loved one far away. Adapt three examples for 2027 and test your printable card against its envelope.",
   published: '2026-11-25',
   products: ['new-year-kit'],
   intro: "A good New Year note can be two sentences long. Name a moment from the year you shared, then offer one wish for the year ahead. If you can picture the recipient recognizing the memory, you already have enough to write.",
   modified: "2026-11-25",
+  table: {
+    caption: "Three New Year card messages to make your own",
+    headers: ["Who it’s for", "A message to adapt"],
+    rows: [
+      ["A friend", "Those rainy Thursday walks got me through the autumn. Here’s to a few sunny ones in 2027."],
+      ["A colleague", "Thanks for taking my first client call with me. I hope January brings you time for that trip you’ve been planning."],
+      ["Someone far away", "I made your lemon cake last weekend and thought of you. I hope we can share a slice in 2027."],
+    ],
+  },
+  related: [
+    ["Compare the printable card and calendar sets", "/blog/moocsoft-paper-on-etsy/"],
+    ["Use a wish list to personalize a gift note", "/blog/organize-secret-santa-with-wish-lists/"],
+    ["Plan a February photo project with family", "/blog/plan-february-2027-in-four-weeks/"],
+  ],
   sections: [
-    ["Three New Year messages to make your own", "For a friend: “Those rainy Thursday walks got me through the autumn. Here’s to a few sunny ones in 2027.” For a colleague: “Thanks for taking my first client call with me. I hope January brings you time for that trip you’ve been planning.” For someone far away: “I made your lemon cake last weekend and thought of you. I hope we can share a slice in 2027.”"],
     ["Get the size right on a test sheet", "Open the A4 file for A4 paper or the US Letter file for Letter paper. Select just the greeting-card page. Start with Actual Size or 100%, check the print preview, and run one plain-paper copy. Fold or trim it as shown and slip it into an envelope before committing your card stock."],
     ["Leave space for handwriting", "Try your longest message on the plain-paper copy first. Leave room for your signature and a date. If several people are signing, have the first person write near the top. A child’s drawing or a last-minute line from a friend can then fit at the bottom."],
   ],
   closing: 'The 2027 New Year Printable Kit is a paid digital download. Preview the four card designs and check the current price on Etsy.',
 }, {
   slug: 'plan-february-2027-in-four-weeks',
-  title: "February 2027 Calendar and Four-Week Project Planner",
-  description: "See the exact dates of February 2027’s four Monday-start weeks and a sample project plan you can adapt to your own calendar.",
+  title: "February 2027 Calendar: Monday Start",
+  description: "View the February 2027 calendar with four Monday-start weeks. Use the dated grid and a family photo album example to plan a project from start to finish.",
   published: '2026-11-25',
   products: ['perfect-february'],
   intro: "February 1, 2027 falls on a Monday, and February 28 falls on a Sunday. The month fits on four complete weekly sheets. Here is how to use those weeks to finish a family photo album, with a spare week for late photos and corrections.",
   modified: "2026-11-25",
+  table: {
+    caption: "February 2027 at a glance",
+    headers: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    rows: [
+      ["1", "2", "3", "4", "5", "6", "7"],
+      ["8", "9", "10", "11", "12", "13", "14"],
+      ["15", "16", "17", "18", "19", "20", "21"],
+      ["22", "23", "24", "25", "26", "27", "28"],
+    ],
+  },
+  related: [
+    ["Compare the dated planner and goal sheets", "/blog/moocsoft-paper-on-etsy/"],
+    ["Turn a family memory into a card", "/blog/print-and-send-new-year-cards/"],
+    ["Try the habit streak calendar", "/tools/habit-streak-calendar/"],
+  ],
+  habitApp: true,
   sections: [
     ["February 1–7 | Gather the photos", "Choose the album’s scope before you open your camera roll. One summer trip is easier to finish than an entire family history. Put your photos in one folder and ask relatives for their favorites by Sunday the 7th. On the monthly calendar, circle the date you want the album ready."],
     ["February 8–14 and 15–21 | Select and arrange", "During the second week, pick one strong photo for each place you visited and move duplicates aside. Use the third week to put the selections in order and add names or captions while you remember them. On each weekly sheet write one small job for your next free evening, such as checking the spelling of a place name."],
@@ -158,6 +245,14 @@ const blogPath = '/blog/';
 const postPath = post => blogPath + post.slug + '/';
 const dateLabel = value => new Intl.DateTimeFormat('en', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value + 'T00:00:00Z'));
 const cover = product => ({ src: product.image + '-1200.jpg', alt: product.alt, width: 1200, height: 900 });
+
+function comparisonTable({ caption, headers, rows }) {
+  return `<div class="paper-table"><table>
+    <caption>${e(caption)}</caption>
+    <thead><tr>${headers.map(label => `<th scope="col">${e(label)}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(row => `<tr>${row.map(value => `<td>${e(value)}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
+}
 
 function picture(product) {
   const {src, alt, width, height} = cover(product);
@@ -232,9 +327,11 @@ ${footer()}
   <article>
     <header class="guide-hero">By Moocsoft Paper · Updated <time datetime="${post.modified || post.published}">${dateLabel(post.modified || post.published)}</time><h1>${e(post.title)}</h1><p>${e(post.intro)}</p></header>
     ${post.sections ? `<div class="guide-article paper-post-body">
+      ${comparisonTable(post.table)}
       ${post.sections.map(([heading, paragraph]) => `<section><h2>${e(heading)}</h2><p>${e(paragraph)}</p></section>`).join('\n      ')}
+      ${post.habitApp ? `<section><h2>How can I keep up a February routine?</h2><p>Pick one action for each project day, such as labeling five photos after dinner. Mark it on the printed tracker, or use our Habit Tracker Daily app to check it off on your phone and see your week on a calendar. Get it on the <a href="${e(apps.habits.apple)}">App Store</a> or <a href="${e(apps.habits.google)}">Google Play</a>.</p></section>` : ''}
     </div>\n    ` : ''}<div class="paper-grid">${post.products.map(key => productCard(products[key], 'h2', post.details?.[key])).join('')}</div>
-    <div class="guide-related"><p>${e(post.closing)}</p><div class="guide-hero-actions"><a href="${etsyShop}">Browse Moocsoft Paper on Etsy ↗</a>${posts.filter(other => other !== post && other.products.some(key => post.products.includes(key))).map(other => `<a href="${postPath(other)}">${e(other.title)} →</a>`).join('')}</div></div>
+    <div class="guide-related"><p>${e(post.closing)}</p><div class="guide-hero-actions"><a href="${etsyShop}">Browse Moocsoft Paper on Etsy ↗</a>${post.related.map(([label, href]) => `<a href="${e(href)}">${e(label)} →</a>`).join('')}</div></div>
   </article>
 </main>
 ${footer()}

@@ -44,3 +44,9 @@
 
 .paper-post-card picture, .paper-post-card img { display: block; width: 100%; }
 .paper-post-card img { height: auto; border-radius: 8px; margin-bottom: 16px; }
+
+.paper-table { max-width: 100%; overflow-x: auto; margin: 24px 0; }
+.paper-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.paper-table caption { text-align: left; font-weight: 600; padding-bottom: .75rem; }
+.paper-table th, .paper-table td { padding: .55em .45em; border-bottom: 1px solid #444; vertical-align: top; }
+.paper-table th { color: #f4efe6; }
