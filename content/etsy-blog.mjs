@@ -56,6 +56,61 @@ const products = {
 };
 
 const posts = [{
+  slug: 'one-oven-christmas-dinner-timeline',
+  title: 'Christmas Dinner Timeline for One Oven',
+  description: 'Plan a one-oven Christmas dinner backward from serving time. Use a worked 6 p.m. schedule to spot tray clashes and decide what to move to the stovetop.',
+  published: '2026-11-25',
+  products: ['christmas-dinner'],
+  intro: 'Start with the time the food should reach the table. For each dish, write down its oven temperature, how much rack space it needs, and what has to happen after it comes out. Two trays that need the same rack at different temperatures are a scheduling conflict, even if their cooking times look short.',
+  table: {
+    caption: 'Worked example for a 6 p.m. dinner',
+    headers: ['Time', 'Oven', 'What happens elsewhere'],
+    rows: [
+      ['4:45 p.m.', 'Preheat for the gratin.', 'Set out the serving dishes and their spoons.'],
+      ['5:00–5:45', 'Bake the gratin for the 45 minutes in your recipe.', 'Set the table and prepare the green beans for the stovetop.'],
+      ['5:45–5:50', 'Take out the gratin and check the oven setting for the rolls.', 'Let the gratin rest as directed. A helper fills the water glasses.'],
+      ['5:50–6:00', 'Warm the rolls if the oven is at the temperature your recipe calls for.', 'Finish the beans, dress the salad and carry the dishes to the table.'],
+    ],
+  },
+  sections: [
+    ['What fits in the oven at the same time?', 'Try the empty pans on the actual racks before the day. Include handles and lids. In this example the gratin occupies the main rack, the beans cook on the stove, and the salad needs no heat. The schedule assumes your gratin recipe allows a 15-minute rest and your rolls need 10 minutes. Replace both with the timings for your dishes.'],
+    ['What if two dishes need the same slot?', 'Suppose a guest offers a second baked side that needs the oven from 5:30 until 6. The gratin is still in there. Ask whether the guest would like to bring a cold side instead, or serve the rolls at room temperature and give the last slot to a dish that fits it. Decide before shopping, while the menu is still easy to change.'],
+    ['Give each helper a handoff they can see', '“When the gratin comes out, put the water glasses on the table” is easier to follow than “help around six.” Write one name beside each last-minute job. Our Christmas Dinner Planner has separate oven and serving pages, so the person setting the table can take their sheet out of the kitchen.'],
+  ],
+  related: [
+    ['Choose Christmas printables for your gathering', '/blog/christmas-printables/'],
+    ['Set up a mystery while dinner is cooking', '/blog/christmas-mystery-game-for-kids/'],
+    ['Work out quantities for a cookie swap', '/blog/host-a-christmas-cookie-exchange/'],
+  ],
+  closing: 'The Christmas Dinner Planner is a paid PDF download. Preview the menu, oven schedule and serving timeline on Etsy before choosing the pages to print.',
+}, {
+  slug: 'christmas-mystery-game-for-kids',
+  title: 'Christmas Mystery Game for Kids: A Host’s Guide',
+  description: 'Set up a printable Christmas mystery game for kids and adults. Try a spoiler-free practice clue, share detective roles and know when to offer a hint.',
+  published: '2026-11-25',
+  products: ['missing-tree-star'],
+  intro: 'Give each team a pencil, a place to spread out its clues and a grid everyone can see. Keep the answer key with the host. Before opening the case, try the little practice puzzle below so younger detectives get a turn at reasoning before the faster readers race ahead.',
+  table: {
+    caption: 'A two-clue warm-up, separate from the printable game',
+    headers: ['Read aloud', 'Ask the team'],
+    rows: [
+      ['A bell is in one of three boxes: red, blue or green.', 'What are the three possibilities?'],
+      ['Clue one: The green box is empty.', 'Which box can you cross out?'],
+      ['Clue two: The red box holds only a ribbon.', 'Which box must hold the bell, and why?'],
+    ],
+  },
+  sections: [
+    ['Let a child explain the first deduction', 'The bell must be in the blue box. Ask someone to explain why both other boxes are ruled out. If they guessed blue straight away, invite another player to point to the clue that rules out red. This gives the group a shared rule for the main game: every mark on the grid needs a reason.'],
+    ['Divide the jobs around the table', 'In our printable case, The Missing Tree Star, teams have six witness clues, two logic grids and a letter code to work through. One player reads a statement, another marks the grid, and a third asks which words support the mark. Swap jobs after each clue. A child who prefers listening can point to the square while a partner writes.'],
+    ['Offer a hint without giving away the ending', 'If the group stalls, ask them to show you their last certain mark. Then ask which witness helped them make it. Often two players have understood a word differently. Let them reread the line together before offering a printed hint. Give the team the letter-code worksheet when they reach it. Keep your answer key face down until everyone has had a chance to explain a theory.'],
+  ],
+  related: [
+    ['Compare five Christmas party printables', '/blog/christmas-printables/'],
+    ['Time the game around Christmas dinner', '/blog/one-oven-christmas-dinner-timeline/'],
+    ['Organize a family Secret Santa draw', '/blog/organize-secret-santa-with-wish-lists/'],
+  ],
+  closing: 'The Missing Tree Star is a paid digital download. The Etsy preview shows the case materials so you can decide whether the reading and puzzles suit your group.',
+}, {
   slug: 'christmas-printables',
   title: "Christmas Printables for Parties and Gift Swaps",
   description: "Choose Christmas printables for a cookie swap, Secret Santa draw, family mystery or dinner. See what to print before guests arrive and what to set out.",
@@ -82,6 +137,8 @@ const posts = [{
     ],
   },
   related: [
+    ["Build a one-oven dinner timeline", "/blog/one-oven-christmas-dinner-timeline/"],
+    ["Host a Christmas mystery game", "/blog/christmas-mystery-game-for-kids/"],
     ["Calculate cookie swap quantities", "/blog/host-a-christmas-cookie-exchange/"],
     ["Collect Secret Santa wish lists", "/blog/organize-secret-santa-with-wish-lists/"],
     ["Write a card for a holiday host", "/blog/print-and-send-new-year-cards/"],
