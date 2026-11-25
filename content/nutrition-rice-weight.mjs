@@ -8,11 +8,11 @@ export const riceBatches = [
 ];
 
 export default [{
-  topic: 'nutrition', slug: 'dry-to-cooked-rice-weight', published: '2026-10-15',
+  topic: 'nutrition', slug: 'dry-to-cooked-rice-weight', published: '2026-10-15', modified: '2026-11-25',
   startAction: ['#step-4', 'Try the two portion checks ↓'],
-  title: 'Dry to Cooked Rice: Convert Your Portion by Weight',
-  description: 'Convert a cooked rice portion to dry-equivalent grams using your measured batch yield. Worked examples explain why a fixed dry-to-cooked ratio can mislead.',
-  intro: 'Match dry rice to a dry-food label, or cooked rice to a matching cooked-food entry. If you have a dry label but a cooked portion, use that batch’s dry input and cooked yield to find its dry-equivalent grams. Cooked weight alone cannot recover the original dry amount.',
+  title: 'Dry to Cooked Rice Weight: 30 g, 40 g and 50 g',
+  description: 'See what 30 g, 40 g or 50 g of dry rice weighs cooked in two example batches. Use your own batch ratio to convert dry to cooked rice or work backward.',
+  intro: 'How much does 50 g of dry rice weigh after cooking? In the two example batches below, it works out to 140 g and 160 g. Your answer depends on how much water the rice retains. Weigh the whole batch before and after cooking to find the ratio for your pot.',
   takeaway: 'Dry-equivalent grams = dry batch grams × (cooked portion grams ÷ cooked batch grams). In the invented example, 150 g dry becomes 420 g cooked: a 140 g cooked portion represents 50 g dry, approximately 180 kcal under the example label.',
   appPreview: true, showToolAction: false,
   previewCopy: {
@@ -20,7 +20,9 @@ export default [{
     description: 'NutriLens estimates calories and macros from a meal photo. It does not weigh rice or recover your batch yield; keep this calculation separately when reviewing a photo estimate.',
   },
   sections: [
-    ['Choose the basis before converting anything', `<p>You do not need a conversion when your measured preparation already matches the reference. The <a href="https://fdc.nal.usda.gov/Foundation_Foods_Documentation/">USDA Foundation Foods documentation</a> explains that food descriptions identify characteristics including raw or cooked. Read the complete description, not only “rice.”</p><p>To use a dry label for a cooked portion, record three weights: rice before cooking, the whole cooked batch, and your portion. Exclude containers with the scale’s tare function. Weigh batch and portions in the same condition, before later drying or reheating changes their weights.</p>`],
+    ['How much cooked rice do 30 g, 40 g and 50 g of dry rice make?', `<p>Divide the weight of the cooked batch by its starting dry weight. In example A, 150 g of dry rice yields 420 g cooked, a multiplier of 2.8. In example B, the same dry weight yields 480 g, a multiplier of 3.2. Multiply the dry portion by your measured multiplier.</p>` + table('Cooked weights at two illustrative yields. These are worked examples, not a universal range.', ['Dry rice', 'Cooked at 2.8×', 'Cooked at 3.2×'], [30, 40, 50, 100].map(grams => [
+      `${grams} g`, ...riceBatches.slice(0, 2).map(batch => `${grams * batch.cookedGrams / batch.dryGrams} g`),
+    ])) + `<p>You do not need a conversion when your measured preparation already matches the reference. The <a href="https://fdc.nal.usda.gov/Foundation_Foods_Documentation/">USDA Foundation Foods documentation</a> explains that food descriptions identify characteristics including raw or cooked. Read the complete description, not only “rice.”</p><p>To use a dry label for a cooked portion, record three weights: rice before cooking, the whole cooked batch, and your portion. Exclude containers with the scale’s tare function. Weigh batch and portions in the same condition, before later drying or reheating changes their weights.</p>`],
     ['Convert one cooked portion to dry-equivalent grams', `<p>These are <strong>invented worksheet figures</strong>, not USDA rice values, recommended portions or NutriLens scan results. Assume plain rice cooked with water, all the rice retained, and the finished batch reasonably uniform. The illustrative dry label says <strong>360 kcal per 100 g</strong>.</p><p class="guide-formula">Dry-equivalent grams = dry batch grams × (portion grams ÷ cooked batch grams)<br>Portion calorie estimate = dry-equivalent grams × dry-label kcal per 100 g ÷ 100</p><p>In batch A, 150 g dry rice yields 420 g cooked. Your 140 g portion is <strong>140 ÷ 420 = one third</strong> of the cooked batch. Its dry equivalent is <strong>150 × one third = 50 g</strong>. The example label therefore gives <strong>50 × 360 ÷ 100 = 180 kcal</strong>.</p>` + table('Batch A: an illustrative dry-label calculation, not real product nutrition data', ['Record', 'Example value', 'What it describes'], [
       ['Dry rice weighed before cooking', '150 g', 'The rice covered by the dry label'],
       ['Whole cooked rice batch, excluding pot', '420 g', 'The finished yield used for portioning'],

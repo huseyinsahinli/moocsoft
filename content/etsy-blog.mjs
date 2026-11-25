@@ -61,6 +61,7 @@ const posts = [{
   description: 'Plan a one-oven Christmas dinner backward from serving time. Use a worked 6 p.m. schedule to spot tray clashes and decide what to move to the stovetop.',
   published: '2026-11-25',
   products: ['christmas-dinner'],
+  previewLink: 'Preview our printable dinner planner on Etsy',
   intro: 'Start with the time the food should reach the table. For each dish, write down its oven temperature, how much rack space it needs, and what has to happen after it comes out. Two trays that need the same rack at different temperatures are a scheduling conflict, even if their cooking times look short.',
   table: {
     caption: 'Worked example for a 6 p.m. dinner',
@@ -382,7 +383,7 @@ ${footer()}
 <main id="main-content" class="guide-shell paper-blog">
   <nav class="guide-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="${blogPath}">Blog</a><span aria-hidden="true">/</span><span aria-current="page">${e(post.title)}</span></nav>
   <article>
-    <header class="guide-hero">By Moocsoft Paper · Updated <time datetime="${post.modified || post.published}">${dateLabel(post.modified || post.published)}</time><h1>${e(post.title)}</h1><p>${e(post.intro)}</p></header>
+    <header class="guide-hero">By Moocsoft Paper · Updated <time datetime="${post.modified || post.published}">${dateLabel(post.modified || post.published)}</time><h1>${e(post.title)}</h1><p>${e(post.intro)}</p>${post.previewLink ? `<div class="guide-hero-actions"><a href="${e(selected[0].url)}">${e(post.previewLink)} ↗</a></div>` : ''}</header>
     ${post.sections ? `<div class="guide-article paper-post-body">
       ${comparisonTable(post.table)}
       ${post.sections.map(([heading, paragraph]) => `<section><h2>${e(heading)}</h2><p>${e(paragraph)}</p></section>`).join('\n      ')}

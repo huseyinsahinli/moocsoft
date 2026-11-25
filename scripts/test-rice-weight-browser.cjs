@@ -21,7 +21,7 @@ const slug = 'dry-to-cooked-rice-weight';
       page.on('pageerror', error => errors.push(error.message));
       page.on('response', response => { if (response.url().startsWith(base + '/') && response.status() >= 400) errors.push(response.url()); });
       assert.equal((await page.goto(base + '/guides/' + slug + '/')).status(), 200);
-      assert.equal(await page.title(), 'Dry to Cooked Rice: Convert Your Portion by Weight | Moocsoft');
+      assert.equal(await page.title(), 'Dry to Cooked Rice Weight: 30 g, 40 g and 50 g | Moocsoft');
       assert.equal(await page.locator('h1').count(), 1);
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
       assert.equal(await page.locator('.app-install .install-link').count(), 2);
