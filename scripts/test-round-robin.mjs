@@ -50,7 +50,7 @@ const html = readFileSync(resolve(root, `guides/${guide.slug}/index.html`), 'utf
 assert(html.includes(`<title>${guide.title} | Moocsoft</title>`));
 assert(html.includes(`<link rel="canonical" href="https://moocsoft.net/guides/${guide.slug}/">`));
 assert.match(html, /"datePublished":"2026-10-09"/);
-assert.match(html, /"dateModified":"2026-10-09"/);
+assert.match(html, /"dateModified":"2026-11-26"/);
 assert.equal((html.match(/<summary>[1-6]\. /g) || []).length, 6);
 for (const answer of ['6', '10', '28', '30']) assert(html.includes(`<strong>${answer} matches.</strong>`));
 assert(html.includes('<strong>No: 15 matches.</strong>'));

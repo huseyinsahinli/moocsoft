@@ -50,3 +50,9 @@
 .paper-table caption { text-align: left; font-weight: 600; padding-bottom: .75rem; }
 .paper-table th, .paper-table td { padding: .55em .45em; border-bottom: 1px solid #444; vertical-align: top; }
 .paper-table th { color: #f4efe6; }
+
+.paper-analytics { max-width: 68ch; margin: 1.75rem auto; padding: 0 1rem; color: #c6c1ba; }
+.paper-analytics[hidden] { display: none; }
+.paper-analytics summary { cursor: pointer; }
+.paper-analytics button { margin: .2rem; padding: .55rem .85rem; border: 1px solid #777; border-radius: .45rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.paper-analytics a { color: inherit; text-decoration: underline; }

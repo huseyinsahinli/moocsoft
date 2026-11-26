@@ -9,7 +9,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(resolve(root, file), 'utf8');
 const guide = guides.find(item => item.slug === 'calculate-cigarette-cost-and-savings');
 assert(guide);
-assert.equal(guide.modified, '2026-11-09', 'The worked price-change comparison is a substantive revision; publication stays unchanged');
+assert.equal(guide.modified, '2026-11-26', 'The calculator moved ahead of the guide navigation; publication stays unchanged');
 assert.equal(guide.mediaAfterSection, 2);
 assert.equal(guide.showToolAction, false);
 assert.deepEqual(guide.startAction, ['#cigarette-cost-calculator', 'Calculate my cigarette costs ↓']);
@@ -21,7 +21,7 @@ assert(html.indexOf('id="cigarette-cost-form"') < html.indexOf('<figure class="g
 assert(html.indexOf('<section id="step-2">') < html.indexOf('<figure class="guide-visual">'));
 assert(html.indexOf('<figure class="guide-visual">') < html.indexOf('<section id="step-3">'));
 assert.equal(html.split('<figure class="guide-visual">').length - 1, 1);
-const hero = html.match(/<div class="guide-hero">([\s\S]*?)<div class="guide-layout">/)?.[1];
+const hero = html.match(/<div class="guide-hero">([\s\S]*?)<div class="lead-tool">/)?.[1];
 assert(hero.includes('href="#cigarette-cost-calculator"'));
 assert(!hero.includes('href="/tools/quit-smoking-savings-calculator/"'), 'The first action targets the cost task, not a separate quit-date task');
 assert(html.includes('href="/tools/quit-smoking-savings-calculator/"'), 'Quit-date calculator stays available in context');
@@ -30,7 +30,7 @@ assert(html.includes('data-placement="guide-preview"'));
 assert(html.includes('id6747658536'));
 assert(!html.includes('play.google.com'), 'QuitBit stays iOS-only');
 assert(html.includes(guideMedia[guide.slug].src));
-assert.match(html, /"dateModified":"2026-11-09"/);
+assert.match(html, /"dateModified":"2026-11-26"/);
 for (const other of Object.keys(guideMedia).filter(slug => slug !== guide.slug)) {
   const page = read('guides/' + other + '/index.html');
   assert(page.indexOf('<figure class="guide-visual">') < page.indexOf('<section id="step-1">'), other + ': no unrelated reorder');

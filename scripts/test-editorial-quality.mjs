@@ -14,7 +14,7 @@ for (const guide of guides) {
   if (apps[guide.topic]) assert(html.includes('class="app-install"'), `${guide.slug}: original upper store area retained`);
   if (guide.appPreview && !appPreviews[guide.topic].image) assert(!toc.includes('in action'), `${guide.slug}: no unsupported screenshot promise`);
   if (revised.includes(guide.slug)) {
-    assert.equal(guide.modified, '2026-11-09');
+    assert.equal(guide.modified, guide.slug === 'calculate-cigarette-cost-and-savings' ? '2026-11-26' : '2026-11-09');
     assert.equal(guide.published || published, ['food-photo-log', 'calculate-cigarette-cost-and-savings'].includes(guide.slug) ? '2026-09-12' : '2026-09-22');
     assert(html.includes('<table>'), `${guide.slug}: visible worked comparison`);
   } else assert.notEqual(guide.modified, '2026-11-09', `${guide.slug}: no blanket date refresh`);

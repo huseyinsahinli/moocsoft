@@ -55,11 +55,12 @@ form.addEventListener('submit', event => {
   },
   {
     path: '/gta-6-character-guide/',
-    title: 'GTA 6 character guide: Jason, Lucia and their connections',
-    description: 'Trace Jason and Lucia’s starting points, Jason’s connections in the Keys and the people behind Only Raw Records in Vice City.',
+    modified: '2026-11-26',
+    title: 'GTA 6 Characters: Jason Duval, Lucia Caminos and Allies',
+    description: 'Meet Jason Duval and Lucia Caminos, then follow their connections to Cal Hampton, Brian Heder and the musicians at Only Raw Records. Based on Rockstar’s profiles.',
     body: `<p>Start with two names: <strong>Jason Duval and Lucia Caminos</strong>. Then follow two smaller circles, Jason’s connections in the Keys and the musicians around Only Raw Records. This guide uses Rockstar’s character introductions and leaves mission outcomes out.</p>
-<h2>Jason and Lucia</h2><p>Jason has a military background and works in the Keys. Lucia wants a fresh start after leaving prison. When you read their profiles, notice what each expects from their partnership. Jason wants life to get easier. Lucia already has a plan.</p>
-<h2>Three connections that make the cast easier to remember</h2><dl class="places"><div><dt>Jason ↔ Cal Hampton</dt><dd>Cal is Jason’s friend and also knows Brian. Hearing Cal’s name puts you in Jason’s local circle.</dd></div><div><dt>Jason ↔ Brian Heder</dt><dd>Brian runs a boatyard and gives Jason a place to live in return for work. That explains the link between Jason’s home and his obligations in the Keys.</dd></div><div><dt>Boobie Ike ↔ Dre’Quan Priest ↔ Real Dimez</dt><dd>Boobie and Dre’Quan are business partners. Dre’Quan signed Real Dimez. When Only Raw Records comes up, think of this music connection.</dd></div></dl>
+<h2>Who are Jason Duval and Lucia Caminos?</h2><p>Jason has a military background and works in the Keys. Lucia wants a fresh start after leaving prison. When you read their profiles, notice what each expects from their partnership. Jason wants life to get easier. Lucia already has a plan.</p>
+<h2>How Cal Hampton, Brian Heder and Only Raw Records fit in</h2><dl class="places"><div><dt>Jason ↔ Cal Hampton</dt><dd>Cal is Jason’s friend and also knows Brian. Hearing Cal’s name puts you in Jason’s local circle.</dd></div><div><dt>Jason ↔ Brian Heder</dt><dd>Brian runs a boatyard and gives Jason a place to live in return for work. That explains the link between Jason’s home and his obligations in the Keys.</dd></div><div><dt>Boobie Ike ↔ Dre’Quan Priest ↔ Real Dimez</dt><dd>Boobie and Dre’Quan are business partners. Dre’Quan signed Real Dimez. When Only Raw Records comes up, think of this music connection.</dd></div></dl>
 <h2>Can you place the names?</h2><details><summary>Who connects Jason’s housing to his work?</summary><p>Brian Heder. Cal is the friend in this circle.</p></details><details><summary>Is Real Dimez the name of the record label?</summary><p>Real Dimez is the act. Only Raw Records is the label.</p></details>
 <p><a href="${people}">See Rockstar’s character portraits and full introductions</a>.</p>
 <aside class="puzzle-ad"><img src="/assets/apps/math-riddles/icon.png" alt="" width="64" height="64"><div><small>Advertisement · A Moocsoft app</small><p>Enjoy a quick puzzle between sessions? <a href="/math-riddles/">Try Math Riddles</a>.</p></div></aside>`

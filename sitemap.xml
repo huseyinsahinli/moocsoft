@@ -2,7 +2,7 @@
 <urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/tools/savings-goal-calculator/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-11-26</lastmod>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/app-brief-builder/</loc>
@@ -196,7 +196,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/gta-6-character-guide/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/gta-covers/characters.webp</image:loc></image:image>
   </url>
   <url>
@@ -444,7 +444,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calculate-cigarette-cost-and-savings/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-visuals/cigarette-cost.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/quitbit/screenshot-2.jpg</image:loc></image:image>
   </url>
@@ -643,7 +643,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/round-robin-match-count/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -748,7 +748,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/quitting/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
   </url>
   <url>
@@ -763,7 +763,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -773,7 +773,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>
@@ -784,7 +784,17 @@
   </url>
   <url>
     <loc>https://moocsoft.net/blog/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/how-to-make-a-family-recipe-keepsake-book/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/sunday-archive-1200.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://moocsoft.net/blog/travel-journal-prompts-for-six-postcards/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <image:image><image:loc>https://moocsoft.net/assets/etsy/postcards-from-elsewhere-1200.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/blog/one-oven-christmas-dinner-timeline/</loc>

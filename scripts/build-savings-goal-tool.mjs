@@ -7,8 +7,8 @@ import { attributeStoreLinks } from '../content/store-attribution.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const path = '/tools/savings-goal-calculator/';
-const title = 'Savings Goal Calculator: Plan Weekly or Monthly Deposits';
-const description = 'Calculate how much to save for a goal after subtracting money already set aside. Choose future deposit slots, see an exact-cent schedule and download a free CSV.';
+const title = 'Savings Goal Calculator for Weekly or Monthly Deposits';
+const description = 'Work out how much to save each week, every two weeks or each month. Enter your target and current savings to see a deposit schedule and download it as a CSV.';
 const graph = [
   { '@type': 'WebPage', name: title, description, url: site + path, inLanguage: 'en', isAccessibleForFree: true,
     publisher: { '@type': 'Organization', name: 'Moocsoft', url: site },
@@ -21,7 +21,7 @@ const html = `${head(title, description, path, graph, apps.savings, ['savings-go
   <section class="tool-hero">
     <span class="eyebrow">Free savings goal calculator · No sign-up</span>
     <h1>Savings Goal Calculator</h1>
-    <p class="hero-copy">Subtract the money already set aside from your target, then split the gap across the future deposits you choose. Get a cent-accurate plan for weekly, every-two-week or monthly contributions.</p>
+    <p class="hero-copy">Subtract the money already set aside from your target, then split the gap across the future deposits you choose. For a remaining target of $600, twelve weekly deposits are $50 each. Three monthly deposits are $200 each. Count the actual deposit dates before choosing your schedule.</p>
     <p class="goal-note">Count your real contribution dates before entering a number. This free website tool does not select calendar dates, assess affordability, earn interest, connect to a bank or move money. Your inputs stay in this page; they are not stored or sent to Moocsoft.</p>
     <div class="guide-hero-actions"><a href="#goal-planner">Build your plan ↓</a><a href="#worked-example">See the worked example ↓</a></div>
   </section>

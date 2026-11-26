@@ -4,6 +4,21 @@ import { footer, head } from './components.mjs';
 export const etsyShop = 'https://www.etsy.com/shop/MoocsoftPaper';
 
 const products = {
+  "sunday-archive": {
+    "name": "Sunday Archive",
+    "image": "/assets/etsy/sunday-archive",
+    "alt": "Family recipe book cover and eight cut-apart family interview cards",
+    "summary": "A 10-page recipe journal with space for a cook’s handwriting, eight interview cards and a dedication about the first day you cooked together.",
+    "url": "https://www.etsy.com/listing/4626108861/family-recipe-keepsake-book-printable"
+  },
+  "postcards-from-elsewhere": {
+    "name": "Postcards from Elsewhere",
+    "image": "/assets/etsy/postcards-from-elsewhere",
+    "alt": "Travel journal cover beside two cut-apart travel memory postcards",
+    "summary": "Six keepsake postcards, a walking map, ticket pages, a trip fund log and a homecoming letter in a 10-page travel journal.",
+    "url": "https://www.etsy.com/listing/4626111487/printable-travel-journal-with-six"
+  }
+,
   'missing-tree-star': {
     name: 'The Missing Tree Star',
     image: '/assets/etsy/missing-tree-star',
@@ -55,7 +70,146 @@ const products = {
   },
 };
 
-const posts = [{
+const posts = [
+  {
+    "slug": "how-to-make-a-family-recipe-keepsake-book",
+    "title": "How to Make a Family Recipe Book in the Cook’s Own Words",
+    "description": "Turn one family dish into a keepsake. Use interview questions, record the cues a recipe leaves out and dedicate a page to the first day you cooked together.",
+    "published": "2026-11-26",
+    "products": [
+      "sunday-archive"
+    ],
+    "previewLink": "See the printable family recipe book on Etsy",
+    "intro": "Start with one dish someone in the family would miss. Put a blank page on the counter the next time the cook makes it. The most valuable line might be the one they never thought to write down. When they reach for a familiar cup, ask to see it. When they turn down the heat, ask what they noticed.",
+    "table": {
+      "caption": "Four ways to turn a kitchen conversation into a usable recipe",
+      "headers": [
+        "What you hear",
+        "What to ask or record"
+      ],
+      "rows": [
+        [
+          "“A cup of flour.”",
+          "Which cup? Trace the rim or measure what the cook puts in it. Keep both descriptions."
+        ],
+        [
+          "“Stir until it feels right.”",
+          "Ask the cook to hand you the spoon at that moment. Write how it moves."
+        ],
+        [
+          "“Your uncle always took the first piece.”",
+          "Write the line as you heard it. Put the name and the occasion beside it."
+        ],
+        [
+          "“I usually use something else in winter.”",
+          "Give the seasonal version its own line so the next cook knows when to use it."
+        ]
+      ]
+    },
+    "sections": [
+      [
+        "What belongs on the first recipe spread?",
+        "Give one page to ingredients and the next to the order of the work. Start with the name the family actually uses for the dish, even if a cookbook calls it something else. Add who usually made it and how many people it served that day. If a measure is uncertain, leave space to confirm it the next time you cook."
+      ],
+      [
+        "Ask a question while your hands are busy",
+        "Pick an interview card before you start. Ask how the cook knows what is missing after the first taste, then listen for the decision that follows. “I add lemon when the lentils taste flat” gives the next cook more to work with than “season to taste.” That example is fictional. Keep the actual cook’s words in your book."
+      ],
+      [
+        "Make the gift page about a day you shared",
+        "Picture the first time the two of you cooked together. Where were you standing? What did you try to make? Write down one small thing the other person might have forgotten. A tipped flour tin or the wait for someone to find the right lid can place both of you back in the room. Finish with your name and the date, then slip the dedication inside the cover."
+      ],
+      [
+        "Print one set before making copies",
+        "Choose A4 or US Letter to match your paper and print a single recipe spread at actual size. Check the writing space with the pen you plan to give. Repeat the ingredient and method pages for each dish, and keep a scan of a fragile handwritten recipe so the original stays with its owner."
+      ]
+    ],
+    "related": [
+      [
+        "Plan a family dinner with one oven",
+        "/blog/one-oven-christmas-dinner-timeline/"
+      ],
+      [
+        "Share recipe cards at a cookie exchange",
+        "/blog/host-a-christmas-cookie-exchange/"
+      ]
+    ],
+    "closing": "Sunday Archive is a paid digital download. Both English PDFs contain the same ten pages, including eight interview cards and two recipe cards to cut apart."
+  },
+  {
+    "slug": "travel-journal-prompts-for-six-postcards",
+    "title": "Six Travel Journal Prompts for a Trip Told in Postcards",
+    "description": "Remember a journey through six postcard prompts, from first light to the sound you would take home. Includes a walking-map example and a way to caption ticket stubs.",
+    "published": "2026-11-26",
+    "products": [
+      "postcards-from-elsewhere"
+    ],
+    "previewLink": "See the six-postcard travel journal on Etsy",
+    "intro": "If your camera roll already tells you where you went, use a journal for what the pictures miss. Six short postcards are enough to hold a trip together. You can write one on the train, two at a café and the last at home. Leave room for a moment that only makes sense once the journey is over.",
+    "table": {
+      "caption": "Choose one detail for each keepsake card",
+      "headers": [
+        "Card",
+        "A way to start"
+      ],
+      "rows": [
+        [
+          "1 · Arrival",
+          "Finish “I knew I had arrived when…” with one detail from the first five minutes."
+        ],
+        [
+          "2 · First light",
+          "Look out the window before checking your phone. What catches the light first?"
+        ],
+        [
+          "3 · A table for one more",
+          "Name one thing on the table and one thing someone said."
+        ],
+        [
+          "4 · The long way",
+          "Which turn changed your route? What made you take it?"
+        ],
+        [
+          "5 · Small kindness",
+          "Describe a gesture you might forget by next week."
+        ],
+        [
+          "6 · A sound to take home",
+          "Write the rhythm of one sound. Where did you hear it, and what did you hear after it stopped?"
+        ]
+      ]
+    },
+    "sections": [
+      [
+        "Use one scene per postcard",
+        "Instead of squeezing a whole day into three lines, give the card one job. Imagine a morning at a ferry landing. “Nice harbour” tells you the setting. “Two knocks on the rail, then the engine went quiet” puts you there for a moment. Add the place and date under the scene."
+      ],
+      [
+        "Draw the walk as you would explain it to a friend",
+        "Mark where you started, the corner where you nearly went straight and the spot where you stopped. A bench, bakery window or blue door can be a more memorable landmark than a street name. Use the walking-map page for the sketch and the detour card for the reason you took that turn."
+      ],
+      [
+        "Give a saved ticket a caption",
+        "Mount a copy of a ticket or café slip and write why you kept it. A fare tells you what the ride cost. A line about the person who waved from the platform tells you why it belonged on this page. Cover names, booking codes and barcodes before giving a page away."
+      ],
+      [
+        "Keep the last sound card until you get home",
+        "Read the first five cards somewhere quiet. Which sound can you still hear without replaying a video? Try two lines in different rhythms and keep the one that reads like the place. Tuck that card into an envelope, give it to your travel companion or leave it on the sheet beside the homecoming letter."
+      ]
+    ],
+    "related": [
+      [
+        "Turn trip photos into a February project",
+        "/blog/plan-february-2027-in-four-weeks/"
+      ],
+      [
+        "Browse all Moocsoft Paper guides",
+        "/blog/"
+      ]
+    ],
+    "closing": "Postcards from Elsewhere is a paid digital download. Each English PDF has ten pages. Choose A4 or US Letter, print at actual size and cut the six cards apart or leave the sheets together."
+  }
+, {
   slug: 'one-oven-christmas-dinner-timeline',
   title: 'Christmas Dinner Timeline for One Oven',
   description: 'Plan a one-oven Christmas dinner backward from serving time. Use a worked 6 p.m. schedule to spot tray clashes and decide what to move to the stovetop.',
@@ -332,21 +486,27 @@ ${detail ? `      <p>${e(detail)}</p>\n` : ''}      <a class="paper-link" href="
 }
 
 export function etsyHomeSection() {
-  const featured = ['missing-tree-star', 'secret-santa'];
+  const featured = ['sunday-archive', 'postcards-from-elsewhere'];
   return `<section class="block" id="etsy" aria-labelledby="etsy-title">
     <div class="section-head">
       <h2 class="section-title" id="etsy-title">Moocsoft Paper on Etsy</h2>
       <a class="section-meta" href="${etsyShop}">Shop on Etsy <span aria-hidden="true">↗</span></a>
     </div>
-    <p class="guide-topic-intro">Printable games, party kits, greeting cards and planners in A4 and US Letter.</p>
+    <p class="guide-topic-intro">Printable family recipe books, travel journals, party games and planners in A4 and US Letter.</p>
     <div class="paper-grid">${featured.map(key => productCard(products[key], 'h3')).join('')}</div>
     <p class="paper-more"><a href="${blogPath}">Read the Moocsoft Paper blog <span aria-hidden="true">→</span></a></p>
   </section>`;
 }
 
+const analyticsPreferences = `<details class="paper-analytics" data-paper-analytics hidden>
+  <summary>Blog analytics settings</summary>
+  <p>With your permission, Moocsoft uses Google Analytics cookies to count printable blog visits and clicks to Etsy. Google processes these measurements. Your choice is saved in this browser. You can change it here at any time. <a href="https://policies.google.com/technologies/partner-sites">How Google uses site data</a>.</p>
+  <p role="status"></p><button type="button" data-choice="allow">Allow analytics</button> <button type="button" data-choice="decline">Decline analytics</button>
+</details><script defer src="/assets/paper-analytics.js"></script>`;
+
 export function writeEtsyBlog(write) {
   const blogTitle = 'Moocsoft Paper Blog';
-  const blogDescription = 'Plan a cookie exchange, find the words for a New Year card or map out February 2027 with practical guides to Moocsoft Paper printables.';
+  const blogDescription = 'Make a family recipe book, keep a travel journal or plan a holiday gathering with practical guides and printable examples from Moocsoft Paper.';
   const collection = {
     '@type': 'CollectionPage', name: blogTitle, description: blogDescription, url: site + blogPath,
     mainEntity: { '@type': 'ItemList', itemListElement: newestFirst.map((post, index) => ({
@@ -366,6 +526,7 @@ export function writeEtsyBlog(write) {
     </a>`).join('')}
   </div>
 </main>
+${analyticsPreferences}
 ${footer()}
 </body>
 </html>`, latestEtsyPostDate);
@@ -383,15 +544,16 @@ ${footer()}
 <main id="main-content" class="guide-shell paper-blog">
   <nav class="guide-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="${blogPath}">Blog</a><span aria-hidden="true">/</span><span aria-current="page">${e(post.title)}</span></nav>
   <article>
-    <header class="guide-hero">By Moocsoft Paper · Updated <time datetime="${post.modified || post.published}">${dateLabel(post.modified || post.published)}</time><h1>${e(post.title)}</h1><p>${e(post.intro)}</p>${post.previewLink ? `<div class="guide-hero-actions"><a href="${e(selected[0].url)}">${e(post.previewLink)} ↗</a></div>` : ''}</header>
+    <header class="guide-hero">By Moocsoft Paper · Updated <time datetime="${post.modified || post.published}">${dateLabel(post.modified || post.published)}</time><h1>${e(post.title)}</h1><p>${e(post.intro)}</p><div class="guide-hero-actions">${selected.length === 1 ? `<a href="${e(selected[0].url)}">${e(post.previewLink || ('Preview ' + selected[0].name + ' on Etsy'))} ↗</a>` : '<a href="#printable-sets">Compare the printable sets ↓</a>'}</div></header>
     ${post.sections ? `<div class="guide-article paper-post-body">
       ${comparisonTable(post.table)}
       ${post.sections.map(([heading, paragraph]) => `<section><h2>${e(heading)}</h2><p>${e(paragraph)}</p></section>`).join('\n      ')}
       ${post.habitApp ? `<section><h2>How can I keep up a February routine?</h2><p>Pick one action for each project day, such as labeling five photos after dinner. Mark it on the printed tracker, or use our Habit Tracker Daily app to check it off on your phone and see your week on a calendar. Get it on the <a href="${e(apps.habits.apple)}">App Store</a> or <a href="${e(apps.habits.google)}">Google Play</a>.</p></section>` : ''}
-    </div>\n    ` : ''}<div class="paper-grid">${post.products.map(key => productCard(products[key], 'h2', post.details?.[key])).join('')}</div>
+    </div>\n    ` : ''}<div class="paper-grid" id="printable-sets">${post.products.map(key => productCard(products[key], 'h2', post.details?.[key])).join('')}</div>
     <div class="guide-related"><p>${e(post.closing)}</p><div class="guide-hero-actions"><a href="${etsyShop}">Browse Moocsoft Paper on Etsy ↗</a>${post.related.map(([label, href]) => `<a href="${e(href)}">${e(label)} →</a>`).join('')}</div></div>
   </article>
 </main>
+${analyticsPreferences}
 ${footer()}
 </body>
 </html>`, post.modified || post.published, images);
