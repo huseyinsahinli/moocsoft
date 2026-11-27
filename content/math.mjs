@@ -25,12 +25,21 @@ export default [
     ],
   },
   {
-    topic: 'math', slug: 'mental-math-games-for-adults', published: '2026-09-22',
-    title: 'Mental Math Games for Adults: A Practical Practice Routine',
-    description: 'Build a short mental-math practice routine with estimation, number bonds, percentage shortcuts and quick games you can repeat without worksheets.',
-    intro: 'Mental math practice does not need a long worksheet. A few focused rounds can help you become more comfortable estimating totals, splitting numbers and checking whether an answer is reasonable.',
-    takeaway: 'Practise one skill at a time, explain the shortcut you used, and value accurate reasoning before speed. A ten-minute routine is enough to create a repeatable habit.',
+    topic: 'math', slug: 'mental-math-games-for-adults', published: '2026-09-22', modified: '2026-11-27',
+    title: '3 Mental Math Games for Adults to Play Solo or With a Friend',
+    description: 'Play Make 100, a shopping-basket estimation game and a make-24 puzzle. Choose a round for your skill level and reveal the worked answers at your own pace.',
+    intro: 'Have a spare minute? Try Make 100. If you like a little competition, guess a shopping total before your opponent. For a slower puzzle, see whether you can make 24 from four numbers. All three rounds are ready to play below.',
+    takeaway: 'Choose complements for a quick warm-up, estimation for everyday arithmetic or a target-number puzzle if you enjoy trying several paths to a solution. Play each round in your head, then open its answer.',
+    startAction: ['#step-1', 'Play the three sample rounds ↓'],
     sections: [
+      ['Choose a mental math game and play a round', `
+<p><strong>Make 100 · One minute, solo or in pairs.</strong> For each starting number, say how much more you need to reach 100. Give yourself one point per correct answer. Start with <strong>47, 83 and 26</strong>. Playing with a friend? Take turns calling the next number.</p>
+<div class="guide-faq"><details><summary>Reveal the three missing amounts</summary><p><strong>53, 17 and 74.</strong> From 47, add 3 to reach 50 and another 50 to reach 100. Use the next ten as a stepping stone whenever the full subtraction feels awkward.</p></details></div>
+<p><strong>Basket estimate · Two players, or one player against a margin.</strong> Three items cost <strong>7.85, 6.20 and 4.95</strong>. Each player names an approximate total before anyone adds the prices exactly. Closest wins and equal distances tie. Playing solo? Aim to land within 1.00 of the receipt total.</p>
+<div class="guide-faq"><details><summary>Check the basket total</summary><p><strong>19.00.</strong> Rounding the prices to 8, 6 and 5 gives 19. Check it by adding 7.85 + 6.20 = 14.05, then 4.95. To play again, pick three different prices from a receipt and cover the total.</p></details></div>
+<p><strong>Make 24 · A puzzle with time to think.</strong> Use <strong>2, 3, 4 and 5</strong> exactly once each. Combine them with addition, subtraction, multiplication or division and parentheses to reach 24. A friend can check that your expression uses all four numbers.</p>
+<div class="guide-faq"><details><summary>See one way to make 24</summary><p><strong>2 × (3 + 4 + 5) = 24.</strong> Working backwards, 24 is double 12. Holding back the 2 leaves three numbers that add to 12. For another round, use 1, 2, 3 and 4 and see if multiplication alone will work.</p></details></div>
+<p>Want the browser to check your next answers? Play the <a href="/tools/math-puzzle-challenge/#round-everyday">five-question everyday numbers round</a> for a fresh set of shopping, timing and comparison problems.</p>`],
       ['Warm up with number bonds', `<p>Number bonds are pairs that make a convenient total. For example, 37 needs 63 to reach 100, and 68 needs 32. These pairs make later addition and subtraction easier because you can bridge through a round number.</p><p>Try a one-minute round: choose a target such as 10, 50 or 100 and name the complement of each number you see. Then reverse the direction—start with the complement and recover the original number.</p>`],
       ['Split addition into friendly parts', `<p>Instead of adding 48 + 37 in one jump, move 2 from 37 to 48. You now have 50 + 35 = 85. For 196 + 58, add 4 to reach 200 and then add the remaining 54, giving 254.</p><p>This compensation method works because you are redistributing part of one addend, not changing the total. Say the intermediate step aloud until the move feels obvious.</p><p>For a different everyday subtraction problem, <a href="/guides/elapsed-time-across-midnight/">calculate elapsed time across midnight</a>. Clock minutes use groups of sixty, so bridge through midnight rather than treating a time like an ordinary decimal.</p>`],
       ['Estimate before calculating exactly', table('Example estimation rounds', ['Question', 'Fast estimate', 'Exact answer'], [
@@ -43,7 +52,8 @@ export default [
     ],
     sources: [],
     faq: [
-      ['Do mental math games need a timer?', 'No. Start without a timer and focus on a method you can explain. Add a gentle time limit only after the process is accurate and comfortable.'],
+      ['Which mental math game works well for two adults?', 'Try the basket estimate. Both players guess the total of three prices before checking the sum. The closest guess wins. For a cooperative round, take turns naming complements to 100.'],
+      ['Do mental math games need a timer?', 'You can play all three games at your own pace. Try a one-minute limit for Make 100 when the complements start to feel familiar.'],
       ['How often should adults practise mental math?', 'A short, repeatable session is easier to maintain than an occasional marathon. Choose a schedule that fits you and vary the skill when practice becomes automatic.'],
     ],
   },

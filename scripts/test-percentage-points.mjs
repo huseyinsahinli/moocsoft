@@ -80,6 +80,6 @@ assert.deepEqual(createRelatedGuideSelector(guides)(guide).map(item => item.slug
 ]);
 for (const file of ['guides/index.html', 'guides/math/index.html', 'guides/mental-math-games-for-adults/index.html']) assert(read(file).includes(route));
 assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').published, '2026-09-22');
-assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').modified, undefined);
+assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').modified, '2026-11-27');
 assert(read('sitemap.xml').includes(`<loc>${site}${route}</loc>\n    <lastmod>2026-10-20</lastmod>`));
 console.log('PASS: six independently checked rate/wording/zero/count exercises, reversed bases, native answers, source and app boundaries, dated metadata, store attribution, incoming links and sitemap.');

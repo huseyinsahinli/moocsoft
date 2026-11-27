@@ -24,7 +24,7 @@ const article = JSON.parse(html.match(/<script type="application\/ld\+json">([\s
 assert.equal(article.headline, guide.title);
 assert.equal(article.description, guide.description);
 assert.equal(article.datePublished, guide.published);
-assert.equal(article.dateModified, guide.published);
+assert.equal(article.dateModified, '2026-11-27');
 assert.equal(article.inLanguage, 'en');
 assert.equal(article.url, site + path);
 
@@ -50,7 +50,7 @@ const next = createRelatedGuideSelector(guides)(slug).map(item => item.slug);
 assert.deepEqual(next, ['track-calories-homemade-meals', 'calories-vs-macros', 'ai-calorie-scanner-accuracy']);
 assert(read('guides/ai-calorie-scanner-accuracy/index.html').includes(`href="${path}"`));
 assert(read('guides/nutrition/index.html').includes(`href="${path}"`));
-assert(read('sitemap.xml').includes(`<loc>${site}${path}</loc>\n    <lastmod>${guide.published}</lastmod>`));
+assert(read('sitemap.xml').includes(`<loc>${site}${path}</loc>\n    <lastmod>${guide.modified}</lastmod>`));
 const previous = guides.find(item => item.slug === 'ai-calorie-scanner-accuracy');
 assert.equal(previous.published, '2026-10-06');
 assert.equal(previous.modified, undefined, 'A contextual reading link does not reset article freshness');

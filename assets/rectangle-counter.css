@@ -1,0 +1,45 @@
+.rectangle-counter {
+  margin: 0 0 2.5rem;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  background: #121518;
+  border: 1px solid #41454c;
+  border-radius: 1rem;
+  scroll-margin-top: 180px;
+  color: #eeeae3;
+}
+.rectangle-counter [hidden] { display: none !important; }
+.rectangle-counter h2, .rectangle-counter h3 { line-height: 1.2; }
+.rectangle-counter h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.1rem); }
+.rectangle-counter h3 { margin: 1.5rem 0 .6rem; font-size: 1.15rem; }
+.rectangle-counter p, .rectangle-counter li, .rectangle-counter figcaption { line-height: 1.55; }
+.rectangle-counter p { margin: .6rem 0 1rem; }
+.rectangle-inputs { display: grid; gap: .45rem 1rem; grid-template-columns: repeat(2, minmax(0, 9rem)); }
+.rectangle-inputs label { display: grid; gap: .35rem; font-weight: 600; }
+.rectangle-inputs input {
+  width: 100%; min-width: 0; box-sizing: border-box; padding: .55rem .7rem;
+  border: 1px solid #70777e; border-radius: .45rem; color: inherit; background: #1e2328; font: inherit;
+}
+.rectangle-inputs input[aria-invalid="true"] { border-color: #ffb494; }
+.rectangle-inputs small { grid-column: 1 / -1; color: #b8c1c7; }
+.rectangle-counter #rectangle-error { color: #ffd1b6; }
+.rectangle-counter #rectangle-error:empty { margin: 0; }
+.rectangle-overview { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 1rem 1.75rem; margin-top: 1.15rem; }
+.rectangle-counts { margin: 0; }
+.rectangle-counts div { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; padding: .45rem 0; border-bottom: 1px solid #3f484c; }
+.rectangle-counts dt { color: #e3e8e9; }
+.rectangle-counts dd { margin: 0; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.rectangle-counts div:first-child dd { color: #a7e5cd; font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1; }
+.rectangle-drawing { margin: 0; }
+.rectangle-drawing svg { display: block; width: 100%; height: 10rem; padding: .35rem; box-sizing: border-box; background: #192026; border-radius: .45rem; }
+.rectangle-drawing [data-grid-lines] { fill: none; stroke: #c3d6d3; stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
+.rectangle-drawing [data-example-shape] { fill: #34745f; stroke: #a7e5cd; stroke-width: 3px; vector-effect: non-scaling-stroke; }
+.rectangle-drawing figcaption { margin-top: .35rem; color: #c4cdd0; font-size: .91rem; }
+.rectangle-steps { padding-left: 1.4rem; margin: 0 0 .8rem; }
+.rectangle-steps li { padding: .2rem 0; }
+.rectangle-counter details summary { cursor: pointer; padding: .3rem 0; }
+.rectangle-counter .rectangle-practice { margin: 1rem 0 0; }
+.rectangle-practice a { color: #a7e5cd; text-decoration: underline; text-underline-offset: .18em; }
+@media (max-width: 620px) {
+  .rectangle-overview { grid-template-columns: minmax(0, 1fr); }
+  .rectangle-counter { scroll-margin-top: 205px; }
+}

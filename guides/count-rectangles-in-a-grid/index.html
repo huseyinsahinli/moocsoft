@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Count Rectangles in a Grid: Formula and 6 Answered Puzzles | Moocsoft</title>
-  <meta name="description" content="Count every rectangle in a complete grid, including squares. See why a 2-by-3 grid contains 18 rectangles, then try six questions with worked answers.">
+  <title>Count Rectangles in a Grid: Calculator, Formula and Puzzles | Moocsoft</title>
+  <meta name="description" content="Enter rows and columns to count rectangles, squares and non-square rectangles. See why a 2 × 3 grid has 18 rectangles, then try six puzzles with answers.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#090a0c">
   <link rel="canonical" href="https://moocsoft.net/guides/count-rectangles-in-a-grid/">
@@ -17,22 +17,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/tools.css">
   <link rel="stylesheet" href="/assets/content.css">
+  <link rel="stylesheet" href="/assets/rectangle-counter.css">
+  <script src="/assets/rectangle-counter.js" defer></script>
   <script src="/assets/guide-navigation.js" defer></script>
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Moocsoft">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Count Rectangles in a Grid: Formula and 6 Answered Puzzles">
-  <meta property="og:description" content="Count every rectangle in a complete grid, including squares. See why a 2-by-3 grid contains 18 rectangles, then try six questions with worked answers.">
+  <meta property="og:title" content="Count Rectangles in a Grid: Calculator, Formula and Puzzles">
+  <meta property="og:description" content="Enter rows and columns to count rectangles, squares and non-square rectangles. See why a 2 × 3 grid has 18 rectangles, then try six puzzles with answers.">
   <meta property="og:url" content="https://moocsoft.net/guides/count-rectangles-in-a-grid/">
   <meta property="og:image" content="https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
   <meta property="og:image:alt" content="A complete grid with 2 rows and 3 columns has 3 horizontal boundaries and 4 vertical boundaries. Choose a horizontal pair in 3 ways and a vertical pair in 6 ways: 18 rectangles.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Count Rectangles in a Grid: Formula and 6 Answered Puzzles">
-  <meta name="twitter:description" content="Count every rectangle in a complete grid, including squares. See why a 2-by-3 grid contains 18 rectangles, then try six questions with worked answers.">
+  <meta name="twitter:title" content="Count Rectangles in a Grid: Calculator, Formula and Puzzles">
+  <meta name="twitter:description" content="Enter rows and columns to count rectangles, squares and non-square rectangles. See why a 2 × 3 grid has 18 rectangles, then try six puzzles with answers.">
   <meta name="twitter:image" content="https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png">
   <meta name="twitter:image:alt" content="A complete grid with 2 rows and 3 columns has 3 horizontal boundaries and 4 vertical boundaries. Choose a horizontal pair in 3 ways and a vertical pair in 6 ways: 18 rectangles.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://moocsoft.net/guides/count-rectangles-in-a-grid/#article","headline":"Count Rectangles in a Grid: Formula and 6 Answered Puzzles","description":"Count every rectangle in a complete grid, including squares. See why a 2-by-3 grid contains 18 rectangles, then try six questions with worked answers.","inLanguage":"en","mainEntityOfPage":"https://moocsoft.net/guides/count-rectangles-in-a-grid/","url":"https://moocsoft.net/guides/count-rectangles-in-a-grid/","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"Moocsoft","url":"https://moocsoft.net/#about"},"publisher":{"@type":"Organization","name":"Moocsoft","url":"https://moocsoft.net/#about"},"image":["https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png"],"articleSection":"Math puzzles","isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moocsoft.net/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://moocsoft.net/guides/"},{"@type":"ListItem","position":3,"name":"Math puzzles","item":"https://moocsoft.net/guides/math/"},{"@type":"ListItem","position":4,"name":"Count Rectangles in a Grid: Formula and 6 Answered Puzzles","item":"https://moocsoft.net/guides/count-rectangles-in-a-grid/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://moocsoft.net/guides/count-rectangles-in-a-grid/#article","headline":"Count Rectangles in a Grid: Calculator, Formula and Puzzles","description":"Enter rows and columns to count rectangles, squares and non-square rectangles. See why a 2 × 3 grid has 18 rectangles, then try six puzzles with answers.","inLanguage":"en","mainEntityOfPage":"https://moocsoft.net/guides/count-rectangles-in-a-grid/","url":"https://moocsoft.net/guides/count-rectangles-in-a-grid/","datePublished":"2026-10-06","dateModified":"2026-11-27","author":{"@type":"Organization","name":"Moocsoft","url":"https://moocsoft.net/#about"},"publisher":{"@type":"Organization","name":"Moocsoft","url":"https://moocsoft.net/#about"},"image":["https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png"],"articleSection":"Math puzzles","isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moocsoft.net/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://moocsoft.net/guides/"},{"@type":"ListItem","position":3,"name":"Math puzzles","item":"https://moocsoft.net/guides/math/"},{"@type":"ListItem","position":4,"name":"Count Rectangles in a Grid: Calculator, Formula and Puzzles","item":"https://moocsoft.net/guides/count-rectangles-in-a-grid/"}]}]}</script>
 </head>
 <body class="marketing-page" style="--guide-accent:#c96a43">
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -42,10 +44,47 @@
   </header>
 <main id="main-content" class="guide-shell">
   <div class="guide-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><a href="/guides/math/">Math puzzles</a></div>
-  <div class="guide-hero"><span class="guide-kicker">Math puzzles · Practical guide</span><h1>Count Rectangles in a Grid: Formula and 6 Answered Puzzles</h1><p>A grid with 2 rows and 3 columns contains 18 rectangles of all sizes, including squares. Counting only its six small cells misses rectangles that span several cells. Choose grid-line boundaries or count each possible size to find the total.</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="2026-10-06">October 6, 2026</time><span>4 min read</span></div><div class="guide-hero-actions"><a href="#step-5">Try six rectangle-counting puzzles ↓</a><a href="/tools/math-puzzle-challenge/">Open the free math puzzle challenge →</a><a href="#app-preview-title">See app features and access ↓</a></div></div>
+  <div class="guide-hero"><span class="guide-kicker">Math puzzles · Practical guide</span><h1>Count Rectangles in a Grid: Calculator, Formula and Puzzles</h1><p>A 2 × 3 grid contains 18 rectangles, including 8 squares. Change the rows and columns to count your own grid, or follow the formula to see how each pair of boundaries makes a rectangle.</p><div class="guide-byline"><a href="/#about">By Moocsoft</a><time datetime="2026-10-06">October 6, 2026</time><span>Updated <time datetime="2026-11-27">November 27, 2026</time></span><span>4 min read</span></div><div class="guide-hero-actions"><a href="#rectangle-counter">Count rectangles in my grid ↓</a><a href="#app-preview-title">See app features and access ↓</a></div></div>
+  <div class="lead-tool"><section class="rectangle-counter" id="rectangle-counter" tabindex="-1" aria-labelledby="rectangle-counter-heading">
+  <h2 id="rectangle-counter-heading">How many rectangles are in your grid?</h2>
+  <p>Use a complete grid of square cells. Include every rectangle whose sides follow the grid lines.</p>
+  <div class="rectangle-inputs" data-grid-inputs hidden>
+    <label>Rows<input id="rectangle-rows" type="number" min="1" max="30" step="1" value="2" required inputmode="numeric" aria-describedby="rectangle-range rectangle-error"></label>
+    <label>Columns<input id="rectangle-columns" type="number" min="1" max="30" step="1" value="3" required inputmode="numeric" aria-describedby="rectangle-range rectangle-error"></label>
+    <small id="rectangle-range">Enter 1 to 30 cells on each side.</small>
+  </div>
+  <noscript><p>The example shows a 2 × 3 grid. To count a different grid by hand, <a href="#step-4">use the boundary formula</a>.</p></noscript>
+  <p id="rectangle-error" role="status"></p>
+  <div data-grid-output>
+    <div class="rectangle-overview">
+      <div aria-live="polite" aria-atomic="true">
+        <dl class="rectangle-counts">
+          <div><dt>Total rectangles</dt><dd data-count="total">18</dd></div>
+          <div><dt>Squares</dt><dd data-count="squares">8</dd></div>
+          <div><dt>Non-square rectangles</dt><dd data-count="other">10</dd></div>
+        </dl>
+      </div>
+      <figure class="rectangle-drawing">
+        <svg aria-hidden="true" focusable="false" viewBox="-0.1 -0.1 3.2 2.2">
+          <rect data-example-shape x="0" y="0" width="2" height="1"></rect>
+          <path data-grid-lines d="M0 0V2 M1 0V2 M2 0V2 M3 0V2 M0 0H3 M0 1H3 M0 2H3"></path>
+        </svg>
+        <figcaption data-example-caption>The highlighted rectangle spans 1 row and 2 columns. It fits in 4 positions in this grid.</figcaption>
+      </figure>
+    </div>
+    <h3>Count by choosing boundary lines</h3>
+    <ol class="rectangle-steps">
+      <li data-step="rows">Choose 2 of the 3 horizontal lines for the top and bottom. That gives 3 × 2 ÷ 2 = 3 pairs.</li>
+      <li data-step="columns">Choose 2 of the 4 vertical lines for the left and right sides. That gives 4 × 3 ÷ 2 = 6 pairs.</li>
+      <li data-step="total">Multiply the two counts. 3 × 6 = 18 rectangles, including squares.</li>
+    </ol>
+    <details><summary>How many of those are squares?</summary><p data-square-detail>Count square placements at each side length. There are 6 squares of size 1 × 1 and 2 of size 2 × 2. Together they give 8 squares. Subtract these from 18 to leave 10 non-square rectangles.</p></details>
+  </div>
+  <p class="rectangle-practice"><a href="#step-5">Try six grid puzzles with answers ↓</a></p>
+</section></div>
   <div class="guide-layout">
     <aside class="guide-toc" aria-label="On this page"><details class="guide-toc-menu"><summary>Jump to a section</summary><nav aria-label="Article sections"><ol><li><a href="#step-1">Decide which shapes count</a></li><li><a href="#step-2">Choose boundaries to get 18 rectangles in a 2-by-3 grid</a></li><li><a href="#step-3">Check the answer by counting every size</a></li><li><a href="#step-4">Apply the same formula to a larger complete grid</a></li><li><a href="#step-5">Try six rectangle-counting questions</a></li><li><a href="#step-6">Use the free challenge to check your method</a></li><li><a href="#questions">Common questions</a></li><li><a href="#app-preview-title">App features and access</a></li></ol></nav></details></aside>
-    <article class="guide-article" aria-label="Count Rectangles in a Grid: Formula and 6 Answered Puzzles">
+    <article class="guide-article" aria-label="Count Rectangles in a Grid: Calculator, Formula and Puzzles">
       <div class="guide-answer"><span>The useful takeaway</span><p>For r rows and c columns, choose two of the r + 1 horizontal lines and two of the c + 1 vertical lines. The total is r(r + 1)c(c + 1) ÷ 4, including squares.</p></div>
       <section id="step-1"><h2>Decide which shapes count</h2><p>This guide uses a complete rectangular grid with <strong>sides on its horizontal and vertical grid lines</strong>. Squares count as rectangles. Tilted shapes and diagonals do not count, and there are no missing cells or broken lines.</p><p>Rows and columns describe the cells, not the boundary lines. Two rows have three horizontal lines; three columns have four vertical lines. The outer border counts too.</p></section>
       <section id="step-2"><h2>Choose boundaries to get 18 rectangles in a 2-by-3 grid</h2><p>Each rectangle needs a top and bottom boundary. From three horizontal lines, the possible pairs are first–second, first–third and second–third: <strong>3 choices</strong>. From four vertical lines, there are <strong>6 choices</strong> for the left and right boundaries.</p><p>Every horizontal pair works with every vertical pair, so the total is <strong>3 × 6 = 18</strong>. Each selection identifies exactly one rectangle. You are choosing unordered pairs of distinct lines: swapping “top” and “bottom” does not create another shape.</p></section>

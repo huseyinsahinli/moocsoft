@@ -1,5 +1,43 @@
 import { table } from './apps.mjs';
 
+const rectangleCounter = `<section class="rectangle-counter" id="rectangle-counter" tabindex="-1" aria-labelledby="rectangle-counter-heading">
+  <h2 id="rectangle-counter-heading">How many rectangles are in your grid?</h2>
+  <p>Use a complete grid of square cells. Include every rectangle whose sides follow the grid lines.</p>
+  <div class="rectangle-inputs" data-grid-inputs hidden>
+    <label>Rows<input id="rectangle-rows" type="number" min="1" max="30" step="1" value="2" required inputmode="numeric" aria-describedby="rectangle-range rectangle-error"></label>
+    <label>Columns<input id="rectangle-columns" type="number" min="1" max="30" step="1" value="3" required inputmode="numeric" aria-describedby="rectangle-range rectangle-error"></label>
+    <small id="rectangle-range">Enter 1 to 30 cells on each side.</small>
+  </div>
+  <noscript><p>The example shows a 2 × 3 grid. To count a different grid by hand, <a href="#step-4">use the boundary formula</a>.</p></noscript>
+  <p id="rectangle-error" role="status"></p>
+  <div data-grid-output>
+    <div class="rectangle-overview">
+      <div aria-live="polite" aria-atomic="true">
+        <dl class="rectangle-counts">
+          <div><dt>Total rectangles</dt><dd data-count="total">18</dd></div>
+          <div><dt>Squares</dt><dd data-count="squares">8</dd></div>
+          <div><dt>Non-square rectangles</dt><dd data-count="other">10</dd></div>
+        </dl>
+      </div>
+      <figure class="rectangle-drawing">
+        <svg aria-hidden="true" focusable="false" viewBox="-0.1 -0.1 3.2 2.2">
+          <rect data-example-shape x="0" y="0" width="2" height="1"></rect>
+          <path data-grid-lines d="M0 0V2 M1 0V2 M2 0V2 M3 0V2 M0 0H3 M0 1H3 M0 2H3"></path>
+        </svg>
+        <figcaption data-example-caption>The highlighted rectangle spans 1 row and 2 columns. It fits in 4 positions in this grid.</figcaption>
+      </figure>
+    </div>
+    <h3>Count by choosing boundary lines</h3>
+    <ol class="rectangle-steps">
+      <li data-step="rows">Choose 2 of the 3 horizontal lines for the top and bottom. That gives 3 × 2 ÷ 2 = 3 pairs.</li>
+      <li data-step="columns">Choose 2 of the 4 vertical lines for the left and right sides. That gives 4 × 3 ÷ 2 = 6 pairs.</li>
+      <li data-step="total">Multiply the two counts. 3 × 6 = 18 rectangles, including squares.</li>
+    </ol>
+    <details><summary>How many of those are squares?</summary><p data-square-detail>Count square placements at each side length. There are 6 squares of size 1 × 1 and 2 of size 2 × 2. Together they give 8 squares. Subtract these from 18 to leave 10 non-square rectangles.</p></details>
+  </div>
+  <p class="rectangle-practice"><a href="#step-5">Try six grid puzzles with answers ↓</a></p>
+</section>`;
+
 export default [
   {
     topic: 'math', slug: 'repeating-pattern-puzzles-with-answers', published: '2026-10-06', appPreview: true,
@@ -35,12 +73,15 @@ export default [
     ],
   },
   {
-    topic: 'math', slug: 'count-rectangles-in-a-grid', published: '2026-10-06', appPreview: true,
-    title: 'Count Rectangles in a Grid: Formula and 6 Answered Puzzles',
-    description: 'Count every rectangle in a complete grid, including squares. See why a 2-by-3 grid contains 18 rectangles, then try six questions with worked answers.',
-    intro: 'A grid with 2 rows and 3 columns contains 18 rectangles of all sizes, including squares. Counting only its six small cells misses rectangles that span several cells. Choose grid-line boundaries or count each possible size to find the total.',
+    topic: 'math', slug: 'count-rectangles-in-a-grid', published: '2026-10-06', modified: '2026-11-27', appPreview: true,
+    assets: ['rectangle-counter'],
+    leadTool: rectangleCounter,
+    showToolAction: false,
+    title: 'Count Rectangles in a Grid: Calculator, Formula and Puzzles',
+    description: 'Enter rows and columns to count rectangles, squares and non-square rectangles. See why a 2 × 3 grid has 18 rectangles, then try six puzzles with answers.',
+    intro: 'A 2 × 3 grid contains 18 rectangles, including 8 squares. Change the rows and columns to count your own grid, or follow the formula to see how each pair of boundaries makes a rectangle.',
     takeaway: 'For r rows and c columns, choose two of the r + 1 horizontal lines and two of the c + 1 vertical lines. The total is r(r + 1)c(c + 1) ÷ 4, including squares.',
-    startAction: ['#step-5', 'Try six rectangle-counting puzzles ↓'],
+    startAction: ['#rectangle-counter', 'Count rectangles in my grid ↓'],
     previewCopy: {
       heading: 'Ready for a different kind of math riddle?',
       description: 'After the website grid exercises, explore Math Riddles for a separate collection of number and logic challenges, with hints, solutions and live 1v1 play. The original grid questions here are website practice, separate from app levels.',

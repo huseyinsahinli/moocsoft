@@ -162,12 +162,14 @@ assert.deepEqual(createRelatedGuideSelector(guides)(guide).map(row => row.slug),
 for (const file of ['guides/index.html', 'guides/math/index.html', 'guides/mental-math-games-for-adults/index.html']) assert(read(file).includes(route), file);
 const incoming = guides.find(row => row.slug === 'mental-math-games-for-adults');
 assert.equal(incoming.published, '2026-09-22');
-assert.equal(incoming.modified, undefined, 'A contextual link does not reset the old article date');
+assert.equal(incoming.modified, '2026-11-27', 'The three playable rounds are a substantive revision');
 assert(incoming.sections.find(([heading]) => heading === 'Estimate before calculating exactly')[1].includes(route));
 assert(read('sitemap.xml').includes(`<loc>${site}${route}</loc>\n    <lastmod>2026-10-23</lastmod>`));
 const home = read('index.html');
 const mathCard = home.match(/<!-- Math Riddles -->([\s\S]*?)<\/article>/)?.[1];
 assert(mathCard && !/4\.8\s*[·•]\s*100K\+/i.test(mathCard), 'The stale conflated rating/download badge stays removed');
 assert(mathCard.includes('id6449851642') && mathCard.includes('com.moocsoft.math_puzzle'));
-assert(read('sitemap.xml').includes(`<loc>${site}/</loc>\n    <lastmod>2026-10-23</lastmod>`));
+const homeSitemapEntry = read('sitemap.xml').split('<url>').find(entry => entry.includes(`<loc>${site}/</loc>`));
+const homeLastModified = homeSitemapEntry?.match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1];
+assert(homeLastModified >= '2026-10-23', 'The homepage reflects the badge correction or a later revision');
 console.log('PASS: three pack ratios and six independently cross-multiplied exercises, exact decimals versus rounded ties, conditional offers, native bars/photo, real app attribution, source/feature boundaries and dated reciprocal discovery.');

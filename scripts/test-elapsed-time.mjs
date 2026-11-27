@@ -67,5 +67,5 @@ assert(recommendations.every(item => item.topic === 'math'));
 for (const file of ['guides/math/index.html', 'guides/index.html', 'guides/mental-math-games-for-adults/index.html']) assert(read(file).includes(`/guides/${guide.slug}/`));
 assert(read('sitemap.xml').includes(`<loc>${site}/guides/${guide.slug}/</loc>`));
 assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').published, '2026-09-22');
-assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').modified, undefined);
+assert.equal(guides.find(item => item.slug === 'mental-math-games-for-adults').modified, '2026-11-27');
 console.log('PASS: independent timestamp solutions for five original elapsed-time problems, decimal-hours distinction, dated metadata, references, app attribution and reciprocal discovery.');

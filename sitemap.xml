@@ -2,13 +2,13 @@
 <urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moocsoft.net/</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moocsoft.net/tools/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/tools/52-week-savings-calculator/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/nutrilens/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -316,7 +316,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/calories-per-serving-vs-per-container/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-charts/calories-per-serving-vs-per-container.png</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/apps/nutrilens/screenshot-2.jpg</image:loc></image:image>
   </url>
@@ -340,7 +340,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/52-week-savings-challenge/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
@@ -588,7 +588,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/mental-math-games-for-adults/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -623,7 +623,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/prime-number-puzzles-with-answers/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -638,7 +638,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/count-rectangles-in-a-grid/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/guide-charts/count-rectangles-in-a-grid.png</image:loc></image:image>
   </url>
   <url>
@@ -738,12 +738,12 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/nutrition/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://moocsoft.net/guides/savings/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
   </url>
   <url>
@@ -763,7 +763,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/math/</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/math.jpg</image:loc></image:image>
   </url>
   <url>
@@ -773,7 +773,7 @@
   </url>
   <url>
     <loc>https://moocsoft.net/guides/</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/nutrition.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/savings.jpg</image:loc></image:image>
     <image:image><image:loc>https://moocsoft.net/assets/editorial/quitting.jpg</image:loc></image:image>

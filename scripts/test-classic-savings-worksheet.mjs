@@ -91,12 +91,20 @@ assert.equal(dataset.printMode, undefined);
 const guide = savingsGuides.find(item => item.slug === '52-week-savings-challenge');
 assert(guide);
 assert.equal(guide.published || published, '2026-09-12', 'Original publication date stays unchanged');
-assert.equal(guide.modified, '2026-10-16');
-assert.match(guide.title, /Free Printable Chart/);
+assert.equal(guide.modified, '2026-11-27');
+assert.match(guide.title, /Free Printable PDF/);
 assert.match(guide.description, /\$1,378/);
 assert.equal(guide.startAction[0], '#step-2');
 const content = guide.sections.map(([, body]) => body).join('\n');
 assert.match(content, /id="classic-savings-chart"/);
+const calculator = read('tools/52-week-savings-calculator/index.html');
+for (const size of ['a4', 'us-letter']) {
+  const path = '/assets/worksheets/52-week-savings-tracker-' + size + '.pdf';
+  for (const page of [content, html, calculator]) {
+    assert(page.includes('href="' + path + '" download'), 'Direct PDF download in each entry point: ' + size);
+  }
+  assert.equal(readFileSync(resolve(root, '.' + path)).subarray(0, 5).toString(), '%PDF-');
+}
 assert.match(content, /href="\/assets\/worksheets\/52-week-savings\.html"/);
 assert.match(content, /href="\/assets\/worksheets\/52-week-savings\.csv" download/);
 assert.match(content, /does not connect to a bank or import your plan into the app/);

@@ -9,11 +9,26 @@ export const labelExamples = [
 ];
 export const preparedExample = { foodCalories: 170, additionCalories: 60, preparedCalories: 230 };
 
+const servingCalculator = `<section class="serving-calculator" id="serving-calculator" data-serving-calculator aria-labelledby="serving-title" tabindex="-1">
+  <h2 id="serving-title">Calculate calories from a food label</h2>
+  <p>Choose the column printed on your package and enter the amount you ate. Use grams with grams or millilitres with millilitres.</p>
+  <form hidden aria-label="Label and portion amounts">
+    <label>Label basis<select name="basis"><option value="servings">Per serving</option><option value="container">Per whole container</option><option value="grams">Per stated weight (g)</option><option value="volume">Per stated volume (ml)</option></select></label>
+    <label><span data-basis-label>Calories per serving (kcal)</span><input name="calories" type="number" inputmode="decimal" step="any" min="0" required value="180"></label>
+    <label data-unit-field hidden><span data-quantity-label>Quantity on the label</span><input name="quantity" type="number" inputmode="decimal" step="any" min="0" required value="40" disabled></label>
+    <label><span data-portion-label>Number of servings</span><input name="portion" type="number" inputmode="decimal" step="any" min="0" required value="2.5"></label>
+  </form>
+  <div class="serving-estimate" role="status" aria-live="polite" aria-atomic="true"><span>Estimated calories for your portion</span><strong data-total>450 kcal</strong><p data-calculation>180 kcal × 2.5 servings</p></div>
+  <noscript><p>For your own label, multiply calories per serving by the number of servings eaten. For a weighed portion, multiply the listed calories by your portion weight divided by the weight on the label.</p></noscript>
+</section>`;
+
 export default [{
   topic: 'nutrition', slug: 'calories-per-serving-vs-per-container', published: '2026-10-12', appPreview: true,
-  title: 'Calories Per Serving vs Per Container: Read the Label',
-  description: 'Calculate calories for a whole pack or the amount you ate. Four worked label examples, per-100g conversions and an as-prepared double-counting check.',
-  intro: 'Calories per serving describe the label’s stated serving, not necessarily the whole package. To calculate the amount you ate, multiply the listed calories by your quantity divided by the label’s quantity, using the same units. If a column already says “per container,” it describes the whole container: do not multiply it by the number of servings again.',
+  modified: '2026-11-27', assets: ['serving-calculator'], leadTool: servingCalculator, showToolAction: false,
+  startAction: ['#serving-calculator', 'Calculate my portion ↓'],
+  title: 'Calories per Serving or Container? Calculate Your Portion',
+  description: 'Enter calories per serving, per container or per 100 g to calculate your portion. See worked examples for a whole pack, a partial serving and a drink.',
+  intro: 'A label says 180 calories per serving and 2.5 servings per pack. The whole pack contains about 450 calories. If the label already gives a whole-container value, use it directly. Try the numbers from your own package below.',
   takeaway: 'Check the calorie column, serving size, amount eaten and preparation basis before calculating. A package can contain several servings; a manufacturer’s serving is not a recommendation about how much you should eat. The result is a scaled label estimate, not an exact measurement of your meal.',
   previewCopy: {
     heading: 'Use the label for the pack, and NutriLens for the meal photo',

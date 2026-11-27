@@ -131,7 +131,7 @@ const money = text => Number(text.replace(/[^\d.-]/g, ''));
       await collectLinks(); await fits(); await privacy();
 
       assert.equal((await page.goto(base + classicPath)).status(), 200);
-      assert.match(await page.title(), /^52-Week Savings Challenge: Free Printable Chart & CSV/);
+      assert.match(await page.title(), /^52-Week Savings Challenge: Free Printable PDF & CSV/);
       assert.equal(await page.locator('h1').count(), 1);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://moocsoft.net' + classicPath);
       await storeHeader('6450431254', 'com.moocsoft.goal_tracker', 'guides-52-week-savings-challenge');

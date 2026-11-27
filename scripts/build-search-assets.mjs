@@ -210,6 +210,8 @@ function savingsTable(rows, caption) {
 const classicHtml = documentHtml('52-Week Savings Challenge Chart', 'Print the classic 52-week savings chart from $1 to $52, with planned running totals and a completion box for every deposit.', `
     <a href="/guides/52-week-savings-challenge/">← Read the 52-week challenge guide</a>
     <button type="button" data-print="all">Print chart</button>
+    <a href="/assets/worksheets/52-week-savings-tracker-a4.pdf" download>A4 PDF</a>
+    <a href="/assets/worksheets/52-week-savings-tracker-us-letter.pdf" download>US Letter PDF</a>
     <a href="/assets/worksheets/52-week-savings.csv" download>Download CSV</a>
     <a class="product" href="/savings-goal-tracker/">Explore Frugal →</a>`, `
     <section class="paper" aria-labelledby="sheet-title">
